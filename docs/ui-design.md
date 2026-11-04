@@ -1,5 +1,7 @@
 # Wonderblocks workbench
 
+**Audience:** Contributors and coding agents. Technical reference, not a user guide; dated sections record past checks.
+
 Visual thesis: a compact graphite editing workbench with amber state cues and a
 clear view of the scene. Real part and material previews provide the visual
 detail; routine controls remain quiet and consistent.

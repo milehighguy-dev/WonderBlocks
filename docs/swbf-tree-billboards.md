@@ -1,5 +1,7 @@
 # Yavin, Dagobah and Endor foliage
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 Inspected the local SWBF2 Mod Tools authoring meshes and their object definitions in Blender. The original wood meshes remain available in a separate reference scene. The Wonderblocks example recreates wood with editable native Flora branch profiles; it is a shape reconstruction rather than a verbatim import of the original wood geometry.
 
 The living trees attach `ClassLabel = "leafpatch"` objects to `hp_branch...` hardpoints. These ODFs provide the particle count, spread radius, height, size range, card aspect and darkness range. The placeholder `hoth_prop_grass.msh` in the leafpatch ODF is not a modeled canopy. Their native 256 × 256 cutout textures contain a 2 × 2 atlas of leaf or vine shapes. Wonderblocks chooses a stable randomized tile for each card rather than displaying the entire atlas on every particle.

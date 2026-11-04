@@ -1,5 +1,7 @@
 # Reference editor investigation — 2026-09-27
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 Follow-up: [Runtime findings](./RUNTIME-FINDINGS.md) supersede this pass's readable-code limitation. Launching the game enabled function-level analysis of a read-only memory snapshot.
 
 ## Scope and outcome

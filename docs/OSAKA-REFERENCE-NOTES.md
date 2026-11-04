@@ -1,5 +1,7 @@
 # Osaka keep: roof revision
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 Visual references inspected for the revision:
 
 - [Osaka Castle Museum exterior photo gallery](https://www.osakacastle.net/photo_shinsei/gaikan/), especially samples 001 and 006 for the exterior silhouette.

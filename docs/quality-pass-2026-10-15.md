@@ -1,5 +1,7 @@
 # Quality pass, 15 October 2026
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 The working baseline was committed as `ed3e025` before this pass. The installed WBX map was kept intact; no game session was launched.
 
 ## Corrections

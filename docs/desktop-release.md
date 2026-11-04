@@ -1,5 +1,7 @@
 # Windows desktop releases
 
+**Audience:** Contributors and coding agents. Technical reference, not a user guide; dated sections record past checks.
+
 Users download the installer or portable ZIP from GitHub Releases. The ZIP must
 be extracted completely; then launch `Wonderblocks.exe`. Node.js, pnpm, Python,
 the BF2 SDK and a separate browser are not needed to run the editor. The BF2 SDK

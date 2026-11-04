@@ -1,5 +1,7 @@
 # February 2008 prototype investigation
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 ## Outcome
 
 The user-supplied ISO is substantially more useful for editor research because it includes a **matching debug PDB with named symbols and class-member information**, plus editor automation scripts. It still contains protected code, so this is not an entirely unobstructed executable or a source-code release.

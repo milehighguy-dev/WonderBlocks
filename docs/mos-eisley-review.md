@@ -1,5 +1,7 @@
 # Mos Eisley collection review
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 Status: **collections 1–5 selected; collections 6–8 removed**.
 
 The stock source level is `C:/SWBF2_ModTools/BF2_ModTools/assets/worlds/TAT/world2/tat2.wld`. Its object references resolve to the TAT ODF and MSH folders, including PC-specific meshes under `msh/PC`. No SDK files or installed addon files were changed.

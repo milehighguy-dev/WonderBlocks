@@ -1,5 +1,7 @@
 # Felucia plants
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 The local SWBF2 Mod Tools `assets/worlds/FEL/msh` meshes were imported into an isolated Blender reference scene and inspected as complete plants and individual mesh sections. The added pieces retain the native UVs, normals, diffuse textures and material cutout flags. Coordinates convert from Blender Z-up to Wonderblocks Y-up with `(-x,z,y)`, preserving winding.
 
 Six **Tree presets** recreate the main plant families using editable, connected stalks: Flared Pitcher, Slender Pitcher, Bladder Pair, Segmented Spore Stalk, Golden Whisker and Scarlet Bloom. These are reconstructed plants, not exact whole-mesh imports. Stalk joints use the current Flora branch mechanics. Moving and rotating them carries their attached native organs. Cups, pods and decorations remain separate selectable, joint-free pieces that can be moved, rotated and scaled. Pitcher interiors retain their authored hollow shape instead of passing through the solid merged-body skin.

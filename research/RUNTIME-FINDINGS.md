@@ -1,5 +1,7 @@
 # Reference runtime investigation — 2026-09-27
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 ## Outcome
 
 Launching the installed game made a substantial difference: its loaded executable contains readable x86 code. A read-only snapshot allowed actual function decompilation, including a shared model writer and paint-field readers. This supersedes the earlier static-only limitation in [EDITOR-FINDINGS.md](./EDITOR-FINDINGS.md).

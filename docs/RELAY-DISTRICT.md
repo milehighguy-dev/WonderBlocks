@@ -1,5 +1,7 @@
 # Relay District
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 Open relay-district-preview.html for the overview, or index.html?demo=relay-district to edit and use Walk preview. The downloadable relay-district.building.json is a complete editable project.
 
 Suggested mission: arrive at the cyan freight beacon, activate the amber archive console, and extract from the amber rooftop relay. These are layout markers; enemy AI, mission triggers and a win condition are not implemented by the scene.

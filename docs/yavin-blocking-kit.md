@@ -1,5 +1,7 @@
 # Yavin blocking kit
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 Open `index.html?demo=yavin`, or **Load example → Building kits → Yavin blocking workshop**. The **Yavin** library category contains eight choices. The example has sixteen objects in seven separate studies; it does not replace the current saved scene. `previews/yavin-kit-preview.html` provides orbit, player-height and clay views. The editable file is `examples/projects/yavin-blocking.building.json`.
 
 | Choice | Purpose and controls |

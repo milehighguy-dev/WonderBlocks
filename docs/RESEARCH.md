@@ -1,5 +1,7 @@
 # Reference building editor: preliminary reconnaissance
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 Follow-up: [Ghidra and data-table investigation](../research/EDITOR-FINDINGS.md) records the subsequent analysis, protection-related limitations, verified paint tables, and suggested independent improvements.
 
 Latest: [Runtime investigation](../research/RUNTIME-FINDINGS.md) records a readable snapshot of the user-launched game and function-level findings about paint regions, color pairs, hierarchy, and symmetry. The static-only limitations below describe the earlier pass.

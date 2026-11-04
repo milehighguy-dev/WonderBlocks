@@ -1,5 +1,7 @@
 # BF2-style flora
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 The catalogue combines independently authored on-bark branches and modeled leaves with reference-derived structural forms: knotted and forked trunks, twisting stems, irregular root masses, sprays, compound fronds and crowns. The five surface branches and fifteen solid foliage parts use new geometry and textures approved by the user.
 
 `bf2-flora-forms.js` contains the reduced wood, skeletal layouts and reference placement envelopes. Jointed body skins regenerate from the full curved radius fields so editing retains their characteristic shapes. The generic replacement tubes and blade generator have been removed. Source animations and original color maps are not used.

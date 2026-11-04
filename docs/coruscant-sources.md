@@ -1,5 +1,7 @@
 # Coruscant theme sources
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 The curated palette contains two complete procedural modules: Skyscraper blade and Scalloped terrace. Experimental shapes, including the oculus crown inferred from an incomplete backdrop mesh, were removed. General tower construction uses existing bodies.
 
 The four texture presets were sampled at 128 × 128 from the user's loaded STAR WARS Bounty Hunter Coruscant assets:

@@ -1,5 +1,7 @@
 # Wonderblocks geometry budget
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 Counts are triangles, measured from generated geometry. Default parts use default shape parameters. Scaling alone does not change counts; sculpting and specialized controls can. Counts include hidden/intersecting faces. Mesh batches group components sharing a material within each editable part; they are not a measurement of GPU draw calls including shadow passes.
 
 ## Castle compound

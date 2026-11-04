@@ -1,5 +1,7 @@
 # Imported tiling surfaces
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 The imported collection contains twenty-eight architectural/ground tiles and
 twelve bark/root/moss coverings: SWBF1 (10), SWBF2 (9), Jedi Academy (9), and
 KOTOR (12). They appear alongside the existing texture library.

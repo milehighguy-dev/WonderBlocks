@@ -1,5 +1,7 @@
 # Kapok preset
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 **Flora → Tree presets → Kapok · Mature Rainforest Tree** creates one editable
 Ceiba pentandra. Its dimensions are in metres: approximately 40 m tall, a
 37 × 32 m crown, and a bole about 2.3 m across above the root flare. This is a

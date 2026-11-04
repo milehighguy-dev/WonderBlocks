@@ -1,5 +1,7 @@
 # Prototype editor types and package data
 
+**Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
+
 Investigation date: 2026-09-27. Target: the user-supplied February 19, 2008 prototype, version `1.0.0.11318`, with the matching PDB verified in [PROTOTYPE-FINDINGS.md](./PROTOTYPE-FINDINGS.md).
 
 ## Main result

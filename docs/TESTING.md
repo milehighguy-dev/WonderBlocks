@@ -1,5 +1,7 @@
 # Verification
 
+**Audience:** Contributors and coding agents. Technical reference, not a user guide; dated sections record past checks.
+
 ## Repeatable test gates
 
 Install the pinned test dependencies with `pnpm install --frozen-lockfile` (or install the dev dependencies with npm). Production/editor code remains dependency-free. Browser tests use bundled Playwright Chromium when installed, otherwise an installed Chrome. To install the pinned browser, use `pnpm exec playwright install chromium --no-shell`. You can explicitly select a browser with `WONDERBLOCKS_BROWSER_CHANNEL` (for example `chrome`).

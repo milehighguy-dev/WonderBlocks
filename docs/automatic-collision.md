@@ -1,5 +1,7 @@
 # Automatic collision in Wonderblocks
 
+**Audience:** Contributors and coding agents. Technical reference, not a user guide; dated sections record past checks.
+
 Collision is derived when an object is created or its shape changes. The user
 does not need to choose collision categories or draw colliders. The export
 helper switch controls packaging of this prepared data. Walk view, **View → Collision outlines**, and SWBF2 export consume the
@@ -183,7 +185,7 @@ container size. Native PC candidate storage allows at most 100 polygons and
 strictly fewer than 300 polygon vertices. The exporter reviews infantry and
 vehicle profiles separately when recommending helpers; it does not translate
 every preparation partition or oversized-cube flag into a requirement. See
-`swbf2-export.md` for the recommendation's stock calibration and limits.
+[export implementation notes](reference/swbf2-export.md) for the recommendation's stock calibration and limits.
 
 Sub-millimetre intersection slivers are welded or removed from the physical
 surface before fitting and reduction. Native compiler testing showed that such
