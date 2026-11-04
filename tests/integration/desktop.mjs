@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {mkdtemp,mkdir,readFile,writeFile,stat} from 'node:fs/promises';
+import {mkdtemp,mkdir,readFile,writeFile,stat,realpath} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
 import net from 'node:net';
@@ -7,7 +7,8 @@ import {fileURLToPath} from 'node:url';
 import {_electron} from 'playwright';
 import JSZip from 'jszip';
 const root=fileURLToPath(new URL('../../',import.meta.url)),argument=process.argv.slice(2).find(a=>a!=='--'),requested=argument?path.resolve(argument):undefined;let executable=requested;
-const artifacts=await mkdtemp(path.join(tmpdir(),'wb-desktop-')),profile=path.join(artifacts,'profile'),world=path.join(artifacts,'WON'),downloads=path.join(artifacts,'downloads');
+// Windows runners may expose TEMP through an 8.3 name; match the folder service's canonical paths.
+const artifacts=await realpath(await mkdtemp(path.join(tmpdir(),'wb-desktop-'))),profile=path.join(artifacts,'profile'),world=path.join(artifacts,'WON'),downloads=path.join(artifacts,'downloads');
 if(requested?.endsWith('.zip')){
  const folder=path.join(artifacts,'extracted'),archive=await JSZip.loadAsync(await readFile(requested));await mkdir(folder);
  for(const entry of Object.values(archive.files)){const target=path.resolve(folder,entry.name);if(!target.startsWith(folder+path.sep))throw Error('Archive path leaves application folder.');if(entry.dir)await mkdir(target,{recursive:true});else{await mkdir(path.dirname(target),{recursive:true});await writeFile(target,await entry.async('nodebuffer'));}}

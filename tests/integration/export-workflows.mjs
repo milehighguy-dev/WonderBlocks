@@ -1,11 +1,11 @@
 import JSZip from 'jszip';
 import assert from 'node:assert/strict';
-import {mkdtemp,mkdir,writeFile,readFile} from 'node:fs/promises';
+import {mkdtemp,mkdir,writeFile,readFile,realpath} from 'node:fs/promises';
 import path from 'node:path';
 import {tmpdir} from 'node:os';
 import {createRequire} from 'node:module';
 import {chromium} from 'playwright';
-const {createServer}=createRequire(import.meta.url)('../../server.cjs'),output=await mkdtemp(path.join(tmpdir(),'wb-workflow-browser-')),world=path.join(output,'WON');await mkdir(world);for(const name of ['msh','odf','world1'])await mkdir(path.join(world,name));
+const {createServer}=createRequire(import.meta.url)('../../server.cjs'),output=await realpath(await mkdtemp(path.join(tmpdir(),'wb-workflow-browser-'))),world=path.join(output,'WON');await mkdir(world);for(const name of ['msh','odf','world1'])await mkdir(path.join(world,name));
 await writeFile(path.join(world,'world1/WON.wld'),'Version(3);\nNextSequence(20);\n');await writeFile(path.join(world,'world1/WON.req'),'ucft { REQN { "world" "WON" } }');await writeFile(path.join(world,'world1/WON.ldx'),'Version(1);\nNextID(1);\nLayer("[Base]",0,0)\n{\nDescription("");\n}\nGameMode("Common")\n{\nLayer(0);\n}\n');
 let picks=0;const opened=[],server=createServer({folderRegistry:path.join(output,'folders.json'),chooseExportFolder:async()=>{picks++;return world;},openExportFolder:async folder=>opened.push(folder)});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));let browser;
 try{
