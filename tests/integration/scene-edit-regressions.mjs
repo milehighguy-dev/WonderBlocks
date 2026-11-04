@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
+import {readFile,mkdtemp} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import path from 'node:path';
 import {createRequire} from 'node:module';
 import {chromium} from 'playwright';
 import {makePart} from '../../src/core/model.js';
@@ -21,5 +23,25 @@ try{
  await load([landing,linked],'Connected render regression');assert.equal((await save()).parts[1].route.segments[0].run,10);
  await page.getByRole('button',{name:'Landing host',exact:true}).click();await page.evaluate(()=>partRemovals=0);await page.locator('#position-2').fill('12');await page.locator('#position-2').press('Tab');const connected=await save();assert.equal(connected.parts[1].route.segments[0].run,12,'moving the host refits the connected route before saving');assert.equal(await page.evaluate(()=>partRemovals),2,'connected scene rebuilds once after a host move');
  await page.locator('#undo').click();assert.equal((await save()).parts[1].route.segments[0].run,10);await page.locator('#redo').click();assert.equal((await save()).parts[1].route.segments[0].run,12);
+ const artifacts=await mkdtemp(path.join(tmpdir(),'wb-placement-regressions-'));
+ const tower=makePart('block',{name:'Entrance tower',scale:[10,18,9]}),approach=makePart('stair-route',{name:'Entrance approach',position:[0,7,14.5],rotation:[0,Math.PI,0]});
+ approach.route.width=2;Object.assign(approach.route.segments[0],{kind:'ramp',run:10,rise:3,steps:1});
+ await load([tower,approach],'Entrance finish');await page.getByRole('button',{name:'Entrance approach',exact:true}).click();await page.locator('#selection-action').click();
+ const done=page.locator('[data-context-action=done]'),subtitle=done.locator('.context-action-subtitle');
+ await page.locator('#route-entrance-notice').waitFor({state:'visible'});await subtitle.waitFor({state:'visible'});
+ assert.equal(await done.getAttribute('aria-label'),'Done · Back to scene');assert.equal(await subtitle.textContent(),'Finish route + entrance');assert.match(await page.locator('#route-entrance-notice').textContent(),/top bar/);assert.equal(await page.locator('#route-finish').isVisible(),false);
+ await page.screenshot({path:path.join(artifacts,'entrance-subtitle.png')});await done.click();
+ const finished=await save();assert.equal(finished.parts.find(p=>p.id===tower.id).entrances.length,1);assert.equal(finished.parts.find(p=>p.id===approach.id).route.links.end.partId,tower.id);
+ await page.getByRole('button',{name:'Entrance approach',exact:true}).click();await page.locator('#selection-action').click();assert.equal(await subtitle.count(),0,'subtitle clears when there is no pending entrance');await page.locator('[data-context-action=cancel]').click();
+ const cylinder=makePart('round',{name:'Cylinder support',scale:[8,6,8]});await load([cylinder],'Platform placement');
+ await page.evaluate(async()=>{const T=await import('/vendor/three.module.js'),before=T.Mesh.prototype.onBeforeRender;T.Mesh.prototype.onBeforeRender=function(renderer,scene,camera,...rest){if(renderer.domElement.parentElement?.id==='viewport')window.placementCamera=camera;return before.call(this,renderer,scene,camera,...rest);};});
+ await page.mouse.move(5,5);await page.waitForFunction(()=>window.placementCamera);
+ const screen=point=>page.evaluate(async point=>{const T=await import('/vendor/three.module.js'),p=new T.Vector3(...point).project(placementCamera),r=document.querySelector('#viewport>canvas').getBoundingClientRect();return {x:r.left+(p.x+1)*r.width/2,y:r.top+(1-p.y)*r.height/2};},point);
+ await page.locator('#search').fill('Platform');await page.getByRole('button',{name:'Place Platform',exact:true}).click();const top=await screen([0,6,0]);await page.mouse.click(top.x,top.y);
+ const platform=page.getByRole('dialog',{name:'Platform builder'});await platform.waitFor({state:'visible'});assert.ok(Math.abs(Number(await platform.locator('[data-y]').inputValue())-6.35)<1e-6,'deck underside sits on the cylinder top');
+ await platform.locator('[data-shape]').selectOption('circle');await page.screenshot({path:path.join(artifacts,'platform-on-cylinder.png')});await done.click();
+ const placed=(await save()).parts.find(p=>p.platform);assert.ok(Math.abs(placed.position[1]-placed.platform.thickness-6)<1e-6,'saved deck remains above the supporting cylinder');
+ await load([],'Ground placement');await page.getByRole('button',{name:'Place Platform',exact:true}).click();const ground=await screen([0,0,0]);await page.mouse.click(ground.x,ground.y);await platform.waitFor({state:'visible'});assert.equal(Number(await platform.locator('[data-y]').inputValue()),0,'ground placement retains the ground-level walking surface');await page.locator('[data-context-action=cancel]').click();
+ console.log('PASS entrance finish subtitle and action, platform body-on-surface placement and ground placement. Screenshots: '+artifacts);
  assert.deepEqual(errors,[]);console.log('PASS no geometry rebuild on rename, one rebuild per duplicate, fitted-host deletion cleanup, connected route updates and undo/redo.');
 }finally{await browser?.close();await new Promise(r=>server.close(r));}

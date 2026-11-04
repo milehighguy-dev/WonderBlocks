@@ -19,8 +19,8 @@ export function createEditingContext(host){
  for(const key of ['frame','save','cancel','done']){const button=el('button','context-'+key);button.type='button';button.setAttribute('data-context-action',key);button.onclick=()=>current[key]?.action?.();actions.append(button);buttons[key]=button;}
  panel.append(status,actions);host.append(panel);
  return {panel,update(context){
-  current=context;const next=JSON.stringify([context.mode,context.label,context.name,context.detail,context.hint,...Object.keys(buttons).map(k=>[context[k]?.label,context[k]?.shortLabel,!!context[k]?.disabled])]);if(next===signature)return;signature=next;
+  current=context;const next=JSON.stringify([context.mode,context.label,context.name,context.detail,context.hint,...Object.keys(buttons).map(k=>[context[k]?.label,context[k]?.shortLabel,context[k]?.subtitle,!!context[k]?.disabled])]);if(next===signature)return;signature=next;
   panel.dataset.mode=context.mode;mode.textContent=context.label;name.textContent=context.name;name.title=context.name;detail.textContent=context.detail||'';status.title=[context.name,context.detail,context.hint].filter(Boolean).join(' · ');hint.textContent=context.hint||'';hint.hidden=!context.hint;
-  for(const [key,button] of Object.entries(buttons)){const option=context[key];button.hidden=!option;button.textContent=option?.shortLabel||option?.label||'';button.title=option?.label||'';button.disabled=!!option?.disabled;button.setAttribute('aria-label',option?.label||key);}
+  for(const [key,button] of Object.entries(buttons)){const option=context[key];button.hidden=!option;button.textContent=option?.shortLabel||option?.label||'';if(option?.subtitle)button.append(el('small','context-action-subtitle',option.subtitle));button.title=[option?.label,option?.subtitle].filter(Boolean).join(' · ');button.disabled=!!option?.disabled;button.setAttribute('aria-label',option?.label||key);}
  }};
 }

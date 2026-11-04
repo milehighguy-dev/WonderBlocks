@@ -75,6 +75,7 @@ body.flora-mode .build-options{display:none!important}
 .swbf2-export-readiness{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0;border-top:1px solid #62747b;color:#ffe08a;line-height:1.5}.swbf2-export-readiness span{min-width:0}.swbf2-export-readiness button{flex-shrink:0}.swbf2-export [data-action=export]:disabled{cursor:not-allowed}.swbf2-export[data-waiting-export=true] [data-action=export]:disabled{cursor:wait}@media(max-width:700px){.swbf2-export-readiness{align-items:flex-start;flex-direction:column}}
 
 /* The selection context and everyday tools share one compact dock above the scene. */
+.editing-context-actions .context-action-subtitle{display:block;font-size:10px;line-height:1.3;font-weight:400;margin-top:2px}
 .examples-dropdown{position:relative;flex-shrink:0}
 .examples-dropdown>#demo{white-space:nowrap}
 .examples-dropdown>#demo::after{content:'';display:inline-block;margin-left:8px;vertical-align:middle;border:4px solid transparent;border-bottom:0;border-top-color:currentColor}
