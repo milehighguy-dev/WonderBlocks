@@ -1,0 +1,13 @@
+{
+  "id": "bf2-dagobah-root-moss",
+  "name": "Dagobah · tangled root covering",
+  "game": "SWBF2",
+  "group": "Flora",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 34,
+  "themes": [
+    "Flora",
+    "SWBF2"
+  ]
+}

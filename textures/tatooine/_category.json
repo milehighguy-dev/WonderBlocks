@@ -1,0 +1,10 @@
+{
+  "name": "Tatooine",
+  "order": 2,
+  "preview": [
+    "mos-stucco",
+    "mos-worn-stucco",
+    "mos-sand-floor",
+    "ja-desert-plaster"
+  ]
+}

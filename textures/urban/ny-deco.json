@@ -1,0 +1,10 @@
+{
+  "id": "ny-deco",
+  "name": "Deco window bands",
+  "roughness": 0.75,
+  "metalness": 0.08,
+  "order": 100,
+  "themes": [
+    "New York"
+  ]
+}

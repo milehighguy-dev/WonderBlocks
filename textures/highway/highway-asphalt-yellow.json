@@ -1,0 +1,11 @@
+{
+  "id": "highway-asphalt-yellow",
+  "name": "Asphalt · yellow centre line",
+  "roughness": 0.95,
+  "metalness": 0,
+  "order": 63,
+  "themes": [
+    "Highway",
+    "General"
+  ]
+}

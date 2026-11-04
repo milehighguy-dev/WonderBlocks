@@ -1,0 +1,11 @@
+{
+  "id": "ja-taspir-rusted-metal",
+  "name": "Taspir · rusted metal",
+  "game": "Jedi Academy",
+  "roughness": 0.95,
+  "metalness": 0.1,
+  "order": 24,
+  "themes": [
+    "Jedi Academy"
+  ]
+}

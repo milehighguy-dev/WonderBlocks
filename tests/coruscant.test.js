@@ -1,0 +1,13 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {CORUSCANT_PARTS} from '../src/parts/coruscant.js';import {buildPart,disposePart} from '../src/core/geometry.js';import {makePart,validateProject} from '../src/core/model.js';import {geometryStats} from '../src/core/mesh-budget.js';import {surfacesForTheme} from '../src/materials/surfaces.js';
+test('Coruscant modules have capped geometry and small individual budgets',()=>{
+ for(const d of CORUSCANT_PARTS){const g=buildPart(makePart(d.id));assert.ok(geometryStats(g).triangles<500,d.id);g.traverse(m=>{if(!m.isMesh)return;const geo=m.geometry,a=geo.attributes.position,idx=geo.index,edges=new Map();const v=i=>[a.getX(i),a.getY(i),a.getZ(i)].map(x=>String(Math.round(x*10000))).join(',');const n=idx?idx.count:a.count;for(let i=0;i<n;i+=3){const p=[0,1,2].map(j=>v(idx?idx.getX(i+j):i+j));if(new Set(p).size<3)continue;for(let j=0;j<3;j++){const key=[p[j],p[(j+1)%3]].sort().join('|');edges.set(key,(edges.get(key)||0)+1);}}for(const count of edges.values())assert.equal(count,2,d.id+' must close every edge');});disposePart(g);}
+});
+
+
+ test('skyscraper blade is a compact full-depth body with outward faces',()=>{const g=buildPart(makePart('cor-skyscraper-blade'));let min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity],volume=0;g.traverse(m=>{if(!m.isMesh)return;const p=m.geometry.attributes.position;for(let i=0;i<p.count;i++){const v=[p.getX(i),p.getY(i),p.getZ(i)];v.forEach((x,k)=>{min[k]=Math.min(min[k],x);max[k]=Math.max(max[k],x);});}for(let i=0;i<p.count;i+=3){const a=[p.getX(i),p.getY(i),p.getZ(i)],b=[p.getX(i+1),p.getY(i+1),p.getZ(i+1)],c=[p.getX(i+2),p.getY(i+2),p.getZ(i+2)];volume+=(a[0]*(b[1]*c[2]-b[2]*c[1])+a[1]*(b[2]*c[0]-b[0]*c[2])+a[2]*(b[0]*c[1]-b[1]*c[0]))/6;}});assert.ok(Math.abs(max[1]-min[1]-8)<.001);assert.ok(Math.abs(max[2]-min[2]-1.8)<.001);assert.ok(max[0]-min[0]<2);assert.ok(volume>0);assert.ok(Math.abs(min[1])<1e-6);disposePart(g);});
+
+test('roof and stackable tower body share an exact beveled seam',()=>{const points=(type,y)=>{const g=buildPart(makePart(type)),found=new Set();g.traverse(m=>{if(!m.isMesh)return;const a=m.geometry.attributes.position;for(let i=0;i<a.count;i++)if(Math.abs(a.getY(i)-y)<1e-5)found.add([a.getX(i),a.getZ(i)].map(v=>Math.round(v*10000)).join(','));});disposePart(g);return [...found].sort();};assert.deepEqual(points('cor-half-round-roof',0),points('cor-roundtop-body',4));assert.deepEqual(points('cor-roundtop-body',0),points('cor-roundtop-body',4));});
+
+
+test('Coruscant retains its curated palette and textures',()=>{assert.equal(CORUSCANT_PARTS.length,9);assert.equal(surfacesForTheme('Coruscant').filter(s=>s.id.startsWith('cor-')).length,22);});

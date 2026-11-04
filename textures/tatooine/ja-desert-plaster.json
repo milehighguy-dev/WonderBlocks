@@ -1,0 +1,11 @@
+{
+  "id": "ja-desert-plaster",
+  "name": "Desert · pale plaster",
+  "game": "Jedi Academy",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 29,
+  "themes": [
+    "Jedi Academy"
+  ]
+}

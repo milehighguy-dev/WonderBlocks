@@ -1,0 +1,10 @@
+{
+  "id": "swbf-rhen-wall",
+  "name": "Rhen Var rock walls",
+  "roughness": 0.8,
+  "metalness": 0,
+  "order": 75,
+  "themes": [
+    "Hallway references"
+  ]
+}

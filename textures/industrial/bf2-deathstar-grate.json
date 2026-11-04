@@ -1,0 +1,11 @@
+{
+  "id": "bf2-deathstar-grate",
+  "name": "Death Star · dark grating",
+  "game": "SWBF2",
+  "roughness": 0.7,
+  "metalness": 0.3,
+  "order": 21,
+  "themes": [
+    "SWBF2"
+  ]
+}

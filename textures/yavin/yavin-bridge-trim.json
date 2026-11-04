@@ -1,0 +1,10 @@
+{
+  "id": "yavin-bridge-trim",
+  "name": "Yavin · carved bridge cap",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 55,
+  "themes": [
+    "Yavin"
+  ]
+}

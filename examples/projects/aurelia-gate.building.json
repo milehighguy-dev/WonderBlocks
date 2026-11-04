@@ -1,0 +1,4155 @@
+{
+  "format": "open-building-studio",
+  "version": 1,
+  "name": "Aurelia Gate · reactor harbor",
+  "parts": [
+    {
+      "id": "aurelia-0",
+      "type": "ring-body",
+      "name": "Deep turbine well",
+      "color": "#394e59",
+      "position": [
+        0,
+        -26,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        66,
+        37.9,
+        66
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 13
+      },
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-1",
+      "type": "ring-body",
+      "name": "Public annular concourse",
+      "color": "#93aca8",
+      "position": [
+        0,
+        12,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        76,
+        2,
+        76
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 22
+      },
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-2",
+      "type": "ring-body",
+      "name": "Inner safety parapet",
+      "color": "#627d82",
+      "position": [
+        0,
+        14,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        43,
+        1.1,
+        43
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 2
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-3",
+      "type": "ring-body",
+      "name": "Outer bronze fascia",
+      "color": "#cfa66b",
+      "position": [
+        0,
+        11.7,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        76.6,
+        0.5,
+        76.6
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 2
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-4",
+      "type": "round",
+      "name": "Reactor plinth",
+      "color": "#34444e",
+      "position": [
+        0,
+        -23,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        18,
+        31,
+        18
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-5",
+      "type": "round",
+      "name": "Luminous core",
+      "color": "#7ce9e6",
+      "position": [
+        0,
+        8,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        9,
+        9,
+        9
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-6",
+      "type": "ring-body",
+      "name": "Core containment crown",
+      "color": "#dfb87b",
+      "position": [
+        0,
+        17,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        15,
+        1,
+        15
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 12
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-7",
+      "type": "dome",
+      "name": "Reactor lens",
+      "color": "#8be8de",
+      "position": [
+        0,
+        18,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        13,
+        4,
+        13
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-8",
+      "type": "block",
+      "name": "Radial service rib",
+      "color": "#546d78",
+      "position": [
+        0,
+        -24,
+        27
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        35,
+        3
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-9",
+      "type": "block",
+      "name": "Amber guide light",
+      "color": "#ffc778",
+      "position": [
+        0,
+        14.02,
+        36
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        0.1,
+        1.2
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-10",
+      "type": "block",
+      "name": "Radial service rib",
+      "color": "#546d78",
+      "position": [
+        19.09188309203678,
+        -24,
+        19.091883092036785
+      ],
+      "rotation": [
+        0,
+        0.7853981633974483,
+        0
+      ],
+      "scale": [
+        2,
+        35,
+        3
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-11",
+      "type": "block",
+      "name": "Amber guide light",
+      "color": "#ffc778",
+      "position": [
+        25.45584412271571,
+        14.02,
+        25.455844122715714
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        0.1,
+        1.2
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-12",
+      "type": "block",
+      "name": "Radial service rib",
+      "color": "#546d78",
+      "position": [
+        27,
+        -24,
+        1.6532731788489269e-15
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        2,
+        35,
+        3
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-13",
+      "type": "block",
+      "name": "Amber guide light",
+      "color": "#ffc778",
+      "position": [
+        36,
+        14.02,
+        2.204364238465236e-15
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        0.1,
+        1.2
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-14",
+      "type": "block",
+      "name": "Radial service rib",
+      "color": "#546d78",
+      "position": [
+        19.091883092036785,
+        -24,
+        -19.09188309203678
+      ],
+      "rotation": [
+        0,
+        2.356194490192345,
+        0
+      ],
+      "scale": [
+        2,
+        35,
+        3
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-15",
+      "type": "block",
+      "name": "Amber guide light",
+      "color": "#ffc778",
+      "position": [
+        25.455844122715714,
+        14.02,
+        -25.45584412271571
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        0.1,
+        1.2
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-16",
+      "type": "block",
+      "name": "Radial service rib",
+      "color": "#546d78",
+      "position": [
+        3.3065463576978537e-15,
+        -24,
+        -27
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        2,
+        35,
+        3
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-17",
+      "type": "block",
+      "name": "Amber guide light",
+      "color": "#ffc778",
+      "position": [
+        4.408728476930472e-15,
+        14.02,
+        -36
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        0.1,
+        1.2
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-18",
+      "type": "block",
+      "name": "Radial service rib",
+      "color": "#546d78",
+      "position": [
+        -19.09188309203678,
+        -24,
+        -19.091883092036788
+      ],
+      "rotation": [
+        0,
+        3.9269908169872414,
+        0
+      ],
+      "scale": [
+        2,
+        35,
+        3
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-19",
+      "type": "block",
+      "name": "Amber guide light",
+      "color": "#ffc778",
+      "position": [
+        -25.45584412271571,
+        14.02,
+        -25.455844122715718
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        0.1,
+        1.2
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-20",
+      "type": "block",
+      "name": "Radial service rib",
+      "color": "#546d78",
+      "position": [
+        -27,
+        -24,
+        -4.95981953654678e-15
+      ],
+      "rotation": [
+        0,
+        4.71238898038469,
+        0
+      ],
+      "scale": [
+        2,
+        35,
+        3
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-21",
+      "type": "block",
+      "name": "Amber guide light",
+      "color": "#ffc778",
+      "position": [
+        -36,
+        14.02,
+        -6.613092715395707e-15
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        0.1,
+        1.2
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-22",
+      "type": "block",
+      "name": "Radial service rib",
+      "color": "#546d78",
+      "position": [
+        -19.091883092036788,
+        -24,
+        19.091883092036777
+      ],
+      "rotation": [
+        0,
+        5.497787143782138,
+        0
+      ],
+      "scale": [
+        2,
+        35,
+        3
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-23",
+      "type": "block",
+      "name": "Amber guide light",
+      "color": "#ffc778",
+      "position": [
+        -25.455844122715718,
+        14.02,
+        25.455844122715703
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        0.1,
+        1.2
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-24",
+      "type": "platform",
+      "name": "Arrival forecourt",
+      "platform": {
+        "thickness": 0.6,
+        "railing": "none",
+        "railHeight": 1.1,
+        "sections": [
+          {
+            "id": "34c7b0aa-5b9d-494c-99fc-95831432a81f",
+            "kind": "rectangle",
+            "x": 0,
+            "z": 0,
+            "width": 32,
+            "depth": 34,
+            "radius": 2,
+            "rotation": 0
+          }
+        ]
+      },
+      "color": "#9db9b3",
+      "position": [
+        0,
+        14.04,
+        55
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-25",
+      "type": "stair-route",
+      "name": "Concourse bridge",
+      "route": {
+        "width": 10,
+        "thickness": 0.3,
+        "gap": 0,
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 1,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "sides": "both",
+              "color": "#bfa56e",
+              "surface": {
+                "preset": "metal",
+                "scale": 0.25
+              }
+            }
+          }
+        ]
+      },
+      "color": "#8ea8a2",
+      "position": [
+        0,
+        14.08,
+        37.4
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-26",
+      "type": "block",
+      "name": "Arrival lantern pedestal",
+      "color": "#d1b782",
+      "position": [
+        -12,
+        14,
+        64
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        3,
+        1
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-27",
+      "type": "block",
+      "name": "Amber beacon",
+      "color": "#ffd288",
+      "position": [
+        -12,
+        17,
+        64
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        1.2,
+        0.7
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-28",
+      "type": "block",
+      "name": "Arrival lantern pedestal",
+      "color": "#d1b782",
+      "position": [
+        12,
+        14,
+        64
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        3,
+        1
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-29",
+      "type": "block",
+      "name": "Amber beacon",
+      "color": "#ffd288",
+      "position": [
+        12,
+        17,
+        64
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        1.2,
+        0.7
+      ],
+      "assemblyId": "01 · Core plaza",
+      "assemblyName": "01 · Core plaza",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-30",
+      "type": "round",
+      "name": "Stepped tower base",
+      "color": "#3e5966",
+      "position": [
+        -52,
+        -25,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        32,
+        41,
+        32
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-31",
+      "type": "round",
+      "name": "Crowned residential tower",
+      "color": "#9bb7b7",
+      "position": [
+        -52,
+        16,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25,
+        87,
+        25
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-column-windows",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-32",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        -52,
+        24,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-33",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        -52,
+        36,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-34",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        -52,
+        48,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-35",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        -52,
+        60,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-36",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        -52,
+        72,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-37",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        -52,
+        84,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-38",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        -52,
+        96,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-39",
+      "type": "dome",
+      "name": "Ivory tower crown",
+      "color": "#a6bdb5",
+      "position": [
+        -52,
+        103,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        26,
+        12,
+        26
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-plating",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-40",
+      "type": "ring-body",
+      "name": "Crown halo",
+      "color": "#d9b57b",
+      "position": [
+        -52,
+        103,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        28,
+        0.8,
+        28
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 6
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-41",
+      "type": "antenna",
+      "name": "Crown signal mast",
+      "color": "#c3a76f",
+      "position": [
+        -52,
+        114,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3,
+        12,
+        3
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-42",
+      "type": "block",
+      "name": "Tower vertical fin",
+      "color": "#cfbb8f",
+      "position": [
+        -62,
+        -15,
+        -26
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        123,
+        4
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-43",
+      "type": "block",
+      "name": "Tower vertical fin",
+      "color": "#cfbb8f",
+      "position": [
+        -42,
+        -15,
+        -26
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        123,
+        4
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-44",
+      "type": "platform",
+      "name": "Tower entrance terrace",
+      "platform": {
+        "thickness": 0.6,
+        "railing": "none",
+        "railHeight": 1.1,
+        "sections": [
+          {
+            "id": "d1d04e65-0d5a-483a-8308-1f25c8ebbc2b",
+            "kind": "rectangle",
+            "x": 0,
+            "z": 0,
+            "width": 28,
+            "depth": 20,
+            "radius": 2,
+            "rotation": 0
+          }
+        ]
+      },
+      "color": "#9db9b3",
+      "position": [
+        -52,
+        14,
+        7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-45",
+      "type": "stair-route",
+      "name": "Tower plaza link",
+      "route": {
+        "width": 9,
+        "thickness": 0.3,
+        "gap": 0,
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 1.0500000000000043,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "sides": "both",
+              "color": "#bfa56e",
+              "surface": {
+                "preset": "metal",
+                "scale": 0.25
+              }
+            }
+          }
+        ]
+      },
+      "color": "#8ea8a2",
+      "position": [
+        -37.05,
+        14.04,
+        7
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-46",
+      "type": "round",
+      "name": "Stepped tower base",
+      "color": "#3e5966",
+      "position": [
+        52,
+        -25,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        32,
+        41,
+        32
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-47",
+      "type": "round",
+      "name": "Crowned residential tower",
+      "color": "#c0c4b5",
+      "position": [
+        52,
+        16,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25,
+        106,
+        25
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-column-windows",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-48",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        52,
+        24,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-49",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        52,
+        36,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-50",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        52,
+        48,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-51",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        52,
+        60,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-52",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        52,
+        72,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-53",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        52,
+        84,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-54",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        52,
+        96,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-55",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        52,
+        108,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-56",
+      "type": "ring-body",
+      "name": "Bronze floor collar",
+      "color": "#ba965f",
+      "position": [
+        52,
+        120,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25.8,
+        0.5,
+        25.8
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-57",
+      "type": "dome",
+      "name": "Ivory tower crown",
+      "color": "#a6bdb5",
+      "position": [
+        52,
+        122,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        26,
+        12,
+        26
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-plating",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-58",
+      "type": "ring-body",
+      "name": "Crown halo",
+      "color": "#d9b57b",
+      "position": [
+        52,
+        122,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        28,
+        0.8,
+        28
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 6
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-59",
+      "type": "antenna",
+      "name": "Crown signal mast",
+      "color": "#c3a76f",
+      "position": [
+        52,
+        133,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3,
+        12,
+        3
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-60",
+      "type": "block",
+      "name": "Tower vertical fin",
+      "color": "#cfbb8f",
+      "position": [
+        42,
+        -15,
+        -26
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        142,
+        4
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-61",
+      "type": "block",
+      "name": "Tower vertical fin",
+      "color": "#cfbb8f",
+      "position": [
+        62,
+        -15,
+        -26
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        142,
+        4
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-62",
+      "type": "platform",
+      "name": "Tower entrance terrace",
+      "platform": {
+        "thickness": 0.6,
+        "railing": "none",
+        "railHeight": 1.1,
+        "sections": [
+          {
+            "id": "fa17e731-f3ef-44a8-9404-67ed3c9d34b0",
+            "kind": "rectangle",
+            "x": 0,
+            "z": 0,
+            "width": 28,
+            "depth": 20,
+            "radius": 2,
+            "rotation": 0
+          }
+        ]
+      },
+      "color": "#9db9b3",
+      "position": [
+        52,
+        14,
+        7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-63",
+      "type": "stair-route",
+      "name": "Tower plaza link",
+      "route": {
+        "width": 9,
+        "thickness": 0.3,
+        "gap": 0,
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 1.0500000000000043,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "sides": "both",
+              "color": "#bfa56e",
+              "surface": {
+                "preset": "metal",
+                "scale": 0.25
+              }
+            }
+          }
+        ]
+      },
+      "color": "#8ea8a2",
+      "position": [
+        37.05,
+        14.04,
+        7
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "02 · Crown towers",
+      "assemblyName": "02 · Crown towers",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-64",
+      "type": "platform",
+      "name": "Station lower court",
+      "platform": {
+        "thickness": 0.6,
+        "railing": "none",
+        "railHeight": 1.1,
+        "sections": [
+          {
+            "id": "ce3171b7-5207-48e7-b472-9057c71c6ffc",
+            "kind": "rectangle",
+            "x": 0,
+            "z": 0,
+            "width": 36,
+            "depth": 29,
+            "radius": 2,
+            "rotation": 0
+          }
+        ]
+      },
+      "color": "#9db9b3",
+      "position": [
+        0,
+        14.04,
+        -52
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "03 · Station terraces",
+      "assemblyName": "03 · Station terraces",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-65",
+      "type": "stair-route",
+      "name": "Station grand steps",
+      "route": {
+        "width": 10,
+        "thickness": 0.3,
+        "gap": 0,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 12,
+            "rise": 3.960000000000001,
+            "steps": 23,
+            "turn": "straight",
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "sides": "both",
+              "color": "#bfa56e",
+              "surface": {
+                "preset": "metal",
+                "scale": 0.25
+              }
+            }
+          }
+        ]
+      },
+      "color": "#8ea8a2",
+      "position": [
+        0,
+        14.04,
+        -66.5
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "03 · Station terraces",
+      "assemblyName": "03 · Station terraces",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-66",
+      "type": "platform",
+      "name": "Station upper court",
+      "platform": {
+        "thickness": 0.6,
+        "railing": "none",
+        "railHeight": 1.1,
+        "sections": [
+          {
+            "id": "6f0179d7-8fbc-48f6-8337-06ed467ea6d2",
+            "kind": "rectangle",
+            "x": 0,
+            "z": 0,
+            "width": 38,
+            "depth": 4.5,
+            "radius": 2,
+            "rotation": 0
+          }
+        ]
+      },
+      "color": "#9db9b3",
+      "position": [
+        0,
+        18,
+        -80.75
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "03 · Station terraces",
+      "assemblyName": "03 · Station terraces",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-67",
+      "type": "interior",
+      "name": "Transit ticket hall",
+      "interior": {
+        "height": 7,
+        "thickness": 0.2,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "hall",
+            "x": -18,
+            "z": -11,
+            "w": 36,
+            "d": 22
+          }
+        ],
+        "doors": [
+          {
+            "id": "front",
+            "axis": "x",
+            "line": 11,
+            "offset": 0,
+            "width": 8,
+            "height": 5.4,
+            "kind": "door"
+          },
+          {
+            "id": "back",
+            "axis": "x",
+            "line": -11,
+            "offset": 0,
+            "width": 8,
+            "height": 5.4,
+            "kind": "door"
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#8da6a1",
+            "preset": "cor-floor-plates",
+            "scale": 0.3
+          },
+          "wall": {
+            "color": "#b9c7be",
+            "preset": "cor-interior-panel",
+            "scale": 0.3
+          },
+          "outside": {
+            "color": "#526e79",
+            "preset": "cor-ribs",
+            "scale": 0.3
+          },
+          "ceiling": {
+            "color": "#b5c4bb",
+            "preset": "cor-ceiling-panels",
+            "scale": 0.3
+          },
+          "roof": {
+            "color": "#b5c4bb",
+            "preset": "cor-ceiling-panels",
+            "scale": 0.3
+          }
+        }
+      },
+      "color": "#829397",
+      "position": [
+        0,
+        18,
+        -94
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "03 · Station terraces",
+      "assemblyName": "03 · Station terraces",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-68",
+      "type": "block",
+      "name": "Station foundation",
+      "color": "#425967",
+      "position": [
+        0,
+        -25,
+        -94
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        44,
+        42.4,
+        28
+      ],
+      "assemblyId": "03 · Station terraces",
+      "assemblyName": "03 · Station terraces",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-69",
+      "type": "block",
+      "name": "Station roof fascia",
+      "color": "#c7b484",
+      "position": [
+        0,
+        25.2,
+        -94
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        40,
+        0.9,
+        25
+      ],
+      "assemblyId": "03 · Station terraces",
+      "assemblyName": "03 · Station terraces",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-70",
+      "type": "block",
+      "name": "Cyan arrival sign",
+      "color": "#79eeed",
+      "position": [
+        0,
+        24,
+        -82.7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        15,
+        1,
+        0.25
+      ],
+      "assemblyId": "03 · Station terraces",
+      "assemblyName": "03 · Station terraces",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-71",
+      "type": "block",
+      "name": "Station entry pier",
+      "color": "#bac6b8",
+      "position": [
+        -14,
+        18,
+        -81
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.5,
+        7,
+        2
+      ],
+      "assemblyId": "03 · Station terraces",
+      "assemblyName": "03 · Station terraces",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-72",
+      "type": "block",
+      "name": "Station lighting strip",
+      "color": "#ffc479",
+      "position": [
+        -14,
+        18.6,
+        -79.9
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.2,
+        5,
+        0.15
+      ],
+      "assemblyId": "03 · Station terraces",
+      "assemblyName": "03 · Station terraces",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-73",
+      "type": "block",
+      "name": "Station entry pier",
+      "color": "#bac6b8",
+      "position": [
+        14,
+        18,
+        -81
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.5,
+        7,
+        2
+      ],
+      "assemblyId": "03 · Station terraces",
+      "assemblyName": "03 · Station terraces",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-74",
+      "type": "block",
+      "name": "Station lighting strip",
+      "color": "#ffc479",
+      "position": [
+        14,
+        18.6,
+        -79.9
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.2,
+        5,
+        0.15
+      ],
+      "assemblyId": "03 · Station terraces",
+      "assemblyName": "03 · Station terraces",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-75",
+      "type": "highway",
+      "name": "Skyway and harbor exit",
+      "highway": {
+        "railStyle": "jersey",
+        "width": 13,
+        "thickness": 0.7,
+        "barrierHeight": 1,
+        "supports": true,
+        "nodes": [
+          {
+            "point": [
+              76,
+              25,
+              -125
+            ],
+            "tangent": [
+              -8,
+              0,
+              28
+            ]
+          },
+          {
+            "point": [
+              72,
+              25,
+              -38
+            ],
+            "tangent": [
+              8,
+              0,
+              24
+            ]
+          },
+          {
+            "point": [
+              88,
+              30,
+              35
+            ],
+            "tangent": [
+              -4,
+              1,
+              25
+            ]
+          },
+          {
+            "point": [
+              65,
+              32,
+              125
+            ],
+            "tangent": [
+              -14,
+              0,
+              28
+            ]
+          }
+        ],
+        "branches": [
+          {
+            "id": "harbor-exit",
+            "width": 7,
+            "start": {
+              "path": "main",
+              "segment": 2,
+              "t": 0.25,
+              "direction": 1,
+              "side": -1
+            },
+            "nodes": [
+              {
+                "point": [
+                  81.72916416901109,
+                  30.734375,
+                  55.17362896530713
+                ],
+                "tangent": [
+                  -3.7170441207463063,
+                  0.6969457726399324,
+                  22.06994946693119
+                ]
+              },
+              {
+                "point": [
+                  23,
+                  27,
+                  82
+                ],
+                "tangent": [
+                  -20,
+                  0,
+                  0
+                ]
+              },
+              {
+                "point": [
+                  -65,
+                  27,
+                  78
+                ],
+                "tangent": [
+                  -28,
+                  0,
+                  -5
+                ]
+              }
+            ]
+          }
+        ],
+        "componentFinishes": {
+          "road": {
+            "color": "#ffffff",
+            "surface": {
+              "preset": "highway-scifi-lanes",
+              "scale": 0.5
+            }
+          },
+          "underside": {
+            "color": "#4c6572",
+            "surface": {
+              "preset": "cor-ribs",
+              "scale": 0.3
+            }
+          },
+          "barriers": {
+            "color": "#b4c4ba",
+            "surface": {
+              "preset": "cor-concrete",
+              "scale": 0.4
+            }
+          },
+          "supports": {
+            "color": "#516a77",
+            "surface": {
+              "preset": "cor-panels",
+              "scale": 0.3
+            }
+          }
+        }
+      },
+      "color": "#ffffff",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "04 · Elevated expressway",
+      "assemblyName": "04 · Elevated expressway",
+      "surface": {
+        "preset": "highway-scifi-lanes",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-76",
+      "type": "block",
+      "name": "Harbor pier foundation",
+      "color": "#3d5664",
+      "position": [
+        -70,
+        -25,
+        35
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        27,
+        44,
+        23
+      ],
+      "assemblyId": "05 · Harbor platforms",
+      "assemblyName": "05 · Harbor platforms",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-77",
+      "type": "platform",
+      "name": "Rounded landing apron",
+      "platform": {
+        "thickness": 0.6,
+        "railing": "none",
+        "railHeight": 1.1,
+        "sections": [
+          {
+            "id": "30eaa675-1059-4fcc-8e22-7aec28968f4d",
+            "kind": "circle",
+            "x": 0,
+            "z": 0,
+            "width": 29,
+            "depth": 25,
+            "radius": 0,
+            "rotation": 0
+          }
+        ]
+      },
+      "color": "#829c9b",
+      "position": [
+        -70,
+        20,
+        35
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "05 · Harbor platforms",
+      "assemblyName": "05 · Harbor platforms",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-78",
+      "type": "round",
+      "name": "Landing target",
+      "color": "#c8b079",
+      "position": [
+        -70,
+        20.03,
+        35
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        12,
+        0.08,
+        12
+      ],
+      "assemblyId": "05 · Harbor platforms",
+      "assemblyName": "05 · Harbor platforms",
+      "surface": {
+        "preset": "cor-landing-pad",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-79",
+      "type": "block",
+      "name": "Harbor pier foundation",
+      "color": "#3d5664",
+      "position": [
+        -88,
+        -25,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        27,
+        38,
+        23
+      ],
+      "assemblyId": "05 · Harbor platforms",
+      "assemblyName": "05 · Harbor platforms",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-80",
+      "type": "platform",
+      "name": "Rounded landing apron",
+      "platform": {
+        "thickness": 0.6,
+        "railing": "none",
+        "railHeight": 1.1,
+        "sections": [
+          {
+            "id": "bef2ba27-2d36-48f4-84c1-48b01fe20fa3",
+            "kind": "circle",
+            "x": 0,
+            "z": 0,
+            "width": 29,
+            "depth": 25,
+            "radius": 0,
+            "rotation": 0
+          }
+        ]
+      },
+      "color": "#829c9b",
+      "position": [
+        -88,
+        14,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "05 · Harbor platforms",
+      "assemblyName": "05 · Harbor platforms",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-81",
+      "type": "round",
+      "name": "Landing target",
+      "color": "#c8b079",
+      "position": [
+        -88,
+        14.03,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        12,
+        0.08,
+        12
+      ],
+      "assemblyId": "05 · Harbor platforms",
+      "assemblyName": "05 · Harbor platforms",
+      "surface": {
+        "preset": "cor-landing-pad",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-82",
+      "type": "stair-route",
+      "name": "West terrace ascent",
+      "route": {
+        "width": 6,
+        "thickness": 0.3,
+        "gap": 0,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 17,
+            "rise": 6,
+            "steps": 34,
+            "turn": "straight",
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "sides": "both",
+              "color": "#bfa56e",
+              "surface": {
+                "preset": "metal",
+                "scale": 0.25
+              }
+            }
+          }
+        ]
+      },
+      "color": "#8ea8a2",
+      "position": [
+        -52,
+        14,
+        17
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "05 · Harbor platforms",
+      "assemblyName": "05 · Harbor platforms",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-83",
+      "type": "stair-route",
+      "name": "Harbor boarding bridge",
+      "route": {
+        "width": 8,
+        "thickness": 0.3,
+        "gap": 0,
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 3.700000000000003,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "sides": "both",
+              "color": "#bfa56e",
+              "surface": {
+                "preset": "metal",
+                "scale": 0.25
+              }
+            }
+          }
+        ]
+      },
+      "color": "#8ea8a2",
+      "position": [
+        -52,
+        20.04,
+        34
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "05 · Harbor platforms",
+      "assemblyName": "05 · Harbor platforms",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-84",
+      "type": "hex",
+      "name": "Distant city tower",
+      "color": "#799196",
+      "position": [
+        -105,
+        -25,
+        -83
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25,
+        78,
+        25
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-slots",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-85",
+      "type": "dome",
+      "name": "Backdrop crown",
+      "color": "#819b9d",
+      "position": [
+        -105,
+        53,
+        -83
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25,
+        7,
+        25
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-plating",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-86",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        -105,
+        38,
+        -83
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        26,
+        0.5,
+        26
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-87",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        -105,
+        14,
+        -83
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        26,
+        0.5,
+        26
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-88",
+      "type": "round",
+      "name": "Distant city tower",
+      "color": "#637f89",
+      "position": [
+        -78,
+        -25,
+        -116
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        22,
+        123,
+        22
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-windows",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-89",
+      "type": "dome",
+      "name": "Backdrop crown",
+      "color": "#819b9d",
+      "position": [
+        -78,
+        98,
+        -116
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        22,
+        7,
+        22
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-plating",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-90",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        -78,
+        83,
+        -116
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        23,
+        0.5,
+        23
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-91",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        -78,
+        59,
+        -116
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        23,
+        0.5,
+        23
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-92",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        -78,
+        35,
+        -116
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        23,
+        0.5,
+        23
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-93",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        -78,
+        11,
+        -116
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        23,
+        0.5,
+        23
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-94",
+      "type": "round",
+      "name": "Distant city tower",
+      "color": "#799196",
+      "position": [
+        -34,
+        -25,
+        -142
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        28,
+        91,
+        28
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-slots",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-95",
+      "type": "dome",
+      "name": "Backdrop crown",
+      "color": "#819b9d",
+      "position": [
+        -34,
+        66,
+        -142
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        28,
+        7,
+        28
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-plating",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-96",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        -34,
+        51,
+        -142
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        29,
+        0.5,
+        29
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-97",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        -34,
+        27,
+        -142
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        29,
+        0.5,
+        29
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-98",
+      "type": "hex",
+      "name": "Distant city tower",
+      "color": "#637f89",
+      "position": [
+        13,
+        -25,
+        -146
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        23,
+        142,
+        23
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-windows",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-99",
+      "type": "dome",
+      "name": "Backdrop crown",
+      "color": "#819b9d",
+      "position": [
+        13,
+        117,
+        -146
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        23,
+        7,
+        23
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-plating",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-100",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        13,
+        102,
+        -146
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        0.5,
+        24
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-101",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        13,
+        78,
+        -146
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        0.5,
+        24
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-102",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        13,
+        54,
+        -146
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        0.5,
+        24
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-103",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        13,
+        30,
+        -146
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        0.5,
+        24
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-104",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        13,
+        6,
+        -146
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        0.5,
+        24
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-105",
+      "type": "round",
+      "name": "Distant city tower",
+      "color": "#799196",
+      "position": [
+        54,
+        -25,
+        -134
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        89,
+        24
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-slots",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-106",
+      "type": "dome",
+      "name": "Backdrop crown",
+      "color": "#819b9d",
+      "position": [
+        54,
+        64,
+        -134
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        7,
+        24
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-plating",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-107",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        54,
+        49,
+        -134
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25,
+        0.5,
+        25
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-108",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        54,
+        25,
+        -134
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25,
+        0.5,
+        25
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-109",
+      "type": "round",
+      "name": "Distant city tower",
+      "color": "#637f89",
+      "position": [
+        110,
+        -25,
+        -98
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        117,
+        24
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-windows",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-110",
+      "type": "dome",
+      "name": "Backdrop crown",
+      "color": "#819b9d",
+      "position": [
+        110,
+        92,
+        -98
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        7,
+        24
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-plating",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-111",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        110,
+        77,
+        -98
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25,
+        0.5,
+        25
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-112",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        110,
+        53,
+        -98
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25,
+        0.5,
+        25
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-113",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        110,
+        29,
+        -98
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25,
+        0.5,
+        25
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-114",
+      "type": "hex",
+      "name": "Distant city tower",
+      "color": "#799196",
+      "position": [
+        126,
+        -25,
+        -42
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        79,
+        24
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-slots",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-115",
+      "type": "dome",
+      "name": "Backdrop crown",
+      "color": "#819b9d",
+      "position": [
+        126,
+        54,
+        -42
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        7,
+        24
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-plating",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-116",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        126,
+        39,
+        -42
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25,
+        0.5,
+        25
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-117",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        126,
+        15,
+        -42
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25,
+        0.5,
+        25
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-118",
+      "type": "round",
+      "name": "Distant city tower",
+      "color": "#637f89",
+      "position": [
+        -118,
+        -25,
+        -24
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        21,
+        58,
+        21
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-windows",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-119",
+      "type": "dome",
+      "name": "Backdrop crown",
+      "color": "#819b9d",
+      "position": [
+        -118,
+        33,
+        -24
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        21,
+        7,
+        21
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "surface": {
+        "preset": "cor-plating",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-120",
+      "type": "ring-body",
+      "name": "Backdrop belt",
+      "color": "#ac9569",
+      "position": [
+        -118,
+        18,
+        -24
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        22,
+        0.5,
+        22
+      ],
+      "assemblyId": "06 · City backdrop",
+      "assemblyName": "06 · City backdrop",
+      "parameters": {
+        "sides": 48,
+        "wallThickness": 3
+      },
+      "surface": {
+        "preset": "metal",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-121",
+      "type": "block",
+      "name": "Planter base",
+      "color": "#626f65",
+      "position": [
+        -9,
+        14,
+        47
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.8,
+        0.6,
+        3.5
+      ],
+      "assemblyId": "07 · Public furniture",
+      "assemblyName": "07 · Public furniture",
+      "surface": {
+        "preset": "stone",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-122",
+      "type": "orb",
+      "name": "Sculpted canopy",
+      "color": "#607e63",
+      "position": [
+        -9,
+        15,
+        47
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.7,
+        2.2,
+        2.7
+      ],
+      "assemblyId": "07 · Public furniture",
+      "assemblyName": "07 · Public furniture",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-123",
+      "type": "block",
+      "name": "Planter base",
+      "color": "#626f65",
+      "position": [
+        -9,
+        14,
+        56
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.8,
+        0.6,
+        3.5
+      ],
+      "assemblyId": "07 · Public furniture",
+      "assemblyName": "07 · Public furniture",
+      "surface": {
+        "preset": "stone",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-124",
+      "type": "orb",
+      "name": "Sculpted canopy",
+      "color": "#607e63",
+      "position": [
+        -9,
+        15,
+        56
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.7,
+        2.2,
+        2.7
+      ],
+      "assemblyId": "07 · Public furniture",
+      "assemblyName": "07 · Public furniture",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-125",
+      "type": "block",
+      "name": "Planter base",
+      "color": "#626f65",
+      "position": [
+        9,
+        14,
+        47
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.8,
+        0.6,
+        3.5
+      ],
+      "assemblyId": "07 · Public furniture",
+      "assemblyName": "07 · Public furniture",
+      "surface": {
+        "preset": "stone",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-126",
+      "type": "orb",
+      "name": "Sculpted canopy",
+      "color": "#607e63",
+      "position": [
+        9,
+        15,
+        47
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.7,
+        2.2,
+        2.7
+      ],
+      "assemblyId": "07 · Public furniture",
+      "assemblyName": "07 · Public furniture",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-127",
+      "type": "block",
+      "name": "Planter base",
+      "color": "#626f65",
+      "position": [
+        9,
+        14,
+        56
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.8,
+        0.6,
+        3.5
+      ],
+      "assemblyId": "07 · Public furniture",
+      "assemblyName": "07 · Public furniture",
+      "surface": {
+        "preset": "stone",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-128",
+      "type": "orb",
+      "name": "Sculpted canopy",
+      "color": "#607e63",
+      "position": [
+        9,
+        15,
+        56
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.7,
+        2.2,
+        2.7
+      ],
+      "assemblyId": "07 · Public furniture",
+      "assemblyName": "07 · Public furniture",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "aurelia-129",
+      "type": "character-reference",
+      "name": "Human scale · arrival court",
+      "color": "#829397",
+      "position": [
+        0,
+        14.05,
+        59
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "assemblyId": "07 · Public furniture",
+      "assemblyName": "07 · Public furniture",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.25
+      }
+    }
+  ]
+}

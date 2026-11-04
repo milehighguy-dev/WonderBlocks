@@ -1,0 +1,9 @@
+module.exports={
+ appId:'org.wonderblocks.studio',productName:'Wonderblocks',executableName:'Wonderblocks',
+ directories:{output:'dist'},asar:true,npmRebuild:false,publish:null,
+ files:['desktop/**/*','server.cjs','index.html','src/**/*','styles/**/*','vendor/**/*','assets/**/*','!assets/character/**/*','examples/projects/**/*','examples/generators/**/*','LICENSE','package.json','!node_modules/@img/sharp-darwin-*/**/*','!node_modules/@img/sharp-linux*/**/*','!node_modules/@img/sharp-libvips-*/**/*','!node_modules/@img/sharp-wasm32/**/*','!node_modules/@img/sharp-win32-arm64/**/*','!node_modules/@img/sharp-win32-ia32/**/*'],
+ asarUnpack:['**/node_modules/sharp/**/*','**/node_modules/@img/**/*'],
+ extraResources:[{from:'textures',to:'textures',filter:['**/*']}],
+ win:{icon:'desktop/icon.ico',target:[{target:'nsis',arch:['x64']},{target:'zip',arch:['x64']}],artifactName:'Wonderblocks-${version}-windows-${arch}.${ext}'},
+ nsis:{artifactName:'Wonderblocks-${version}-windows-${arch}-setup.${ext}',oneClick:false,perMachine:false,allowToChangeInstallationDirectory:true,createDesktopShortcut:true,createStartMenuShortcut:true,differentialPackage:false,deleteAppDataOnUninstall:false},
+};

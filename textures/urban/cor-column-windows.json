@@ -1,0 +1,10 @@
+{
+  "id": "cor-column-windows",
+  "name": "Vertical window columns",
+  "roughness": 0.7,
+  "metalness": 0.18,
+  "order": 90,
+  "themes": [
+    "Coruscant"
+  ]
+}

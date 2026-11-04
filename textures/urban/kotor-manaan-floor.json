@@ -1,0 +1,11 @@
+{
+  "id": "kotor-manaan-floor",
+  "name": "Manaan · blue geometric floor",
+  "game": "KOTOR",
+  "roughness": 0.55,
+  "metalness": 0.1,
+  "order": 44,
+  "themes": [
+    "KOTOR"
+  ]
+}

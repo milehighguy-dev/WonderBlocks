@@ -1,0 +1,11 @@
+{
+  "id": "ja-yavin-dark-stone",
+  "name": "Yavin · dark temple stone",
+  "game": "Jedi Academy",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 22,
+  "themes": [
+    "Jedi Academy"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "mos-interior-plaster",
+  "name": "Mos Eisley · interior plaster",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 60,
+  "themes": [
+    "Mos Eisley"
+  ]
+}

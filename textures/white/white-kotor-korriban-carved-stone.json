@@ -1,0 +1,13 @@
+{
+  "id": "white-kotor-korriban-carved-stone",
+  "name": "White · carved stone",
+  "sourceId": "kotor-korriban-carved-stone",
+  "sourceGame": "KOTOR",
+  "game": "Tintable whites",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 8,
+  "themes": [
+    "Tintable whites"
+  ]
+}

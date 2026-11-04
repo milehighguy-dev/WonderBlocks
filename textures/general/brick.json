@@ -1,0 +1,11 @@
+{
+  "id": "brick",
+  "name": "Brickwork",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 108,
+  "themes": [
+    "General",
+    "New York"
+  ]
+}

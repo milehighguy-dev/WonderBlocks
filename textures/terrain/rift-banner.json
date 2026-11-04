@@ -1,0 +1,10 @@
+{
+  "id": "rift-banner",
+  "name": "Crimson civic banner",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 120,
+  "themes": [
+    "General"
+  ]
+}

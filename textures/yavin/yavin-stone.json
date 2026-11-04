@@ -1,0 +1,10 @@
+{
+  "id": "yavin-stone",
+  "name": "Yavin · weathered temple stone",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 50,
+  "themes": [
+    "Yavin"
+  ]
+}

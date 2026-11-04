@@ -1,0 +1,13 @@
+{
+  "id": "bf1-naboo-fine-bark",
+  "name": "Naboo · fine bark",
+  "game": "SWBF1",
+  "group": "Flora",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 32,
+  "themes": [
+    "Flora",
+    "SWBF1"
+  ]
+}

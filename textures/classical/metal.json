@@ -1,0 +1,13 @@
+{
+  "id": "metal",
+  "name": "Brushed metal",
+  "roughness": 0.32,
+  "metalness": 0.7,
+  "order": 122,
+  "themes": [
+    "General",
+    "Classical",
+    "New York",
+    "Coruscant"
+  ]
+}

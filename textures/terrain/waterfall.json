@@ -1,0 +1,10 @@
+{
+  "id": "waterfall",
+  "name": "Falling water",
+  "roughness": 0.7,
+  "metalness": 0,
+  "order": 121,
+  "themes": [
+    "General"
+  ]
+}

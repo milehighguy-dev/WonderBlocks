@@ -1,0 +1,10 @@
+{
+  "id": "yavin-aqueduct-stone",
+  "name": "Yavin · aqueduct masonry",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 56,
+  "themes": [
+    "Yavin"
+  ]
+}

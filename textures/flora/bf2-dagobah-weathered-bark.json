@@ -1,0 +1,13 @@
+{
+  "id": "bf2-dagobah-weathered-bark",
+  "name": "Dagobah · weathered bark",
+  "game": "SWBF2",
+  "group": "Flora",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 35,
+  "themes": [
+    "Flora",
+    "SWBF2"
+  ]
+}

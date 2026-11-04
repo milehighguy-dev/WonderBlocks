@@ -1,0 +1,10 @@
+{
+  "id": "cor-interior-panel",
+  "name": "Inset ivory wall panel",
+  "roughness": 0.75,
+  "metalness": 0.18,
+  "order": 85,
+  "themes": [
+    "Coruscant"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "bf1-rhenvar-carved-tiles",
+  "name": "Rhen Var · carved stone tiles",
+  "game": "SWBF1",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 11,
+  "themes": [
+    "SWBF1"
+  ]
+}

@@ -1,0 +1,1003 @@
+{
+  "format": "open-building-studio",
+  "version": 1,
+  "name": "Yavin · blocking workshop",
+  "surfaceScaling": "fixed",
+  "parts": [
+    {
+      "id": "7cdbae0d-ba46-4c91-ba5e-5839e1cfc129",
+      "type": "block",
+      "name": "Arena bay study ground",
+      "color": "#ffffff",
+      "position": [
+        -19,
+        -0.2,
+        -12
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        23,
+        0.2,
+        28
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "surface": {
+        "preset": "yavin-floor",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "39c6e02b-e1ba-434b-b3b7-68c039e7932b",
+      "type": "yavin-gallery",
+      "name": "Arena gallery block",
+      "color": "#ffffff",
+      "position": [
+        -19,
+        0,
+        -17
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "eed61b7d-03de-4599-ac26-d131b19f54d0",
+      "assemblyName": "Arena stair bay",
+      "surface": {
+        "preset": "yavin-stone",
+        "scale": 0.35
+      }
+    },
+    {
+      "id": "0dfb8563-f824-4f09-9e14-a02db1a2ef2e",
+      "type": "stair-route",
+      "name": "Gallery stair approach",
+      "route": {
+        "width": 3,
+        "thickness": 0.25,
+        "gap": 0.2,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 8,
+            "rise": 4.2,
+            "steps": 24,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "solid",
+              "sides": "both",
+              "height": 1.05,
+              "panelThickness": 0.4,
+              "railWidth": 0.4,
+              "railHeight": 0.15,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-stone",
+                "scale": 0.35
+              }
+            }
+          }
+        ]
+      },
+      "color": "#ffffff",
+      "position": [
+        -24.5,
+        0,
+        -5.5
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "eed61b7d-03de-4599-ac26-d131b19f54d0",
+      "assemblyName": "Arena stair bay",
+      "surface": {
+        "preset": "yavin-stone",
+        "scale": 0.35
+      }
+    },
+    {
+      "id": "4f3e918c-627a-4c33-8e23-e2a4c55f50ef",
+      "type": "stair-route",
+      "name": "Gallery stair approach",
+      "route": {
+        "width": 3,
+        "thickness": 0.25,
+        "gap": 0.2,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 8,
+            "rise": 4.2,
+            "steps": 24,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "solid",
+              "sides": "both",
+              "height": 1.05,
+              "panelThickness": 0.4,
+              "railWidth": 0.4,
+              "railHeight": 0.15,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-stone",
+                "scale": 0.35
+              }
+            }
+          }
+        ]
+      },
+      "color": "#ffffff",
+      "position": [
+        -13.5,
+        0,
+        -5.5
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "eed61b7d-03de-4599-ac26-d131b19f54d0",
+      "assemblyName": "Arena stair bay",
+      "surface": {
+        "preset": "yavin-stone",
+        "scale": 0.35
+      }
+    },
+    {
+      "id": "afc2c827-40d8-43e0-a44d-728e96101885",
+      "type": "block",
+      "name": "Passage route study ground",
+      "color": "#ffffff",
+      "position": [
+        19,
+        -0.2,
+        -12
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        22,
+        0.2,
+        28
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "surface": {
+        "preset": "yavin-floor",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "5a9ecba2-0032-455d-8630-102db72f9b9a",
+      "type": "stair-route",
+      "name": "Yavin temple passage",
+      "route": {
+        "width": 4,
+        "thickness": 0.25,
+        "gap": 0.2,
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 10,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "hallway": {
+              "style": "yavin-temple",
+              "height": 4,
+              "thickness": 0.25,
+              "ceiling": true,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-stone",
+                "scale": 0.35
+              }
+            },
+            "componentFinishes": {
+              "deck": {
+                "color": "#ffffff",
+                "surface": {
+                  "preset": "yavin-floor",
+                  "scale": 0.3
+                }
+              }
+            }
+          },
+          {
+            "kind": "landing",
+            "run": 4,
+            "rise": 0,
+            "steps": 1,
+            "turn": "right",
+            "hallway": {
+              "style": "yavin-temple",
+              "height": 4,
+              "thickness": 0.25,
+              "ceiling": true,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-stone",
+                "scale": 0.35
+              }
+            },
+            "componentFinishes": {
+              "deck": {
+                "color": "#ffffff",
+                "surface": {
+                  "preset": "yavin-floor",
+                  "scale": 0.3
+                }
+              }
+            }
+          },
+          {
+            "kind": "landing",
+            "run": 8,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "hallway": {
+              "style": "yavin-temple",
+              "height": 4,
+              "thickness": 0.25,
+              "ceiling": true,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-stone",
+                "scale": 0.35
+              }
+            },
+            "componentFinishes": {
+              "deck": {
+                "color": "#ffffff",
+                "surface": {
+                  "preset": "yavin-floor",
+                  "scale": 0.3
+                }
+              }
+            }
+          }
+        ]
+      },
+      "color": "#ffffff",
+      "position": [
+        19,
+        0,
+        -23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "yavin-study-passage",
+      "assemblyName": "Temple passage · editable route",
+      "surface": {
+        "preset": "yavin-stone",
+        "scale": 0.35
+      }
+    },
+    {
+      "id": "73f11e59-39ac-4423-a40f-7368d9a2885d",
+      "type": "block",
+      "name": "Stepped wall study ground",
+      "color": "#ffffff",
+      "position": [
+        -19,
+        -0.2,
+        20
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        23,
+        0.2,
+        20
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "surface": {
+        "preset": "yavin-floor",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "d0a3129b-306f-4b0b-a3bc-eebca95f3e0d",
+      "type": "wall-route",
+      "name": "Yavin stepped screen wall",
+      "route": {
+        "width": 0.5,
+        "thickness": 0.18,
+        "gap": 0.15,
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 12,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "yavin-stepped",
+              "sides": "left",
+              "height": 3,
+              "panelThickness": 0.5,
+              "spacing": 4,
+              "archWidth": 1.6,
+              "archHeight": 1.4,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-stone",
+                "scale": 0.35
+              }
+            }
+          },
+          {
+            "kind": "landing",
+            "run": 8,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "yavin-stepped",
+              "sides": "left",
+              "height": 3,
+              "panelThickness": 0.5,
+              "spacing": 4,
+              "archWidth": 1.6,
+              "archHeight": 1.4,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-stone",
+                "scale": 0.35
+              }
+            },
+            "pathStart": {
+              "point": [
+                0,
+                0,
+                12
+              ],
+              "heading": -1.5707963267948966
+            }
+          }
+        ]
+      },
+      "color": "#ffffff",
+      "position": [
+        -26,
+        0,
+        13
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "yavin-study-wall",
+      "assemblyName": "Trapezoidal screens · wall creator",
+      "surface": {
+        "preset": "yavin-stone",
+        "scale": 0.35
+      }
+    },
+    {
+      "id": "54d01ce2-6739-4023-aad9-ca02eb9bad15",
+      "type": "block",
+      "name": "Gallery variations study ground",
+      "color": "#ffffff",
+      "position": [
+        19,
+        -0.2,
+        20
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25,
+        0.2,
+        20
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "surface": {
+        "preset": "yavin-floor",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "eae1fcc8-8e63-479e-b9f2-106190d8a8b3",
+      "type": "yavin-gallery",
+      "name": "Tall arena gallery · adjustable underpass",
+      "color": "#ffffff",
+      "position": [
+        19,
+        0,
+        20
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "yavin-study-gallery",
+      "assemblyName": "Arena gallery · adjustable block",
+      "parameters": {
+        "bayWidth": 20,
+        "bayDepth": 8,
+        "terraceHeight": 5.4,
+        "passageWidth": 4.8,
+        "passageHeight": 4.2,
+        "pierHeight": 2
+      },
+      "surface": {
+        "preset": "yavin-stone",
+        "scale": 0.35
+      }
+    },
+    {
+      "id": "3f50093d-81ef-42fa-9d81-a00b3d904442",
+      "type": "block",
+      "name": "Ruined wall study ground",
+      "color": "#ffffff",
+      "position": [
+        -19,
+        -0.2,
+        41
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        0.2,
+        13
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "surface": {
+        "preset": "yavin-floor",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "9e5ea524-1974-44da-b45c-2349fc39d8b7",
+      "type": "wall-route",
+      "name": "Yavin ruined wall",
+      "route": {
+        "width": 0.5,
+        "thickness": 0.18,
+        "gap": 0.15,
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 16,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "yavin-ruined",
+              "sides": "left",
+              "height": 3,
+              "panelThickness": 0.5,
+              "spacing": 8,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-stone",
+                "scale": 0.35
+              }
+            }
+          }
+        ]
+      },
+      "color": "#ffffff",
+      "position": [
+        -27,
+        0,
+        41
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "yavin-study-ruin",
+      "assemblyName": "Broken masonry · solid ruin wall",
+      "surface": {
+        "preset": "yavin-stone",
+        "scale": 0.35
+      }
+    },
+    {
+      "id": "2406cfbc-8e69-46ff-96ac-726f911e2ff9",
+      "type": "block",
+      "name": "Aqueduct study ground",
+      "color": "#ffffff",
+      "position": [
+        30,
+        -0.2,
+        74
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        16,
+        0.2,
+        82
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "surface": {
+        "preset": "yavin-floor",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "067bbcc7-98f9-44e3-bb0f-9cf9e09dccf1",
+      "type": "stair-route",
+      "name": "Yavin aqueduct · open spans and enclosed piers",
+      "route": {
+        "width": 3.6,
+        "thickness": 0.5,
+        "gap": 0.2,
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 12,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "yavin-aqueduct",
+              "sides": "both",
+              "enclosed": true,
+              "height": 4.6,
+              "postWidth": 0.5,
+              "railHeight": 0.85,
+              "panelThickness": 0.33,
+              "railWidth": 0.5,
+              "spacing": 4,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-aqueduct-stone",
+                "scale": 0.16
+              }
+            },
+            "componentFinishes": {
+              "deck": {
+                "color": "#ffffff",
+                "surface": {
+                  "preset": "yavin-aqueduct-paving",
+                  "scale": 0.3
+                }
+              }
+            },
+            "fillToGround": true
+          },
+          {
+            "kind": "landing",
+            "run": 18,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "yavin-aqueduct",
+              "sides": "both",
+              "enclosed": false,
+              "height": 4.6,
+              "postWidth": 0.5,
+              "railHeight": 0.85,
+              "panelThickness": 0.33,
+              "railWidth": 0.5,
+              "spacing": 4,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-aqueduct-stone",
+                "scale": 0.16
+              }
+            },
+            "componentFinishes": {
+              "deck": {
+                "color": "#ffffff",
+                "surface": {
+                  "preset": "yavin-aqueduct-paving",
+                  "scale": 0.3
+                }
+              }
+            }
+          },
+          {
+            "kind": "landing",
+            "run": 12,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "yavin-aqueduct",
+              "sides": "both",
+              "enclosed": true,
+              "height": 4.6,
+              "postWidth": 0.5,
+              "railHeight": 0.85,
+              "panelThickness": 0.33,
+              "railWidth": 0.5,
+              "spacing": 4,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-aqueduct-stone",
+                "scale": 0.16
+              }
+            },
+            "componentFinishes": {
+              "deck": {
+                "color": "#ffffff",
+                "surface": {
+                  "preset": "yavin-aqueduct-paving",
+                  "scale": 0.3
+                }
+              }
+            },
+            "fillToGround": true
+          },
+          {
+            "kind": "landing",
+            "run": 18,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "yavin-aqueduct",
+              "sides": "both",
+              "enclosed": false,
+              "height": 4.6,
+              "postWidth": 0.5,
+              "railHeight": 0.85,
+              "panelThickness": 0.33,
+              "railWidth": 0.5,
+              "spacing": 4,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-aqueduct-stone",
+                "scale": 0.16
+              }
+            },
+            "componentFinishes": {
+              "deck": {
+                "color": "#ffffff",
+                "surface": {
+                  "preset": "yavin-aqueduct-paving",
+                  "scale": 0.3
+                }
+              }
+            }
+          },
+          {
+            "kind": "landing",
+            "run": 12,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "yavin-aqueduct",
+              "sides": "both",
+              "enclosed": true,
+              "height": 4.6,
+              "postWidth": 0.5,
+              "railHeight": 0.85,
+              "panelThickness": 0.33,
+              "railWidth": 0.5,
+              "spacing": 4,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-aqueduct-stone",
+                "scale": 0.16
+              }
+            },
+            "componentFinishes": {
+              "deck": {
+                "color": "#ffffff",
+                "surface": {
+                  "preset": "yavin-aqueduct-paving",
+                  "scale": 0.3
+                }
+              }
+            },
+            "fillToGround": true
+          }
+        ]
+      },
+      "color": "#ffffff",
+      "position": [
+        30,
+        20.8,
+        38
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "yavin-study-walkway",
+      "assemblyName": "Aqueduct · open spans and enclosed piers",
+      "surface": {
+        "preset": "yavin-aqueduct-stone",
+        "scale": 0.16
+      }
+    },
+    {
+      "id": "e0e5ffed-82e2-4c8e-96f9-b10026f70fd6",
+      "type": "block",
+      "name": "Large temple bridge study ground",
+      "color": "#ffffff",
+      "position": [
+        0,
+        -0.2,
+        78
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        26,
+        0.2,
+        32
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "surface": {
+        "preset": "yavin-floor",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "25582379-73c5-49a3-ac73-75eddff7e0f4",
+      "type": "stair-route",
+      "name": "Large Yavin temple bridge",
+      "route": {
+        "width": 10,
+        "thickness": 0.5,
+        "gap": 0.2,
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 24,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "yavin-temple-bridge",
+              "sides": "both",
+              "height": 2.6,
+              "railHeight": 0.7,
+              "panelThickness": 0.65,
+              "postWidth": 1.8,
+              "spacing": 3,
+              "color": "#ffffff",
+              "surface": {
+                "preset": "yavin-bridge-stone",
+                "scale": 0.35
+              }
+            },
+            "componentFinishes": {
+              "deck": {
+                "color": "#ffffff",
+                "surface": {
+                  "preset": "yavin-bridge-paving",
+                  "scale": 0.3
+                }
+              },
+              "rails": {
+                "color": "#ffffff",
+                "surface": {
+                  "preset": "yavin-bridge-trim",
+                  "scale": 1
+                }
+              }
+            }
+          }
+        ]
+      },
+      "color": "#ffffff",
+      "position": [
+        0,
+        4.7,
+        66
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "yavin-study-large-bridge",
+      "assemblyName": "Large temple bridge · editable route",
+      "surface": {
+        "preset": "yavin-bridge-stone",
+        "scale": 0.35
+      }
+    }
+  ]
+}

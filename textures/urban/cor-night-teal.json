@@ -1,0 +1,10 @@
+{
+  "id": "cor-night-teal",
+  "name": "Teal window bands",
+  "roughness": 0.75,
+  "metalness": 0.18,
+  "order": 78,
+  "themes": [
+    "Coruscant"
+  ]
+}

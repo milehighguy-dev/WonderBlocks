@@ -1,0 +1,13 @@
+{
+  "id": "slate",
+  "name": "Layered slate",
+  "roughness": 0.88,
+  "metalness": 0,
+  "order": 116,
+  "themes": [
+    "General",
+    "Classical",
+    "Medieval Japan",
+    "New York"
+  ]
+}

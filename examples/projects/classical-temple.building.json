@@ -1,0 +1,589 @@
+{
+  "format": "open-building-studio",
+  "version": 1,
+  "name": "Sunstone Temple",
+  "parts": [
+    {
+      "id": "22fa8ebf-9bd9-4c7d-a665-8f714faa5688",
+      "type": "temple-base",
+      "name": "Temple platform",
+      "color": "#e4dcc7",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        7,
+        1.3333333333333333,
+        9
+      ]
+    },
+    {
+      "id": "4262c85e-c9f8-43c7-9094-22409ed5681e",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        -3,
+        0.6,
+        -4.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column"
+    },
+    {
+      "id": "5f0e4274-f4ea-445e-931e-92ecbb25e650",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        -1,
+        0.6,
+        -4.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "e05797e5-cb75-49c1-bf3c-b18cd85b9f61",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        1,
+        0.6,
+        -4.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "e53f80f8-1e84-4626-97f9-67a867143847",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        3,
+        0.6,
+        -4.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "dd8b98ad-91cc-4722-ab94-4665faae2303",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        -3,
+        0.6,
+        4.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "81dde7ab-2210-47fa-b877-453757135c8a",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        -1,
+        0.6,
+        4.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "163b6391-602d-4371-9610-eeac7fd80114",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        1,
+        0.6,
+        4.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "4200a533-06ff-4d43-9d2a-ad9c6c3b3986",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        3,
+        0.6,
+        4.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "fdc25593-5453-47c9-bfa3-a223f273c27f",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        -3,
+        0.6,
+        -2.52
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "839b8c40-0969-40e6-b523-360ca5e2617c",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        -3,
+        0.6,
+        -0.84
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "4c33b788-3a9e-4e07-aa3e-21ff69d847b5",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        -3,
+        0.6,
+        0.84
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "f9cd333c-8ad7-43b9-aacc-c01c4f3efa78",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        -3,
+        0.6,
+        2.52
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "bd3f042a-b4f7-4777-a34a-ef2a0d26cdf8",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        3,
+        0.6,
+        -2.52
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "772c732c-631d-477e-bf46-936256112e67",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        3,
+        0.6,
+        -0.84
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "015023f9-68fb-45fd-8700-20d51c8b9ddb",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        3,
+        0.6,
+        0.84
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "a2f79ea2-1d3c-44cd-8f12-301fba71b89e",
+      "type": "doric",
+      "name": "Doric column",
+      "color": "#e4dcc7",
+      "position": [
+        3,
+        0.6,
+        2.52
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "instanceFamily": "classical-temple-copy-5607df1cd3a2c48a-0",
+      "instanceName": "Doric column",
+      "instanceCopy": true
+    },
+    {
+      "id": "3d0a2267-6933-41d2-861a-3e2a9bbc0e04",
+      "type": "temple-entablature",
+      "name": "Temple cornice frame",
+      "color": "#e4dcc7",
+      "position": [
+        0,
+        4.8,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "cd809aad-6bc7-4b88-ba4e-321c99622bff",
+      "type": "temple-roof-complete",
+      "name": "Temple roof & pediments",
+      "color": "#b57153",
+      "position": [
+        0,
+        5.71,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.55,
+        3.55,
+        9.6
+      ]
+    },
+    {
+      "id": "8ace9e1c-bcc2-49d1-8ce2-621f7a4a077a",
+      "type": "block",
+      "name": "Body",
+      "color": "#e4dcc7",
+      "position": [
+        -1.9,
+        0.6,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.22,
+        3.7,
+        6.2
+      ],
+      "instanceFamily": "classical-temple-copy-2dac2cd91efce5db-0",
+      "instanceName": "Body"
+    },
+    {
+      "id": "aeb52297-c657-461c-baf9-f7541003ee6e",
+      "type": "block",
+      "name": "Body",
+      "color": "#e4dcc7",
+      "position": [
+        1.9,
+        0.6,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.22,
+        3.7,
+        6.2
+      ],
+      "instanceFamily": "classical-temple-copy-2dac2cd91efce5db-0",
+      "instanceName": "Body",
+      "instanceCopy": true
+    },
+    {
+      "id": "cc4449b8-7b31-4fa9-a0ac-7b8e4e9c27c0",
+      "type": "block",
+      "name": "Body",
+      "color": "#e4dcc7",
+      "position": [
+        0,
+        0.6,
+        -3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.8,
+        3.7,
+        0.22
+      ]
+    },
+    {
+      "id": "00285ce5-a42e-4bbb-ab7c-5991b7138332",
+      "type": "temple-door",
+      "name": "Temple doorway",
+      "color": "#e4dcc7",
+      "position": [
+        0,
+        0.6,
+        3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.6,
+        1.95,
+        1
+      ]
+    },
+    {
+      "id": "0ae253fc-3087-4cb9-86c8-0d4b78677fd5",
+      "type": "block",
+      "name": "Body",
+      "color": "#e4dcc7",
+      "position": [
+        -1.48,
+        0.6,
+        3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.84,
+        3.7,
+        0.25
+      ],
+      "instanceFamily": "classical-temple-copy-e88d63f2f9964c24-0",
+      "instanceName": "Body"
+    },
+    {
+      "id": "60b76b75-3390-4f7c-b757-d64a74072ceb",
+      "type": "block",
+      "name": "Body",
+      "color": "#e4dcc7",
+      "position": [
+        1.48,
+        0.6,
+        3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.84,
+        3.7,
+        0.25
+      ],
+      "instanceFamily": "classical-temple-copy-e88d63f2f9964c24-0",
+      "instanceName": "Body",
+      "instanceCopy": true
+    }
+  ]
+}

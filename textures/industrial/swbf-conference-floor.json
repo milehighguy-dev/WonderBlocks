@@ -1,0 +1,10 @@
+{
+  "id": "swbf-conference-floor",
+  "name": "Conference corridor floor",
+  "roughness": 0.8,
+  "metalness": 0,
+  "order": 68,
+  "themes": [
+    "Hallway references"
+  ]
+}

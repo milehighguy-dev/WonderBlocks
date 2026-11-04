@@ -1,0 +1,11 @@
+{
+  "id": "ja-korriban-paving",
+  "name": "Korriban · geometric stone paving",
+  "game": "Jedi Academy",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 23,
+  "themes": [
+    "Jedi Academy"
+  ]
+}

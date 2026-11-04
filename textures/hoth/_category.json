@@ -1,0 +1,10 @@
+{
+  "name": "Hoth",
+  "order": 5,
+  "preview": [
+    "bf1-hoth-snow",
+    "bf1-hoth-ice",
+    "swbf-hoth-wall",
+    "swbf-hoth-floor"
+  ]
+}

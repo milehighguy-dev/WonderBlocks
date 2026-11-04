@@ -1,0 +1,11 @@
+{
+  "id": "bf2-polis-wall",
+  "name": "Polis Massa · recessed panels",
+  "game": "SWBF2",
+  "roughness": 0.75,
+  "metalness": 0.15,
+  "order": 16,
+  "themes": [
+    "SWBF2"
+  ]
+}

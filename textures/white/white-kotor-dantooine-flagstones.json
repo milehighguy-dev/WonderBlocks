@@ -1,0 +1,13 @@
+{
+  "id": "white-kotor-dantooine-flagstones",
+  "name": "White · flagstone paving",
+  "sourceId": "kotor-dantooine-flagstones",
+  "sourceGame": "KOTOR",
+  "game": "Tintable whites",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 3,
+  "themes": [
+    "Tintable whites"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "ny-brick",
+  "name": "Loft windows & brick",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 101,
+  "themes": [
+    "New York"
+  ]
+}

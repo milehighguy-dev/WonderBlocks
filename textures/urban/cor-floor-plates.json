@@ -1,0 +1,10 @@
+{
+  "id": "cor-floor-plates",
+  "name": "Circular floor plates",
+  "roughness": 0.75,
+  "metalness": 0.18,
+  "order": 84,
+  "themes": [
+    "Coruscant"
+  ]
+}

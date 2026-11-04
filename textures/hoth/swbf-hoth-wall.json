@@ -1,0 +1,10 @@
+{
+  "id": "swbf-hoth-wall",
+  "name": "Hoth ice walls",
+  "roughness": 0.8,
+  "metalness": 0,
+  "order": 70,
+  "themes": [
+    "Hallway references"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Rhen Var",
+  "order": 3,
+  "preview": [
+    "bf1-rhenvar-masonry",
+    "bf1-rhenvar-carved-tiles",
+    "swbf-rhen-wall",
+    "swbf-rhen-ceiling"
+  ]
+}

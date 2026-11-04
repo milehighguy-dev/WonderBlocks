@@ -1,0 +1,10 @@
+{
+  "id": "mos-stucco",
+  "name": "Mos Eisley · cream stucco",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 58,
+  "themes": [
+    "Mos Eisley"
+  ]
+}

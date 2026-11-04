@@ -1,0 +1,10 @@
+{
+  "id": "tile",
+  "name": "Square tiles",
+  "roughness": 0.35,
+  "metalness": 0.05,
+  "order": 115,
+  "themes": [
+    "General"
+  ]
+}

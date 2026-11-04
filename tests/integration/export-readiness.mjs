@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {mkdtemp} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import path from 'node:path';
+import {chromium} from 'playwright';
+const {createServer}=createRequire(import.meta.url)('../../server.cjs'),server=createServer();await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+const output=await mkdtemp(path.join(tmpdir(),'wb-export-readiness-')),errors=[];let browser;
+try{
+ browser=await chromium.launch({channel:'chrome',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});const page=await browser.newPage({viewport:{width:1440,height:1100}});page.setDefaultTimeout(30000);page.on('pageerror',e=>errors.push(e.message));
+ await page.route('**/exporter-test',route=>route.fulfill({contentType:'text/html',body:'<!doctype html><link rel="stylesheet" href="/styles/style.css"><link rel="stylesheet" href="/styles/editor-ui.css"><link rel="stylesheet" href="/styles/workbench.css"><script type="importmap">{"imports":{"three":"/vendor/three.module.js"}}</script>'}));await page.goto('http://127.0.0.1:'+server.address().port+'/exporter-test');
+ await page.evaluate(async()=>{
+  const {createSWBF2ExportUI}=await import('/src/swbf2/swbf2-export-ui.js'),{makePart}=await import('/src/core/model.js');window.project={format:'open-building-studio',version:1,name:'Ready scene',parts:[makePart('block')]};window.downloads=[];window.failCollision=true;window.holdCollision=false;
+  window.exportUI=createSWBF2ExportUI({snapshot:()=>project,selection:()=>[],previewRoots:()=>new Map(),notify:()=>{},download:(_,name)=>downloads.push(name),collisionSource:async(_,signal)=>{if(failCollision)throw Error('Scene collision could not be prepared.');if(holdCollision)await new Promise((resolve,reject)=>{window.releaseCollision=resolve;signal.addEventListener('abort',()=>reject(new DOMException('Canceled.','AbortError')),{once:true});});}});exportUI.open();
+ });
+ const dialog=page.locator('.swbf2-export'),button=dialog.locator('[data-action=export]'),reason=dialog.locator('[data-export-reason]'),fix=dialog.locator('[data-export-fix]'),ready=()=>page.waitForFunction(()=>document.querySelector('.swbf2-export').dataset.checkingCollision==='false');
+ await ready();assert.equal(await button.isDisabled(),true);assert.match(await reason.textContent(),/Collision check failed.*could not be prepared/);assert.equal(await fix.textContent(),'Retry check');assert.match(await button.getAttribute('title'),/Collision check failed/);await dialog.screenshot({path:path.join(output,'collision-error.png')});
+ await page.evaluate(()=>{failCollision=false;holdCollision=true;});await fix.click();await page.waitForFunction(()=>typeof releaseCollision==='function');assert.match(await reason.textContent(),/Checking collision requirements/);assert.equal(await button.isDisabled(),true);await page.evaluate(()=>{holdCollision=false;releaseCollision();});await ready();assert.equal(await button.isDisabled(),false);assert.equal(await dialog.locator('.swbf2-export-readiness').isVisible(),false);assert.doesNotMatch(await dialog.locator('.swbf2-export-status').textContent(),/could not be prepared/);
+ const name=dialog.locator('[name=export-name]');await name.fill('');assert.equal(await button.isDisabled(),true);assert.match(await reason.textContent(),/Enter an export name/);await fix.click();assert.equal(await name.evaluate(e=>e===document.activeElement),true);await name.fill('Ready scene');assert.equal(await button.isDisabled(),false);
+ const merge=dialog.locator('[name=merge-navigation]');await merge.check();assert.equal(await button.isDisabled(),true);assert.match(await reason.textContent(),/Choose the existing world folder/);await dialog.screenshot({path:path.join(output,'missing-folder.png')});await merge.uncheck();assert.equal(await button.isDisabled(),false);
+ await button.click();await page.waitForFunction(()=>downloads.length===1);assert.equal(await button.isDisabled(),false);assert.equal(await dialog.locator('.swbf2-export-readiness').isVisible(),false);
+ await dialog.locator('[name=sections]').fill('0');await ready();assert.equal(await button.isDisabled(),true);assert.match(await reason.textContent(),/1–24 sections/);await dialog.locator('[name=sections]').fill('6');await ready();assert.equal(await button.isDisabled(),false);
+ if(await dialog.locator('[name=destination] option[value=folder]').isEnabled()){await dialog.locator('[name=destination]').selectOption('folder');assert.equal(await button.isDisabled(),true);assert.match(await reason.textContent(),/Choose a world folder/);await dialog.locator('[name=destination]').selectOption('zip');assert.equal(await button.isDisabled(),false);}
+ await dialog.getByRole('button',{name:'Close exporter',exact:true}).click();
+ await page.evaluate(()=>{window.originalRAF=requestAnimationFrame;window.requestAnimationFrame=()=>0;exportUI.open();});await ready();assert.equal(await button.isDisabled(),false,'preview readiness cannot depend on animation frames being delivered');await page.evaluate(()=>window.requestAnimationFrame=originalRAF);
+ await dialog.getByRole('button',{name:'Close exporter',exact:true}).click();await page.evaluate(()=>{project.parts=[];exportUI.open();});await ready();assert.equal(await button.isDisabled(),true);assert.match(await reason.textContent(),/Add a scene object/);assert.deepEqual(errors,[]);
+ console.log('PASS disabled export explains collision failure/wait/retry, missing folder, empty name, invalid options and empty scope; fixing each restores export. Artifacts: '+output);
+}finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}

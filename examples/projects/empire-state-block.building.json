@@ -1,0 +1,4153 @@
+{
+  "format": "open-building-studio",
+  "version": 1,
+  "name": "Midtown • Empire State Block",
+  "parts": [
+    {
+      "id": "5834b9dd-2615-4935-9629-0dacdaf26dcb",
+      "type": "slab",
+      "name": "Midtown • street bed",
+      "color": "#41484c",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        85,
+        0.33333333325,
+        60
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "73a02df1-f65d-4c7f-b95d-7cb0c3027e3d",
+      "type": "slab",
+      "name": "Fifth Avenue block • sidewalk",
+      "color": "#b4b3a8",
+      "position": [
+        0,
+        0.11249999999999999,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        67.5,
+        1,
+        41
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "90fe293e-9d13-413d-8eb9-c9631b88f77b",
+      "type": "block",
+      "name": "Empire State • Retail podium",
+      "color": "#d4c7ae",
+      "position": [
+        15,
+        0.41250000000000003,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        4.5,
+        29.5
+      ],
+      "surface": {
+        "preset": "ny-deco",
+        "scale": 1
+      },
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "id": "21d5ac89-e8af-443a-943c-bd654e4964e7",
+      "type": "slab",
+      "name": "Empire State • Retail podium • flat roof finish",
+      "color": "#354249",
+      "position": [
+        15,
+        4.8875,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        0.16666666675,
+        29.5
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "7ee97f04-71be-40c9-88c4-471de3f1bd76",
+      "type": "ny-cornice",
+      "name": "Empire State • Retail podium coping",
+      "color": "#cfc4ab",
+      "position": [
+        15,
+        4.9125000000000005,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        12,
+        0.875,
+        14.75
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "7459dd56-b55f-4c0e-ae63-ead5fddec7b1",
+      "type": "block",
+      "name": "Empire State • Lower setback",
+      "color": "#d4c7ae",
+      "position": [
+        15,
+        4.9125000000000005,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        21.5,
+        6,
+        26.75
+      ],
+      "surface": {
+        "preset": "ny-deco",
+        "scale": 1
+      },
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "id": "32ab6b07-5b02-460c-a028-41427c3cbcb2",
+      "type": "slab",
+      "name": "Empire State • Lower setback • flat roof finish",
+      "color": "#354249",
+      "position": [
+        15,
+        10.887500000000001,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        21.5,
+        0.16666666675,
+        26.75
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "5a997a6e-b476-4d8b-97dc-4a1f7410f476",
+      "type": "ny-cornice",
+      "name": "Empire State • Lower setback coping",
+      "color": "#cfc4ab",
+      "position": [
+        15,
+        10.912500000000001,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        10.75,
+        0.875,
+        13.375
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "eacac5c1-3f94-4c64-bfe0-3ad085a9effc",
+      "type": "block",
+      "name": "Empire State • Middle shoulders",
+      "color": "#d4c7ae",
+      "position": [
+        15,
+        10.912500000000001,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        18,
+        6.75,
+        23.5
+      ],
+      "surface": {
+        "preset": "ny-deco",
+        "scale": 1
+      },
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "id": "e29bff9d-216e-42b8-b030-cedaa453b215",
+      "type": "slab",
+      "name": "Empire State • Middle shoulders • flat roof finish",
+      "color": "#354249",
+      "position": [
+        15,
+        17.637500000000003,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        18,
+        0.16666666675,
+        23.5
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "917b336f-16d4-4b2c-904a-f8b287a12ab8",
+      "type": "ny-cornice",
+      "name": "Empire State • Middle shoulders coping",
+      "color": "#cfc4ab",
+      "position": [
+        15,
+        17.6625,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        9,
+        0.875,
+        11.75
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "6dff8a69-65ce-47c9-85ec-7da7d89b7a88",
+      "type": "block",
+      "name": "Empire State • Tower shaft",
+      "color": "#d4c7ae",
+      "position": [
+        15,
+        17.6625,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        13.25,
+        40,
+        17.5
+      ],
+      "surface": {
+        "preset": "ny-deco",
+        "scale": 1
+      },
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "id": "f05d6967-142c-41fa-a04d-1a8158e031e3",
+      "type": "slab",
+      "name": "Empire State • Tower shaft • flat roof finish",
+      "color": "#354249",
+      "position": [
+        15,
+        57.6375,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        13.25,
+        0.16666666675,
+        17.5
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "399b7f89-fdb8-4abd-a678-3a74c799b076",
+      "type": "ny-cornice",
+      "name": "Empire State • Tower shaft coping",
+      "color": "#cfc4ab",
+      "position": [
+        15,
+        57.6625,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        6.625,
+        0.875,
+        8.75
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "5fbd3894-3794-4867-9609-268211e8e799",
+      "type": "block",
+      "name": "Empire State • Upper setback",
+      "color": "#d4c7ae",
+      "position": [
+        15,
+        57.662499999999994,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        11.75,
+        4.25,
+        15.75
+      ],
+      "surface": {
+        "preset": "ny-deco",
+        "scale": 1
+      },
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "id": "c49b5c82-c1c9-4a06-9f0f-53221dad269c",
+      "type": "slab",
+      "name": "Empire State • Upper setback • flat roof finish",
+      "color": "#354249",
+      "position": [
+        15,
+        61.88749999999999,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        11.75,
+        0.16666666675,
+        15.75
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "278a7ebf-095d-4494-983d-01cb07514feb",
+      "type": "ny-cornice",
+      "name": "Empire State • Upper setback coping",
+      "color": "#cfc4ab",
+      "position": [
+        15,
+        61.912499999999994,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5.875,
+        0.875,
+        7.875
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "a0b540eb-7c43-4231-b9a7-4b14753ad1ae",
+      "type": "block",
+      "name": "Empire State • Executive floors",
+      "color": "#d4c7ae",
+      "position": [
+        15,
+        61.9125,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        9.75,
+        3.75,
+        13.75
+      ],
+      "surface": {
+        "preset": "ny-deco",
+        "scale": 1
+      },
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "id": "57460384-10c3-4d6e-bb30-ca51e311c014",
+      "type": "slab",
+      "name": "Empire State • Executive floors • flat roof finish",
+      "color": "#354249",
+      "position": [
+        15,
+        65.6375,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        9.75,
+        0.16666666675,
+        13.75
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "5bf430ee-8163-4243-9add-90eb5deddf18",
+      "type": "ny-cornice",
+      "name": "Empire State • Executive floors coping",
+      "color": "#cfc4ab",
+      "position": [
+        15,
+        65.6625,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.875,
+        0.875,
+        6.875
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "3d430122-7107-4726-a0bf-92c6c33ef100",
+      "type": "block",
+      "name": "Empire State • Observatory",
+      "color": "#d4c7ae",
+      "position": [
+        15,
+        65.6625,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        8,
+        1.75,
+        11.25
+      ],
+      "surface": {
+        "preset": "ny-deco",
+        "scale": 1
+      },
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "id": "244c78cc-ecc1-4697-8b35-3faacb74a13f",
+      "type": "slab",
+      "name": "Empire State • Observatory • flat roof finish",
+      "color": "#354249",
+      "position": [
+        15,
+        67.38749999999999,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        8,
+        0.16666666675,
+        11.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "67d28733-5a96-4c22-8038-cceea337afec",
+      "type": "ny-cornice",
+      "name": "Empire State • Observatory coping",
+      "color": "#cfc4ab",
+      "position": [
+        15,
+        67.4125,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        0.875,
+        5.625
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "3199d340-03e3-45d6-9ff8-aee2d9079db6",
+      "type": "ny-parapet",
+      "name": "Empire State • observation terrace",
+      "color": "#b9b2a1",
+      "position": [
+        15,
+        67.4125,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        5.5,
+        5.625
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "32ff2322-f7d2-4c47-857a-5bb1ef001bff",
+      "type": "ny-mast",
+      "name": "Empire State • mooring mast",
+      "color": "#c4c8c6",
+      "position": [
+        15,
+        67.4125,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.875,
+        6.25,
+        4.875
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "65d89bd3-cea2-4af7-a6fe-1d46cc09adf0",
+      "type": "ny-spire",
+      "name": "Empire State • antenna",
+      "color": "#bac4c8",
+      "position": [
+        15,
+        80.0375,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        6,
+        2.5
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "9ff65c11-2f21-42a9-8785-fc80269d28dd",
+      "type": "block",
+      "name": "Empire State • limestone pier",
+      "color": "#d6cbb4",
+      "position": [
+        11,
+        17.6625,
+        -8.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "d9da4d7e-f412-4f20-826c-77473cb1f19e",
+      "type": "block",
+      "name": "Empire State • limestone pier",
+      "color": "#d6cbb4",
+      "position": [
+        15,
+        17.6625,
+        -8.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "c0a72cda-0fd0-49c4-9e34-be88dc43a55d",
+      "type": "block",
+      "name": "Empire State • limestone pier",
+      "color": "#d6cbb4",
+      "position": [
+        19,
+        17.6625,
+        -8.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "0dfe2861-238a-4bc9-86b3-947a2cc87fc0",
+      "type": "block",
+      "name": "Empire State • limestone pier",
+      "color": "#d6cbb4",
+      "position": [
+        11,
+        17.6625,
+        8.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "681b0f36-8651-4936-84f7-6cb692e52e93",
+      "type": "block",
+      "name": "Empire State • limestone pier",
+      "color": "#d6cbb4",
+      "position": [
+        15,
+        17.6625,
+        8.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "9aca19a6-e196-464c-b1cb-a12069e96c56",
+      "type": "block",
+      "name": "Empire State • limestone pier",
+      "color": "#d6cbb4",
+      "position": [
+        19,
+        17.6625,
+        8.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "6f7ee9d1-45f7-4aea-8539-5985fc009e83",
+      "type": "block",
+      "name": "Empire State • side pier",
+      "color": "#d6cbb4",
+      "position": [
+        8.325,
+        17.6625,
+        -5.75
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "fe2e545b-3bb0-46a0-9b0a-a2948017117c",
+      "type": "block",
+      "name": "Empire State • side pier",
+      "color": "#d6cbb4",
+      "position": [
+        8.325,
+        17.6625,
+        -2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "02fa36d0-4f13-4071-b36f-c67c71afdcda",
+      "type": "block",
+      "name": "Empire State • side pier",
+      "color": "#d6cbb4",
+      "position": [
+        8.325,
+        17.6625,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "43459905-b704-4e65-ad63-5ebf32e4bc42",
+      "type": "block",
+      "name": "Empire State • side pier",
+      "color": "#d6cbb4",
+      "position": [
+        8.325,
+        17.6625,
+        5.75
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "b077df00-154a-49dd-8f11-6a0e7e85f418",
+      "type": "block",
+      "name": "Empire State • side pier",
+      "color": "#d6cbb4",
+      "position": [
+        21.675,
+        17.6625,
+        -5.75
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "119d27d3-c1b8-4005-b62e-fc78bb357419",
+      "type": "block",
+      "name": "Empire State • side pier",
+      "color": "#d6cbb4",
+      "position": [
+        21.675,
+        17.6625,
+        -2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "6ab91af0-02fe-4ec0-8c02-e90b74252373",
+      "type": "block",
+      "name": "Empire State • side pier",
+      "color": "#d6cbb4",
+      "position": [
+        21.675,
+        17.6625,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "62564f34-62a4-4b05-bbf5-ed6f199049ee",
+      "type": "block",
+      "name": "Empire State • side pier",
+      "color": "#d6cbb4",
+      "position": [
+        21.675,
+        17.6625,
+        5.75
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        40,
+        0.25
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "3dec514f-f77c-42b2-93cc-eddefea2c9a8",
+      "type": "block",
+      "name": "Empire State • Fifth Avenue shops",
+      "color": "#a8c4c4",
+      "position": [
+        27.025,
+        0.41250000000000003,
+        -10
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        4.6000000000000005,
+        3.375,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.11814744801512285,
+          0.2194787379972565,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53"
+    },
+    {
+      "id": "07152c5c-1b6f-4b09-a27d-c22b7d491a30",
+      "type": "block",
+      "name": "Empire State • Fifth Avenue shops",
+      "color": "#a8c4c4",
+      "position": [
+        27.025,
+        0.41250000000000003,
+        -5
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        4.6000000000000005,
+        3.375,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.11814744801512285,
+          0.2194787379972565,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53"
+    },
+    {
+      "id": "1250bed4-b633-4d04-9b3c-fefe80d7af32",
+      "type": "block",
+      "name": "Empire State • Fifth Avenue shops",
+      "color": "#a8c4c4",
+      "position": [
+        27.025,
+        0.41250000000000003,
+        0
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        4.6000000000000005,
+        3.375,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.11814744801512285,
+          0.2194787379972565,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53"
+    },
+    {
+      "id": "a1f509ba-b65c-4e2f-b6ef-e5a0156933ed",
+      "type": "block",
+      "name": "Empire State • Fifth Avenue shops",
+      "color": "#a8c4c4",
+      "position": [
+        27.025,
+        0.41250000000000003,
+        5
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        4.6000000000000005,
+        3.375,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.11814744801512285,
+          0.2194787379972565,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53"
+    },
+    {
+      "id": "1fd912e2-ed59-4718-b7fe-0de067285c77",
+      "type": "block",
+      "name": "Empire State • Fifth Avenue shops",
+      "color": "#a8c4c4",
+      "position": [
+        27.025,
+        0.41250000000000003,
+        10
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        4.6000000000000005,
+        3.375,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.11814744801512285,
+          0.2194787379972565,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53"
+    },
+    {
+      "id": "184de305-579b-4457-b434-2621afdfca41",
+      "type": "ny-entry",
+      "name": "Empire State • Fifth Avenue entrance",
+      "color": "#c7b891",
+      "position": [
+        27.35,
+        0.41250000000000003,
+        0
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.625,
+        2.5
+      ],
+      "assemblyId": "71bfe1bc-82bd-4d6d-b1a1-b6cd95b6ff53",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "189f9924-b3a3-4a3f-a624-d470ec72a14f",
+      "type": "block",
+      "name": "West block 1 • loft",
+      "color": "#b18b73",
+      "position": [
+        -25,
+        0.41250000000000003,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        10,
+        12,
+        11.5
+      ],
+      "surface": {
+        "preset": "ny-brick",
+        "scale": 1
+      },
+      "assemblyId": "312e2eaf-4ead-4a12-bd35-fec2a43902c7",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "id": "abaa9154-e33b-4059-80b0-220f81336317",
+      "type": "slab",
+      "name": "West block 1 • loft • flat roof finish",
+      "color": "#354249",
+      "position": [
+        -25,
+        12.3875,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        10,
+        0.16666666675,
+        11.5
+      ],
+      "assemblyId": "312e2eaf-4ead-4a12-bd35-fec2a43902c7",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "e0a76114-b372-4298-9c12-1cbcd39676b4",
+      "type": "ny-cornice",
+      "name": "West block 1 • cornice",
+      "color": "#cfc4ab",
+      "position": [
+        -25,
+        12.4125,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5,
+        2.5,
+        5.75
+      ],
+      "assemblyId": "312e2eaf-4ead-4a12-bd35-fec2a43902c7",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "25ec741d-3754-4c8b-9b94-2d0d5ca1c625",
+      "type": "ny-parapet",
+      "name": "West block 1 • parapet",
+      "color": "#b9b2a1",
+      "position": [
+        -25,
+        12.837499999999999,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5,
+        5.5,
+        5.75
+      ],
+      "assemblyId": "312e2eaf-4ead-4a12-bd35-fec2a43902c7",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "329422df-98e8-4a14-aefe-9aa7831a5987",
+      "type": "ny-hvac",
+      "name": "West block 1 • rooftop plant",
+      "color": "#8c9695",
+      "position": [
+        -23.5,
+        12.862499999999999,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.875,
+        1.875,
+        1.875
+      ],
+      "assemblyId": "312e2eaf-4ead-4a12-bd35-fec2a43902c7",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "2cbd4029-23f8-4b78-bf96-4f632ccddf03",
+      "type": "ny-water-tank",
+      "name": "West block 1 • water tower",
+      "color": "#896b50",
+      "position": [
+        -26.5,
+        12.862499999999999,
+        -12.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        2,
+        2
+      ],
+      "assemblyId": "312e2eaf-4ead-4a12-bd35-fec2a43902c7",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "d327df78-fca5-457a-a3f4-c0d0f6658ce7",
+      "type": "block",
+      "name": "West block 1 • shopfront",
+      "color": "#a8c4c4",
+      "position": [
+        -27.375,
+        0.41250000000000003,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        4.5,
+        2.5,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.1234567901234568,
+          0.4,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "312e2eaf-4ead-4a12-bd35-fec2a43902c7"
+    },
+    {
+      "id": "efead242-ea54-4b2f-a8fe-94c11c6e49aa",
+      "type": "ny-awning",
+      "name": "West block 1 • awning",
+      "color": "#426a60",
+      "position": [
+        -27.375,
+        2.9125,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        2.25,
+        2.5,
+        2.5
+      ],
+      "assemblyId": "312e2eaf-4ead-4a12-bd35-fec2a43902c7",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "d1dfedc5-35be-4395-b3ab-7d8c7e27f914",
+      "type": "block",
+      "name": "West block 1 • shopfront",
+      "color": "#a8c4c4",
+      "position": [
+        -22.625,
+        0.41250000000000003,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        4.5,
+        2.5,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.1234567901234568,
+          0.4,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "312e2eaf-4ead-4a12-bd35-fec2a43902c7"
+    },
+    {
+      "id": "2e468f51-0fc9-47be-9253-5ff227ca66a0",
+      "type": "ny-awning",
+      "name": "West block 1 • awning",
+      "color": "#426a60",
+      "position": [
+        -22.625,
+        2.9125,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        2.25,
+        2.5,
+        2.5
+      ],
+      "assemblyId": "312e2eaf-4ead-4a12-bd35-fec2a43902c7",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "1443b0de-3f2d-4513-bf5a-21bb578d7a59",
+      "type": "ny-fire-escape",
+      "name": "West block 1 • fire escape",
+      "color": "#49545a",
+      "position": [
+        -25,
+        4.1625,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1.625,
+        2.5,
+        2
+      ],
+      "assemblyId": "312e2eaf-4ead-4a12-bd35-fec2a43902c7",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "86d190d0-eef6-4ee0-820d-4aa4cbb2fed3",
+      "type": "ny-fire-escape",
+      "name": "West block 1 • fire escape",
+      "color": "#49545a",
+      "position": [
+        -25,
+        7.1625000000000005,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1.625,
+        2.5,
+        2
+      ],
+      "assemblyId": "312e2eaf-4ead-4a12-bd35-fec2a43902c7",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "822cf1ca-ed1d-4155-83b1-5ad10a3742c8",
+      "type": "ny-fire-escape",
+      "name": "West block 1 • fire escape",
+      "color": "#49545a",
+      "position": [
+        -25,
+        10.162500000000001,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1.625,
+        2.5,
+        2
+      ],
+      "assemblyId": "312e2eaf-4ead-4a12-bd35-fec2a43902c7",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "dd5706ef-8fa6-42e8-af07-67e56eb16e9e",
+      "type": "block",
+      "name": "West block 2 • loft",
+      "color": "#b6b19a",
+      "position": [
+        -13.75,
+        0.41250000000000003,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        11,
+        18.5,
+        11.5
+      ],
+      "surface": {
+        "preset": "ny-brick",
+        "scale": 1
+      },
+      "assemblyId": "ae45b857-be0e-4f35-a863-c3d40a90f547",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "id": "e829140e-4716-46eb-8300-fd6263ad322f",
+      "type": "slab",
+      "name": "West block 2 • loft • flat roof finish",
+      "color": "#354249",
+      "position": [
+        -13.75,
+        18.887500000000003,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        11,
+        0.16666666675,
+        11.5
+      ],
+      "assemblyId": "ae45b857-be0e-4f35-a863-c3d40a90f547",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "fc980c90-41cc-426f-bdb8-27915b761f06",
+      "type": "ny-cornice",
+      "name": "West block 2 • cornice",
+      "color": "#cfc4ab",
+      "position": [
+        -13.75,
+        18.9125,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5.5,
+        2.5,
+        5.75
+      ],
+      "assemblyId": "ae45b857-be0e-4f35-a863-c3d40a90f547",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "a2aaf6be-2b44-405e-ab1c-b43fb3eeca53",
+      "type": "ny-parapet",
+      "name": "West block 2 • parapet",
+      "color": "#b9b2a1",
+      "position": [
+        -13.75,
+        19.337500000000002,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5.5,
+        5.5,
+        5.75
+      ],
+      "assemblyId": "ae45b857-be0e-4f35-a863-c3d40a90f547",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "8f78b1b1-4235-4f7e-9219-597eb513a1e3",
+      "type": "ny-hvac",
+      "name": "West block 2 • rooftop plant",
+      "color": "#8c9695",
+      "position": [
+        -12.25,
+        19.3625,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.875,
+        1.875,
+        1.875
+      ],
+      "assemblyId": "ae45b857-be0e-4f35-a863-c3d40a90f547",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "fd0abcb7-e23e-43c8-a1ea-347e5bcb4baf",
+      "type": "block",
+      "name": "West block 2 • shopfront",
+      "color": "#a8c4c4",
+      "position": [
+        -16.125,
+        0.41250000000000003,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        4.5,
+        2.5,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.1234567901234568,
+          0.4,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "ae45b857-be0e-4f35-a863-c3d40a90f547"
+    },
+    {
+      "id": "9f1c6201-ec4a-43b9-b712-ce9ce6894845",
+      "type": "ny-awning",
+      "name": "West block 2 • awning",
+      "color": "#635c52",
+      "position": [
+        -16.125,
+        2.9125,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        2.25,
+        2.5,
+        2.5
+      ],
+      "assemblyId": "ae45b857-be0e-4f35-a863-c3d40a90f547",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "6310a256-33c2-42d5-97fc-1b948d2d96b4",
+      "type": "block",
+      "name": "West block 2 • shopfront",
+      "color": "#a8c4c4",
+      "position": [
+        -11.375,
+        0.41250000000000003,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        4.5,
+        2.5,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.1234567901234568,
+          0.4,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "ae45b857-be0e-4f35-a863-c3d40a90f547"
+    },
+    {
+      "id": "c347eb7e-b5a0-465d-8281-d72d2c1470de",
+      "type": "ny-awning",
+      "name": "West block 2 • awning",
+      "color": "#635c52",
+      "position": [
+        -11.375,
+        2.9125,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        2.25,
+        2.5,
+        2.5
+      ],
+      "assemblyId": "ae45b857-be0e-4f35-a863-c3d40a90f547",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "623afd4a-759e-4a2b-bee3-aeb7f7489b8d",
+      "type": "block",
+      "name": "West block 3 • loft",
+      "color": "#906c59",
+      "position": [
+        -2.25,
+        0.41250000000000003,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        10.5,
+        14.75,
+        11.5
+      ],
+      "surface": {
+        "preset": "ny-brick",
+        "scale": 1
+      },
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "id": "1accec95-6f60-4d75-a33b-860ebcc3a058",
+      "type": "slab",
+      "name": "West block 3 • loft • flat roof finish",
+      "color": "#354249",
+      "position": [
+        -2.25,
+        15.137500000000001,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        10.5,
+        0.16666666675,
+        11.5
+      ],
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "6bf1336b-a3ec-432f-9b0a-15153c67db39",
+      "type": "ny-cornice",
+      "name": "West block 3 • cornice",
+      "color": "#cfc4ab",
+      "position": [
+        -2.25,
+        15.162500000000001,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5.25,
+        2.5,
+        5.75
+      ],
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "9403baf1-f997-473b-a38f-0bb0f8ff896e",
+      "type": "ny-parapet",
+      "name": "West block 3 • parapet",
+      "color": "#b9b2a1",
+      "position": [
+        -2.25,
+        15.5875,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5.25,
+        5.5,
+        5.75
+      ],
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "23de2970-e5c8-4c76-bea3-bfdbe4e59641",
+      "type": "ny-hvac",
+      "name": "West block 3 • rooftop plant",
+      "color": "#8c9695",
+      "position": [
+        -0.7500000000000001,
+        15.6125,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.875,
+        1.875,
+        1.875
+      ],
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "016306ab-fbea-4f2e-99aa-952b63553fc4",
+      "type": "ny-water-tank",
+      "name": "West block 3 • water tower",
+      "color": "#896b50",
+      "position": [
+        -3.75,
+        15.6125,
+        -12.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        2,
+        2
+      ],
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "a094adc9-38c5-4f33-aa03-d169c7120569",
+      "type": "block",
+      "name": "West block 3 • shopfront",
+      "color": "#a8c4c4",
+      "position": [
+        -4.625,
+        0.41250000000000003,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        4.5,
+        2.5,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.1234567901234568,
+          0.4,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757"
+    },
+    {
+      "id": "732b73a0-e793-4f7a-8efe-6ca6401374d3",
+      "type": "ny-awning",
+      "name": "West block 3 • awning",
+      "color": "#426a60",
+      "position": [
+        -4.625,
+        2.9125,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        2.25,
+        2.5,
+        2.5
+      ],
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "eb4fad27-304a-486d-9506-1402b9c0430e",
+      "type": "block",
+      "name": "West block 3 • shopfront",
+      "color": "#a8c4c4",
+      "position": [
+        0.12499999999999983,
+        0.41250000000000003,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        4.5,
+        2.5,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.1234567901234568,
+          0.4,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757"
+    },
+    {
+      "id": "51e6d93a-3f8c-4293-bbaf-727908cb88a5",
+      "type": "ny-awning",
+      "name": "West block 3 • awning",
+      "color": "#426a60",
+      "position": [
+        0.12499999999999983,
+        2.9125,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        2.25,
+        2.5,
+        2.5
+      ],
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "7d128bcf-a0bc-44bb-b49f-f3cc76c57062",
+      "type": "ny-fire-escape",
+      "name": "West block 3 • fire escape",
+      "color": "#49545a",
+      "position": [
+        -2.25,
+        4.1625,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1.625,
+        2.5,
+        2
+      ],
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "e4e8d8b9-8e3c-4f03-87ab-937c2f762027",
+      "type": "ny-fire-escape",
+      "name": "West block 3 • fire escape",
+      "color": "#49545a",
+      "position": [
+        -2.25,
+        7.1625000000000005,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1.625,
+        2.5,
+        2
+      ],
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "b411bfad-030d-418d-8283-b9ca74f6b707",
+      "type": "ny-fire-escape",
+      "name": "West block 3 • fire escape",
+      "color": "#49545a",
+      "position": [
+        -2.25,
+        10.162500000000001,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1.625,
+        2.5,
+        2
+      ],
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "23477e52-02fc-468d-bdb7-2c2ecf0277ae",
+      "type": "ny-fire-escape",
+      "name": "West block 3 • fire escape",
+      "color": "#49545a",
+      "position": [
+        -2.25,
+        13.162500000000001,
+        -16.8125
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1.625,
+        2.5,
+        2
+      ],
+      "assemblyId": "ebcc1f12-35d3-4944-84ef-b48df91b9757",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "aa28306f-654c-4979-8d6e-d8c2d2d08cd2",
+      "type": "block",
+      "name": "West block 4 • loft",
+      "color": "#a77360",
+      "position": [
+        -25,
+        0.41250000000000003,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        10,
+        16.5,
+        15.5
+      ],
+      "surface": {
+        "preset": "ny-brick",
+        "scale": 1
+      },
+      "assemblyId": "4936ce6f-eb50-4abb-a377-0a21cf5ae675",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "id": "3a7c2c8a-fdaa-44be-9910-df5edbe38b96",
+      "type": "slab",
+      "name": "West block 4 • loft • flat roof finish",
+      "color": "#354249",
+      "position": [
+        -25,
+        16.8875,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        10,
+        0.16666666675,
+        15.5
+      ],
+      "assemblyId": "4936ce6f-eb50-4abb-a377-0a21cf5ae675",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "f5daca1f-6b82-4e22-86a5-eaeaafca7fed",
+      "type": "ny-cornice",
+      "name": "West block 4 • cornice",
+      "color": "#cfc4ab",
+      "position": [
+        -25,
+        16.912499999999998,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5,
+        2.5,
+        7.75
+      ],
+      "assemblyId": "4936ce6f-eb50-4abb-a377-0a21cf5ae675",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "32bd168e-adb8-43ef-bcde-204f7f255105",
+      "type": "ny-parapet",
+      "name": "West block 4 • parapet",
+      "color": "#b9b2a1",
+      "position": [
+        -25,
+        17.3375,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5,
+        5.5,
+        7.75
+      ],
+      "assemblyId": "4936ce6f-eb50-4abb-a377-0a21cf5ae675",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "eae629c2-0d9e-487c-9613-14543034a387",
+      "type": "ny-hvac",
+      "name": "West block 4 • rooftop plant",
+      "color": "#8c9695",
+      "position": [
+        -23.5,
+        17.362499999999997,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.875,
+        1.875,
+        1.875
+      ],
+      "assemblyId": "4936ce6f-eb50-4abb-a377-0a21cf5ae675",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "8789fdc0-7c99-4f09-9a98-1fe897aed9c9",
+      "type": "block",
+      "name": "West block 4 • shopfront",
+      "color": "#a8c4c4",
+      "position": [
+        -27.375,
+        0.41250000000000003,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.5,
+        2.5,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.1234567901234568,
+          0.4,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "4936ce6f-eb50-4abb-a377-0a21cf5ae675"
+    },
+    {
+      "id": "fc226250-0fd5-4155-9f77-7c34b5af426a",
+      "type": "ny-awning",
+      "name": "West block 4 • awning",
+      "color": "#635c52",
+      "position": [
+        -27.375,
+        2.9125,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.25,
+        2.5,
+        2.5
+      ],
+      "assemblyId": "4936ce6f-eb50-4abb-a377-0a21cf5ae675",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "a1215bb7-332c-4136-a2e8-ccf3465c68b2",
+      "type": "block",
+      "name": "West block 4 • shopfront",
+      "color": "#a8c4c4",
+      "position": [
+        -22.625,
+        0.41250000000000003,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.5,
+        2.5,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.1234567901234568,
+          0.4,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "4936ce6f-eb50-4abb-a377-0a21cf5ae675"
+    },
+    {
+      "id": "3602bb2c-5d4c-4c43-8e66-81427440fab3",
+      "type": "ny-awning",
+      "name": "West block 4 • awning",
+      "color": "#635c52",
+      "position": [
+        -22.625,
+        2.9125,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.25,
+        2.5,
+        2.5
+      ],
+      "assemblyId": "4936ce6f-eb50-4abb-a377-0a21cf5ae675",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "4a33ba47-0413-4258-af2a-6cf093ed95c6",
+      "type": "block",
+      "name": "West block 5 • loft",
+      "color": "#c4b6a0",
+      "position": [
+        -13.75,
+        0.41250000000000003,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        11,
+        11.25,
+        15.5
+      ],
+      "surface": {
+        "preset": "ny-brick",
+        "scale": 1
+      },
+      "assemblyId": "8ec0c345-7082-4ac9-8c04-4bc2a24ee829",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "id": "34c9f581-c6d5-477c-afb1-bd2e597107b1",
+      "type": "slab",
+      "name": "West block 5 • loft • flat roof finish",
+      "color": "#354249",
+      "position": [
+        -13.75,
+        11.637500000000001,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        11,
+        0.16666666675,
+        15.5
+      ],
+      "assemblyId": "8ec0c345-7082-4ac9-8c04-4bc2a24ee829",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "468abafc-0f15-43ce-87c7-ccd2808894dd",
+      "type": "ny-cornice",
+      "name": "West block 5 • cornice",
+      "color": "#cfc4ab",
+      "position": [
+        -13.75,
+        11.6625,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5.5,
+        2.5,
+        7.75
+      ],
+      "assemblyId": "8ec0c345-7082-4ac9-8c04-4bc2a24ee829",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "99ae01a4-002e-4885-9b88-9cc5f9cdd756",
+      "type": "ny-parapet",
+      "name": "West block 5 • parapet",
+      "color": "#b9b2a1",
+      "position": [
+        -13.75,
+        12.0875,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5.5,
+        5.5,
+        7.75
+      ],
+      "assemblyId": "8ec0c345-7082-4ac9-8c04-4bc2a24ee829",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "942b713c-1cd5-4f19-8602-82198392c685",
+      "type": "ny-hvac",
+      "name": "West block 5 • rooftop plant",
+      "color": "#8c9695",
+      "position": [
+        -12.25,
+        12.112499999999999,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.875,
+        1.875,
+        1.875
+      ],
+      "assemblyId": "8ec0c345-7082-4ac9-8c04-4bc2a24ee829",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "31b03924-12ae-4b39-84d2-9fd65c44bc5b",
+      "type": "ny-water-tank",
+      "name": "West block 5 • water tower",
+      "color": "#896b50",
+      "position": [
+        -15.25,
+        12.112499999999999,
+        5.75
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        2,
+        2
+      ],
+      "assemblyId": "8ec0c345-7082-4ac9-8c04-4bc2a24ee829",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "81f47aa5-0ef2-4937-9222-fcbd2449581f",
+      "type": "block",
+      "name": "West block 5 • shopfront",
+      "color": "#a8c4c4",
+      "position": [
+        -16.125,
+        0.41250000000000003,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.5,
+        2.5,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.1234567901234568,
+          0.4,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "8ec0c345-7082-4ac9-8c04-4bc2a24ee829"
+    },
+    {
+      "id": "36a42d4b-c4b0-4977-a9af-68f6b0adebde",
+      "type": "ny-awning",
+      "name": "West block 5 • awning",
+      "color": "#426a60",
+      "position": [
+        -16.125,
+        2.9125,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.25,
+        2.5,
+        2.5
+      ],
+      "assemblyId": "8ec0c345-7082-4ac9-8c04-4bc2a24ee829",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "25d49f87-6912-4831-a974-89a88598ef72",
+      "type": "block",
+      "name": "West block 5 • shopfront",
+      "color": "#a8c4c4",
+      "position": [
+        -11.375,
+        0.41250000000000003,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.5,
+        2.5,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.1234567901234568,
+          0.4,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "8ec0c345-7082-4ac9-8c04-4bc2a24ee829"
+    },
+    {
+      "id": "f17a2964-751e-43c0-84ee-7a5fdc786377",
+      "type": "ny-awning",
+      "name": "West block 5 • awning",
+      "color": "#426a60",
+      "position": [
+        -11.375,
+        2.9125,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.25,
+        2.5,
+        2.5
+      ],
+      "assemblyId": "8ec0c345-7082-4ac9-8c04-4bc2a24ee829",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "6a899fe4-6d0c-4fb7-be27-4f70123d42ee",
+      "type": "ny-fire-escape",
+      "name": "West block 5 • fire escape",
+      "color": "#49545a",
+      "position": [
+        -13.75,
+        4.1625,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.625,
+        2.5,
+        2
+      ],
+      "assemblyId": "8ec0c345-7082-4ac9-8c04-4bc2a24ee829",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "87e70746-8c99-4fc4-8210-11372f1313cb",
+      "type": "ny-fire-escape",
+      "name": "West block 5 • fire escape",
+      "color": "#49545a",
+      "position": [
+        -13.75,
+        7.1625000000000005,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.625,
+        2.5,
+        2
+      ],
+      "assemblyId": "8ec0c345-7082-4ac9-8c04-4bc2a24ee829",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "6e8f6b72-a3a2-4485-ab40-4164caff4e07",
+      "type": "ny-fire-escape",
+      "name": "West block 5 • fire escape",
+      "color": "#49545a",
+      "position": [
+        -13.75,
+        10.162500000000001,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.625,
+        2.5,
+        2
+      ],
+      "assemblyId": "8ec0c345-7082-4ac9-8c04-4bc2a24ee829",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "2d31700b-a48a-4567-b083-c4550aaebaea",
+      "type": "block",
+      "name": "West block 6 • loft",
+      "color": "#aea995",
+      "position": [
+        -2.25,
+        0.41250000000000003,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        10.5,
+        22,
+        15.5
+      ],
+      "surface": {
+        "preset": "ny-deco",
+        "scale": 1
+      },
+      "assemblyId": "ea1507be-6917-433d-aab6-17f7df8cf460",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "id": "c71d0be5-3b33-4640-98d5-d1b9c7ed0160",
+      "type": "slab",
+      "name": "West block 6 • loft • flat roof finish",
+      "color": "#354249",
+      "position": [
+        -2.25,
+        22.3875,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        10.5,
+        0.16666666675,
+        15.5
+      ],
+      "assemblyId": "ea1507be-6917-433d-aab6-17f7df8cf460",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "7cb6f9d1-ce1e-49c1-a650-5d89af478d2a",
+      "type": "ny-cornice",
+      "name": "West block 6 • cornice",
+      "color": "#cfc4ab",
+      "position": [
+        -2.25,
+        22.4125,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5.25,
+        2.5,
+        7.75
+      ],
+      "assemblyId": "ea1507be-6917-433d-aab6-17f7df8cf460",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "88f86654-c65d-44cf-b3ee-d8e12fa044b5",
+      "type": "ny-parapet",
+      "name": "West block 6 • parapet",
+      "color": "#b9b2a1",
+      "position": [
+        -2.25,
+        22.8375,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5.25,
+        5.5,
+        7.75
+      ],
+      "assemblyId": "ea1507be-6917-433d-aab6-17f7df8cf460",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "72842c56-4ed9-4201-a1d1-7f44ea8903bc",
+      "type": "ny-hvac",
+      "name": "West block 6 • rooftop plant",
+      "color": "#8c9695",
+      "position": [
+        -0.7500000000000001,
+        22.862499999999997,
+        7.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.875,
+        1.875,
+        1.875
+      ],
+      "assemblyId": "ea1507be-6917-433d-aab6-17f7df8cf460",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "73723dce-feea-40fc-9d26-84c828acc732",
+      "type": "block",
+      "name": "West block 6 • shopfront",
+      "color": "#a8c4c4",
+      "position": [
+        -4.625,
+        0.41250000000000003,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.5,
+        2.5,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.1234567901234568,
+          0.4,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "ea1507be-6917-433d-aab6-17f7df8cf460"
+    },
+    {
+      "id": "229bd4a5-c1c0-4951-b84c-ad5f6bb89edd",
+      "type": "ny-awning",
+      "name": "West block 6 • awning",
+      "color": "#635c52",
+      "position": [
+        -4.625,
+        2.9125,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.25,
+        2.5,
+        2.5
+      ],
+      "assemblyId": "ea1507be-6917-433d-aab6-17f7df8cf460",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "00b97233-ccc4-40db-83bf-fd590359024c",
+      "type": "block",
+      "name": "West block 6 • shopfront",
+      "color": "#a8c4c4",
+      "position": [
+        0.12499999999999983,
+        0.41250000000000003,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.5,
+        2.5,
+        0.3
+      ],
+      "surface": {
+        "preset": "ny-storefront",
+        "scale": 1
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          0.1234567901234568,
+          0.4,
+          3.3333333333333335
+        ]
+      },
+      "assemblyId": "ea1507be-6917-433d-aab6-17f7df8cf460"
+    },
+    {
+      "id": "49a63310-4ffa-4e75-8808-601195525f5b",
+      "type": "ny-awning",
+      "name": "West block 6 • awning",
+      "color": "#635c52",
+      "position": [
+        0.12499999999999983,
+        2.9125,
+        15.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.25,
+        2.5,
+        2.5
+      ],
+      "assemblyId": "ea1507be-6917-433d-aab6-17f7df8cf460",
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "9a1b901d-dcf3-4622-ac1d-af0d96665436",
+      "type": "ny-lamp",
+      "name": "Midtown • street lamp",
+      "color": "#48575b",
+      "position": [
+        -30,
+        0.41250000000000003,
+        -19.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-d96db071f0878903-0",
+      "instanceName": "Midtown • street lamp"
+    },
+    {
+      "id": "ecf709db-0fda-4b37-ab4a-8579eacb038c",
+      "type": "ny-lamp",
+      "name": "Midtown • street lamp",
+      "color": "#48575b",
+      "position": [
+        -15,
+        0.41250000000000003,
+        -19.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-d96db071f0878903-0",
+      "instanceName": "Midtown • street lamp",
+      "instanceCopy": true
+    },
+    {
+      "id": "b45dd7c8-b791-401a-be9d-68b70feffc14",
+      "type": "ny-lamp",
+      "name": "Midtown • street lamp",
+      "color": "#48575b",
+      "position": [
+        0,
+        0.41250000000000003,
+        -19.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-d96db071f0878903-0",
+      "instanceName": "Midtown • street lamp",
+      "instanceCopy": true
+    },
+    {
+      "id": "a5f143c8-c04f-4746-b1cc-9bdbb2f59c31",
+      "type": "ny-lamp",
+      "name": "Midtown • street lamp",
+      "color": "#48575b",
+      "position": [
+        15,
+        0.41250000000000003,
+        -19.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-d96db071f0878903-0",
+      "instanceName": "Midtown • street lamp",
+      "instanceCopy": true
+    },
+    {
+      "id": "0ba43fd2-450e-4d75-98fb-3c2d061e1b4b",
+      "type": "ny-lamp",
+      "name": "Midtown • street lamp",
+      "color": "#48575b",
+      "position": [
+        30,
+        0.41250000000000003,
+        -19.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-d96db071f0878903-0",
+      "instanceName": "Midtown • street lamp",
+      "instanceCopy": true
+    },
+    {
+      "id": "98aeb1c9-c154-42c1-b035-a4a14be21138",
+      "type": "ny-crosswalk",
+      "name": "Midtown • pedestrian crossing",
+      "color": "#e7e3cb",
+      "position": [
+        -27.5,
+        0.13,
+        -25.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.25,
+        2.5,
+        4.125
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-f420218cbd1bf00e-0",
+      "instanceName": "Midtown • pedestrian crossing"
+    },
+    {
+      "id": "14c8a00a-e0fa-494e-8e98-6afdbd2c826c",
+      "type": "ny-crosswalk",
+      "name": "Midtown • pedestrian crossing",
+      "color": "#e7e3cb",
+      "position": [
+        27.5,
+        0.13,
+        -25.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.25,
+        2.5,
+        4.125
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-f420218cbd1bf00e-0",
+      "instanceName": "Midtown • pedestrian crossing",
+      "instanceCopy": true
+    },
+    {
+      "id": "d41baad1-5f4d-4eda-ad85-f20e8eec8bf6",
+      "type": "ny-taxi",
+      "name": "Midtown • yellow taxi",
+      "color": "#e2b63f",
+      "position": [
+        -22.5,
+        0.11249999999999999,
+        -23
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-5c900d62140fd220-0",
+      "instanceName": "Midtown • yellow taxi"
+    },
+    {
+      "id": "a56c1871-d76a-4149-ae9a-0168fa8a5627",
+      "type": "ny-taxi",
+      "name": "Midtown • yellow taxi",
+      "color": "#e2b63f",
+      "position": [
+        0,
+        0.11249999999999999,
+        -23
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-5c900d62140fd220-0",
+      "instanceName": "Midtown • yellow taxi",
+      "instanceCopy": true
+    },
+    {
+      "id": "84d42772-2a1e-45e9-8d7d-241936ec1512",
+      "type": "ny-taxi",
+      "name": "Midtown • yellow taxi",
+      "color": "#e2b63f",
+      "position": [
+        22.5,
+        0.11249999999999999,
+        -23
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-5c900d62140fd220-0",
+      "instanceName": "Midtown • yellow taxi",
+      "instanceCopy": true
+    },
+    {
+      "id": "e8c1f3ea-6463-408a-ad9b-5fc106e7fb80",
+      "type": "ny-lamp",
+      "name": "Midtown • street lamp",
+      "color": "#48575b",
+      "position": [
+        -30,
+        0.41250000000000003,
+        19.5
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-d96db071f0878903-0",
+      "instanceName": "Midtown • street lamp",
+      "instanceCopy": true
+    },
+    {
+      "id": "c2e3ff08-9976-4612-a735-87de2aeb1347",
+      "type": "ny-lamp",
+      "name": "Midtown • street lamp",
+      "color": "#48575b",
+      "position": [
+        -15,
+        0.41250000000000003,
+        19.5
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-d96db071f0878903-0",
+      "instanceName": "Midtown • street lamp",
+      "instanceCopy": true
+    },
+    {
+      "id": "acd3df98-f9bd-4419-a67e-92664e9a9393",
+      "type": "ny-lamp",
+      "name": "Midtown • street lamp",
+      "color": "#48575b",
+      "position": [
+        0,
+        0.41250000000000003,
+        19.5
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-d96db071f0878903-0",
+      "instanceName": "Midtown • street lamp",
+      "instanceCopy": true
+    },
+    {
+      "id": "8c8a78f1-0848-4581-9a63-b511e98a0382",
+      "type": "ny-lamp",
+      "name": "Midtown • street lamp",
+      "color": "#48575b",
+      "position": [
+        15,
+        0.41250000000000003,
+        19.5
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-d96db071f0878903-0",
+      "instanceName": "Midtown • street lamp",
+      "instanceCopy": true
+    },
+    {
+      "id": "01a8d787-a4f6-4be0-86cb-a76ecc6f6456",
+      "type": "ny-lamp",
+      "name": "Midtown • street lamp",
+      "color": "#48575b",
+      "position": [
+        30,
+        0.41250000000000003,
+        19.5
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-d96db071f0878903-0",
+      "instanceName": "Midtown • street lamp",
+      "instanceCopy": true
+    },
+    {
+      "id": "9005786b-5888-479f-898a-81cb2295ab79",
+      "type": "ny-crosswalk",
+      "name": "Midtown • pedestrian crossing",
+      "color": "#e7e3cb",
+      "position": [
+        -27.5,
+        0.13,
+        25.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.25,
+        2.5,
+        4.125
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-f420218cbd1bf00e-0",
+      "instanceName": "Midtown • pedestrian crossing",
+      "instanceCopy": true
+    },
+    {
+      "id": "1d763a31-63d7-45ce-811f-f7c2cea70da9",
+      "type": "ny-crosswalk",
+      "name": "Midtown • pedestrian crossing",
+      "color": "#e7e3cb",
+      "position": [
+        27.5,
+        0.13,
+        25.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.25,
+        2.5,
+        4.125
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-f420218cbd1bf00e-0",
+      "instanceName": "Midtown • pedestrian crossing",
+      "instanceCopy": true
+    },
+    {
+      "id": "53cb5089-64f9-4b54-810b-b89135ba35b9",
+      "type": "ny-taxi",
+      "name": "Midtown • yellow taxi",
+      "color": "#e2b63f",
+      "position": [
+        -22.5,
+        0.11249999999999999,
+        23
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-5c900d62140fd220-0",
+      "instanceName": "Midtown • yellow taxi",
+      "instanceCopy": true
+    },
+    {
+      "id": "99cda50b-a0ec-49a1-8805-26fc9cc3bd47",
+      "type": "ny-taxi",
+      "name": "Midtown • yellow taxi",
+      "color": "#e2b63f",
+      "position": [
+        0,
+        0.11249999999999999,
+        23
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-5c900d62140fd220-0",
+      "instanceName": "Midtown • yellow taxi",
+      "instanceCopy": true
+    },
+    {
+      "id": "87305b96-85c2-42af-ae46-9407b7189c5f",
+      "type": "ny-taxi",
+      "name": "Midtown • yellow taxi",
+      "color": "#e2b63f",
+      "position": [
+        22.5,
+        0.11249999999999999,
+        23
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "empire-state-copy-5c900d62140fd220-0",
+      "instanceName": "Midtown • yellow taxi",
+      "instanceCopy": true
+    }
+  ],
+  "surfaceScaling": "fixed"
+}

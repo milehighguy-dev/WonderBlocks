@@ -1,0 +1,10 @@
+{
+  "id": "cor-panels",
+  "name": "Coruscant metal panels",
+  "roughness": 0.7,
+  "metalness": 0.18,
+  "order": 96,
+  "themes": [
+    "Coruscant"
+  ]
+}

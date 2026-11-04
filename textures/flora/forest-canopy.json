@@ -1,0 +1,10 @@
+{
+  "id": "forest-canopy",
+  "name": "Canopy leaves",
+  "roughness": 0.92,
+  "metalness": 0,
+  "order": 114,
+  "themes": [
+    "General"
+  ]
+}

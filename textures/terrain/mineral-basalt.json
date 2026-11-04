@@ -1,0 +1,10 @@
+{
+  "id": "mineral-basalt",
+  "name": "Cyan mineral basalt",
+  "roughness": 0.94,
+  "metalness": 0,
+  "order": 117,
+  "themes": [
+    "General"
+  ]
+}

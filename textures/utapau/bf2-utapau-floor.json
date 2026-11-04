@@ -1,0 +1,11 @@
+{
+  "id": "bf2-utapau-floor",
+  "name": "Utapau · engraved metal floor",
+  "game": "SWBF2",
+  "roughness": 0.7,
+  "metalness": 0.3,
+  "order": 18,
+  "themes": [
+    "SWBF2"
+  ]
+}

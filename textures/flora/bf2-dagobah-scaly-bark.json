@@ -1,0 +1,13 @@
+{
+  "id": "bf2-dagobah-scaly-bark",
+  "name": "Dagobah · scaly bark",
+  "game": "SWBF2",
+  "group": "Flora",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 36,
+  "themes": [
+    "Flora",
+    "SWBF2"
+  ]
+}

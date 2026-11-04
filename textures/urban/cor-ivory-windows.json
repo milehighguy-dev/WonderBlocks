@@ -1,0 +1,10 @@
+{
+  "id": "cor-ivory-windows",
+  "name": "Ivory tower facade",
+  "roughness": 0.7,
+  "metalness": 0.18,
+  "order": 89,
+  "themes": [
+    "Coruscant"
+  ]
+}

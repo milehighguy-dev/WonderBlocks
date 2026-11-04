@@ -1,0 +1,11 @@
+{
+  "id": "bf2-deathstar-wall",
+  "name": "Death Star · pale panel plating",
+  "game": "SWBF2",
+  "roughness": 0.7,
+  "metalness": 0.2,
+  "order": 20,
+  "themes": [
+    "SWBF2"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "swbf-rhen-ceiling",
+  "name": "Rhen Var rock ceiling",
+  "roughness": 0.8,
+  "metalness": 0,
+  "order": 76,
+  "themes": [
+    "Hallway references"
+  ]
+}

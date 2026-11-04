@@ -1,0 +1,10 @@
+{
+  "id": "yavin-wall",
+  "name": "Yavin · carved wall courses",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 52,
+  "themes": [
+    "Yavin"
+  ]
+}

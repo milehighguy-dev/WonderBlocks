@@ -1,0 +1,9133 @@
+{
+  "format": "open-building-studio",
+  "version": 1,
+  "name": "Cinderlock · Foundry Crossfire",
+  "surfaceScaling": "fixed",
+  "parts": [
+    {
+      "id": "cinderlock-0",
+      "type": "block",
+      "name": "Foundry street · solid ground",
+      "color": "#777b72",
+      "position": [
+        0,
+        1.5999999999999999,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        98,
+        0.8,
+        28
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-01 · Ground and boundary",
+      "assemblyName": "01 · Ground and boundary",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-1",
+      "type": "block",
+      "name": "Upper cooling terrace · solid ground",
+      "color": "#777b72",
+      "position": [
+        0,
+        -0.8000000000000003,
+        -25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        98,
+        5.6,
+        22
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-01 · Ground and boundary",
+      "assemblyName": "01 · Ground and boundary",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-2",
+      "type": "block",
+      "name": "Sunken freight yard · solid ground",
+      "color": "#777b72",
+      "position": [
+        0,
+        -0.8000000000000003,
+        25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        98,
+        0.8,
+        22
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-01 · Ground and boundary",
+      "assemblyName": "01 · Ground and boundary",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-3",
+      "type": "block",
+      "name": "Arena boundary · side retaining wall",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -49,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        8.4,
+        74
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-01 · Ground and boundary",
+      "assemblyName": "01 · Ground and boundary",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-4",
+      "type": "block",
+      "name": "Arena boundary · side retaining wall",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        49,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        8.4,
+        74
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-01 · Ground and boundary",
+      "assemblyName": "01 · Ground and boundary",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-5",
+      "type": "block",
+      "name": "Arena boundary · end retaining wall",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        0,
+        -37
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        99.2,
+        8.4,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-01 · Ground and boundary",
+      "assemblyName": "01 · Ground and boundary",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-6",
+      "type": "block",
+      "name": "Arena boundary · end retaining wall",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        0,
+        37
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        99.2,
+        8.4,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-01 · Ground and boundary",
+      "assemblyName": "01 · Ground and boundary",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-7",
+      "type": "interior",
+      "name": "WEST START · sheltered workshop",
+      "interior": {
+        "height": 4.2,
+        "thickness": 0.3,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "cinderlock-7-room",
+            "x": -6,
+            "z": -8,
+            "w": 12,
+            "d": 16
+          }
+        ],
+        "doors": [
+          {
+            "id": "cinderlock-7-opening-0",
+            "axis": "z",
+            "line": 6,
+            "offset": 0,
+            "width": 3.2,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-7-opening-1",
+            "axis": "x",
+            "line": -8,
+            "offset": 0,
+            "width": 3.2,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-7-opening-2",
+            "axis": "x",
+            "line": 8,
+            "offset": 0,
+            "width": 3.2,
+            "height": 3.2,
+            "kind": "door"
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#777b72",
+            "preset": "cor-floor-plates",
+            "scale": 0.5
+          },
+          "wall": {
+            "color": "#e7dfc6",
+            "preset": "cor-interior-panel",
+            "scale": 0.5
+          },
+          "outside": {
+            "color": "#a69c87",
+            "preset": "cor-concrete",
+            "scale": 0.5
+          },
+          "ceiling": {
+            "color": "#35484b",
+            "preset": "cor-ceiling-panels",
+            "scale": 0.5
+          },
+          "roof": {
+            "color": "#35484b",
+            "preset": "metal",
+            "scale": 0.5
+          }
+        }
+      },
+      "color": "#a69c87",
+      "position": [
+        -42,
+        2.4,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-02 · West team workshop",
+      "assemblyName": "02 · West team workshop",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-8",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -36,
+        2.25,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        3.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-02 · West team workshop",
+      "assemblyName": "02 · West team workshop",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-9",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -42,
+        2.25,
+        -8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.2,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-02 · West team workshop",
+      "assemblyName": "02 · West team workshop",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-10",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -42,
+        2.25,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.2,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-02 · West team workshop",
+      "assemblyName": "02 · West team workshop",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-11",
+      "type": "block",
+      "name": "Spawn exit baffle · prevents base-to-base fire",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -32,
+        2.4,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        3,
+        7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-02 · West team workshop",
+      "assemblyName": "02 · West team workshop",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-12",
+      "type": "block",
+      "name": "Spawn north exit shoulder",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -37,
+        2.4,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        2,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-02 · West team workshop",
+      "assemblyName": "02 · West team workshop",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-13",
+      "type": "block",
+      "name": "Spawn south exit shoulder",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -37,
+        2.4,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        2,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-02 · West team workshop",
+      "assemblyName": "02 · West team workshop",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-14",
+      "type": "block",
+      "name": "Team workshop · recognition band",
+      "interiorProp": true,
+      "color": "#67cbd4",
+      "position": [
+        -35.8,
+        5.9,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.16,
+        0.4,
+        14
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-02 · West team workshop",
+      "assemblyName": "02 · West team workshop",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-15",
+      "type": "block",
+      "name": "WEST · home console · capture console",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -45,
+        2.4,
+        5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        1.1,
+        0.8
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-02 · West team workshop",
+      "assemblyName": "02 · West team workshop",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-16",
+      "type": "block",
+      "name": "WEST · home console · illuminated display",
+      "interiorProp": true,
+      "color": "#67cbd4",
+      "position": [
+        -45,
+        3.5,
+        5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.08,
+        0.12,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-02 · West team workshop",
+      "assemblyName": "02 · West team workshop",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-17",
+      "type": "antenna",
+      "name": "WEST · home console · locator mast",
+      "interiorProp": true,
+      "color": "#67cbd4",
+      "position": [
+        -44.15,
+        2.4,
+        5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.45,
+        2,
+        0.45
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-02 · West team workshop",
+      "assemblyName": "02 · West team workshop",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-18",
+      "type": "block",
+      "name": "Workshop bench",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -45,
+        2.4,
+        -6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-02 · West team workshop",
+      "assemblyName": "02 · West team workshop",
+      "surface": {
+        "preset": "wood",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-19",
+      "type": "block",
+      "name": "Workshop bench",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -45,
+        2.4,
+        6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-02 · West team workshop",
+      "assemblyName": "02 · West team workshop",
+      "surface": {
+        "preset": "wood",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-20",
+      "type": "roof",
+      "name": "Team workshop roof",
+      "interiorProp": true,
+      "color": "#67cbd4",
+      "position": [
+        -42,
+        6.84,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        13.5,
+        3,
+        18
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · West workshop roof",
+      "assemblyName": "D · West workshop roof",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-21",
+      "type": "interior",
+      "name": "EAST START · sheltered workshop",
+      "interior": {
+        "height": 4.2,
+        "thickness": 0.3,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "cinderlock-21-room",
+            "x": -6,
+            "z": -8,
+            "w": 12,
+            "d": 16
+          }
+        ],
+        "doors": [
+          {
+            "id": "cinderlock-21-opening-0",
+            "axis": "z",
+            "line": -6,
+            "offset": 0,
+            "width": 3.2,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-21-opening-1",
+            "axis": "x",
+            "line": -8,
+            "offset": 0,
+            "width": 3.2,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-21-opening-2",
+            "axis": "x",
+            "line": 8,
+            "offset": 0,
+            "width": 3.2,
+            "height": 3.2,
+            "kind": "door"
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#777b72",
+            "preset": "cor-floor-plates",
+            "scale": 0.5
+          },
+          "wall": {
+            "color": "#e7dfc6",
+            "preset": "cor-interior-panel",
+            "scale": 0.5
+          },
+          "outside": {
+            "color": "#a69c87",
+            "preset": "cor-concrete",
+            "scale": 0.5
+          },
+          "ceiling": {
+            "color": "#35484b",
+            "preset": "cor-ceiling-panels",
+            "scale": 0.5
+          },
+          "roof": {
+            "color": "#35484b",
+            "preset": "metal",
+            "scale": 0.5
+          }
+        }
+      },
+      "color": "#a69c87",
+      "position": [
+        42,
+        2.4,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-03 · East team workshop",
+      "assemblyName": "03 · East team workshop",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-22",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        36,
+        2.25,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        3.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-03 · East team workshop",
+      "assemblyName": "03 · East team workshop",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-23",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        42,
+        2.25,
+        -8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.2,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-03 · East team workshop",
+      "assemblyName": "03 · East team workshop",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-24",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        42,
+        2.25,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.2,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-03 · East team workshop",
+      "assemblyName": "03 · East team workshop",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-25",
+      "type": "block",
+      "name": "Spawn exit baffle · prevents base-to-base fire",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        32,
+        2.4,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.4,
+        3,
+        7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-03 · East team workshop",
+      "assemblyName": "03 · East team workshop",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-26",
+      "type": "block",
+      "name": "Spawn north exit shoulder",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        37,
+        2.4,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        2,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-03 · East team workshop",
+      "assemblyName": "03 · East team workshop",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-27",
+      "type": "block",
+      "name": "Spawn south exit shoulder",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        37,
+        2.4,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        2,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-03 · East team workshop",
+      "assemblyName": "03 · East team workshop",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-28",
+      "type": "block",
+      "name": "Team workshop · recognition band",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        35.8,
+        5.9,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.16,
+        0.4,
+        14
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-03 · East team workshop",
+      "assemblyName": "03 · East team workshop",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-29",
+      "type": "block",
+      "name": "EAST · home console · capture console",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        45,
+        2.4,
+        5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        1.1,
+        0.8
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-03 · East team workshop",
+      "assemblyName": "03 · East team workshop",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-30",
+      "type": "block",
+      "name": "EAST · home console · illuminated display",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        45,
+        3.5,
+        5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.08,
+        0.12,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-03 · East team workshop",
+      "assemblyName": "03 · East team workshop",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-31",
+      "type": "antenna",
+      "name": "EAST · home console · locator mast",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        45.85,
+        2.4,
+        5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.45,
+        2,
+        0.45
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-03 · East team workshop",
+      "assemblyName": "03 · East team workshop",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-32",
+      "type": "block",
+      "name": "Workshop bench",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        45,
+        2.4,
+        -6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-03 · East team workshop",
+      "assemblyName": "03 · East team workshop",
+      "surface": {
+        "preset": "wood",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-33",
+      "type": "block",
+      "name": "Workshop bench",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        45,
+        2.4,
+        6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-03 · East team workshop",
+      "assemblyName": "03 · East team workshop",
+      "surface": {
+        "preset": "wood",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-34",
+      "type": "roof",
+      "name": "Team workshop roof",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        42,
+        6.84,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        13.5,
+        3,
+        18
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · East workshop roof",
+      "assemblyName": "D · East workshop roof",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-35",
+      "type": "interior",
+      "name": "FOUNDRY · contested central hall",
+      "interior": {
+        "height": 7.4,
+        "thickness": 0.3,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "cinderlock-35-room",
+            "x": -12,
+            "z": -12,
+            "w": 24,
+            "d": 24
+          }
+        ],
+        "doors": [
+          {
+            "id": "cinderlock-35-opening-0",
+            "axis": "z",
+            "line": -12,
+            "offset": -6,
+            "width": 4,
+            "height": 2.8,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-35-opening-1",
+            "axis": "z",
+            "line": -12,
+            "offset": 6,
+            "width": 4,
+            "height": 2.8,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-35-opening-2",
+            "axis": "z",
+            "line": 12,
+            "offset": -6,
+            "width": 4,
+            "height": 2.8,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-35-opening-3",
+            "axis": "z",
+            "line": 12,
+            "offset": 6,
+            "width": 4,
+            "height": 2.8,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-35-opening-4",
+            "axis": "x",
+            "line": -12,
+            "offset": -6,
+            "width": 4,
+            "height": 2.8,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-35-opening-5",
+            "axis": "x",
+            "line": -12,
+            "offset": 6,
+            "width": 4,
+            "height": 2.8,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-35-opening-6",
+            "axis": "x",
+            "line": 12,
+            "offset": -6,
+            "width": 4,
+            "height": 2.8,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-35-opening-7",
+            "axis": "x",
+            "line": 12,
+            "offset": 6,
+            "width": 4,
+            "height": 2.8,
+            "kind": "door"
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#777b72",
+            "preset": "cor-floor-plates",
+            "scale": 0.5
+          },
+          "wall": {
+            "color": "#e7dfc6",
+            "preset": "cor-interior-panel",
+            "scale": 0.5
+          },
+          "outside": {
+            "color": "#a69c87",
+            "preset": "cor-concrete",
+            "scale": 0.5
+          },
+          "ceiling": {
+            "color": "#35484b",
+            "preset": "cor-ceiling-panels",
+            "scale": 0.5
+          },
+          "roof": {
+            "color": "#35484b",
+            "preset": "metal",
+            "scale": 0.5
+          }
+        }
+      },
+      "color": "#a69c87",
+      "position": [
+        0,
+        2.4,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-36",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -12,
+        2.25,
+        -6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-37",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -12,
+        2.25,
+        6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-38",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        12,
+        2.25,
+        -6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-39",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        12,
+        2.25,
+        6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-40",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -6,
+        2.25,
+        -12
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-41",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        6,
+        2.25,
+        -12
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-42",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -6,
+        2.25,
+        12
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-43",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        6,
+        2.25,
+        12
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-44",
+      "type": "block",
+      "name": "Foundry core · blocks the full center sightline",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        2.4,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        6,
+        2.8,
+        5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-45",
+      "type": "block",
+      "name": "Core west hard cover",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -1.7,
+        2.4,
+        4.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        1.05,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-46",
+      "type": "block",
+      "name": "Core east hard cover",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        1.7,
+        2.4,
+        -4.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        1.05,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-47",
+      "type": "block",
+      "name": "B · FOUNDRY CONTROL · capture console",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        2.4,
+        7.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        1.1,
+        0.8
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-48",
+      "type": "block",
+      "name": "B · FOUNDRY CONTROL · illuminated display",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        0,
+        3.5,
+        7.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.08,
+        0.12,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-49",
+      "type": "antenna",
+      "name": "B · FOUNDRY CONTROL · locator mast",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        0.85,
+        2.4,
+        7.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.45,
+        2,
+        0.45
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-04 · Foundry hall",
+      "assemblyName": "04 · Foundry hall",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-50",
+      "type": "interior",
+      "name": "West control booth · two exits",
+      "interior": {
+        "height": 3,
+        "thickness": 0.3,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "cinderlock-50-room",
+            "x": -2.5,
+            "z": -3,
+            "w": 5,
+            "d": 6
+          }
+        ],
+        "doors": [
+          {
+            "id": "cinderlock-50-opening-0",
+            "axis": "x",
+            "line": -3,
+            "offset": 0,
+            "width": 2.4,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-50-opening-1",
+            "axis": "x",
+            "line": 3,
+            "offset": 0,
+            "width": 2.4,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-50-opening-2",
+            "axis": "z",
+            "line": 2.5,
+            "offset": 0,
+            "width": 3.8,
+            "height": 1.5,
+            "kind": "window",
+            "sill": 0.65
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#777b72",
+            "preset": "cor-floor-plates",
+            "scale": 0.5
+          },
+          "wall": {
+            "color": "#e7dfc6",
+            "preset": "cor-interior-panel",
+            "scale": 0.5
+          },
+          "outside": {
+            "color": "#a69c87",
+            "preset": "cor-concrete",
+            "scale": 0.5
+          },
+          "ceiling": {
+            "color": "#35484b",
+            "preset": "cor-ceiling-panels",
+            "scale": 0.5
+          },
+          "roof": {
+            "color": "#35484b",
+            "preset": "metal",
+            "scale": 0.5
+          }
+        }
+      },
+      "color": "#a69c87",
+      "position": [
+        -8,
+        4.8,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-05 · West control booth",
+      "assemblyName": "05 · West control booth",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-51",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -8,
+        4.65,
+        -3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.4,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-05 · West control booth",
+      "assemblyName": "05 · West control booth",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-52",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -8,
+        4.65,
+        3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.4,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-05 · West control booth",
+      "assemblyName": "05 · West control booth",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-53",
+      "type": "block",
+      "name": "Booth exit baffle · limits outside sightlines",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -8,
+        4.8,
+        -1.6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.4,
+        2.2,
+        0.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-05 · West control booth",
+      "assemblyName": "05 · West control booth",
+      "surface": {
+        "preset": "cor-interior-panel",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-54",
+      "type": "block",
+      "name": "Booth exit baffle · limits outside sightlines",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -8,
+        4.8,
+        1.6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.4,
+        2.2,
+        0.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-05 · West control booth",
+      "assemblyName": "05 · West control booth",
+      "surface": {
+        "preset": "cor-interior-panel",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-55",
+      "type": "stair-route",
+      "name": "West booth · north stairs",
+      "interiorProp": true,
+      "route": {
+        "width": 2.4,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 6.8,
+            "rise": 2.4,
+            "steps": 15,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ],
+        "groundHeight": 2.4
+      },
+      "color": "#657d7d",
+      "position": [
+        -8,
+        2.4,
+        -9.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-05 · West control booth",
+      "assemblyName": "05 · West control booth",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-56",
+      "type": "stair-route",
+      "name": "West booth · south stairs",
+      "interiorProp": true,
+      "route": {
+        "width": 2.4,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 6.8,
+            "rise": 2.4,
+            "steps": 15,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ],
+        "groundHeight": 2.4
+      },
+      "color": "#657d7d",
+      "position": [
+        -8,
+        2.4,
+        9.8
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-05 · West control booth",
+      "assemblyName": "05 · West control booth",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-57",
+      "type": "block",
+      "name": "Booth footing · no space to hide underneath",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -8,
+        2.4,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5,
+        2.25,
+        6
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-05 · West control booth",
+      "assemblyName": "05 · West control booth",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-58",
+      "type": "interior",
+      "name": "East control booth · two exits",
+      "interior": {
+        "height": 3,
+        "thickness": 0.3,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "cinderlock-58-room",
+            "x": -2.5,
+            "z": -3,
+            "w": 5,
+            "d": 6
+          }
+        ],
+        "doors": [
+          {
+            "id": "cinderlock-58-opening-0",
+            "axis": "x",
+            "line": -3,
+            "offset": 0,
+            "width": 2.4,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-58-opening-1",
+            "axis": "x",
+            "line": 3,
+            "offset": 0,
+            "width": 2.4,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-58-opening-2",
+            "axis": "z",
+            "line": -2.5,
+            "offset": 0,
+            "width": 3.8,
+            "height": 1.5,
+            "kind": "window",
+            "sill": 0.65
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#777b72",
+            "preset": "cor-floor-plates",
+            "scale": 0.5
+          },
+          "wall": {
+            "color": "#e7dfc6",
+            "preset": "cor-interior-panel",
+            "scale": 0.5
+          },
+          "outside": {
+            "color": "#a69c87",
+            "preset": "cor-concrete",
+            "scale": 0.5
+          },
+          "ceiling": {
+            "color": "#35484b",
+            "preset": "cor-ceiling-panels",
+            "scale": 0.5
+          },
+          "roof": {
+            "color": "#35484b",
+            "preset": "metal",
+            "scale": 0.5
+          }
+        }
+      },
+      "color": "#a69c87",
+      "position": [
+        8,
+        4.8,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-06 · East control booth",
+      "assemblyName": "06 · East control booth",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-59",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        8,
+        4.65,
+        -3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.4,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-06 · East control booth",
+      "assemblyName": "06 · East control booth",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-60",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        8,
+        4.65,
+        3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.4,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-06 · East control booth",
+      "assemblyName": "06 · East control booth",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-61",
+      "type": "block",
+      "name": "Booth exit baffle · limits outside sightlines",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        8,
+        4.8,
+        -1.6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.4,
+        2.2,
+        0.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-06 · East control booth",
+      "assemblyName": "06 · East control booth",
+      "surface": {
+        "preset": "cor-interior-panel",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-62",
+      "type": "block",
+      "name": "Booth exit baffle · limits outside sightlines",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        8,
+        4.8,
+        1.6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.4,
+        2.2,
+        0.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-06 · East control booth",
+      "assemblyName": "06 · East control booth",
+      "surface": {
+        "preset": "cor-interior-panel",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-63",
+      "type": "stair-route",
+      "name": "East booth · north stairs",
+      "interiorProp": true,
+      "route": {
+        "width": 2.4,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 6.8,
+            "rise": 2.4,
+            "steps": 15,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ],
+        "groundHeight": 2.4
+      },
+      "color": "#657d7d",
+      "position": [
+        8,
+        2.4,
+        -9.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-06 · East control booth",
+      "assemblyName": "06 · East control booth",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-64",
+      "type": "stair-route",
+      "name": "East booth · south stairs",
+      "interiorProp": true,
+      "route": {
+        "width": 2.4,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 6.8,
+            "rise": 2.4,
+            "steps": 15,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ],
+        "groundHeight": 2.4
+      },
+      "color": "#657d7d",
+      "position": [
+        8,
+        2.4,
+        9.8
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-06 · East control booth",
+      "assemblyName": "06 · East control booth",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-65",
+      "type": "block",
+      "name": "Booth footing · no space to hide underneath",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        8,
+        2.4,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        5,
+        2.25,
+        6
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-06 · East control booth",
+      "assemblyName": "06 · East control booth",
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-66",
+      "type": "interior",
+      "name": "Cooling house · west",
+      "interior": {
+        "height": 4.8,
+        "thickness": 0.3,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "cinderlock-66-room",
+            "x": -7,
+            "z": -7,
+            "w": 14,
+            "d": 14
+          }
+        ],
+        "doors": [
+          {
+            "id": "cinderlock-66-opening-0",
+            "axis": "z",
+            "line": -7,
+            "offset": 0,
+            "width": 3.4,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-66-opening-1",
+            "axis": "z",
+            "line": 7,
+            "offset": 0,
+            "width": 3.4,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-66-opening-2",
+            "axis": "x",
+            "line": 7,
+            "offset": 0,
+            "width": 3.4,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-66-opening-3",
+            "axis": "x",
+            "line": -7,
+            "offset": 0,
+            "width": 2.6,
+            "height": 3.2,
+            "kind": "door"
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#777b72",
+            "preset": "cor-floor-plates",
+            "scale": 0.5
+          },
+          "wall": {
+            "color": "#e7dfc6",
+            "preset": "cor-interior-panel",
+            "scale": 0.5
+          },
+          "outside": {
+            "color": "#a69c87",
+            "preset": "cor-concrete",
+            "scale": 0.5
+          },
+          "ceiling": {
+            "color": "#35484b",
+            "preset": "cor-ceiling-panels",
+            "scale": 0.5
+          },
+          "roof": {
+            "color": "#35484b",
+            "preset": "metal",
+            "scale": 0.5
+          }
+        }
+      },
+      "color": "#a69c87",
+      "position": [
+        -24,
+        4.8,
+        -23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works west",
+      "assemblyName": "07 · Cooling works west",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-67",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -31,
+        4.65,
+        -23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        3.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works west",
+      "assemblyName": "07 · Cooling works west",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-68",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -17,
+        4.65,
+        -23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        3.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works west",
+      "assemblyName": "07 · Cooling works west",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-69",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -24,
+        4.65,
+        -16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.4,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works west",
+      "assemblyName": "07 · Cooling works west",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-70",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -24,
+        4.65,
+        -30
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.6,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works west",
+      "assemblyName": "07 · Cooling works west",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-71",
+      "type": "block",
+      "name": "Interior cover · staggered pump cabinet",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -24,
+        4.8,
+        -23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.6,
+        2.1,
+        4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works west",
+      "assemblyName": "07 · Cooling works west",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-72",
+      "type": "block",
+      "name": "Interior low cover",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -20.2,
+        4.8,
+        -20
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        1,
+        2.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works west",
+      "assemblyName": "07 · Cooling works west",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-73",
+      "type": "roof",
+      "name": "Cooling shed roof",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -24,
+        9.84,
+        -23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        15.8,
+        3,
+        16
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Cooling house roofs",
+      "assemblyName": "D · Cooling house roofs",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-74",
+      "type": "interior",
+      "name": "Cooling house · east",
+      "interior": {
+        "height": 4.8,
+        "thickness": 0.3,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "cinderlock-74-room",
+            "x": -7,
+            "z": -7,
+            "w": 14,
+            "d": 14
+          }
+        ],
+        "doors": [
+          {
+            "id": "cinderlock-74-opening-0",
+            "axis": "z",
+            "line": -7,
+            "offset": 0,
+            "width": 3.4,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-74-opening-1",
+            "axis": "z",
+            "line": 7,
+            "offset": 0,
+            "width": 3.4,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-74-opening-2",
+            "axis": "x",
+            "line": 7,
+            "offset": 0,
+            "width": 3.4,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-74-opening-3",
+            "axis": "x",
+            "line": -7,
+            "offset": 0,
+            "width": 2.6,
+            "height": 3.2,
+            "kind": "door"
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#777b72",
+            "preset": "cor-floor-plates",
+            "scale": 0.5
+          },
+          "wall": {
+            "color": "#e7dfc6",
+            "preset": "cor-interior-panel",
+            "scale": 0.5
+          },
+          "outside": {
+            "color": "#a69c87",
+            "preset": "cor-concrete",
+            "scale": 0.5
+          },
+          "ceiling": {
+            "color": "#35484b",
+            "preset": "cor-ceiling-panels",
+            "scale": 0.5
+          },
+          "roof": {
+            "color": "#35484b",
+            "preset": "metal",
+            "scale": 0.5
+          }
+        }
+      },
+      "color": "#a69c87",
+      "position": [
+        24,
+        4.8,
+        -23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works east",
+      "assemblyName": "07 · Cooling works east",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-75",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        17,
+        4.65,
+        -23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        3.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works east",
+      "assemblyName": "07 · Cooling works east",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-76",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        31,
+        4.65,
+        -23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        3.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works east",
+      "assemblyName": "07 · Cooling works east",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-77",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        24,
+        4.65,
+        -16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.4,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works east",
+      "assemblyName": "07 · Cooling works east",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-78",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        24,
+        4.65,
+        -30
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.6,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works east",
+      "assemblyName": "07 · Cooling works east",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-79",
+      "type": "block",
+      "name": "Interior cover · staggered pump cabinet",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        24,
+        4.8,
+        -23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.6,
+        2.1,
+        4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works east",
+      "assemblyName": "07 · Cooling works east",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-80",
+      "type": "block",
+      "name": "Interior low cover",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        20.2,
+        4.8,
+        -20
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        1,
+        2.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-07 · Cooling works east",
+      "assemblyName": "07 · Cooling works east",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-81",
+      "type": "roof",
+      "name": "Cooling shed roof",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        24,
+        9.84,
+        -23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        15.8,
+        3,
+        16
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Cooling house roofs",
+      "assemblyName": "D · Cooling house roofs",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-82",
+      "type": "interior",
+      "name": "Freight warehouse · west",
+      "interior": {
+        "height": 4.2,
+        "thickness": 0.3,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "cinderlock-82-room",
+            "x": -7,
+            "z": -7,
+            "w": 14,
+            "d": 14
+          }
+        ],
+        "doors": [
+          {
+            "id": "cinderlock-82-opening-0",
+            "axis": "z",
+            "line": -7,
+            "offset": 0,
+            "width": 3.4,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-82-opening-1",
+            "axis": "z",
+            "line": 7,
+            "offset": 0,
+            "width": 3.4,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-82-opening-2",
+            "axis": "x",
+            "line": -7,
+            "offset": 0,
+            "width": 3.4,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-82-opening-3",
+            "axis": "x",
+            "line": 7,
+            "offset": 0,
+            "width": 2.6,
+            "height": 3.2,
+            "kind": "door"
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#777b72",
+            "preset": "cor-floor-plates",
+            "scale": 0.5
+          },
+          "wall": {
+            "color": "#e7dfc6",
+            "preset": "cor-interior-panel",
+            "scale": 0.5
+          },
+          "outside": {
+            "color": "#a69c87",
+            "preset": "cor-concrete",
+            "scale": 0.5
+          },
+          "ceiling": {
+            "color": "#35484b",
+            "preset": "cor-ceiling-panels",
+            "scale": 0.5
+          },
+          "roof": {
+            "color": "#35484b",
+            "preset": "metal",
+            "scale": 0.5
+          }
+        }
+      },
+      "color": "#a69c87",
+      "position": [
+        -24,
+        0,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses west",
+      "assemblyName": "08 · Freight warehouses west",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-83",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -31,
+        -0.1499999999999999,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        3.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses west",
+      "assemblyName": "08 · Freight warehouses west",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-84",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -17,
+        -0.1499999999999999,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        3.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses west",
+      "assemblyName": "08 · Freight warehouses west",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-85",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -24,
+        -0.1499999999999999,
+        16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.4,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses west",
+      "assemblyName": "08 · Freight warehouses west",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-86",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -24,
+        -0.1499999999999999,
+        30
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.6,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses west",
+      "assemblyName": "08 · Freight warehouses west",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-87",
+      "type": "block",
+      "name": "Interior cover · staggered pallet rack",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -24,
+        0,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.6,
+        2.1,
+        4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses west",
+      "assemblyName": "08 · Freight warehouses west",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-88",
+      "type": "block",
+      "name": "Interior low cover",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -20.2,
+        0,
+        20
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        1,
+        2.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses west",
+      "assemblyName": "08 · Freight warehouses west",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-89",
+      "type": "roof",
+      "name": "Freight shed roof",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -24,
+        4.44,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        15.8,
+        3,
+        16
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Warehouse roofs",
+      "assemblyName": "D · Warehouse roofs",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-90",
+      "type": "interior",
+      "name": "Freight warehouse · east",
+      "interior": {
+        "height": 4.2,
+        "thickness": 0.3,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "cinderlock-90-room",
+            "x": -7,
+            "z": -7,
+            "w": 14,
+            "d": 14
+          }
+        ],
+        "doors": [
+          {
+            "id": "cinderlock-90-opening-0",
+            "axis": "z",
+            "line": -7,
+            "offset": 0,
+            "width": 3.4,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-90-opening-1",
+            "axis": "z",
+            "line": 7,
+            "offset": 0,
+            "width": 3.4,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-90-opening-2",
+            "axis": "x",
+            "line": -7,
+            "offset": 0,
+            "width": 3.4,
+            "height": 3.2,
+            "kind": "door"
+          },
+          {
+            "id": "cinderlock-90-opening-3",
+            "axis": "x",
+            "line": 7,
+            "offset": 0,
+            "width": 2.6,
+            "height": 3.2,
+            "kind": "door"
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#777b72",
+            "preset": "cor-floor-plates",
+            "scale": 0.5
+          },
+          "wall": {
+            "color": "#e7dfc6",
+            "preset": "cor-interior-panel",
+            "scale": 0.5
+          },
+          "outside": {
+            "color": "#a69c87",
+            "preset": "cor-concrete",
+            "scale": 0.5
+          },
+          "ceiling": {
+            "color": "#35484b",
+            "preset": "cor-ceiling-panels",
+            "scale": 0.5
+          },
+          "roof": {
+            "color": "#35484b",
+            "preset": "metal",
+            "scale": 0.5
+          }
+        }
+      },
+      "color": "#a69c87",
+      "position": [
+        24,
+        0,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses east",
+      "assemblyName": "08 · Freight warehouses east",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-91",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        17,
+        -0.1499999999999999,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        3.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses east",
+      "assemblyName": "08 · Freight warehouses east",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-92",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        31,
+        -0.1499999999999999,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.14,
+        3.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses east",
+      "assemblyName": "08 · Freight warehouses east",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-93",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        24,
+        -0.1499999999999999,
+        16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3.4,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses east",
+      "assemblyName": "08 · Freight warehouses east",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-94",
+      "type": "block",
+      "name": "Door threshold · continuous footing",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        24,
+        -0.1499999999999999,
+        30
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.6,
+        0.14,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses east",
+      "assemblyName": "08 · Freight warehouses east",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-95",
+      "type": "block",
+      "name": "Interior cover · staggered pallet rack",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        24,
+        0,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.6,
+        2.1,
+        4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses east",
+      "assemblyName": "08 · Freight warehouses east",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-96",
+      "type": "block",
+      "name": "Interior low cover",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        20.2,
+        0,
+        20
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        1,
+        2.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-08 · Freight warehouses east",
+      "assemblyName": "08 · Freight warehouses east",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-97",
+      "type": "roof",
+      "name": "Freight shed roof",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        24,
+        4.44,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        15.8,
+        3,
+        16
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Warehouse roofs",
+      "assemblyName": "D · Warehouse roofs",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-98",
+      "type": "block",
+      "name": "Cooling turbine · tall line-of-sight blocker",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -7,
+        4.8,
+        -26.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        6,
+        2.8,
+        7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-09 · Cooling court",
+      "assemblyName": "09 · Cooling court",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-99",
+      "type": "block",
+      "name": "Turbine approach low cover",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -10.8,
+        4.8,
+        -18.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.2,
+        1.05,
+        1.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-09 · Cooling court",
+      "assemblyName": "09 · Cooling court",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-100",
+      "type": "block",
+      "name": "Cooling turbine · tall line-of-sight blocker",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        7,
+        4.8,
+        -26.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        6,
+        2.8,
+        7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-09 · Cooling court",
+      "assemblyName": "09 · Cooling court",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-101",
+      "type": "block",
+      "name": "Turbine approach low cover",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        10.8,
+        4.8,
+        -18.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.2,
+        1.05,
+        1.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-09 · Cooling court",
+      "assemblyName": "09 · Cooling court",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-102",
+      "type": "block",
+      "name": "North service crate · cuts the rear lane",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        4.8,
+        -29
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3,
+        2.2,
+        3
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-09 · Cooling court",
+      "assemblyName": "09 · Cooling court",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-103",
+      "type": "block",
+      "name": "A · COOLANT CONTROL · capture console",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        4.8,
+        -18.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        1.1,
+        0.8
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-09 · Cooling court",
+      "assemblyName": "09 · Cooling court",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-104",
+      "type": "block",
+      "name": "A · COOLANT CONTROL · illuminated display",
+      "interiorProp": true,
+      "color": "#67cbd4",
+      "position": [
+        0,
+        5.9,
+        -18.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.08,
+        0.12,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-09 · Cooling court",
+      "assemblyName": "09 · Cooling court",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-105",
+      "type": "antenna",
+      "name": "A · COOLANT CONTROL · locator mast",
+      "interiorProp": true,
+      "color": "#67cbd4",
+      "position": [
+        0.85,
+        4.8,
+        -18.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.45,
+        2,
+        0.45
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-09 · Cooling court",
+      "assemblyName": "09 · Cooling court",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-106",
+      "type": "block",
+      "name": "Freight container · split loading approach",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -10,
+        0,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        2.7,
+        10
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-10 · Freight yard",
+      "assemblyName": "10 · Freight yard",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-107",
+      "type": "block",
+      "name": "Freight container · split loading approach",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        10,
+        0,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        2.7,
+        10
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-10 · Freight yard",
+      "assemblyName": "10 · Freight yard",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-108",
+      "type": "block",
+      "name": "Freight entry low cover · crossfire break",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        0,
+        20.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3,
+        1.05,
+        1.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-10 · Freight yard",
+      "assemblyName": "10 · Freight yard",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-109",
+      "type": "block",
+      "name": "C · FREIGHT CONTROL · capture console",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        0,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        1.1,
+        0.8
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-10 · Freight yard",
+      "assemblyName": "10 · Freight yard",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-110",
+      "type": "block",
+      "name": "C · FREIGHT CONTROL · illuminated display",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        0,
+        1.1,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.08,
+        0.12,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-10 · Freight yard",
+      "assemblyName": "10 · Freight yard",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-111",
+      "type": "antenna",
+      "name": "C · FREIGHT CONTROL · locator mast",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        0.85,
+        0,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.45,
+        2,
+        0.45
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-10 · Freight yard",
+      "assemblyName": "10 · Freight yard",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-112",
+      "type": "block",
+      "name": "Freight outer lane cover",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -15,
+        0,
+        30.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        1.05,
+        3
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-10 · Freight yard",
+      "assemblyName": "10 · Freight yard",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-113",
+      "type": "block",
+      "name": "Freight outer lane cover",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        15,
+        0,
+        30.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        1.05,
+        3
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-10 · Freight yard",
+      "assemblyName": "10 · Freight yard",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-114",
+      "type": "block",
+      "name": "West midcourt tall cover",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -26,
+        2.4,
+        -4
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        2.2,
+        3
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-11 · West approach",
+      "assemblyName": "11 · West approach",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-115",
+      "type": "block",
+      "name": "West midcourt low cover",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -21,
+        2.4,
+        6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3,
+        1.05,
+        5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-11 · West approach",
+      "assemblyName": "11 · West approach",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-116",
+      "type": "block",
+      "name": "West hall entrance shoulder",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -16,
+        2.4,
+        -5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.5,
+        2.5,
+        4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-11 · West approach",
+      "assemblyName": "11 · West approach",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-117",
+      "type": "block",
+      "name": "East midcourt tall cover",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        26,
+        2.4,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        2.2,
+        3
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-12 · East approach",
+      "assemblyName": "12 · East approach",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-118",
+      "type": "block",
+      "name": "East midcourt low cover",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        21,
+        2.4,
+        -6
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        3,
+        1.05,
+        5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-12 · East approach",
+      "assemblyName": "12 · East approach",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-119",
+      "type": "block",
+      "name": "East hall entrance shoulder",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        16,
+        2.4,
+        5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.5,
+        2.5,
+        4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-12 · East approach",
+      "assemblyName": "12 · East approach",
+      "surface": {
+        "preset": "cor-panels",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-120",
+      "type": "roof",
+      "name": "Foundry main roof",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        10.04,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        26,
+        3,
+        26
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-121",
+      "type": "block",
+      "name": "Foundry exterior pilaster",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -12.2,
+        2.4,
+        -11.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.45,
+        7.5,
+        0.65
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-122",
+      "type": "block",
+      "name": "Foundry exterior pilaster",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -12.2,
+        2.4,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.45,
+        7.5,
+        0.65
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-123",
+      "type": "block",
+      "name": "Foundry exterior pilaster",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -12.2,
+        2.4,
+        11.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.45,
+        7.5,
+        0.65
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-124",
+      "type": "block",
+      "name": "Foundry exterior pilaster",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        12.2,
+        2.4,
+        -11.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.45,
+        7.5,
+        0.65
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-125",
+      "type": "block",
+      "name": "Foundry exterior pilaster",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        12.2,
+        2.4,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.45,
+        7.5,
+        0.65
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-126",
+      "type": "block",
+      "name": "Foundry exterior pilaster",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        12.2,
+        2.4,
+        11.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.45,
+        7.5,
+        0.65
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-127",
+      "type": "block",
+      "name": "Foundry front pilaster",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -10,
+        2.4,
+        -12.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.65,
+        7.5,
+        0.45
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-128",
+      "type": "block",
+      "name": "Foundry front pilaster",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        2.4,
+        -12.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.65,
+        7.5,
+        0.45
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-129",
+      "type": "block",
+      "name": "Foundry front pilaster",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        10,
+        2.4,
+        -12.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.65,
+        7.5,
+        0.45
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-130",
+      "type": "block",
+      "name": "Foundry front pilaster",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -10,
+        2.4,
+        12.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.65,
+        7.5,
+        0.45
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-131",
+      "type": "block",
+      "name": "Foundry front pilaster",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        2.4,
+        12.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.65,
+        7.5,
+        0.45
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-132",
+      "type": "block",
+      "name": "Foundry front pilaster",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        10,
+        2.4,
+        12.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.65,
+        7.5,
+        0.45
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-133",
+      "type": "block",
+      "name": "Foundry amber identification stripe",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        0,
+        6.5,
+        -12.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        0.5,
+        0.12
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-134",
+      "type": "block",
+      "name": "Foundry light strip",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        0,
+        9,
+        -12.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        19,
+        0.16,
+        0.14
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-135",
+      "type": "block",
+      "name": "Foundry amber identification stripe",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        0,
+        6.5,
+        12.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        0.5,
+        0.12
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-136",
+      "type": "block",
+      "name": "Foundry light strip",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        0,
+        9,
+        12.25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        19,
+        0.16,
+        0.14
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Foundry envelope",
+      "assemblyName": "D · Foundry envelope",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-137",
+      "type": "round",
+      "name": "Furnace pressure drum",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -1.8,
+        5.199999999999999,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.2,
+        2.1,
+        2.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-138",
+      "type": "dome",
+      "name": "Furnace copper cap",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -1.8,
+        7.300000000000001,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.4,
+        1,
+        2.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-139",
+      "type": "round",
+      "name": "Furnace pressure drum",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        1.8,
+        5.199999999999999,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.2,
+        2.1,
+        2.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-140",
+      "type": "dome",
+      "name": "Furnace copper cap",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        1.8,
+        7.300000000000001,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.4,
+        1,
+        2.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-141",
+      "type": "round",
+      "name": "Exhaust chimney",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -9,
+        4.8,
+        -34
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.8,
+        12,
+        1.8
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-142",
+      "type": "ring",
+      "name": "Exhaust copper collar",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -9,
+        14.8,
+        -34
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        1,
+        2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-143",
+      "type": "round",
+      "name": "Exhaust chimney",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -4,
+        4.8,
+        -34
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.8,
+        13.5,
+        1.8
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-144",
+      "type": "ring",
+      "name": "Exhaust copper collar",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -4,
+        16.3,
+        -34
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        1,
+        2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-145",
+      "type": "round",
+      "name": "Exhaust chimney",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        1,
+        4.8,
+        -34
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.8,
+        15,
+        1.8
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-146",
+      "type": "ring",
+      "name": "Exhaust copper collar",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        1,
+        17.8,
+        -34
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        1,
+        2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-147",
+      "type": "round",
+      "name": "Exhaust chimney",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        6,
+        4.8,
+        -34
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.8,
+        16.5,
+        1.8
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-148",
+      "type": "ring",
+      "name": "Exhaust copper collar",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        6,
+        19.299999999999997,
+        -34
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        1,
+        2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-149",
+      "type": "round",
+      "name": "Exhaust chimney",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        11,
+        4.8,
+        -34
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.8,
+        18,
+        1.8
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-150",
+      "type": "ring",
+      "name": "Exhaust copper collar",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        11,
+        20.799999999999997,
+        -34
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        1,
+        2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Furnace machinery",
+      "assemblyName": "D · Furnace machinery",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-151",
+      "type": "round",
+      "name": "Turbine top fan",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -7,
+        7.6,
+        -26.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        0.45,
+        4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Cooling machinery",
+      "assemblyName": "D · Cooling machinery",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-152",
+      "type": "gear",
+      "name": "Turbine rotor",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -7,
+        8.06,
+        -26.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        0.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Cooling machinery",
+      "assemblyName": "D · Cooling machinery",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-153",
+      "type": "block",
+      "name": "Cooling status light",
+      "interiorProp": true,
+      "color": "#67cbd4",
+      "position": [
+        -7,
+        7.65,
+        -22.95
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        0.16,
+        0.15
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Cooling machinery",
+      "assemblyName": "D · Cooling machinery",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-154",
+      "type": "round",
+      "name": "Turbine top fan",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        7,
+        7.6,
+        -26.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        0.45,
+        4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Cooling machinery",
+      "assemblyName": "D · Cooling machinery",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-155",
+      "type": "gear",
+      "name": "Turbine rotor",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        7,
+        8.06,
+        -26.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        0.5,
+        2.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Cooling machinery",
+      "assemblyName": "D · Cooling machinery",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-156",
+      "type": "block",
+      "name": "Cooling status light",
+      "interiorProp": true,
+      "color": "#67cbd4",
+      "position": [
+        7,
+        7.65,
+        -22.95
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        0.16,
+        0.15
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Cooling machinery",
+      "assemblyName": "D · Cooling machinery",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-157",
+      "type": "block",
+      "name": "Gantry leg · outside the central lane",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -13,
+        0,
+        24
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.5,
+        7,
+        0.6
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Freight gantry",
+      "assemblyName": "D · Freight gantry",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-158",
+      "type": "block",
+      "name": "Gantry leg · outside the central lane",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        13,
+        0,
+        24
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.5,
+        7,
+        0.6
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Freight gantry",
+      "assemblyName": "D · Freight gantry",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-159",
+      "type": "block",
+      "name": "Gantry overhead girder",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        0,
+        7,
+        24
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        27,
+        0.6,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Freight gantry",
+      "assemblyName": "D · Freight gantry",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-160",
+      "type": "block",
+      "name": "Gantry suspended hoist",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        5.8,
+        24
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        1.3
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Freight gantry",
+      "assemblyName": "D · Freight gantry",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-161",
+      "type": "block",
+      "name": "Container corner casting",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -11.8,
+        0,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.15,
+        2.85,
+        10.1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Freight gantry",
+      "assemblyName": "D · Freight gantry",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-162",
+      "type": "block",
+      "name": "Container corner casting",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -8.2,
+        0,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.15,
+        2.85,
+        10.1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Freight gantry",
+      "assemblyName": "D · Freight gantry",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-163",
+      "type": "block",
+      "name": "Container corner casting",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        8.2,
+        0,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.15,
+        2.85,
+        10.1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Freight gantry",
+      "assemblyName": "D · Freight gantry",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-164",
+      "type": "block",
+      "name": "Container corner casting",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        11.8,
+        0,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.15,
+        2.85,
+        10.1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Freight gantry",
+      "assemblyName": "D · Freight gantry",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-165",
+      "type": "slab",
+      "name": "Cross-lane floor stripe",
+      "interiorProp": true,
+      "color": "#67cbd4",
+      "position": [
+        -15,
+        4.805,
+        -20.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.2,
+        0.05,
+        0.22
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-166",
+      "type": "block",
+      "name": "Alley lamp pole",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -15.6,
+        4.8,
+        -21.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.12,
+        3.5,
+        0.12
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-167",
+      "type": "block",
+      "name": "Alley light strip",
+      "interiorProp": true,
+      "color": "#e7dfc6",
+      "position": [
+        -15.6,
+        8.3,
+        -21.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.6,
+        0.25,
+        0.35
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-168",
+      "type": "slab",
+      "name": "Cross-lane floor stripe",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        -15,
+        0.004999999999999893,
+        20.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.2,
+        0.05,
+        0.22
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-169",
+      "type": "block",
+      "name": "Alley lamp pole",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -15.6,
+        0,
+        21.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.12,
+        3.5,
+        0.12
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-170",
+      "type": "block",
+      "name": "Alley light strip",
+      "interiorProp": true,
+      "color": "#e7dfc6",
+      "position": [
+        -15.6,
+        3.5,
+        21.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.6,
+        0.25,
+        0.35
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-171",
+      "type": "slab",
+      "name": "Cross-lane floor stripe",
+      "interiorProp": true,
+      "color": "#67cbd4",
+      "position": [
+        15,
+        4.805,
+        -20.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.2,
+        0.05,
+        0.22
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-172",
+      "type": "block",
+      "name": "Alley lamp pole",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        15.6,
+        4.8,
+        -21.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.12,
+        3.5,
+        0.12
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-173",
+      "type": "block",
+      "name": "Alley light strip",
+      "interiorProp": true,
+      "color": "#e7dfc6",
+      "position": [
+        15.6,
+        8.3,
+        -21.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.6,
+        0.25,
+        0.35
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-174",
+      "type": "slab",
+      "name": "Cross-lane floor stripe",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        15,
+        0.004999999999999893,
+        20.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.2,
+        0.05,
+        0.22
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-175",
+      "type": "block",
+      "name": "Alley lamp pole",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        15.6,
+        0,
+        21.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.12,
+        3.5,
+        0.12
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-176",
+      "type": "block",
+      "name": "Alley light strip",
+      "interiorProp": true,
+      "color": "#e7dfc6",
+      "position": [
+        15.6,
+        3.5,
+        21.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.6,
+        0.25,
+        0.35
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-177",
+      "type": "slab",
+      "name": "Team-side lane entry stripe",
+      "interiorProp": true,
+      "color": "#67cbd4",
+      "position": [
+        -34,
+        4.805,
+        -23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.24,
+        0.05,
+        3
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-178",
+      "type": "slab",
+      "name": "Team-side lane entry stripe",
+      "interiorProp": true,
+      "color": "#67cbd4",
+      "position": [
+        -34,
+        0.004999999999999893,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.24,
+        0.05,
+        3
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-179",
+      "type": "slab",
+      "name": "Team-side lane entry stripe",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        34,
+        4.805,
+        -23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.24,
+        0.05,
+        3
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-180",
+      "type": "slab",
+      "name": "Team-side lane entry stripe",
+      "interiorProp": true,
+      "color": "#e3b45e",
+      "position": [
+        34,
+        0.004999999999999893,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.24,
+        0.05,
+        3
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-181",
+      "type": "block",
+      "name": "Perimeter reinforcement",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -40,
+        0,
+        -36.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        8.6,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-182",
+      "type": "block",
+      "name": "Perimeter reinforcement",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -16,
+        0,
+        -36.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        8.6,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-183",
+      "type": "block",
+      "name": "Perimeter reinforcement",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        16,
+        0,
+        -36.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        8.6,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-184",
+      "type": "block",
+      "name": "Perimeter reinforcement",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        40,
+        0,
+        -36.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        8.6,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-185",
+      "type": "block",
+      "name": "Perimeter reinforcement",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -40,
+        0,
+        36.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        8.6,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-186",
+      "type": "block",
+      "name": "Perimeter reinforcement",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        -16,
+        0,
+        36.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        8.6,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-187",
+      "type": "block",
+      "name": "Perimeter reinforcement",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        16,
+        0,
+        36.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        8.6,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-188",
+      "type": "block",
+      "name": "Perimeter reinforcement",
+      "interiorProp": true,
+      "color": "#657d7d",
+      "position": [
+        40,
+        0,
+        36.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        8.6,
+        1.2
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Wayfinding and services",
+      "assemblyName": "D · Wayfinding and services",
+      "surface": {
+        "preset": "cor-ribs",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-189",
+      "type": "block",
+      "name": "Offsite factory mass",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -57,
+        4.8,
+        -20
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        12,
+        17,
+        18
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Offsite factory skyline",
+      "assemblyName": "D · Offsite factory skyline",
+      "surface": {
+        "preset": "cor-slots",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-190",
+      "type": "roof",
+      "name": "Offsite factory roof",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -57,
+        21.839999999999996,
+        -20
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        13,
+        3,
+        19
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Offsite factory skyline",
+      "assemblyName": "D · Offsite factory skyline",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-191",
+      "type": "block",
+      "name": "Offsite factory mass",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        57,
+        0,
+        19
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        12,
+        19,
+        18
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Offsite factory skyline",
+      "assemblyName": "D · Offsite factory skyline",
+      "surface": {
+        "preset": "cor-slots",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-192",
+      "type": "roof",
+      "name": "Offsite factory roof",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        57,
+        19.04,
+        19
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        13,
+        3,
+        19
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Offsite factory skyline",
+      "assemblyName": "D · Offsite factory skyline",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-193",
+      "type": "block",
+      "name": "Offsite factory mass",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -27,
+        4.8,
+        -46
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        22,
+        14,
+        12
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Offsite factory skyline",
+      "assemblyName": "D · Offsite factory skyline",
+      "surface": {
+        "preset": "cor-slots",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-194",
+      "type": "roof",
+      "name": "Offsite factory roof",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        -27,
+        18.839999999999996,
+        -46
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        23,
+        3,
+        13
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Offsite factory skyline",
+      "assemblyName": "D · Offsite factory skyline",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-195",
+      "type": "block",
+      "name": "Offsite factory mass",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        28,
+        0,
+        46
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        24,
+        11,
+        12
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Offsite factory skyline",
+      "assemblyName": "D · Offsite factory skyline",
+      "surface": {
+        "preset": "cor-slots",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-196",
+      "type": "roof",
+      "name": "Offsite factory roof",
+      "interiorProp": true,
+      "color": "#a75435",
+      "position": [
+        28,
+        11.04,
+        46
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        25,
+        3,
+        13
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-D · Offsite factory skyline",
+      "assemblyName": "D · Offsite factory skyline",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-197",
+      "type": "character-reference",
+      "name": "START HERE · west workshop",
+      "interiorProp": true,
+      "color": "#a69c87",
+      "position": [
+        -42,
+        2.4,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-13 · Player reference",
+      "assemblyName": "13 · Player reference",
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-198",
+      "type": "stair-route",
+      "name": "Team cooling ramp · upper terrace",
+      "interiorProp": true,
+      "route": {
+        "width": 3.2,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "groundHeight": -0.8000000000000003,
+        "cutThroughSolids": true,
+        "cutHeight": 3,
+        "segments": [
+          {
+            "kind": "ramp",
+            "run": 8,
+            "rise": 2.4,
+            "steps": 1,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ]
+      },
+      "color": "#657d7d",
+      "position": [
+        -42,
+        2.4,
+        -8
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-14 · Grade connections",
+      "assemblyName": "14 · Grade connections",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-199",
+      "type": "stair-route",
+      "name": "Team freight ramp · sunken yard",
+      "interiorProp": true,
+      "route": {
+        "width": 3.2,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "groundHeight": -0.8000000000000003,
+        "cutThroughSolids": true,
+        "cutHeight": 3,
+        "segments": [
+          {
+            "kind": "ramp",
+            "run": 8,
+            "rise": -2.4,
+            "steps": 1,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ]
+      },
+      "color": "#657d7d",
+      "position": [
+        -42,
+        2.4,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-14 · Grade connections",
+      "assemblyName": "14 · Grade connections",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-200",
+      "type": "stair-route",
+      "name": "Team cooling ramp · upper terrace",
+      "interiorProp": true,
+      "route": {
+        "width": 3.2,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "groundHeight": -0.8000000000000003,
+        "cutThroughSolids": true,
+        "cutHeight": 3,
+        "segments": [
+          {
+            "kind": "ramp",
+            "run": 8,
+            "rise": 2.4,
+            "steps": 1,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ]
+      },
+      "color": "#657d7d",
+      "position": [
+        42,
+        2.4,
+        -8
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-14 · Grade connections",
+      "assemblyName": "14 · Grade connections",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-201",
+      "type": "stair-route",
+      "name": "Team freight ramp · sunken yard",
+      "interiorProp": true,
+      "route": {
+        "width": 3.2,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "groundHeight": -0.8000000000000003,
+        "cutThroughSolids": true,
+        "cutHeight": 3,
+        "segments": [
+          {
+            "kind": "ramp",
+            "run": 8,
+            "rise": -2.4,
+            "steps": 1,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ]
+      },
+      "color": "#657d7d",
+      "position": [
+        42,
+        2.4,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-14 · Grade connections",
+      "assemblyName": "14 · Grade connections",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-202",
+      "type": "stair-route",
+      "name": "Cross-lane cooling stairs",
+      "interiorProp": true,
+      "route": {
+        "width": 3.2,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "groundHeight": -0.8000000000000003,
+        "cutThroughSolids": true,
+        "cutHeight": 3,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 10,
+            "rise": 2.4,
+            "steps": 15,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ]
+      },
+      "color": "#657d7d",
+      "position": [
+        -14.4,
+        2.4,
+        -8
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-14 · Grade connections",
+      "assemblyName": "14 · Grade connections",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-203",
+      "type": "stair-route",
+      "name": "Cross-lane freight stairs",
+      "interiorProp": true,
+      "route": {
+        "width": 3.2,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "groundHeight": -0.8000000000000003,
+        "cutThroughSolids": true,
+        "cutHeight": 3,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 10,
+            "rise": -2.4,
+            "steps": 15,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ]
+      },
+      "color": "#657d7d",
+      "position": [
+        -14.4,
+        2.4,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-14 · Grade connections",
+      "assemblyName": "14 · Grade connections",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-204",
+      "type": "stair-route",
+      "name": "Cross-lane cooling stairs",
+      "interiorProp": true,
+      "route": {
+        "width": 3.2,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "groundHeight": -0.8000000000000003,
+        "cutThroughSolids": true,
+        "cutHeight": 3,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 10,
+            "rise": 2.4,
+            "steps": 15,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ]
+      },
+      "color": "#657d7d",
+      "position": [
+        14.4,
+        2.4,
+        -8
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-14 · Grade connections",
+      "assemblyName": "14 · Grade connections",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-205",
+      "type": "stair-route",
+      "name": "Cross-lane freight stairs",
+      "interiorProp": true,
+      "route": {
+        "width": 3.2,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "groundHeight": -0.8000000000000003,
+        "cutThroughSolids": true,
+        "cutHeight": 3,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 10,
+            "rise": -2.4,
+            "steps": 15,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ]
+      },
+      "color": "#657d7d",
+      "position": [
+        14.4,
+        2.4,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-14 · Grade connections",
+      "assemblyName": "14 · Grade connections",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-206",
+      "type": "stair-route",
+      "name": "Foundry north entry stairs",
+      "interiorProp": true,
+      "route": {
+        "width": 3,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "groundHeight": -0.8000000000000003,
+        "cutThroughSolids": true,
+        "cutHeight": 3,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 8,
+            "rise": 2.4,
+            "steps": 15,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ]
+      },
+      "color": "#657d7d",
+      "position": [
+        -6,
+        2.4,
+        -12
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-14 · Grade connections",
+      "assemblyName": "14 · Grade connections",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-207",
+      "type": "stair-route",
+      "name": "Foundry south entry stairs",
+      "interiorProp": true,
+      "route": {
+        "width": 3,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "groundHeight": -0.8000000000000003,
+        "cutThroughSolids": true,
+        "cutHeight": 3,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 8,
+            "rise": -2.4,
+            "steps": 15,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ]
+      },
+      "color": "#657d7d",
+      "position": [
+        -6,
+        2.4,
+        12
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-14 · Grade connections",
+      "assemblyName": "14 · Grade connections",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-208",
+      "type": "stair-route",
+      "name": "Foundry north entry stairs",
+      "interiorProp": true,
+      "route": {
+        "width": 3,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "groundHeight": -0.8000000000000003,
+        "cutThroughSolids": true,
+        "cutHeight": 3,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 8,
+            "rise": 2.4,
+            "steps": 15,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ]
+      },
+      "color": "#657d7d",
+      "position": [
+        6,
+        2.4,
+        -12
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-14 · Grade connections",
+      "assemblyName": "14 · Grade connections",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-209",
+      "type": "stair-route",
+      "name": "Foundry south entry stairs",
+      "interiorProp": true,
+      "route": {
+        "width": 3,
+        "thickness": 0.3,
+        "gap": 0.2,
+        "groundHeight": -0.8000000000000003,
+        "cutThroughSolids": true,
+        "cutHeight": 3,
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 8,
+            "rise": -2.4,
+            "steps": 15,
+            "turn": "straight",
+            "fillToGround": true,
+            "railing": {
+              "style": "posts",
+              "height": 1.1,
+              "color": "#35484b"
+            }
+          }
+        ]
+      },
+      "color": "#657d7d",
+      "position": [
+        6,
+        2.4,
+        12
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-14 · Grade connections",
+      "assemblyName": "14 · Grade connections",
+      "surface": {
+        "preset": "cor-floor-plates",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-210",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -46,
+        4.8,
+        -14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-211",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -28.2,
+        4.8,
+        -14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        23.6,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-212",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -10.2,
+        4.8,
+        -14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.4,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-213",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        4.8,
+        -14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        8,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-214",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        10.2,
+        4.8,
+        -14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.4,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-215",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        28.2,
+        4.8,
+        -14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        23.6,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-216",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        46,
+        4.8,
+        -14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-217",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -46,
+        2.4,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-218",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -28.2,
+        2.4,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        23.6,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-219",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        -10.2,
+        2.4,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.4,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-220",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        0,
+        2.4,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        8,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-221",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        10.2,
+        2.4,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4.4,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-222",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        28.2,
+        2.4,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        23.6,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    },
+    {
+      "id": "cinderlock-223",
+      "type": "block",
+      "name": "Terrace edge guard · separates grades",
+      "interiorProp": true,
+      "color": "#35484b",
+      "position": [
+        46,
+        2.4,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        1.1,
+        0.25
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "cinderlock-15 · Terrace retaining guards",
+      "assemblyName": "15 · Terrace retaining guards",
+      "surface": {
+        "preset": "metal",
+        "scale": 0.5
+      }
+    }
+  ]
+}

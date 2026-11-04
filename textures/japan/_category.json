@@ -1,0 +1,10 @@
+{
+  "name": "Medieval Japan",
+  "order": 13,
+  "preview": [
+    "castle-stone",
+    "roof-tiles",
+    "wood",
+    "slate"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "ja-vjun-floor",
+  "name": "Vjun · recessed floor tiles",
+  "game": "Jedi Academy",
+  "roughness": 0.8,
+  "metalness": 0.15,
+  "order": 25,
+  "themes": [
+    "Jedi Academy"
+  ]
+}

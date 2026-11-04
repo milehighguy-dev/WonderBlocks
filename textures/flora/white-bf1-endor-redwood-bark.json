@@ -1,0 +1,14 @@
+{
+  "id": "white-bf1-endor-redwood-bark",
+  "name": "White · furrowed bark",
+  "sourceId": "bf1-endor-redwood-bark",
+  "sourceGame": "SWBF1",
+  "game": "Tintable whites",
+  "group": "Flora",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 7,
+  "themes": [
+    "Tintable whites"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "highway-scifi-lanes",
+  "name": "Sci-fi road · cyan guide line",
+  "roughness": 0.65,
+  "metalness": 0.25,
+  "order": 64,
+  "themes": [
+    "Highway",
+    "General"
+  ]
+}

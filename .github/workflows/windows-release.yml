@@ -1,0 +1,74 @@
+name: Windows desktop
+
+on:
+  push:
+    tags: ['v[0-9]*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref_type != 'tag' }}
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run desktop:check-version
+      - name: Unit tests
+        run: pnpm exec node tools/run-tests.mjs unit
+      - name: Build installer and portable ZIP
+        run: pnpm run desktop:dist
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      - name: Test the packaged executable
+        shell: pwsh
+        run: |
+          $zip = Get-ChildItem dist/Wonderblocks-*-windows-x64.zip | Select-Object -First 1
+          pnpm run test:desktop -- $zip.FullName
+      - run: pnpm run desktop:checksums
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Wonderblocks-windows-x64
+          if-no-files-found: error
+          path: |
+            dist/Wonderblocks-*.exe
+            dist/Wonderblocks-*.zip
+            dist/SHA256SUMS.txt
+
+  publish:
+    if: github.event_name == 'push' && github.ref_type == 'tag'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Wonderblocks-windows-x64
+          path: release
+      - name: Publish tested downloads
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          flags=()
+          if [[ "$RELEASE_TAG" == *-* ]]; then flags+=(--prerelease); fi
+          if ! gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release create "$RELEASE_TAG" --verify-tag --draft --title "Wonderblocks $RELEASE_TAG" --generate-notes "${flags[@]}"
+          fi
+          gh release upload "$RELEASE_TAG" release/* --clobber
+          gh release edit "$RELEASE_TAG" --draft=false

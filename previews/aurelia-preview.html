@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aurelia Gate · reactor harbor</title>
+<script type="importmap">{"imports":{"three":"../vendor/three.module.js"}}</script>
+<style>
+body{margin:0;overflow:hidden;background:#bdccd0;color:#e7f1ec;font:14px system-ui}canvas{display:block}header,footer{position:absolute;z-index:2;background:#182b34f2;border:1px solid #54757d;border-radius:12px;padding:14px}header{top:16px;left:16px;right:16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}h1{font-size:18px;margin:0 auto 0 0}button,a{font:inherit;background:#29424b;border:1px solid #66848a;border-radius:7px;padding:9px 12px;color:inherit;cursor:pointer;text-decoration:none}button.active{background:#a6d7bd;color:#163b37}footer{bottom:16px;left:16px;right:16px;max-width:620px;line-height:1.5}#hint{color:#b8cccd;font-size:12px;margin-top:6px}.marker{position:absolute;z-index:1;pointer-events:none;background:#18333fe8;border:1px solid #94c7ba;padding:5px 9px;border-radius:6px;font-size:12px;transform:translate(-50%,-130%);white-space:nowrap}
+</style>
+</head>
+<body>
+<header><h1>Aurelia Gate</h1><button data-view="overview">Skyline</button><button data-view="plaza">Core plaza</button><button data-view="station">Station</button><button data-view="harbor">Harbor</button><button data-view="skyway">Skyway</button><a href="../index.html?demo=aurelia">Edit scene</a></header>
+<footer><span id="caption" role="status">Building Aurelia Gate…</span><div id="hint">Drag to orbit · scroll to zoom · a complete editable city scene.</div></footer>
+<script type="module">
+import('./aurelia-preview.js').catch(error=>{
+ document.querySelector('#caption').textContent='Could not load Aurelia Gate: '+error.message;
+ console.error(error);
+});
+</script>
+</body></html>

@@ -1,0 +1,38 @@
+{
+  "yavin-leaves": {
+    "width": 256,
+    "height": 256,
+    "source": "YAV/msh/PC/yav_leaf.tga"
+  },
+  "yavin-fine-leaves": {
+    "width": 256,
+    "height": 256,
+    "source": "YAV/msh/PC/yav_leaf2.tga"
+  },
+  "dagobah-canopy": {
+    "width": 256,
+    "height": 256,
+    "source": "DAG/msh/Dag1_vine.tga"
+  },
+  "dagobah-vines": {
+    "width": 256,
+    "height": 256,
+    "source": "DAG/msh/dag1_foilagevine.tga"
+  },
+  "endor-leaves": {
+    "width": 256,
+    "height": 256,
+    "source": "END/msh/PC/end_leaf2.tga"
+  },
+  "endor-redwood-needles": {
+    "width": 128,
+    "height": 128,
+    "source": "END/msh/end_prop_tree_combi01.tga",
+    "crop": [
+      128,
+      0,
+      256,
+      128
+    ]
+  }
+}

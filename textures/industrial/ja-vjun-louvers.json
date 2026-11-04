@@ -1,0 +1,11 @@
+{
+  "id": "ja-vjun-louvers",
+  "name": "Vjun · metal louvers",
+  "game": "Jedi Academy",
+  "roughness": 0.7,
+  "metalness": 0.25,
+  "order": 26,
+  "themes": [
+    "Jedi Academy"
+  ]
+}

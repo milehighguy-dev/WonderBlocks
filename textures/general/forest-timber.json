@@ -1,0 +1,10 @@
+{
+  "id": "forest-timber",
+  "name": "Village timber",
+  "roughness": 0.85,
+  "metalness": 0,
+  "order": 112,
+  "themes": [
+    "General"
+  ]
+}

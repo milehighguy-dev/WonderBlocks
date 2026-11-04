@@ -1,0 +1,11 @@
+{
+  "id": "kotor-kashyyyk-hardwood",
+  "name": "Kashyyyk · reddish hardwood",
+  "game": "KOTOR",
+  "roughness": 0.85,
+  "metalness": 0,
+  "order": 47,
+  "themes": [
+    "KOTOR"
+  ]
+}

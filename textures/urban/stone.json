@@ -1,0 +1,12 @@
+{
+  "id": "stone",
+  "name": "Cut limestone",
+  "roughness": 0.95,
+  "metalness": 0,
+  "order": 107,
+  "themes": [
+    "General",
+    "Classical",
+    "New York"
+  ]
+}

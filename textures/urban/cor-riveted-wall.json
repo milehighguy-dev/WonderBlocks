@@ -1,0 +1,10 @@
+{
+  "id": "cor-riveted-wall",
+  "name": "Riveted wall panels",
+  "roughness": 0.75,
+  "metalness": 0.18,
+  "order": 83,
+  "themes": [
+    "Coruscant"
+  ]
+}

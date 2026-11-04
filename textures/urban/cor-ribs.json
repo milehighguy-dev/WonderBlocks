@@ -1,0 +1,10 @@
+{
+  "id": "cor-ribs",
+  "name": "Coruscant ribbed cladding",
+  "roughness": 0.7,
+  "metalness": 0.18,
+  "order": 97,
+  "themes": [
+    "Coruscant"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "kotor-korriban-carved-stone",
+  "name": "Korriban · carved stone panels",
+  "game": "KOTOR",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 45,
+  "themes": [
+    "KOTOR"
+  ]
+}

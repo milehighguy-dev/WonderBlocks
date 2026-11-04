@@ -1,0 +1,11 @@
+{
+  "id": "ja-narshaddaa-panels",
+  "name": "Nar Shaddaa · angular panels",
+  "game": "Jedi Academy",
+  "roughness": 0.8,
+  "metalness": 0.15,
+  "order": 28,
+  "themes": [
+    "Jedi Academy"
+  ]
+}

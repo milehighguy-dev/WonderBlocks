@@ -1,0 +1,10 @@
+{
+  "id": "yavin-bridge-stone",
+  "name": "Yavin · temple bridge stone",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 54,
+  "themes": [
+    "Yavin"
+  ]
+}

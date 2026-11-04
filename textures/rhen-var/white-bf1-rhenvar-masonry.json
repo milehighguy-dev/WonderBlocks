@@ -1,0 +1,13 @@
+{
+  "id": "white-bf1-rhenvar-masonry",
+  "name": "White · weathered masonry",
+  "sourceId": "bf1-rhenvar-masonry",
+  "sourceGame": "SWBF1",
+  "game": "Tintable whites",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 0,
+  "themes": [
+    "Tintable whites"
+  ]
+}

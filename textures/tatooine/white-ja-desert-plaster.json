@@ -1,0 +1,13 @@
+{
+  "id": "white-ja-desert-plaster",
+  "name": "White · plaster",
+  "sourceId": "ja-desert-plaster",
+  "sourceGame": "Jedi Academy",
+  "game": "Tintable whites",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 2,
+  "themes": [
+    "Tintable whites"
+  ]
+}

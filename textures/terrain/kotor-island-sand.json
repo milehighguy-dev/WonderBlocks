@@ -1,0 +1,11 @@
+{
+  "id": "kotor-island-sand",
+  "name": "Island · pale rippled sand",
+  "game": "KOTOR",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 48,
+  "themes": [
+    "KOTOR"
+  ]
+}

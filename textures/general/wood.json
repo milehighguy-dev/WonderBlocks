@@ -1,0 +1,11 @@
+{
+  "id": "wood",
+  "name": "Wood grain",
+  "roughness": 0.7,
+  "metalness": 0,
+  "order": 109,
+  "themes": [
+    "General",
+    "Medieval Japan"
+  ]
+}

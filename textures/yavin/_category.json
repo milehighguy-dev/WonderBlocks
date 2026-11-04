@@ -1,0 +1,10 @@
+{
+  "name": "Yavin",
+  "order": 4,
+  "preview": [
+    "yavin-stone",
+    "yavin-floor",
+    "yavin-wall",
+    "ja-yavin-dark-stone"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "bf1-geonosis-rock",
+  "name": "Geonosis · red rock",
+  "game": "SWBF1",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 15,
+  "themes": [
+    "SWBF1"
+  ]
+}

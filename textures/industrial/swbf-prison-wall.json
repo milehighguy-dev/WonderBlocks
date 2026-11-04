@@ -1,0 +1,10 @@
+{
+  "id": "swbf-prison-wall",
+  "name": "Prison corridor panels",
+  "roughness": 0.8,
+  "metalness": 0,
+  "order": 65,
+  "themes": [
+    "Hallway references"
+  ]
+}

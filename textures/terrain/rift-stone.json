@@ -1,0 +1,10 @@
+{
+  "id": "rift-stone",
+  "name": "Weathered canyon stone",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 118,
+  "themes": [
+    "General"
+  ]
+}

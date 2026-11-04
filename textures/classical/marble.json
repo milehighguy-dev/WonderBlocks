@@ -1,0 +1,11 @@
+{
+  "id": "marble",
+  "name": "Veined marble",
+  "roughness": 0.28,
+  "metalness": 0.02,
+  "order": 105,
+  "themes": [
+    "General",
+    "Classical"
+  ]
+}

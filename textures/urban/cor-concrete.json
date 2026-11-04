@@ -1,0 +1,10 @@
+{
+  "id": "cor-concrete",
+  "name": "Pale structural concrete",
+  "roughness": 0.7,
+  "metalness": 0.18,
+  "order": 93,
+  "themes": [
+    "Coruscant"
+  ]
+}

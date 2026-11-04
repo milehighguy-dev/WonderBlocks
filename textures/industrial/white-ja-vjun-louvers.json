@@ -1,0 +1,13 @@
+{
+  "id": "white-ja-vjun-louvers",
+  "name": "White · metal louvers",
+  "sourceId": "ja-vjun-louvers",
+  "sourceGame": "Jedi Academy",
+  "game": "Tintable whites",
+  "roughness": 0.7,
+  "metalness": 0.25,
+  "order": 5,
+  "themes": [
+    "Tintable whites"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "mos-worn-stucco",
+  "name": "Mos Eisley · worn stucco",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 59,
+  "themes": [
+    "Mos Eisley"
+  ]
+}

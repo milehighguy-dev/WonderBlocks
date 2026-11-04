@@ -1,0 +1,10 @@
+{
+  "id": "cor-ceiling-panels",
+  "name": "Rounded ceiling panels",
+  "roughness": 0.75,
+  "metalness": 0.18,
+  "order": 86,
+  "themes": [
+    "Coruscant"
+  ]
+}

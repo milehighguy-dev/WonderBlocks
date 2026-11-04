@@ -1,0 +1,35 @@
+import * as T from '../../vendor/three.module.js';
+import {landingRailEdges,hallwayRibFits} from './railings.js';
+import {angledTurn,angledLanding} from './angled-landing.js';
+import {applySurface} from '../materials/surfaces.js';
+import {TANTIVE_RIB} from './tantive-rib-profile.js';
+// corridor_01_a: 7.00414 across, floor Z=3.00935, crown Z=8.
+// Distance inward from the widest wall and height above the source floor.
+export const TANTIVE_WALL=[[1.00414,0],[.74924,.13081],[.49908,.32412],[.2324,.59698],[0,.99065],[0,3.99828],[.2324,4.39471],[.49908,4.66756],[.74924,4.86087],[1.00414,4.99065]];
+export function buildTantiveHallways(group,part,layout){
+ const materials=new Map(),edges=[],matrix=new T.Matrix4().compose(new T.Vector3(...part.position),new T.Quaternion().setFromEuler(new T.Euler(...part.rotation)),new T.Vector3(...part.scale)),inverse=matrix.clone().invert();
+ const world=(l,x,y,z)=>new T.Vector3(l.start[0]+Math.cos(l.heading)*x+Math.sin(l.heading)*z,l.start[1]+y,l.start[2]-Math.sin(l.heading)*x+Math.cos(l.heading)*z).applyMatrix4(matrix);
+ for(const [index,l] of layout.entries()){const h=l.segment.hallway;if(h?.style!=='tantive')continue;const s=l.segment,raw=s.kind==='landing'||!s.rise?landingRailEdges(part.route,l,index):[-1,1].map(sign=>({a:[sign*l.width/2,0],b:[sign*l.width/2,s.run],out:[sign,0]}));for(const e of raw){const out=e.out||(e.a[0]===e.b[0]?[e.side==='left'?1:-1,0]:[0,e.a[1]===0?-1:1]),a=world(l,e.a[0],s.kind==='landing'?0:s.rise*e.a[1]/s.run,e.a[1]),b=world(l,e.b[0],s.kind==='landing'?0:s.rise*e.b[1]/s.run,e.b[1]),normal=world(l,out[0],0,out[1]).sub(world(l,0,0,0)).normalize(),width=world(l,l.width,0,0).distanceTo(world(l,0,0,0));edges.push({a,b,normal,h,l,index,width});}}
+ const key=p=>[p.x,p.y,p.z].map(v=>v.toFixed(5)).join(','),joins=new Map();for(const e of edges)for(const end of ['a','b']){const k=key(e[end]);if(!joins.has(k))joins.set(k,[]);joins.get(k).push(e);}
+ const distance=(e,bevel,inner)=>bevel*e.width/7.00414+(inner?e.h.thickness:0);
+ function point(e,end,bevel,height,inner){const source=e[end],p=source.clone().addScaledVector(e.normal,-distance(e,bevel,inner)),other=(joins.get(key(source))||[]).find(q=>q!==e);if(other){const q=source.clone().addScaledVector(other.normal,-distance(other,bevel,inner)),u=e.b.clone().sub(e.a),v=other.b.clone().sub(other.a),den=u.x*v.z-u.z*v.x;if(Math.abs(den)>1e-8){const t=((q.x-p.x)*v.z-(q.z-p.z)*v.x)/den;p.x+=u.x*t;p.z+=u.z*t;}}p.y=source.y+height*e.h.height/4.99065+(!inner&&height===4.99065?e.h.thickness:0);return p;}
+ function mesh(points,h,index,ceiling=false,kind='shell'){if(!points.length)return;const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(points.flatMap(p=>p.clone().applyMatrix4(inverse).toArray()),3));g.computeVertexNormals();const materialKey=JSON.stringify([h.color,h.surface]);if(!materials.has(materialKey))materials.set(materialKey,new T.MeshStandardMaterial({color:h.color,roughness:.65}));const material=materials.get(materialKey),m=new T.Mesh(g,material),holder=new T.Group();m.userData={routeSegment:index,hallway:true,hallwayCeiling:ceiling,tantivePart:kind};m.castShadow=m.receiveShadow=true;holder.add(m);applySurface(holder,material,{...part,surface:h.surface});group.add(m);}
+ for(const e of edges){const wall=[],upper=[],profile=TANTIVE_WALL;const quad=(out,pts,expected)=>{if(pts[1].clone().sub(pts[0]).cross(pts[2].clone().sub(pts[0])).dot(expected)<0)pts.reverse();for(const i of [0,1,2,0,2,3])out.push(pts[i]);};
+ for(let i=0;i<profile.length-1;i++){const high=i>=5;if(high&&!e.h.ceiling)continue;const out=high?upper:wall;for(const inner of [false,true]){const a=profile[i],b=profile[i+1],pts=[point(e,'a',...a,inner),point(e,'b',...a,inner),point(e,'b',...b,inner),point(e,'a',...b,inner)];quad(out,pts,e.normal.clone().multiplyScalar(inner?-1:1));}
+ for(const end of ['a','b']){const a=profile[i],b=profile[i+1];quad(out,[point(e,end,...a,true),point(e,end,...a,false),point(e,end,...b,false),point(e,end,...b,true)],e.b.clone().sub(e.a).multiplyScalar(end==='a'?-1:1));}}
+ mesh(wall,e.h,e.index);mesh(upper,e.h,e.index,true);
+ }
+ for(const [index,l] of layout.entries()){const h=l.segment.hallway;if(h?.style!=='tantive')continue;const s=l.segment;
+ if(h.ceiling){const returning=s.turn.startsWith('return-'),shift=returning?(s.turn==='return-right'?-1:1)*(l.width/2+l.nextWidth/2+(s.gap??part.route.gap)):0,min=Math.min(-l.width/2,shift-l.nextWidth/2),max=Math.max(l.width/2,shift+l.nextWidth/2),poly=angledTurn(s)?angledLanding(l).points:[[returning?min:-l.width/2,0],[returning?max:l.width/2,0],[returning?max:l.width/2,s.run],[returning?min:-l.width/2,s.run]],base=poly.map(([x,z])=>world(l,x,s.kind==='landing'?0:s.rise*z/s.run,z)),boundary=[];
+ // Include wall endpoints at branch openings before insetting the roof edge.
+ for(let i=0;i<base.length;i++){const a=base[i],b=base[(i+1)%base.length],v=b.clone().sub(a),len2=v.lengthSq(),cuts=[0];for(const e of edges.filter(e=>e.index===index))for(const p of [e.a,e.b]){const t=p.clone().sub(a).dot(v)/len2;if(t>1e-7&&t<1-1e-7&&a.clone().addScaledVector(v,t).distanceTo(p)<1e-5)cuts.push(t);}cuts.sort((a,b)=>a-b);for(const t of [...new Set(cuts)])boundary.push(a.clone().addScaledVector(v,t));}
+ const roofEdges=edges.filter(e=>e.index===index);
+ const ring=inner=>boundary.map(p=>{const joined=roofEdges.find(e=>e.a.distanceTo(p)<1e-5||e.b.distanceTo(p)<1e-5);if(joined)return point(joined,joined.a.distanceTo(p)<1e-5?'a':'b',1.00414,4.99065,inner);const e=roofEdges.find(e=>{const v=e.b.clone().sub(e.a),t=p.clone().sub(e.a).dot(v)/v.lengthSq();return t>=0&&t<=1&&e.a.clone().addScaledVector(v,t).distanceTo(p)<1e-5;});const v=p.clone();if(e)v.addScaledVector(e.normal,-distance(e,1.00414,inner));v.y=p.y+h.height+(inner?0:h.thickness);return v;}),lower=ring(true),upper=ring(false),positions=[];
+ for(const [ring,up] of [[lower,false],[upper,true]]){const faces=T.ShapeUtils.triangulateShape(ring.map(p=>new T.Vector2(p.x,p.z)),[]);for(const f of faces){const pts=f.map(i=>ring[i]);if(up)pts.reverse();positions.push(...pts);}}
+ // Roof end reveals; side bevels already meet both roof rings.
+ for(let i=0;i<lower.length;i++){const j=(i+1)%lower.length;positions.push(lower[i],upper[i],upper[j],lower[i],upper[j],lower[j]);}mesh(positions,h,index,true,'roof');
+ }
+ // Repeat the measured pillar profile only on corridor runs, leaving junctions clear.
+ if(s.turn==='straight'&&!s.turnAngle){const k=(l.width-2*h.thickness)/7.01476,spacing=h.ribSpacing??3.6,half=.49678*k;if(k<=0)continue;for(let z=spacing/2;z+half<s.run-.05;z+=spacing){if(!hallwayRibFits(part.route,l,index,z,half))continue;const walls=[],ceiling=[];for(const face of TANTIVE_RIB.triangles){const high=face.some(i=>TANTIVE_RIB.vertices[i][1]>3.98);if(high&&!h.ceiling)continue;const out=high?ceiling:walls;for(const i of face){const [x,y,d]=TANTIVE_RIB.vertices[i],along=z+d*k,base=s.kind==='landing'?0:s.rise*along/s.run;out.push(world(l,x*k,base+y/5.00276*h.height,along));}}mesh(walls,h,index,false,'rib');mesh(ceiling,h,index,true,'rib');}}
+ }
+}

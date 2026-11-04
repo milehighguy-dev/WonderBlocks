@@ -1,0 +1,21 @@
+// Developer check only: two independent scene layers and a later assets-only update.
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {tmpdir} from 'node:os';
+import {Directory} from '../fixtures/directory-handle.js';
+import {makePart} from '../../src/core/model.js';
+import {createSWBF2Package} from '../../src/swbf2/export-swbf2.js';
+import {writeWorldFolder} from '../../src/swbf2/swbf2-world-folder.js';
+import {SWBF2_VALIDATION_SCRIPT} from '../../src/swbf2/swbf2-validation.js';
+import {runProcess} from '../../tools/test-process.mjs';
+const root=await fs.mkdtemp(path.join(tmpdir(),'wb-workflow-native-'));for(const folder of ['msh','odf','world1'])await fs.mkdir(path.join(root,folder));
+const source={format:'open-building-studio',version:1,name:'First courtyard',parts:[makePart('block',{position:[7,2,-8]})],swbf2Exports:{active:'scene:scene',profiles:{'scene:scene':{id:'courtyard-first',values:{output:'scene'}}}}},other={...structuredClone(source),name:'Second courtyard',parts:[makePart('orb',{position:[20,3,4]})]};other.swbf2Exports.profiles['scene:scene'].id='courtyard-second';
+for(const [name,text] of [['ABC.wld','Version(3);\nSaveType(0);\nNextSequence(150);\n'],['ABC.ldx','Version(1);\nNextID(1);\nLayer("[Base]",0,0)\n{\nDescription("");\n}\nGameMode("Common")\n{\nLayer(0);\n}\n'],['ABC.req','ucft\n{\nREQN\n{\n"world"\n"ABC"\n}\n}\n']])await fs.writeFile(path.join(root,'world1',name),text);
+const build=p=>createSWBF2Package(p,{aiNavigation:false,includeCollision:false,shadows:false,lowDetail:false},{packZip:false}),directory=new Directory(root),first=await writeWorldFolder(directory,build(source),{worldName:'ABC'}),second=await writeWorldFolder(directory,build(other),{worldName:'ABC'});assert.notEqual(first.layer,second.layer);
+const edited=(await fs.readFile(path.join(root,first.layer),'utf8')).replace(/ChildPosition\([^)]*\)/,'ChildPosition(30,2,-8)');await fs.writeFile(path.join(root,first.layer),edited);const secondLayer=await fs.readFile(path.join(root,second.layer),'utf8');source.parts[0].color='#aacc99';await writeWorldFolder(directory,build(source),{worldName:'ABC',mode:'assets'});assert.equal(await fs.readFile(path.join(root,first.layer),'utf8'),edited);assert.equal(await fs.readFile(path.join(root,second.layer),'utf8'),secondLayer);
+const reportA=JSON.parse(await fs.readFile(path.join(root,'_wonderblocks/exports/courtyard-first/export-report.json'),'utf8')),reportB=JSON.parse(await fs.readFile(path.join(root,'_wonderblocks/exports/courtyard-second/export-report.json'),'utf8')),report={...reportA,files:[...new Set([...reportA.files,...reportB.files,first.layer,'world1/ABC.wld'])],assets:[...reportA.assets,...reportB.assets]};report.primitiveBudget.native=0;await fs.writeFile(path.join(root,'export-report.json'),JSON.stringify(report,null,2));await fs.writeFile(path.join(root,'validate-swbf2.ps1'),SWBF2_VALIDATION_SCRIPT);
+await runProcess('powershell.exe',['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',path.join(root,'validate-swbf2.ps1'),'-ToolsPath',process.env.SWBF2_TOOLS_PATH||'C:/SWBF2_ModTools/BF2_ModTools/ToolsFL/bin'],{cwd:root,timeout:180000});
+const validation=path.join(root,'_validation'),runs=await fs.readdir(validation,{withFileTypes:true}),built=path.join(validation,runs.find(entry=>entry.isDirectory()).name),packed=await fs.readFile(path.join(built,'ABC.lvl'));
+for(const layer of [edited,secondLayer]){const name=/Object\("([^"\r\n]+)"/.exec(layer)[1];assert.ok(packed.includes(Buffer.from(name+'\0')));}for(const layer of [first.layer,second.layer])assert.ok((await fs.stat(path.join(built,path.basename(layer,'.lyr')+'.world'))).size>0);
+console.log('PASS two independently registered scene layers compile and pack together; assets-only retains WorldEdit placements. '+root);

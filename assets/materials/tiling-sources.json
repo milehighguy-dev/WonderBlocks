@@ -1,0 +1,750 @@
+[
+  {
+    "id": "bf1-rhenvar-masonry",
+    "name": "Rhen Var \u00b7 cold masonry",
+    "game": "SWBF1",
+    "source": "RhenVar/MSH/Rhn1_basebrick_01.tga",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "bcb07d8df0d9374a72d5e490c2b4f9d8964653fa2bd2130af1199d6dcc4a2daa",
+    "tileEdgeMeanDifference": [
+      6.977,
+      5.104
+    ],
+    "tileSeamRatio": 1.142
+  },
+  {
+    "id": "bf1-rhenvar-carved-tiles",
+    "name": "Rhen Var \u00b7 carved stone tiles",
+    "game": "SWBF1",
+    "source": "RhenVar/MSH/Rhn_bldg_cath_tile_01.tga",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "6bbf4a9e45a6c6f4bb9b96c0c55ab4ca0c775359b4fe2dfef18b8552344ff473",
+    "tileEdgeMeanDifference": [
+      12.596,
+      13.484
+    ],
+    "tileSeamRatio": 0.982
+  },
+  {
+    "id": "bf1-naboo-brick",
+    "name": "Naboo \u00b7 warm brick",
+    "game": "SWBF1",
+    "source": "Naboo/MSH/nab2_bldg_arch1_brick_tile.tga",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "caf9e00a7d08b8b055de36138a60a9172f1ddcd3bf7c0ee0b94eb3f715e03e58",
+    "tileEdgeMeanDifference": [
+      7.69,
+      3.943
+    ],
+    "tileSeamRatio": 1.245
+  },
+  {
+    "id": "bf1-hoth-snow",
+    "name": "Hoth \u00b7 rough snow",
+    "game": "SWBF1",
+    "source": "Hoth/MSH/HOTH_Rough_snow.tga",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      128,
+      128
+    ],
+    "sourceSha256": "fca39e3535226261bcd1cbb72b9861b436e33f261d7c111672e63dca70c71361",
+    "tileEdgeMeanDifference": [
+      8.062,
+      9.453
+    ],
+    "tileSeamRatio": 0.785
+  },
+  {
+    "id": "bf1-hoth-ice",
+    "name": "Hoth \u00b7 glacial ice",
+    "game": "SWBF1",
+    "source": "Hoth/MSH/snow_3.tga",
+    "roughness": 0.65,
+    "metalness": 0,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "64f1cc4eb1f1a89688d4ff5bfaab09bf2909aaf75dd321d0192e3dc84d3965a7",
+    "tileEdgeMeanDifference": [
+      9.737,
+      9.63
+    ],
+    "tileSeamRatio": 1.191
+  },
+  {
+    "id": "bf1-geonosis-rock",
+    "name": "Geonosis \u00b7 red rock",
+    "game": "SWBF1",
+    "source": "Geonosis/MSH/entrance wall.tga",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "c009a4f56e3fcc5d0041e69c0fed1bec3390864ec6e20e957b3acfa861905043",
+    "tileEdgeMeanDifference": [
+      11.198,
+      6.779
+    ],
+    "tileSeamRatio": 1.387
+  },
+  {
+    "id": "bf2-polis-wall",
+    "name": "Polis Massa \u00b7 recessed panels",
+    "game": "SWBF2",
+    "source": "POL/msh/pol1_bldg_radarwall_4.tga",
+    "roughness": 0.75,
+    "metalness": 0.15,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "dd57598ad25195e5f9d51eaa93c70d323b82508f2cc7f770fd88dbd013ff85c1",
+    "tileEdgeMeanDifference": [
+      10.622,
+      7.552
+    ],
+    "tileSeamRatio": 2.083
+  },
+  {
+    "id": "bf2-utapau-wall",
+    "name": "Utapau \u00b7 teal wall courses",
+    "game": "SWBF2",
+    "source": "UTA/msh/uta1_bldg_wall01.tga",
+    "roughness": 0.9,
+    "metalness": 0,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "98e69a36f74b486633944676c84245074f24b7e0eb48c4cd72b4e8a4a18f84f3",
+    "tileEdgeMeanDifference": [
+      4.487,
+      5.018
+    ],
+    "tileSeamRatio": 1.155
+  },
+  {
+    "id": "bf2-utapau-floor",
+    "name": "Utapau \u00b7 engraved metal floor",
+    "game": "SWBF2",
+    "source": "UTA/msh/uta1_bldg_level10_floor.tga",
+    "roughness": 0.7,
+    "metalness": 0.3,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "ebf2481425705619cb2619ae2ada827c34539787a022882385bf563a7574354b",
+    "tileEdgeMeanDifference": [
+      19.938,
+      9.297
+    ],
+    "tileSeamRatio": 1.66
+  },
+  {
+    "id": "bf2-utapau-paving",
+    "name": "Utapau \u00b7 rounded stone paving",
+    "game": "SWBF2",
+    "source": "UTA/msh/uta1_bldg_lizardpen_floor01.tga",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "050598d3bbd785023e3ea76335f3541e9bfe1009b46021a94866741124568938",
+    "tileEdgeMeanDifference": [
+      7.318,
+      15.344
+    ],
+    "tileSeamRatio": 2.067
+  },
+  {
+    "id": "bf2-deathstar-wall",
+    "name": "Death Star \u00b7 pale panel plating",
+    "game": "SWBF2",
+    "source": "DEA/msh/dea1_bldg_outerwall.tga",
+    "roughness": 0.7,
+    "metalness": 0.2,
+    "sourceSize": [
+      128,
+      128
+    ],
+    "sourceSha256": "c9a3a99dec8058e0ec72d7fd9d052f499794d185c3ffda7062ee37ad775e8989",
+    "tileEdgeMeanDifference": [
+      7.68,
+      8.583
+    ],
+    "tileSeamRatio": 0.875
+  },
+  {
+    "id": "bf2-deathstar-grate",
+    "name": "Death Star \u00b7 dark grating",
+    "game": "SWBF2",
+    "source": "DEA/msh/dea1_bldg_platform_grate01.tga",
+    "roughness": 0.7,
+    "metalness": 0.3,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "899e3d30b2829e34caeff80a1ba145a47918bc57965a1527d8c49d2171ab7c6a",
+    "tileEdgeMeanDifference": [
+      8.487,
+      1.591
+    ],
+    "tileSeamRatio": 1.852
+  },
+  {
+    "id": "ja-yavin-dark-stone",
+    "name": "Yavin \u00b7 dark temple stone",
+    "game": "Jedi Academy",
+    "source": "yavin/temple_stonea.jpg",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "d8e8502356379a8728a8b3c3f85e15126ff78224be527ecdc1bfe644078b5b16",
+    "tileEdgeMeanDifference": [
+      15.802,
+      20.865
+    ],
+    "tileSeamRatio": 1.044
+  },
+  {
+    "id": "ja-korriban-paving",
+    "name": "Korriban \u00b7 geometric stone paving",
+    "game": "Jedi Academy",
+    "source": "korriban/os_outsidebasec.jpg",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      1024,
+      1024
+    ],
+    "sourceSha256": "712f6014b855b5e65cc280d38c5b1a36216465d6b97082d0f536ad6a3e707c6e",
+    "tileEdgeMeanDifference": [
+      12.461,
+      5.576
+    ],
+    "tileSeamRatio": 1.141
+  },
+  {
+    "id": "ja-taspir-rusted-metal",
+    "name": "Taspir \u00b7 rusted metal",
+    "game": "Jedi Academy",
+    "source": "taspir/rustmetal1.jpg",
+    "roughness": 0.95,
+    "metalness": 0.1,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "8cc488b45224e8dfd51353b7397146320a28b1596b9267e7093628e7a2145788",
+    "tileEdgeMeanDifference": [
+      10.789,
+      9.57
+    ],
+    "tileSeamRatio": 1.135
+  },
+  {
+    "id": "ja-vjun-floor",
+    "name": "Vjun \u00b7 recessed floor tiles",
+    "game": "Jedi Academy",
+    "source": "vjun/floor4.jpg",
+    "roughness": 0.8,
+    "metalness": 0.15,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "91f4700c8f9d100ccb146cdcd54b108df2e42bc44ae918b05d6008838bb9737c",
+    "tileEdgeMeanDifference": [
+      1.372,
+      1.669
+    ],
+    "tileSeamRatio": 0.649
+  },
+  {
+    "id": "ja-vjun-louvers",
+    "name": "Vjun \u00b7 metal louvers",
+    "game": "Jedi Academy",
+    "source": "vjun/vent.jpg",
+    "roughness": 0.7,
+    "metalness": 0.25,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "ffcd476b86b9d5005b741802f17afeeb9f6513fb6bff9016e435c82b3d8c487d",
+    "tileEdgeMeanDifference": [
+      2.216,
+      1.773
+    ],
+    "tileSeamRatio": 0.773
+  },
+  {
+    "id": "ja-factory-panels",
+    "name": "Factory \u00b7 industrial wall panels",
+    "game": "Jedi Academy",
+    "source": "factory/outside_wall.jpg",
+    "roughness": 0.85,
+    "metalness": 0.15,
+    "sourceSize": [
+      1024,
+      1024
+    ],
+    "sourceSha256": "1fdf7c883643c557ee12abd71237b6ecd5d0b5fdd636aac841117ef7f8fc23be",
+    "tileEdgeMeanDifference": [
+      4.263,
+      3.208
+    ],
+    "tileSeamRatio": 1.091
+  },
+  {
+    "id": "ja-narshaddaa-panels",
+    "name": "Nar Shaddaa \u00b7 angular panels",
+    "game": "Jedi Academy",
+    "source": "nar_streets/bwall_4.jpg",
+    "roughness": 0.8,
+    "metalness": 0.15,
+    "sourceSize": [
+      1024,
+      1024
+    ],
+    "sourceSha256": "a1becd36cf9210e7b56336ac7625a1d51993abd86492aec58e8c8232dbbd52b8",
+    "tileEdgeMeanDifference": [
+      2.589,
+      1.568
+    ],
+    "tileSeamRatio": 1.187
+  },
+  {
+    "id": "ja-desert-plaster",
+    "name": "Desert \u00b7 pale plaster",
+    "game": "Jedi Academy",
+    "source": "desert/stucco_ceiling_512_seamless.jpg",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "2302b7a599e9e6b7853a49815b5770bda7b9b34def23ab1e278adf93ec1a03f0",
+    "tileEdgeMeanDifference": [
+      24.169,
+      21.122
+    ],
+    "tileSeamRatio": 1.255
+  },
+  {
+    "id": "bf1-endor-redwood-bark",
+    "name": "Endor \u00b7 redwood bark",
+    "game": "SWBF1",
+    "group": "Flora",
+    "source": "Endor/MSH/end_prop_tree.tga",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "f6bd288343cb0b7c1ebf4b0c0ce87f77a2ec43a491459b3dfaa9ce426182ecdb",
+    "tileEdgeMeanDifference": [
+      31.779,
+      16.503
+    ],
+    "tileSeamRatio": 1.0
+  },
+  {
+    "id": "bf1-endor-mossy-bark",
+    "name": "Endor \u00b7 mossy redwood bark",
+    "game": "SWBF1",
+    "group": "Flora",
+    "source": "Endor/MSH/end_prop_tree_3.tga",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "691cb724c095cd2198744b865d3ee0dc915b2ac880952f3a684d5f2d5bcd1034",
+    "tileEdgeMeanDifference": [
+      32.453,
+      18.253
+    ],
+    "tileSeamRatio": 1.128
+  },
+  {
+    "id": "bf1-naboo-fine-bark",
+    "name": "Naboo \u00b7 fine bark",
+    "game": "SWBF1",
+    "group": "Flora",
+    "source": "Naboo/MSH/nab_prop_trees.tga",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "fa3763e24912da9ae442984989a26f639fa1f580f9fc3f5e3a574118415e0a7c",
+    "tileEdgeMeanDifference": [
+      31.047,
+      18.5
+    ],
+    "tileSeamRatio": 1.081
+  },
+  {
+    "id": "bf1-naboo-cracked-bark",
+    "name": "Naboo \u00b7 cracked bark",
+    "game": "SWBF1",
+    "group": "Flora",
+    "source": "Naboo/MSH/nab_prop_trees2brnch.tga",
+    "roughness": 1,
+    "metalness": 0,
+    "opaqueRGB": true,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "34d1e46db95624cf952a551c62058734b34287a7313acdf2b7e2c92595324704",
+    "tileEdgeMeanDifference": [
+      18.216,
+      12.586
+    ],
+    "tileSeamRatio": 0.985
+  },
+  {
+    "id": "bf2-dagobah-root-moss",
+    "name": "Dagobah \u00b7 tangled root covering",
+    "game": "SWBF2",
+    "group": "Flora",
+    "source": "DAG/msh/dag1_prop_moss_3.tga",
+    "roughness": 1,
+    "metalness": 0,
+    "opaqueRGB": true,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "1ba9fc4091cf9bba9f07a7f13a8113919bc2c6dac1850db74bb19063c483f85f",
+    "tileEdgeMeanDifference": [
+      14.63,
+      14.271
+    ],
+    "tileSeamRatio": 1.238
+  },
+  {
+    "id": "bf2-dagobah-weathered-bark",
+    "name": "Dagobah \u00b7 weathered bark",
+    "game": "SWBF2",
+    "group": "Flora",
+    "source": "DAG/msh/dag1_prop_treebark_02.tga",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "952c69473d12137f29078366770b55b4f0e5f8403ed67bd02cd99ab6adc29f7c",
+    "tileEdgeMeanDifference": [
+      21.581,
+      15.755
+    ],
+    "tileSeamRatio": 1.517
+  },
+  {
+    "id": "bf2-dagobah-scaly-bark",
+    "name": "Dagobah \u00b7 scaly bark",
+    "game": "SWBF2",
+    "group": "Flora",
+    "source": "DAG/msh/dag1_tree_bark01.tga",
+    "roughness": 1,
+    "metalness": 0,
+    "opaqueRGB": true,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "75ac1c2eb536153603d2edb539accba6ebfcf0e7d2ddb6b5e5e47c48b8b05a95",
+    "tileEdgeMeanDifference": [
+      14.891,
+      16.094
+    ],
+    "tileSeamRatio": 1.106
+  },
+  {
+    "id": "ja-yavin-moss-cover",
+    "name": "Yavin \u00b7 deep moss covering",
+    "game": "Jedi Academy",
+    "group": "Flora",
+    "source": "yavin/rockmossy.jpg",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "4b342c14e4d782cfaa8784a9f1180e0bcb6af15fa5a6505244b832f6e2a99937",
+    "tileEdgeMeanDifference": [
+      9.021,
+      7.151
+    ],
+    "tileSeamRatio": 1.314
+  },
+  {
+    "id": "kotor-kashyyyk-fine-bark",
+    "name": "Kashyyyk \u00b7 fine bark",
+    "game": "KOTOR",
+    "source": "TexturePacks/swpc_tex_tpa.erf",
+    "resource": "lka_bark01.tpc",
+    "roughness": 1,
+    "metalness": 0,
+    "group": "Flora",
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "605a2146747a0a13819469180e4961085d259d204f82b298fce0efa17b647a53",
+    "tileEdgeMeanDifference": [
+      19.909,
+      17.258
+    ],
+    "tileSeamRatio": 1.3
+  },
+  {
+    "id": "kotor-kashyyyk-knotted-bark",
+    "name": "Kashyyyk \u00b7 knotted bark",
+    "game": "KOTOR",
+    "source": "TexturePacks/swpc_tex_tpa.erf",
+    "resource": "lka_bark02.tpc",
+    "roughness": 1,
+    "metalness": 0,
+    "group": "Flora",
+    "opaqueRGB": true,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "ae79a2deba34229a1dd0464df1e184990e8be95b6da9225c6c1b216d61ea5264",
+    "tileEdgeMeanDifference": [
+      30.966,
+      32.674
+    ],
+    "tileSeamRatio": 2.235
+  },
+  {
+    "id": "kotor-kashyyyk-scaly-bark",
+    "name": "Kashyyyk \u00b7 scaly bark",
+    "game": "KOTOR",
+    "source": "TexturePacks/swpc_tex_tpa.erf",
+    "resource": "lka_bark04.tpc",
+    "roughness": 1,
+    "metalness": 0,
+    "group": "Flora",
+    "sourceSize": [
+      128,
+      128
+    ],
+    "sourceSha256": "027a704d809ebf4496d4888d6589d52ff77eb87452ece7d22fa8b22a7ce8e53b",
+    "tileEdgeMeanDifference": [
+      58.247,
+      33.911
+    ],
+    "tileSeamRatio": 1.43
+  },
+  {
+    "id": "kotor-kashyyyk-mossy-bark",
+    "name": "Kashyyyk \u00b7 mossy bark",
+    "game": "KOTOR",
+    "source": "TexturePacks/swpc_tex_tpa.erf",
+    "resource": "lka_bark05.tpc",
+    "roughness": 1,
+    "metalness": 0,
+    "group": "Flora",
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "9c3d8599e0687376992c43cc539b3b4b71b9c390abcf8682687129a959b6d41b",
+    "tileEdgeMeanDifference": [
+      24.823,
+      15.568
+    ],
+    "tileSeamRatio": 1.091
+  },
+  {
+    "id": "kotor-taris-metal-tiles",
+    "name": "Taris \u00b7 oxidized metal tiles",
+    "game": "KOTOR",
+    "source": "TexturePacks/swpc_tex_tpa.erf",
+    "resource": "lta_metal11.tpc",
+    "roughness": 0.8,
+    "metalness": 0.15,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "405650dc950b88b64545b128c6a09683fff483722839c229f00c94b20dbb4258",
+    "tileEdgeMeanDifference": [
+      5.583,
+      5.534
+    ],
+    "tileSeamRatio": 0.815
+  },
+  {
+    "id": "kotor-taris-rusted-metal",
+    "name": "Taris \u00b7 rusted metal",
+    "game": "KOTOR",
+    "source": "TexturePacks/swpc_tex_tpa.erf",
+    "resource": "lta_metal55.tpc",
+    "roughness": 0.9,
+    "metalness": 0.15,
+    "sourceSize": [
+      128,
+      128
+    ],
+    "sourceSha256": "6c314f11ef845fb65ed7c3433643ffb0de109155ba04baef34a263da8d6b8a98",
+    "tileEdgeMeanDifference": [
+      5.323,
+      5.427
+    ],
+    "tileSeamRatio": 0.795
+  },
+  {
+    "id": "kotor-manaan-floor",
+    "name": "Manaan \u00b7 blue geometric floor",
+    "game": "KOTOR",
+    "source": "TexturePacks/swpc_tex_tpa.erf",
+    "resource": "lma_floor01.tpc",
+    "roughness": 0.55,
+    "metalness": 0.1,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "e76f01dfccdcf5b7e190a8f45f72c47578d6370083e6b2cb99a409cd6b67eb99",
+    "tileEdgeMeanDifference": [
+      1.883,
+      2.083
+    ],
+    "tileSeamRatio": 0.642
+  },
+  {
+    "id": "kotor-korriban-carved-stone",
+    "name": "Korriban \u00b7 carved stone panels",
+    "game": "KOTOR",
+    "source": "TexturePacks/swpc_tex_tpa.erf",
+    "resource": "lko_flricon01.tpc",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "718122e11d36f23e9f567505b5ebf3cbdfa41399d3fb99c81e27899f6366d272",
+    "tileEdgeMeanDifference": [
+      22.945,
+      23.094
+    ],
+    "tileSeamRatio": 1.191
+  },
+  {
+    "id": "kotor-dantooine-flagstones",
+    "name": "Dantooine \u00b7 warm flagstones",
+    "game": "KOTOR",
+    "source": "TexturePacks/swpc_tex_tpa.erf",
+    "resource": "lda_stone02.tpc",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "2ffa350ed412903620585d6908fcebe20be82399f9472be84d9638f9dc0fec63",
+    "tileEdgeMeanDifference": [
+      11.133,
+      11.932
+    ],
+    "tileSeamRatio": 1.053
+  },
+  {
+    "id": "kotor-kashyyyk-hardwood",
+    "name": "Kashyyyk \u00b7 reddish hardwood",
+    "game": "KOTOR",
+    "source": "TexturePacks/swpc_tex_tpa.erf",
+    "resource": "lka_hrdwd01.tpc",
+    "roughness": 0.85,
+    "metalness": 0,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "ad4dc6a1e2640cc1393d9b560d86dc971eaeb3b2facd9a4c5a2c18a4006e4f5f",
+    "tileEdgeMeanDifference": [
+      7.88,
+      5.844
+    ],
+    "tileSeamRatio": 0.882
+  },
+  {
+    "id": "kotor-island-sand",
+    "name": "Island \u00b7 pale rippled sand",
+    "game": "KOTOR",
+    "source": "TexturePacks/swpc_tex_tpa.erf",
+    "resource": "lun_sand01.tpc",
+    "roughness": 1,
+    "metalness": 0,
+    "sourceSize": [
+      512,
+      512
+    ],
+    "sourceSha256": "6569cf6cdff39311f8e810ba9bbacb4a71089001ce72f5f2c33269289f4d2c5f",
+    "tileEdgeMeanDifference": [
+      5.872,
+      5.156
+    ],
+    "tileSeamRatio": 1.039
+  },
+  {
+    "id": "kotor-hull-panels",
+    "name": "KOTOR \u00b7 pale hull panels",
+    "game": "KOTOR",
+    "source": "TexturePacks/swpc_tex_tpa.erf",
+    "resource": "lhr_wall08.tpc",
+    "roughness": 0.7,
+    "metalness": 0.15,
+    "sourceSize": [
+      256,
+      256
+    ],
+    "sourceSha256": "c58ac2c1e9670bfc58ab389f7c3c5e059fe56c6b3927efefb83c329874ca7436",
+    "tileEdgeMeanDifference": [
+      4.862,
+      4.781
+    ],
+    "tileSeamRatio": 0.818
+  }
+]

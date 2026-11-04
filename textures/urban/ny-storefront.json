@@ -1,0 +1,10 @@
+{
+  "id": "ny-storefront",
+  "name": "Storefront glazing",
+  "roughness": 0.4,
+  "metalness": 0.18,
+  "order": 99,
+  "themes": [
+    "New York"
+  ]
+}

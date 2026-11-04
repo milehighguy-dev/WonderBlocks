@@ -1,0 +1,24 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>body{margin:0}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"../../../vendor/three.module.js"}}</script>
+<script type="module">
+import * as T from '../../../vendor/three.module.js';
+import {TransformControls} from '../../../src/editor/transform-controls.js';
+const renderer=new T.WebGLRenderer({antialias:true});renderer.setSize(innerWidth,innerHeight);document.body.append(renderer.domElement);
+const scene=new T.Scene(),camera=new T.PerspectiveCamera(45,innerWidth/innerHeight,.01,1e8);
+scene.background=new T.Color('#b7c9cf');scene.add(new T.HemisphereLight(0xffffff,0x536373,3));
+const object=new T.Mesh(new T.BoxGeometry(1,1,1),new T.MeshStandardMaterial({color:'#c5ba9e'}));scene.add(object);
+const controls=new TransformControls(camera,renderer.domElement);controls.setSize(.8);controls.setMode('scale');controls.setScaleSnap(.1);controls.attach(object);scene.add(controls.getHelper());
+const render=()=>renderer.render(scene,camera);
+controls.addEventListener('change',render);
+controls.addEventListener('mouseDown',()=>window.lastScaleAxis=controls.axis);
+const pixel=world=>{const v=world.clone().project(camera);return {x:(v.x+1)*innerWidth/2,y:(1-v.y)*innerHeight/2};};
+window.scaleFixture={object,controls,configure({scale=[8,.08,12],position=[0,0,0],distance=40,rotation=[0,0,0],snap=.1}={}){
+ object.scale.fromArray(scale);object.position.fromArray(position);object.rotation.set(...rotation);
+ camera.position.copy(object.position).addScaledVector(new T.Vector3(1,.8,1).normalize(),distance);camera.lookAt(object.position);camera.updateMatrixWorld();controls.setScaleSnap(snap);render();
+ return pixel(object.position);
+},handle(axis){render();const mesh=controls._gizmo.gizmo.scale.children.find(m=>m.name===axis&&m.isMesh);mesh.geometry.computeBoundingBox();return pixel(mesh.geometry.boundingBox.getCenter(new T.Vector3()).applyMatrix4(mesh.matrixWorld));},value(){return object.scale.toArray();}};
+window.scaleFixture.configure();
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);render();});
+</script>

@@ -1,0 +1,10 @@
+{
+  "id": "yavin-aqueduct-paving",
+  "name": "Yavin · mossy aqueduct paving",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 57,
+  "themes": [
+    "Yavin"
+  ]
+}

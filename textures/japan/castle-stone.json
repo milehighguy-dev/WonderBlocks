@@ -1,0 +1,10 @@
+{
+  "id": "castle-stone",
+  "name": "Castle masonry",
+  "roughness": 0.95,
+  "metalness": 0,
+  "order": 106,
+  "themes": [
+    "Medieval Japan"
+  ]
+}

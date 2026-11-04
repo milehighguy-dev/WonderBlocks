@@ -1,0 +1,10 @@
+{
+  "name": "General",
+  "order": 15,
+  "preview": [
+    "stone",
+    "brick",
+    "wood",
+    "tile"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "kotor-dantooine-flagstones",
+  "name": "Dantooine · warm flagstones",
+  "game": "KOTOR",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 46,
+  "themes": [
+    "KOTOR"
+  ]
+}

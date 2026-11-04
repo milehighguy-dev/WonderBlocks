@@ -1,0 +1,13 @@
+{
+  "id": "white-bf1-naboo-brick",
+  "name": "White · brickwork",
+  "sourceId": "bf1-naboo-brick",
+  "sourceGame": "SWBF1",
+  "game": "Tintable whites",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 1,
+  "themes": [
+    "Tintable whites"
+  ]
+}

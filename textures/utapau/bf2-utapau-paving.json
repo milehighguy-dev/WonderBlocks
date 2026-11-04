@@ -1,0 +1,11 @@
+{
+  "id": "bf2-utapau-paving",
+  "name": "Utapau · rounded stone paving",
+  "game": "SWBF2",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 19,
+  "themes": [
+    "SWBF2"
+  ]
+}

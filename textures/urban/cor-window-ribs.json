@@ -1,0 +1,10 @@
+{
+  "id": "cor-window-ribs",
+  "name": "Recessed blue window ribs",
+  "roughness": 0.75,
+  "metalness": 0.18,
+  "order": 79,
+  "themes": [
+    "Coruscant"
+  ]
+}

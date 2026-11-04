@@ -1,0 +1,11 @@
+{
+  "id": "bf1-naboo-brick",
+  "name": "Naboo · warm brick",
+  "game": "SWBF1",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 12,
+  "themes": [
+    "SWBF1"
+  ]
+}

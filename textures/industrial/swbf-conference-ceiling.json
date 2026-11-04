@@ -1,0 +1,10 @@
+{
+  "id": "swbf-conference-ceiling",
+  "name": "Conference corridor ceiling",
+  "roughness": 0.8,
+  "metalness": 0,
+  "order": 69,
+  "themes": [
+    "Hallway references"
+  ]
+}

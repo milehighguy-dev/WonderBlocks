@@ -1,0 +1,13 @@
+{
+  "id": "white-bf2-polis-wall",
+  "name": "White · recessed panels",
+  "sourceId": "bf2-polis-wall",
+  "sourceGame": "SWBF2",
+  "game": "Tintable whites",
+  "roughness": 0.75,
+  "metalness": 0.15,
+  "order": 4,
+  "themes": [
+    "Tintable whites"
+  ]
+}

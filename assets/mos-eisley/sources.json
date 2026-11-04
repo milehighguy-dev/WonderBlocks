@@ -1,0 +1,297 @@
+{
+  "status": "Selected collections 01\u201305; collections 06\u201308 discarded",
+  "world": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\TAT\\world2\\tat2.wld",
+  "models": {
+    "reference-small": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\TAT\\msh\\PC\\tat2_bldg_small1.msh",
+      "sha256": "57ed6ece5ac1ba0ceb0a4814bf278443bdc653eb523788d27ba24b75824675f7",
+      "size": [
+        10.20531,
+        6.02666,
+        10.22207
+      ],
+      "triangles": 108,
+      "groundOffset": 0.0,
+      "edits": []
+    },
+    "reference-cantina": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\TAT\\msh\\PC\\tat2_bldg_cantina.msh",
+      "sha256": "c85a0c22c7126fc230043a26692d80265f1366f831bbfabccd54b81d2f138a5a",
+      "size": [
+        65.03133,
+        13.04324,
+        37.69589
+      ],
+      "triangles": 4284,
+      "groundOffset": 0.0,
+      "edits": []
+    },
+    "reference-two-storey": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\TAT\\msh\\PC\\tat2_bldg_two_stories1.msh",
+      "sha256": "219bd7c5e1366fca8bb66ca3027713d7307802fb2d7f65007a248ae49dfede31",
+      "size": [
+        16.93994,
+        15.0,
+        17.0
+      ],
+      "triangles": 336,
+      "groundOffset": 0.0,
+      "edits": []
+    },
+    "mos-entry-a": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\TAT\\msh\\PC\\tat2_bldg_entry1.msh",
+      "sha256": "08b0e349c5418134656c0a76dfeb28a0bb0c2ab287bd2de0df1e2175197a10e4",
+      "size": [
+        4.0,
+        4.29499,
+        2.12553
+      ],
+      "triangles": 116,
+      "groundOffset": 0.299562,
+      "edits": [
+        "Completed rear face, inner reveals and undersides with 12 stock-plaster triangles; doorway remains open in doorless variants",
+        "Anchor at architectural base Y=0; pipe extending 0.2996 m below ground remains buried"
+      ]
+    },
+    "mos-entry-b": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\TAT\\msh\\PC\\tat2_bldg_entry2.msh",
+      "sha256": "4af1eb41f167d53ca7bc5b1c5431cb00a5cdaa547df5643035c0d7cde762aa8b",
+      "size": [
+        4.24492,
+        4.63196,
+        4.0489
+      ],
+      "triangles": 108,
+      "groundOffset": 0.0,
+      "edits": [
+        "Completed rear face, inner reveals and undersides with 19 stock-plaster triangles; doorway remains open in doorless variants"
+      ]
+    },
+    "mos-arch": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\TAT\\msh\\PC\\tat2_bldg_arch1.msh",
+      "sha256": "ddd3a1afc77a49d2877411d868d1b8f2da97f3dae33774c704e74c1e1ea34224",
+      "size": [
+        8.03792,
+        6.52386,
+        2.1196
+      ],
+      "triangles": 84,
+      "groundOffset": 0.0,
+      "edits": []
+    },
+    "mos-entry-a-open": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\TAT\\msh\\PC\\tat2_bldg_entry1.msh",
+      "sha256": "08b0e349c5418134656c0a76dfeb28a0bb0c2ab287bd2de0df1e2175197a10e4",
+      "size": [
+        4.0,
+        4.29499,
+        2.12553
+      ],
+      "triangles": 138,
+      "groundOffset": 0.299562,
+      "edits": [
+        "Doorless frame: removed 13 leaf/backing triangles; original jamb and arch UVs retained",
+        "Completed rear face, inner reveals and undersides with 43 stock-plaster triangles; doorway remains open in doorless variants",
+        "Anchor at architectural base Y=0; pipe extending 0.2996 m below ground remains buried"
+      ]
+    },
+    "mos-entry-b-open": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\TAT\\msh\\PC\\tat2_bldg_entry2.msh",
+      "sha256": "4af1eb41f167d53ca7bc5b1c5431cb00a5cdaa547df5643035c0d7cde762aa8b",
+      "size": [
+        4.24492,
+        4.63196,
+        4.0489
+      ],
+      "triangles": 130,
+      "groundOffset": 0.0,
+      "edits": [
+        "Doorless frame: removed 9 leaf/backing triangles; original jamb and arch UVs retained",
+        "Completed rear face, inner reveals and undersides with 50 stock-plaster triangles; doorway remains open in doorless variants"
+      ]
+    },
+    "mos-dome": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\TAT\\msh\\tat2_bldg_dome1.msh",
+      "sha256": "07fd83478e299265e9c8e6e9e5c08e1c677296d630435d8137d77bf2d4355557",
+      "size": [
+        6.39333,
+        4.0,
+        6.39333
+      ],
+      "triangles": 134,
+      "groundOffset": 0.0,
+      "edits": []
+    },
+    "mos-buttress": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\TAT\\msh\\tat2_bldg_pillar1.msh",
+      "sha256": "9a13b3892474122917ee980852139ae2388baa44e05955498456d21fc86b58ae",
+      "size": [
+        1.0,
+        4.0,
+        1.59044
+      ],
+      "triangles": 18,
+      "groundOffset": 0.0,
+      "edits": []
+    },
+    "mos-vent": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\TAT\\msh\\tat2_prop_vent.msh",
+      "sha256": "1f567a2af135ff6192e64c42147fc3c10b6c0aa97671cd8c389d47c67f05d65b",
+      "size": [
+        0.85774,
+        0.90564,
+        1.34092
+      ],
+      "triangles": 68,
+      "groundOffset": 0.0,
+      "edits": [
+        "Completed both hood surrounds and shaft ends with 28 sheet-metal triangles; inset grille geometry and UVs retained"
+      ]
+    },
+    "mos-canopy": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\TAT\\msh\\PC\\tat2_bldg_tent1.msh",
+      "sha256": "1bf409b5df9c71d5c7b479ff99025546d327d81f2c6653ee71fc0636bb116569",
+      "size": [
+        4.22336,
+        4.11169,
+        6.47699
+      ],
+      "triangles": 152,
+      "groundOffset": 0.0,
+      "edits": [
+        "Removed merch_crate node; cloth and support posts retained"
+      ]
+    }
+  },
+  "textures": {
+    "tat2_bldg_set03": {
+      "source": "msh\\tat2_bldg_set03.tga",
+      "width": 256,
+      "height": 256,
+      "sha256": "be8c921f1e291292f6f7454f30acc2e0a2b29ae95a7a0d0cf7f6bd2bc31a0c90"
+    },
+    "tat2_bldg_set07": {
+      "source": "msh\\tat2_bldg_set07.tga",
+      "width": 256,
+      "height": 256,
+      "sha256": "e20a9efa97a6a52a16ccdb612bcab8013a8313fb848f4943a21e6e5e448a5982"
+    },
+    "tat2_bldg_set04": {
+      "source": "msh\\tat2_bldg_set04.tga",
+      "width": 256,
+      "height": 256,
+      "sha256": "1ce0a6106c6b55e98367087ed366320950d22716e2b50c41b1b782375afe95ea"
+    },
+    "tat2_bldg_base_grit": {
+      "source": "msh\\tat2_bldg_base_grit.tga",
+      "width": 256,
+      "height": 256,
+      "sha256": "dba0b4ca5fbcfe8bb99695631ed8c63b1d1e4528cfe604cb7660af279d69c7dc"
+    },
+    "tat2_bldg_cantina01": {
+      "source": "msh\\PC\\tat2_bldg_cantina01.tga",
+      "width": 256,
+      "height": 256,
+      "sha256": "9b7809eb44d7faaab437a4f6ecb920fac02a0f20c2bf552a7a9913bfbeb2af22"
+    },
+    "tat2_bldg_cantina_furniture01": {
+      "source": "msh\\PC\\tat2_bldg_cantina_furniture01.tga",
+      "width": 256,
+      "height": 256,
+      "sha256": "ead56f37e75b3b170eb825d115925ef1a701d92f64d78052bea941d2d4a573df"
+    },
+    "tat2_bldg_cantina_ceilig_05": {
+      "source": "msh\\PC\\tat2_bldg_cantina_ceilig_05.tga",
+      "width": 256,
+      "height": 128,
+      "sha256": "c7439c4db7cddd5c982f9f6a32bb559c540a8b0346e89c04c2f699816e2d9ad3"
+    },
+    "tat2_bldg_cantina_furniture07": {
+      "source": "msh\\PC\\tat2_bldg_cantina_furniture07.tga",
+      "width": 128,
+      "height": 256,
+      "sha256": "19effd76f8ff3f3a780d7a7022d86f9caf9926670f19599c4488d7b0da5e18d6"
+    },
+    "tat2_bldg_cantina_furniture04": {
+      "source": "msh\\PC\\tat2_bldg_cantina_furniture04.tga",
+      "width": 128,
+      "height": 128,
+      "sha256": "1e95c6f06cadec665a5a7538669b6a526a172aae903917515f2868ddc80de40b"
+    },
+    "tat2_bldg_cantina_dispencers": {
+      "source": "msh\\PC\\tat2_bldg_cantina_dispencers.tga",
+      "width": 256,
+      "height": 128,
+      "sha256": "146790201225b1d1ccae0e0949a1381ef75f0bf4a288aa87a98628d7377b10fc"
+    },
+    "tat2_bldg_set06": {
+      "source": "msh\\tat2_bldg_set06.tga",
+      "width": 256,
+      "height": 256,
+      "sha256": "cbb9e8bacb15132f4470c60902f7099d371405261b00671141411712bc623698"
+    },
+    "tat2_bldg_set05": {
+      "source": "msh\\tat2_bldg_set05.tga",
+      "width": 256,
+      "height": 256,
+      "sha256": "b12fe39c81a7590d0f359ae0e990fe678809b4ff9f71fd376eb5e178fa8e7c36"
+    },
+    "tat2_bldg_set01": {
+      "source": "msh\\PC\\tat2_bldg_set01.tga",
+      "width": 256,
+      "height": 256,
+      "sha256": "25f12bb0580a4ab3a110fe360d44450f2dcc5393f43708d4c0467d7a16fd7070"
+    },
+    "tat2_bldg_jawa_junky": {
+      "source": "msh\\tat2_bldg_jawa_junky.tga",
+      "width": 256,
+      "height": 128,
+      "sha256": "005b134fa79cd68381bc465e81a89348d3961ced83098f7143cca2e8f2de5840"
+    },
+    "tat2_bldg_set02": {
+      "source": "msh\\tat2_bldg_set02.tga",
+      "width": 256,
+      "height": 256,
+      "sha256": "a87a9620089d53a3c819682a9669093f8dc6325f8554c8d1668e2d6aaf930183"
+    },
+    "tat_prop_evaporator": {
+      "source": "msh\\tat_prop_evaporator.tga",
+      "width": 256,
+      "height": 256,
+      "sha256": "80223ab8b824c1a799400eb24f94e59aca63c342e00cccf9a818bc3e86164bdf"
+    },
+    "tat2_bldg_tent": {
+      "source": "msh\\PC\\tat2_bldg_tent.tga",
+      "width": 256,
+      "height": 256,
+      "sha256": "0a2a02af1f2e9f17c38b838d1f2f3cf3f9fe3e92b34e8a28e989dea2b8cb587f"
+    }
+  },
+  "surfaces": {
+    "mos-stucco": {
+      "source": "msh\\tat2_bldg_set03.tga",
+      "crop": null
+    },
+    "mos-worn-stucco": {
+      "source": "msh\\tat2_bldg_set07.tga",
+      "crop": null
+    },
+    "mos-sand-floor": {
+      "source": "msh\\tat2_bldg_base_grit.tga",
+      "crop": null
+    },
+    "mos-interior-plaster": {
+      "source": "msh\\tat2_bldg_cantina02.tga",
+      "crop": [
+        160,
+        0,
+        256,
+        256
+      ]
+    },
+    "mos-service-plaster": {
+      "source": "msh\\tat2_bldg_set05.tga",
+      "crop": null
+    }
+  }
+}

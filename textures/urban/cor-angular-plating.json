@@ -1,0 +1,10 @@
+{
+  "id": "cor-angular-plating",
+  "name": "Angular tower plating",
+  "roughness": 0.75,
+  "metalness": 0.18,
+  "order": 88,
+  "themes": [
+    "Coruscant"
+  ]
+}

@@ -1,0 +1,16 @@
+node_modules/
+.server.pid
+*.log
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+
+# User-provided character geometry and textures stay local.
+assets/character/
+
+.world-folders.json
+.world-folders.json.tmp
+
+# Built desktop releases and local packaging caches.
+dist/

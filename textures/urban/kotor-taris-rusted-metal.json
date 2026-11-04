@@ -1,0 +1,11 @@
+{
+  "id": "kotor-taris-rusted-metal",
+  "name": "Taris · rusted metal",
+  "game": "KOTOR",
+  "roughness": 0.9,
+  "metalness": 0.15,
+  "order": 43,
+  "themes": [
+    "KOTOR"
+  ]
+}

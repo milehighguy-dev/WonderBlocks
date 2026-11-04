@@ -1,0 +1,10 @@
+{
+  "id": "mos-service-plaster",
+  "name": "Mos Eisley · service wall",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 62,
+  "themes": [
+    "Mos Eisley"
+  ]
+}

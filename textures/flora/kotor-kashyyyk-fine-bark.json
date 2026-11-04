@@ -1,0 +1,13 @@
+{
+  "id": "kotor-kashyyyk-fine-bark",
+  "name": "Kashyyyk · fine bark",
+  "game": "KOTOR",
+  "group": "Flora",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 38,
+  "themes": [
+    "Flora",
+    "KOTOR"
+  ]
+}

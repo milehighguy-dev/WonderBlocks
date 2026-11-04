@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {defaultInterior,validateInterior,interiorWalls} from '../src/interiors/interior.js';import {adjustOpening} from '../src/interiors/interior-openings.js';
+function plan(){const p=defaultInterior();p.doors.push({axis:'x',line:0,offset:3,width:1.2,height:2.2,kind:'door'});validateInterior(p);return p;}
+test('move an existing opening and clamp it within its wall',()=>{const p=plan(),m=adjustOpening(p,0,'move',100);validateInterior(m);assert.ok(Math.abs(m.doors[0].offset-5.2)<1e-6);assert.equal(p.doors[0].offset,3);});
+test('resize either end without moving the other end',()=>{const p=plan(),m=adjustOpening(p,0,'start',-.5);validateInterior(m);assert.ok(Math.abs(m.doors[0].width-1.7)<1e-6);assert.ok(Math.abs(m.doors[0].offset+m.doors[0].width/2-3.6)<1e-6);const n=adjustOpening(p,0,'end',100);validateInterior(n);assert.ok(Math.abs(n.doors[0].offset-n.doors[0].width/2-2.4)<1e-6);});
+test('editing windows preserves sill and height',()=>{const p=plan();Object.assign(p.doors[0],{kind:'window',sill:1,height:1.2});const m=adjustOpening(p,0,'move',-.5);validateInterior(m);assert.equal(m.doors[0].sill,1);assert.equal(m.doors[0].height,1.2);});

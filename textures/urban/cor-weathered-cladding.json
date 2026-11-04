@@ -1,0 +1,10 @@
+{
+  "id": "cor-weathered-cladding",
+  "name": "Weathered steel cladding",
+  "roughness": 0.75,
+  "metalness": 0.18,
+  "order": 82,
+  "themes": [
+    "Coruscant"
+  ]
+}

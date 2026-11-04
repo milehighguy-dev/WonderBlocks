@@ -1,0 +1,10 @@
+{
+  "id": "cor-night-warm",
+  "name": "Warm apartment windows",
+  "roughness": 0.75,
+  "metalness": 0.18,
+  "order": 80,
+  "themes": [
+    "Coruscant"
+  ]
+}

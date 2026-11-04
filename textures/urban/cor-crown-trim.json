@@ -1,0 +1,10 @@
+{
+  "id": "cor-crown-trim",
+  "name": "Gold crown trim",
+  "roughness": 0.7,
+  "metalness": 0.18,
+  "order": 91,
+  "themes": [
+    "Coruscant"
+  ]
+}

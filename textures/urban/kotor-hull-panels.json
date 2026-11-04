@@ -1,0 +1,11 @@
+{
+  "id": "kotor-hull-panels",
+  "name": "KOTOR · pale hull panels",
+  "game": "KOTOR",
+  "roughness": 0.7,
+  "metalness": 0.15,
+  "order": 49,
+  "themes": [
+    "KOTOR"
+  ]
+}

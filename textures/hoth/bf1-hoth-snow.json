@@ -1,0 +1,11 @@
+{
+  "id": "bf1-hoth-snow",
+  "name": "Hoth · rough snow",
+  "game": "SWBF1",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 13,
+  "themes": [
+    "SWBF1"
+  ]
+}

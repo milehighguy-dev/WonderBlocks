@@ -1,0 +1,10 @@
+{
+  "id": "yavin-floor",
+  "name": "Yavin · courtyard paving",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 51,
+  "themes": [
+    "Yavin"
+  ]
+}

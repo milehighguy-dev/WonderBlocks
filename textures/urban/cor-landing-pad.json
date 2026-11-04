@@ -1,0 +1,10 @@
+{
+  "id": "cor-landing-pad",
+  "name": "Landing pad markings",
+  "roughness": 0.7,
+  "metalness": 0.18,
+  "order": 94,
+  "themes": [
+    "Coruscant"
+  ]
+}

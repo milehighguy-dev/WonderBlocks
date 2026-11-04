@@ -1,0 +1,13 @@
+{
+  "id": "ja-yavin-moss-cover",
+  "name": "Yavin · deep moss covering",
+  "game": "Jedi Academy",
+  "group": "Flora",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 37,
+  "themes": [
+    "Flora",
+    "Jedi Academy"
+  ]
+}

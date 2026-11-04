@@ -1,0 +1,13 @@
+{
+  "id": "white-kotor-kashyyyk-hardwood",
+  "name": "White · wood grain",
+  "sourceId": "kotor-kashyyyk-hardwood",
+  "sourceGame": "KOTOR",
+  "game": "Tintable whites",
+  "roughness": 0.85,
+  "metalness": 0,
+  "order": 6,
+  "themes": [
+    "Tintable whites"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "hammered",
+  "name": "Hammered metal",
+  "roughness": 0.48,
+  "metalness": 0.65,
+  "order": 123,
+  "themes": [
+    "General",
+    "New York"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "wonderblocks",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.cjs",
+    "test": "node tools/run-tests.mjs",
+    "test:unit": "node --test tests/*.test.js",
+    "test:integration": "node tools/run-tests.mjs integration",
+    "test:browser": "node tests/integration/browser.mjs",
+    "test:native": "node tools/run-tests.mjs native",
+    "test:release": "node tools/run-tests.mjs release",
+    "test:loading": "node tests/integration/scene-loading.mjs",
+    "test:export": "node tests/integration/export-responsive.mjs",
+    "test:scale": "node tests/integration/scale-controls.mjs",
+    "desktop:install": "install-electron",
+    "desktop:dev": "electron .",
+    "desktop:pack": "electron-builder --config electron-builder.cjs --win --x64 --dir --publish never",
+    "desktop:dist": "electron-builder --config electron-builder.cjs --win --x64 --publish never",
+    "desktop:check-version": "node tools/desktop-release.mjs",
+    "desktop:checksums": "node tools/desktop-release.mjs --checksums",
+    "test:desktop": "node tests/integration/desktop.mjs"
+  },
+  "devDependencies": {
+    "electron": "45.2.2",
+    "electron-builder": "26.18.0",
+    "jszip": "3.10.1",
+    "playwright": "1.62.1"
+  },
+  "dependencies": {
+    "sharp": "0.34.5"
+  },
+  "description": "A scene and object builder for Star Wars Battlefront II modding.",
+  "author": "Wonderblocks contributors",
+  "main": "desktop/main.cjs",
+  "packageManager": "pnpm@11.25.0"
+}

@@ -1,0 +1,10 @@
+{
+  "id": "swbf-hoth-ceiling",
+  "name": "Hoth ice ceiling",
+  "roughness": 0.8,
+  "metalness": 0,
+  "order": 72,
+  "themes": [
+    "Hallway references"
+  ]
+}

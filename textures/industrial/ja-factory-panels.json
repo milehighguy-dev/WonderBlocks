@@ -1,0 +1,11 @@
+{
+  "id": "ja-factory-panels",
+  "name": "Factory · industrial wall panels",
+  "game": "Jedi Academy",
+  "roughness": 0.85,
+  "metalness": 0.15,
+  "order": 27,
+  "themes": [
+    "Jedi Academy"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "rift-habitat",
+  "name": "Carved canyon window galleries",
+  "roughness": 0.95,
+  "metalness": 0,
+  "order": 119,
+  "themes": [
+    "General"
+  ]
+}

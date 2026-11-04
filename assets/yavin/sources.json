@@ -1,0 +1,357 @@
+{
+  "bf2Temple": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\world1\\yavin1.wld",
+  "bf1Arena": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\Yavin\\world2\\yav2.WLD",
+  "bf1BuildingLayer": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\Yavin\\world2\\yav2_Buildings01.lyr",
+  "textures": {
+    "yavin-stone": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\yav2_bldg_stone.tga",
+      "sha256": "d643a95f2588724c7fc9b07d01a31189316719b545eef90b50249110bf5d7044",
+      "size": [
+        128,
+        128
+      ]
+    },
+    "yavin-floor": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\yav2_bldg_floor.tga",
+      "sha256": "96fbf28f2c49ee1c6f27c7e4e49b6bb18a96166d98315fcc9dc5dbc01c2a768f",
+      "size": [
+        128,
+        128
+      ]
+    },
+    "yavin-wall": {
+      "source": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\Yavin\\MSH\\yav2_bldg_wall01.tga",
+      "sha256": "b6e2eec76a247a83dcacea7765aaeb99a69826da27faf0b732e201a4b6c6fbe3",
+      "size": [
+        128,
+        128
+      ]
+    },
+    "yavin-bridge-paving": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\world1\\yav_main_6.tga",
+      "sha256": "3f1b75307bc9ade6335290306d51bcca0bef105760adc501e02625f10cdffe56",
+      "crop": null,
+      "size": [
+        128,
+        128
+      ]
+    },
+    "yavin-bridge-stone": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\PC\\yav_bldg_aquaduct.tga",
+      "sha256": "3bf94f00d7e53d302199a3f7df86463663f4b09753d19d27a46a6cf5a7407aaf",
+      "crop": [
+        0,
+        130,
+        512,
+        302
+      ],
+      "size": [
+        128,
+        128
+      ]
+    },
+    "yavin-bridge-trim": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\PC\\yav_bldg_aquaduct.tga",
+      "sha256": "3bf94f00d7e53d302199a3f7df86463663f4b09753d19d27a46a6cf5a7407aaf",
+      "crop": [
+        0,
+        0,
+        512,
+        128
+      ],
+      "size": [
+        128,
+        128
+      ]
+    },
+    "yavin-aqueduct-stone": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\PC\\yav_bldg_greattemple.tga",
+      "sha256": "a6ee7f34b587b3accafcc126e217cff5e2728e0b5259196d10c84dad20cbe69d",
+      "crop": [
+        0,
+        32,
+        512,
+        475
+      ],
+      "size": [
+        128,
+        128
+      ]
+    },
+    "yavin-aqueduct-paving": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\yav2_bldg_floor2.tga",
+      "sha256": "cefa00b2b7f07be6aa6c0aa2dc549eb7818713b5b32f5eaaf3c08f2891c452c3",
+      "crop": null,
+      "size": [
+        128,
+        128
+      ]
+    }
+  },
+  "references": {
+    "yav_bldg_greattemple": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\PC\\yav_bldg_greattemple.msh",
+      "sha256": "ff502cc9def084d7ec70d3dd318e1106d9543473010e8f92bda7f75d206b0b92",
+      "size": [
+        121.98115,
+        41.04171,
+        121.98115
+      ],
+      "triangles": 512
+    },
+    "yav_bldg_greattemple_interior": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\PC\\yav_bldg_greattemple_interior.msh",
+      "sha256": "b344924aad583a1faa97b7126bdcc7165ee01908906fde9022aab29f8061b32f",
+      "size": [
+        85.59335,
+        41.02808,
+        62.79085
+      ],
+      "triangles": 1146
+    },
+    "yav_bldg_minitemple": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\PC\\yav_bldg_minitemple.msh",
+      "sha256": "ad0b0335db4de5562d82b5f071696b9e1baf56e86fd66bf93570df5002d07b21",
+      "size": [
+        40.62915,
+        17.64961,
+        23.78094
+      ],
+      "triangles": 339
+    },
+    "yav_bldg_aquaduct": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\PC\\yav_bldg_aquaduct.msh",
+      "sha256": "c23ca827b87c475e518ad4b6c4bce9958ad698bd5690c9d56ffd59b934895434",
+      "size": [
+        35.14824,
+        15.15356,
+        64.58253
+      ],
+      "triangles": 816
+    },
+    "yav_bldg_stairway_main": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\yav_bldg_stairway_main.msh",
+      "sha256": "24a5fb4a8f453739c9a3ffeea8aa8fd31be38655cfe944c516824fd6289258f3",
+      "size": [
+        8.00511,
+        4.10407,
+        9.01192
+      ],
+      "triangles": 128
+    },
+    "yav_bldg_stairway_side": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\yav_bldg_stairway_side.msh",
+      "sha256": "a436355a19f995b5a72fd0f309a114e4b52d49e6624312e89fbbb5187fde90e8",
+      "size": [
+        4.37159,
+        2.29496,
+        9.01201
+      ],
+      "triangles": 56
+    },
+    "yav_bldg_stairway_in": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\yav_bldg_stairway_in.msh",
+      "sha256": "c9e643b27365ccf667d3f1cbd8ef5c7a225569e777bcd07252ee0ec6e62fc375",
+      "size": [
+        3.99161,
+        1.77502,
+        3.99493
+      ],
+      "triangles": 80
+    },
+    "yav2_bldg_arena_straight_1": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\yav2_bldg_arena_straight_1.msh",
+      "sha256": "1bd2e378ff8e889e7ee9d66bcb56e9b1b0d243c004ede2ad9923e78f3100c6be",
+      "size": [
+        123.05487,
+        34.01193,
+        40.1966
+      ],
+      "triangles": 1488
+    },
+    "yav2_bldg_arena_straight_2": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\yav2_bldg_arena_straight_2.msh",
+      "sha256": "92c4902ecd1340f780f606ae15a6ab843270c765c9a81b86de92d510a7aac284",
+      "size": [
+        123.07631,
+        34.0,
+        47.36012
+      ],
+      "triangles": 1150
+    },
+    "yav2_bldg_arena_tunnel": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\yav2_bldg_arena_tunnel.msh",
+      "sha256": "a3aa5e1ab4c07e79e30e83a614147f2f17772d4861d6facd9772cd12c6ee0211",
+      "size": [
+        8.44685,
+        13.54387,
+        41.73799
+      ],
+      "triangles": 149
+    },
+    "yav2_bldg_Arch_stairs": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\yav2_bldg_Arch_stairs.msh",
+      "sha256": "67f20e2b12eb4cefde9fd863749671ee4dbbd71852eb1aac25b0ed21b9c58d63",
+      "size": [
+        16.01479,
+        8.53894,
+        17.02756
+      ],
+      "triangles": 96
+    },
+    "yav2_bldg_Temple": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\yav2_bldg_Temple.msh",
+      "sha256": "8f77b1cda0848d8cc3c7e1c8e65bb797820e9ad9c07127d863e6ad8bc9c28fa9",
+      "size": [
+        83.26094,
+        66.89613,
+        59.60351
+      ],
+      "triangles": 978
+    },
+    "yav2_bldg_Bigwall": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\yav2_bldg_Bigwall.msh",
+      "sha256": "8cd2d1e3e8570a257728e5ce4bf72ff8e6d5b46c5bece6133f8ae331b114b4af",
+      "size": [
+        32.0,
+        16.0,
+        8.0
+      ],
+      "triangles": 34
+    },
+    "yav2_bldg_medium": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\yav2_bldg_medium.msh",
+      "sha256": "ab6422ea5c0291b1830388b8d0f79dd05090480154399bb1fbd841fef9e00beb",
+      "size": [
+        8.0001,
+        8.0,
+        16.0
+      ],
+      "triangles": 296
+    },
+    "bf1-yav2_bldg_arena_straight_1": {
+      "source": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\Yavin\\MSH\\yav2_bldg_arena_straight_1.msh",
+      "sha256": "09407bb771a1b768818ada26f89f991eccca3d8a44482148baa2c59ef7f2b7e7",
+      "size": [
+        123.05487,
+        34.01193,
+        40.1966
+      ],
+      "triangles": 1488
+    },
+    "bf1-yav2_bldg_arena_straight_2": {
+      "source": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\Yavin\\MSH\\yav2_bldg_arena_straight_2.msh",
+      "sha256": "92c4902ecd1340f780f606ae15a6ab843270c765c9a81b86de92d510a7aac284",
+      "size": [
+        123.07631,
+        34.0,
+        47.36012
+      ],
+      "triangles": 1150
+    },
+    "bf1-yav2_bldg_arena_tunnel": {
+      "source": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\Yavin\\MSH\\yav2_bldg_arena_tunnel.msh",
+      "sha256": "a3aa5e1ab4c07e79e30e83a614147f2f17772d4861d6facd9772cd12c6ee0211",
+      "size": [
+        8.44685,
+        13.54387,
+        41.73799
+      ],
+      "triangles": 149
+    },
+    "bf1-yav2_bldg_Arch_stairs": {
+      "source": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\Yavin\\MSH\\yav2_bldg_Arch_stairs.msh",
+      "sha256": "67f20e2b12eb4cefde9fd863749671ee4dbbd71852eb1aac25b0ed21b9c58d63",
+      "size": [
+        16.01479,
+        8.53894,
+        17.02756
+      ],
+      "triangles": 96
+    },
+    "bf1-yav2_bldg_door_ruin_8": {
+      "source": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\Yavin\\MSH\\yav2_bldg_door_ruin_8.msh",
+      "sha256": "b310c634eb54859901970ecab53a147f2c184293cc69524d5121bde45b8c1c17",
+      "size": [
+        1.0,
+        5.47516,
+        8.0
+      ],
+      "triangles": 56
+    },
+    "bf1-yav2_bldg_window_ruin_16": {
+      "source": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\Yavin\\MSH\\yav2_bldg_window_ruin_16.msh",
+      "sha256": "b39843b8d7338bf94790b01591ea388c5475a06e4db30fdfde18a53a22f4673b",
+      "size": [
+        1.00009,
+        5.49711,
+        14.573
+      ],
+      "triangles": 142
+    },
+    "bf1-yav2_bldg_wall_ruin_16": {
+      "source": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\Yavin\\MSH\\yav2_bldg_wall_ruin_16.msh",
+      "sha256": "14f20d47b8cfa4b73c47ff941cc1f055029585b6b168d8afa34790b62d0a6a23",
+      "size": [
+        1.0,
+        8.0,
+        16.0
+      ],
+      "triangles": 110
+    },
+    "sdk-yav_bldg_ruins_wall1": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\PC\\yav_bldg_ruins_wall1.msh",
+      "sha256": "492e962fddb2a3a955614dd98b61a30044cf477d7b8f089f7609101c97a2dbfa",
+      "size": [
+        7.44478,
+        26.25982,
+        12.00015
+      ],
+      "triangles": 86
+    },
+    "sdk-yav_bldg_ruins_wall2": {
+      "source": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\YAV\\msh\\PC\\yav_bldg_ruins_wall2.msh",
+      "sha256": "185be461c399c070ee7e4234a6f01a030164eb1e7a64039013bae3b61c319e17",
+      "size": [
+        4.66053,
+        5.13479,
+        18.00015
+      ],
+      "triangles": 44
+    }
+  },
+  "interpretation": "New editable blocking geometry and route/wall profiles inspired by these structural references; whole pyramids, ordinary arches, columns and props excluded.",
+  "completeBridge": {
+    "reference": "User-provided BF2 Temple screenshots, matched to the SDK bridge mesh and original carved-cap atlas",
+    "sourceModel": "yav_bldg_aquaduct",
+    "authoredProfile": "Broad deck, solid full-width transverse support slabs with flared crowns and stepped feet, raised base curbs, tapered masonry blocks and continuous carved cap beams",
+    "sourceBayMetres": {
+      "spacing": 5.76,
+      "blockFootLength": 3.74,
+      "blockCrownLength": 2.13
+    },
+    "presets": [
+      "Large Yavin bridge: broad bridge with solid support slabs"
+    ],
+    "textures": "Independent Bridge deck, Bridge structure, Side blocks, Cap beams and Base curbs finishes"
+  },
+  "aqueduct": {
+    "sourceModels": [
+      "yav_bldg_ruins_wall1",
+      "yav_bldg_ruins_wall2"
+    ],
+    "nativeDimensionsMetres": {
+      "enclosedPierLength": 12,
+      "openSpanLength": 18,
+      "clearWalkingWidth": 3.5358,
+      "pierFloorHeight": 20.836,
+      "passageHeadroom": 4.565
+    },
+    "presets": [
+      "Aqueduct open span",
+      "Aqueduct covered span"
+    ],
+    "sectionEditing": "Matching open and covered defaults, without an automatic support. Optional aqueduct-specific fillToGround extends a section to the route ground plane and follows elevation and curves. The workshop explicitly enables fill on three 12 m covered sections.",
+    "floatingSections": "Uniform underside through flat and sloped sections; no repeated haunches. Texture rows follow route grade, with matching phase at grade joins."
+  }
+}

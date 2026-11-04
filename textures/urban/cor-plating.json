@@ -1,0 +1,10 @@
+{
+  "id": "cor-plating",
+  "name": "Exterior panel plating",
+  "roughness": 0.7,
+  "metalness": 0.18,
+  "order": 92,
+  "themes": [
+    "Coruscant"
+  ]
+}

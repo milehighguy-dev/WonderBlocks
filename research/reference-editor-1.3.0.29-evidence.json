@@ -1,0 +1,377 @@
+{
+  "file": "<local reference executable>",
+  "sha256": "e75cbb34396050b15fb1302600968075455eeb0bb1bd6386f8bd7fabebe892c6",
+  "entryRva": "0x14d3000",
+  "sections": [
+    {
+      "name": ".text",
+      "rva": 4096,
+      "size": 16562688,
+      "offset": 1024,
+      "entropyBits": 7.999989284149806
+    },
+    {
+      "name": ".rdata",
+      "rva": 16568320,
+      "size": 1308672,
+      "offset": 16563712,
+      "entropyBits": 6.272147911547569
+    },
+    {
+      "name": ".data",
+      "rva": 17879040,
+      "size": 805888,
+      "offset": 17872384,
+      "entropyBits": 7.999749920379661
+    },
+    {
+      "name": ".tls",
+      "rva": 20054016,
+      "size": 512,
+      "offset": 18678272,
+      "entropyBits": 0
+    },
+    {
+      "name": "CONST",
+      "rva": 20058112,
+      "size": 512,
+      "offset": 18678784,
+      "entropyBits": 7.622167147798871
+    },
+    {
+      "name": ".rsrc",
+      "rva": 20062208,
+      "size": 840704,
+      "offset": 18679296,
+      "entropyBits": 5.791652874154316
+    },
+    {
+      "name": ".reloc",
+      "rva": 20905984,
+      "size": 927744,
+      "offset": 19520000,
+      "entropyBits": 6.226840639836146
+    },
+    {
+      "name": ".ooa",
+      "rva": 21835776,
+      "size": 2048,
+      "offset": 20447744,
+      "entropyBits": 2.8181406857193223
+    }
+  ],
+  "strings": [
+    {
+      "offset": "0xfeaf9b",
+      "va": "0x13ec19b",
+      "text": ">editor_sym_snap"
+    },
+    {
+      "offset": "0xfeafac",
+      "va": "0x13ec1ac",
+      "text": "editor_sym_unsnap"
+    },
+    {
+      "offset": "0xfeeb58",
+      "va": "0x13efd58",
+      "text": "%ls/%ls_BakeInfoMap.tga"
+    },
+    {
+      "offset": "0xfeeb70",
+      "va": "0x13efd70",
+      "text": "%ls/%ls_NormalMap.tga"
+    },
+    {
+      "offset": "0xfeeb88",
+      "va": "0x13efd88",
+      "text": "%ls/%ls_Diffuse.tga"
+    },
+    {
+      "offset": "0xfeec45",
+      "va": "0x13efe45",
+      "text": "deformChannel 0x%8.8x %f"
+    },
+    {
+      "offset": "0xfeece9",
+      "va": "0x13efee9",
+      "text": "orientation %f %f %f %f"
+    },
+    {
+      "offset": "0xfeed71",
+      "va": "0x13eff71",
+      "text": "submeshIndex %d"
+    },
+    {
+      "offset": "0xfeeda1",
+      "va": "0x13effa1",
+      "text": "symmetricIndex %d"
+    },
+    {
+      "offset": "0xfeedb5",
+      "va": "0x13effb5",
+      "text": "parentIndex %d"
+    },
+    {
+      "offset": "0x1011bec",
+      "va": "0x1412dec",
+      "text": "partsPaintEnv"
+    },
+    {
+      "offset": "0x1047140",
+      "va": "0x1448340",
+      "text": "symmetricIndex"
+    },
+    {
+      "offset": "0x1047150",
+      "va": "0x1448350",
+      "text": "submeshIndex"
+    },
+    {
+      "offset": "0x104719c",
+      "va": "0x144839c",
+      "text": "parentIndex"
+    },
+    {
+      "offset": "0x10471ec",
+      "va": "0x14483ec",
+      "text": "deformChannel"
+    },
+    {
+      "offset": "0x105d7f8",
+      "va": "0x145e9f8",
+      "text": "BuildingEditor"
+    },
+    {
+      "offset": "0x107938c",
+      "va": "0x147a58c",
+      "text": "SnapDistanceZoomFactor"
+    }
+  ],
+  "paintVariablePointerTable": [
+    {
+      "index": 0,
+      "entryVA": "0x13f3958",
+      "stringVA": "0x13f3914",
+      "name": "size"
+    },
+    {
+      "index": 1,
+      "entryVA": "0x13f395c",
+      "stringVA": "0x13f390c",
+      "name": "aspect"
+    },
+    {
+      "index": 2,
+      "entryVA": "0x13f3960",
+      "stringVA": "0x13f3900",
+      "name": "rotation"
+    },
+    {
+      "index": 3,
+      "entryVA": "0x13f3964",
+      "stringVA": "0x13f324c",
+      "name": "spacing"
+    },
+    {
+      "index": 4,
+      "entryVA": "0x13f3968",
+      "stringVA": "0x13f38f4",
+      "name": "killswitch"
+    },
+    {
+      "index": 5,
+      "entryVA": "0x13f396c",
+      "stringVA": "0x13f38e8",
+      "name": "hairRadius"
+    },
+    {
+      "index": 6,
+      "entryVA": "0x13f3970",
+      "stringVA": "0x13f38e0",
+      "name": "alpha"
+    },
+    {
+      "index": 7,
+      "entryVA": "0x13f3974",
+      "stringVA": "0x13f38d4",
+      "name": "diffuseHue"
+    },
+    {
+      "index": 8,
+      "entryVA": "0x13f3978",
+      "stringVA": "0x13f38c8",
+      "name": "diffuseSat"
+    },
+    {
+      "index": 9,
+      "entryVA": "0x13f397c",
+      "stringVA": "0x13f38bc",
+      "name": "diffuseVal"
+    },
+    {
+      "index": 10,
+      "entryVA": "0x13f3980",
+      "stringVA": "0x13f38ac",
+      "name": "diffuseAlpha"
+    },
+    {
+      "index": 11,
+      "entryVA": "0x13f3984",
+      "stringVA": "0x13f38a0",
+      "name": "bumpScale"
+    },
+    {
+      "index": 12,
+      "entryVA": "0x13f3988",
+      "stringVA": "0x13f3894",
+      "name": "bumpAlpha"
+    },
+    {
+      "index": 13,
+      "entryVA": "0x13f398c",
+      "stringVA": "0x13f3884",
+      "name": "specularScale"
+    },
+    {
+      "index": 14,
+      "entryVA": "0x13f3990",
+      "stringVA": "0x13f3874",
+      "name": "specularAlpha"
+    },
+    {
+      "index": 15,
+      "entryVA": "0x13f3994",
+      "stringVA": "0x13f3868",
+      "name": "userVar1"
+    },
+    {
+      "index": 16,
+      "entryVA": "0x13f3998",
+      "stringVA": "0x13f385c",
+      "name": "userVar2"
+    },
+    {
+      "index": 17,
+      "entryVA": "0x13f399c",
+      "stringVA": "0x13f3850",
+      "name": "userVar3"
+    },
+    {
+      "index": 18,
+      "entryVA": "0x13f39a0",
+      "stringVA": "0x13f3844",
+      "name": "userVar4"
+    },
+    {
+      "index": 19,
+      "entryVA": "0x13f39a4",
+      "stringVA": "0x13f3840",
+      "name": "age"
+    },
+    {
+      "index": 20,
+      "entryVA": "0x13f39a8",
+      "stringVA": "0x13f3838",
+      "name": "random"
+    },
+    {
+      "index": 21,
+      "entryVA": "0x13f39ac",
+      "stringVA": "0x13f382c",
+      "name": "worldAngle"
+    },
+    {
+      "index": 22,
+      "entryVA": "0x13f39b0",
+      "stringVA": "0x13f3820",
+      "name": "worldPos"
+    },
+    {
+      "index": 23,
+      "entryVA": "0x13f39b4",
+      "stringVA": "0x13f3814",
+      "name": "worldDist"
+    },
+    {
+      "index": 24,
+      "entryVA": "0x13f39b8",
+      "stringVA": "0x13f3808",
+      "name": "boneAngle"
+    },
+    {
+      "index": 25,
+      "entryVA": "0x13f39bc",
+      "stringVA": "0x13f3800",
+      "name": "bonePos"
+    },
+    {
+      "index": 26,
+      "entryVA": "0x13f39c0",
+      "stringVA": "0x13f37f4",
+      "name": "boneOffset"
+    },
+    {
+      "index": 27,
+      "entryVA": "0x13f39c4",
+      "stringVA": "0x13f37e8",
+      "name": "torsoPos"
+    },
+    {
+      "index": 28,
+      "entryVA": "0x13f39c8",
+      "stringVA": "0x13f37e0",
+      "name": "limbPos"
+    },
+    {
+      "index": 29,
+      "entryVA": "0x13f39cc",
+      "stringVA": "0x13f37d4",
+      "name": "limbType"
+    },
+    {
+      "index": 30,
+      "entryVA": "0x13f39d0",
+      "stringVA": "0x13f323c",
+      "name": "region"
+    },
+    {
+      "index": 31,
+      "entryVA": "0x13f39d4",
+      "stringVA": "0x13f37c8",
+      "name": "paintMask"
+    }
+  ],
+  "paintBlendPairs": [
+    {
+      "entryVA": "0x13f39e4",
+      "value": 0,
+      "name": "alpha"
+    },
+    {
+      "entryVA": "0x13f39ec",
+      "value": 1,
+      "name": "add"
+    },
+    {
+      "entryVA": "0x13f39f4",
+      "value": 2,
+      "name": "subtract"
+    },
+    {
+      "entryVA": "0x13f39fc",
+      "value": 3,
+      "name": "multiply"
+    },
+    {
+      "entryVA": "0x13f3a04",
+      "value": 4,
+      "name": "screen"
+    },
+    {
+      "entryVA": "0x13f3a0c",
+      "value": 5,
+      "name": "inherit"
+    }
+  ],
+  "note": "Source-specific names and paths omitted; remaining numeric evidence is unchanged."
+}

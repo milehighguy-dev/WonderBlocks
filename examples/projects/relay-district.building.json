@@ -1,0 +1,3303 @@
+{
+  "format": "open-building-studio",
+  "version": 1,
+  "name": "Relay District · vertical traversal arena",
+  "parts": [
+    {
+      "id": "bef03ff4-f919-441c-976c-620ebe83265c",
+      "type": "platform",
+      "name": "START · freight arrival / cover court",
+      "color": "#a1b0aa",
+      "position": [
+        0,
+        0,
+        24
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "platform": {
+        "thickness": 0.35,
+        "railing": "posts",
+        "railHeight": 1.1,
+        "sections": [
+          {
+            "id": "26cd5df0-d5a5-404c-9668-b70c17bf1b94",
+            "kind": "rectangle",
+            "x": 0,
+            "z": 0,
+            "width": 12,
+            "depth": 12,
+            "radius": 1,
+            "rotation": 0
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "cd1df0ba-abf3-4fd1-ad6b-21c05a406ab0",
+      "type": "platform",
+      "name": "Lower maintenance landing",
+      "color": "#a1b0aa",
+      "position": [
+        -18,
+        0,
+        5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "platform": {
+        "thickness": 0.35,
+        "railing": "posts",
+        "railHeight": 1.1,
+        "sections": [
+          {
+            "id": "bce242c2-6e48-4a69-b0bb-7d1f0eec0d58",
+            "kind": "rectangle",
+            "x": 0,
+            "z": 0,
+            "width": 8,
+            "depth": 10,
+            "radius": 1,
+            "rotation": 0
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "1f83d0a8-ecb8-4b33-91a6-4c0ac22a8cd2",
+      "type": "platform",
+      "name": "Curved stair arrival / exposed flank",
+      "color": "#a1b0aa",
+      "position": [
+        -10,
+        6.4,
+        5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "platform": {
+        "thickness": 1.1,
+        "railing": "bespin",
+        "railHeight": 0.15,
+        "sections": [
+          {
+            "id": "f55da7bc-cc09-4b6c-8b03-1d94a0c24538",
+            "kind": "rectangle",
+            "x": 0,
+            "z": 0,
+            "width": 6,
+            "depth": 10,
+            "radius": 1,
+            "rotation": 0
+          }
+        ],
+        "style": "bespin"
+      },
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "793aa277-e22e-4021-8d20-4ec86a74881f",
+      "type": "platform",
+      "name": "Mid-level Bespin transit circle",
+      "color": "#a1b0aa",
+      "position": [
+        24,
+        3.2,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "platform": {
+        "thickness": 1.1,
+        "railing": "bespin",
+        "railHeight": 0.15,
+        "sections": [
+          {
+            "id": "866867c5-d3e2-423f-8974-229d9acb7102",
+            "kind": "circle",
+            "x": 0,
+            "z": 0,
+            "width": 12,
+            "depth": 12,
+            "radius": 0,
+            "rotation": 0
+          }
+        ],
+        "style": "bespin"
+      },
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "5a03052d-77d9-476b-8fc4-c949d59e432e",
+      "type": "platform",
+      "name": "Public ramp arrival / second circulation loop",
+      "color": "#a1b0aa",
+      "position": [
+        0,
+        3.2,
+        44
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "platform": {
+        "thickness": 0.35,
+        "railing": "posts",
+        "railHeight": 1.1,
+        "sections": [
+          {
+            "id": "510b6f44-a5ae-4a76-9c86-fe8d87b5acbc",
+            "kind": "rectangle",
+            "x": 0,
+            "z": 0,
+            "width": 12,
+            "depth": 8,
+            "radius": 1,
+            "rotation": 0
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "6ba75a0b-24ad-4cd4-967b-6e7288b855f2",
+      "type": "platform",
+      "name": "Public promenade corner",
+      "color": "#a1b0aa",
+      "position": [
+        24,
+        3.2,
+        44
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "platform": {
+        "thickness": 0.35,
+        "railing": "posts",
+        "railHeight": 1.1,
+        "sections": [
+          {
+            "id": "0c399039-f455-4241-bf53-b2138b2de7e4",
+            "kind": "rectangle",
+            "x": 0,
+            "z": 0,
+            "width": 8,
+            "depth": 8,
+            "radius": 1,
+            "rotation": 0
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "6a63ae8f-d522-4d2b-80da-9420bc1ce0ac",
+      "type": "stair-route",
+      "name": "Accessible freight ramp · alternate gallery access",
+      "color": "#c4c9bc",
+      "position": [
+        0,
+        0,
+        30
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 3,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "bef03ff4-f919-441c-976c-620ebe83265c",
+            "platformSection": "26cd5df0-d5a5-404c-9668-b70c17bf1b94",
+            "side": "back"
+          },
+          "end": {
+            "partId": "5a03052d-77d9-476b-8fc4-c949d59e432e",
+            "platformSection": "510b6f44-a5ae-4a76-9c86-fe8d87b5acbc",
+            "side": "front"
+          }
+        },
+        "segments": [
+          {
+            "kind": "ramp",
+            "run": 10,
+            "rise": 3.2,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "posts",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "69164077-3875-45f8-b159-b512525f2103",
+      "type": "stair-route",
+      "name": "Public cross promenade",
+      "color": "#c4c9bc",
+      "position": [
+        6,
+        3.2,
+        44
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 3,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "5a03052d-77d9-476b-8fc4-c949d59e432e",
+            "platformSection": "510b6f44-a5ae-4a76-9c86-fe8d87b5acbc",
+            "side": "right"
+          },
+          "end": {
+            "partId": "6ba75a0b-24ad-4cd4-967b-6e7288b855f2",
+            "platformSection": "0c399039-f455-4241-bf53-b2138b2de7e4",
+            "side": "left"
+          }
+        },
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 14,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "bespin",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "71b74dea-5d07-4071-9e82-997a2e5104bd",
+      "type": "stair-route",
+      "name": "Public gallery return loop",
+      "color": "#c4c9bc",
+      "position": [
+        24,
+        3.2,
+        40
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 3,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "6ba75a0b-24ad-4cd4-967b-6e7288b855f2",
+            "platformSection": "0c399039-f455-4241-bf53-b2138b2de7e4",
+            "side": "front"
+          },
+          "end": {
+            "partId": "793aa277-e22e-4021-8d20-4ec86a74881f",
+            "platformSection": "866867c5-d3e2-423f-8974-229d9acb7102",
+            "side": "back"
+          }
+        },
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 17.016434313895182,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "bespin",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            }
+          },
+          {
+            "kind": "landing",
+            "run": 17.016434313895182,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "bespin",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "86931832-f208-4bb4-9f01-394f4ad70b11",
+      "type": "interior",
+      "name": "01 · Atrium / main three-floor ascent",
+      "color": "#a1b0aa",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "interior": {
+        "height": 3,
+        "thickness": 0.2,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "room",
+            "x": -6,
+            "z": -7,
+            "w": 12,
+            "d": 14
+          }
+        ],
+        "doors": [
+          {
+            "id": "ae773354-ee67-440b-974e-a28d12634e0c",
+            "axis": "x",
+            "line": 7,
+            "offset": 0,
+            "width": 3,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "id": "05a663c5-b3ab-4226-afbd-4ba18348894a",
+            "axis": "z",
+            "line": -6,
+            "offset": 5,
+            "width": 2.4,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "id": "aba6fe13-ab15-4ea6-b09c-27e33e55dc42",
+            "axis": "z",
+            "line": 6,
+            "offset": -4,
+            "width": 2,
+            "height": 1.2,
+            "kind": "window",
+            "sill": 1
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#ffffff",
+            "preset": "cor-walkway-grate",
+            "scale": 0.5
+          },
+          "wall": {
+            "color": "#ffffff",
+            "preset": "cor-riveted-wall",
+            "scale": 0.4
+          },
+          "outside": {
+            "color": "#a7b6ad",
+            "preset": "cor-concrete",
+            "scale": 0.4
+          },
+          "ceiling": {
+            "color": "#d5d8c9",
+            "preset": "plain",
+            "scale": 1
+          },
+          "roof": {
+            "color": "#d5d8c9",
+            "preset": "plain",
+            "scale": 1
+          }
+        },
+        "storeys": [
+          {
+            "id": "4c555f1c-78fc-41c6-8d1b-5ebc56ea2d1d",
+            "name": "Public gallery · 3.2 m",
+            "elevation": 3.2,
+            "plan": {
+              "height": 3,
+              "thickness": 0.2,
+              "slab": 0.2,
+              "rooms": [
+                {
+                  "id": "room",
+                  "x": -6,
+                  "z": -7,
+                  "w": 12,
+                  "d": 14
+                }
+              ],
+              "doors": [
+                {
+                  "id": "36d372af-8538-4091-aeec-7a104867c2ca",
+                  "axis": "z",
+                  "line": 6,
+                  "offset": 0,
+                  "width": 2.4,
+                  "height": 2.6,
+                  "kind": "door"
+                }
+              ],
+              "finishes": {
+                "floor": {
+                  "color": "#ffffff",
+                  "preset": "cor-walkway-grate",
+                  "scale": 0.5
+                },
+                "wall": {
+                  "color": "#ffffff",
+                  "preset": "cor-riveted-wall",
+                  "scale": 0.4
+                },
+                "outside": {
+                  "color": "#a7b6ad",
+                  "preset": "cor-concrete",
+                  "scale": 0.4
+                },
+                "ceiling": {
+                  "color": "#d5d8c9",
+                  "preset": "plain",
+                  "scale": 1
+                },
+                "roof": {
+                  "color": "#d5d8c9",
+                  "preset": "plain",
+                  "scale": 1
+                }
+              },
+              "partitions": []
+            }
+          },
+          {
+            "id": "66258ee2-5daf-41e7-9275-256630d92ddd",
+            "name": "Relay access · 6.4 m",
+            "elevation": 6.4,
+            "plan": {
+              "height": 3,
+              "thickness": 0.2,
+              "slab": 0.2,
+              "rooms": [
+                {
+                  "id": "room",
+                  "x": -6,
+                  "z": -7,
+                  "w": 12,
+                  "d": 14
+                }
+              ],
+              "doors": [
+                {
+                  "id": "2b210697-a690-46bd-8d51-fb1d16d23a4c",
+                  "axis": "z",
+                  "line": -6,
+                  "offset": 5,
+                  "width": 2.4,
+                  "height": 2.6,
+                  "kind": "door"
+                },
+                {
+                  "id": "a041b6db-6f7d-4f91-89ba-ee3a6e1e7cd9",
+                  "axis": "x",
+                  "line": -7,
+                  "offset": 0,
+                  "width": 2.4,
+                  "height": 2.6,
+                  "kind": "door"
+                },
+                {
+                  "id": "0eacf638-eec1-4725-a7ae-896fbce5acbb",
+                  "axis": "x",
+                  "line": 7,
+                  "offset": 0,
+                  "width": 3,
+                  "height": 1.2,
+                  "kind": "window",
+                  "sill": 1
+                }
+              ],
+              "finishes": {
+                "floor": {
+                  "color": "#ffffff",
+                  "preset": "cor-walkway-grate",
+                  "scale": 0.5
+                },
+                "wall": {
+                  "color": "#ffffff",
+                  "preset": "cor-riveted-wall",
+                  "scale": 0.4
+                },
+                "outside": {
+                  "color": "#a7b6ad",
+                  "preset": "cor-concrete",
+                  "scale": 0.4
+                },
+                "ceiling": {
+                  "color": "#d5d8c9",
+                  "preset": "plain",
+                  "scale": 1
+                },
+                "roof": {
+                  "color": "#d5d8c9",
+                  "preset": "plain",
+                  "scale": 1
+                }
+              },
+              "partitions": []
+            }
+          }
+        ],
+        "stairs": [
+          {
+            "id": "f98cccb6-db66-4b98-a251-b049397ca1ff",
+            "from": "ground",
+            "to": "4c555f1c-78fc-41c6-8d1b-5ebc56ea2d1d",
+            "x": -3,
+            "z": -4,
+            "width": 1.6,
+            "run": 6.4,
+            "direction": "south",
+            "angle": 0,
+            "route": {
+              "width": 1.6,
+              "thickness": 0.18,
+              "gap": 0.2,
+              "segments": [
+                {
+                  "kind": "stairs",
+                  "run": 6.4,
+                  "rise": 3.2,
+                  "steps": 18,
+                  "turn": "straight",
+                  "railing": {
+                    "style": "posts",
+                    "color": "#bdad7f"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "99fc7b95-9e8c-4ffc-abbf-534ecca3eb69",
+            "from": "4c555f1c-78fc-41c6-8d1b-5ebc56ea2d1d",
+            "to": "66258ee2-5daf-41e7-9275-256630d92ddd",
+            "x": 3,
+            "z": 2.4,
+            "width": 1.6,
+            "run": 6.4,
+            "direction": "south",
+            "angle": 3.141592653589793,
+            "route": {
+              "width": 1.6,
+              "thickness": 0.18,
+              "gap": 0.2,
+              "segments": [
+                {
+                  "kind": "stairs",
+                  "run": 6.4,
+                  "rise": 3.2,
+                  "steps": 18,
+                  "turn": "straight",
+                  "railing": {
+                    "style": "posts",
+                    "color": "#bdad7f"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "1cd14f39-5df2-4e92-986b-d5bda373b431",
+      "type": "stair-route",
+      "name": "Main approach · wide Kamino bridge",
+      "color": "#c4c9bc",
+      "position": [
+        0,
+        0,
+        7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 3,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "86931832-f208-4bb4-9f01-394f4ad70b11",
+            "levelId": "ground",
+            "roomDoorId": "ae773354-ee67-440b-974e-a28d12634e0c"
+          },
+          "end": {
+            "partId": "bef03ff4-f919-441c-976c-620ebe83265c",
+            "platformSection": "26cd5df0-d5a5-404c-9668-b70c17bf1b94",
+            "side": "front"
+          }
+        },
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 11,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "walkway",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "d99eba66-d513-4d41-b84d-45c2432e4f85",
+      "type": "stair-route",
+      "name": "Maintenance door threshold",
+      "color": "#c4c9bc",
+      "position": [
+        -6,
+        0,
+        5
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 2.4,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "86931832-f208-4bb4-9f01-394f4ad70b11",
+            "levelId": "ground",
+            "roomDoorId": "05a663c5-b3ab-4226-afbd-4ba18348894a"
+          },
+          "end": {
+            "partId": "cd1df0ba-abf3-4fd1-ad6b-21c05a406ab0",
+            "platformSection": "bce242c2-6e48-4a69-b0bb-7d1f0eec0d58",
+            "side": "right"
+          }
+        },
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 8,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "posts",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "4121cb25-9e26-4bcb-9ffd-a2b577e7ad5c",
+      "type": "stair-route",
+      "name": "Upper flank entry · short flush threshold",
+      "color": "#c4c9bc",
+      "position": [
+        -6,
+        6.4,
+        5
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 2.4,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "86931832-f208-4bb4-9f01-394f4ad70b11",
+            "levelId": "66258ee2-5daf-41e7-9275-256630d92ddd",
+            "roomDoorId": "2b210697-a690-46bd-8d51-fb1d16d23a4c"
+          },
+          "end": {
+            "partId": "1f83d0a8-ecb8-4b33-91a6-4c0ac22a8cd2",
+            "platformSection": "f55da7bc-cc09-4b6c-8b03-1d94a0c24538",
+            "side": "right"
+          }
+        },
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 1,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "bespin",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "678fd632-bb51-41bc-9488-2bc2105e966d",
+      "type": "stair-route",
+      "name": "Public arcade · evenly spaced Bespin arches",
+      "color": "#c4c9bc",
+      "position": [
+        6,
+        3.2,
+        0
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 2.4,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "86931832-f208-4bb4-9f01-394f4ad70b11",
+            "levelId": "4c555f1c-78fc-41c6-8d1b-5ebc56ea2d1d",
+            "roomDoorId": "36d372af-8538-4091-aeec-7a104867c2ca"
+          },
+          "end": {
+            "partId": "793aa277-e22e-4021-8d20-4ec86a74881f",
+            "platformSection": "866867c5-d3e2-423f-8974-229d9acb7102",
+            "side": "left"
+          }
+        },
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 12,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "bespin-arches",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "6b8fabbd-211a-469a-b2fe-296d29023e07",
+      "type": "stair-route",
+      "name": "Exposed shortcut · curved Kamino stair",
+      "color": "#aebbc0",
+      "position": [
+        -18,
+        0,
+        10
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 2.4,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "cd1df0ba-abf3-4fd1-ad6b-21c05a406ab0",
+            "platformSection": "bce242c2-6e48-4a69-b0bb-7d1f0eec0d58",
+            "side": "back"
+          },
+          "end": {
+            "partId": "1f83d0a8-ecb8-4b33-91a6-4c0ac22a8cd2",
+            "platformSection": "f55da7bc-cc09-4b6c-8b03-1d94a0c24538",
+            "side": "back"
+          }
+        },
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 12.566370614359172,
+            "rise": 6.4,
+            "steps": 42,
+            "curveAngle": 3.141592653589793,
+            "turn": "straight",
+            "railing": {
+              "style": "walkway",
+              "height": 0.8,
+              "color": "#aebbc0"
+            },
+            "treadDepth": 0.2991993003418851
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "7a766a81-f773-482d-b894-2c56a13053d2",
+      "type": "platform",
+      "name": "OBJECTIVE A · signal relay / extraction roof",
+      "color": "#a1b0aa",
+      "position": [
+        0,
+        6.4,
+        -24
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "platform": {
+        "thickness": 1.1,
+        "railing": "bespin",
+        "railHeight": 0.15,
+        "sections": [
+          {
+            "id": "ab0e9b23-6189-40c2-b2b0-2d992f6c8dc2",
+            "kind": "rectangle",
+            "x": 0,
+            "z": 0,
+            "width": 16,
+            "depth": 12,
+            "radius": 1,
+            "rotation": 0
+          },
+          {
+            "id": "bd0884b9-0be2-464a-b610-ea8f8ca113ff",
+            "kind": "half-circle",
+            "x": 0,
+            "z": -10,
+            "width": 16,
+            "depth": 8,
+            "radius": 0,
+            "rotation": 3.141592653589793,
+            "attachment": {
+              "sectionId": "ab0e9b23-6189-40c2-b2b0-2d992f6c8dc2",
+              "side": "front",
+              "followWidth": true
+            }
+          }
+        ],
+        "style": "bespin"
+      },
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "cb6ac018-ef9e-453f-8212-871a98d57cab",
+      "type": "stair-route",
+      "name": "Upper relay bridge · exposed final approach",
+      "color": "#c4c9bc",
+      "position": [
+        0,
+        6.4,
+        -7
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 3,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "86931832-f208-4bb4-9f01-394f4ad70b11",
+            "levelId": "66258ee2-5daf-41e7-9275-256630d92ddd",
+            "roomDoorId": "a041b6db-6f7d-4f91-89ba-ee3a6e1e7cd9"
+          },
+          "end": {
+            "partId": "7a766a81-f773-482d-b894-2c56a13053d2",
+            "platformSection": "ab0e9b23-6189-40c2-b2b0-2d992f6c8dc2",
+            "side": "back"
+          }
+        },
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 11,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "walkway",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "deaf383b-1100-4a10-8f3e-ef3e1751bfdb",
+      "type": "interior",
+      "name": "02 · Quiet maintenance / angled service room",
+      "color": "#a1b0aa",
+      "position": [
+        -18,
+        0,
+        -16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "interior": {
+        "height": 3,
+        "thickness": 0.2,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "room",
+            "x": -7,
+            "z": -6,
+            "w": 14,
+            "d": 12,
+            "points": [
+              {
+                "x": -7,
+                "z": -6
+              },
+              {
+                "x": 4,
+                "z": -6
+              },
+              {
+                "x": 7,
+                "z": -3
+              },
+              {
+                "x": 7,
+                "z": 6
+              },
+              {
+                "x": -7,
+                "z": 6
+              }
+            ],
+            "curve": {
+              "faces": [
+                0,
+                1
+              ],
+              "amount": 0.7
+            }
+          }
+        ],
+        "doors": [
+          {
+            "id": "76add3c4-7136-4fbc-adc1-9dfb6592d16a",
+            "axis": "x",
+            "line": 6,
+            "offset": 0,
+            "width": 2.4,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "id": "dcc4cf2c-9e23-4e68-9881-d6264345c0dc",
+            "axis": "z",
+            "line": -7,
+            "offset": 0,
+            "width": 2.4,
+            "height": 2.6,
+            "kind": "door"
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#ffffff",
+            "preset": "cor-walkway-grate",
+            "scale": 0.5
+          },
+          "wall": {
+            "color": "#ffffff",
+            "preset": "cor-riveted-wall",
+            "scale": 0.4
+          },
+          "outside": {
+            "color": "#a7b6ad",
+            "preset": "cor-concrete",
+            "scale": 0.4
+          },
+          "ceiling": {
+            "color": "#d5d8c9",
+            "preset": "plain",
+            "scale": 1
+          },
+          "roof": {
+            "color": "#d5d8c9",
+            "preset": "plain",
+            "scale": 1
+          }
+        }
+      },
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "3108b4b9-6cba-485f-b5de-d3e30baad71f",
+      "type": "stair-route",
+      "name": "Covered service entry · Tantive corridor",
+      "color": "#c4c9bc",
+      "position": [
+        -18,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 2.4,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "cd1df0ba-abf3-4fd1-ad6b-21c05a406ab0",
+            "platformSection": "bce242c2-6e48-4a69-b0bb-7d1f0eec0d58",
+            "side": "front"
+          },
+          "end": {
+            "partId": "deaf383b-1100-4a10-8f3e-ef3e1751bfdb",
+            "levelId": "ground",
+            "roomDoorId": "76add3c4-7136-4fbc-adc1-9dfb6592d16a"
+          }
+        },
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 10,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "none",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            },
+            "hallway": {
+              "height": 3.2,
+              "thickness": 0.2,
+              "ceiling": true,
+              "color": "#e5e3d9",
+              "surface": {
+                "preset": "plain",
+                "scale": 1
+              },
+              "style": "tantive",
+              "ribSpacing": 4
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "c802656c-d3a8-4065-b53e-9abdb7609dd2",
+      "type": "platform",
+      "name": "Utility tunnel corner",
+      "color": "#a1b0aa",
+      "position": [
+        -34,
+        0,
+        -16
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "platform": {
+        "thickness": 0.35,
+        "railing": "posts",
+        "railHeight": 1.1,
+        "sections": [
+          {
+            "id": "b3ee7fe5-6b16-4804-a860-628f40c65a40",
+            "kind": "rectangle",
+            "x": 0,
+            "z": 0,
+            "width": 6,
+            "depth": 6,
+            "radius": 1,
+            "rotation": 0
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "5ce18b3c-afc0-4547-811b-c53c2054e624",
+      "type": "platform",
+      "name": "Utility tunnel exit / flank cover",
+      "color": "#a1b0aa",
+      "position": [
+        -34,
+        0,
+        24
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "platform": {
+        "thickness": 0.35,
+        "railing": "posts",
+        "railHeight": 1.1,
+        "sections": [
+          {
+            "id": "62610c37-2062-48d7-af8a-e3367280b250",
+            "kind": "rectangle",
+            "x": 0,
+            "z": 0,
+            "width": 6,
+            "depth": 6,
+            "radius": 1,
+            "rotation": 0
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "dfe4506e-9abe-4d1e-ba7c-12c0709c295f",
+      "type": "stair-route",
+      "name": "Service hatch passage",
+      "color": "#c4c9bc",
+      "position": [
+        -25,
+        0,
+        -16
+      ],
+      "rotation": [
+        0,
+        -1.5707963267948966,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 2.4,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "deaf383b-1100-4a10-8f3e-ef3e1751bfdb",
+            "levelId": "ground",
+            "roomDoorId": "dcc4cf2c-9e23-4e68-9881-d6264345c0dc"
+          },
+          "end": {
+            "partId": "c802656c-d3a8-4065-b53e-9abdb7609dd2",
+            "platformSection": "b3ee7fe5-6b16-4804-a860-628f40c65a40",
+            "side": "right"
+          }
+        },
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 6,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "none",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            },
+            "hallway": {
+              "height": 3.2,
+              "thickness": 0.2,
+              "ceiling": true,
+              "color": "#e5e3d9",
+              "surface": {
+                "preset": "plain",
+                "scale": 1
+              },
+              "style": "tantive",
+              "ribSpacing": 4
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "1d16ff2d-dc2a-4687-bf48-dbcfc7856f72",
+      "type": "stair-route",
+      "name": "Long maintenance tunnel · alternate approach",
+      "color": "#c4c9bc",
+      "position": [
+        -34,
+        0,
+        -13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 2.4,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "c802656c-d3a8-4065-b53e-9abdb7609dd2",
+            "platformSection": "b3ee7fe5-6b16-4804-a860-628f40c65a40",
+            "side": "back"
+          },
+          "end": {
+            "partId": "5ce18b3c-afc0-4547-811b-c53c2054e624",
+            "platformSection": "62610c37-2062-48d7-af8a-e3367280b250",
+            "side": "front"
+          }
+        },
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 17,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "none",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            },
+            "hallway": {
+              "height": 3.2,
+              "thickness": 0.2,
+              "ceiling": true,
+              "color": "#e5e3d9",
+              "surface": {
+                "preset": "plain",
+                "scale": 1
+              },
+              "style": "tantive",
+              "ribSpacing": 4
+            }
+          },
+          {
+            "kind": "landing",
+            "run": 17,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "none",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            },
+            "hallway": {
+              "height": 3.2,
+              "thickness": 0.2,
+              "ceiling": true,
+              "color": "#e5e3d9",
+              "surface": {
+                "preset": "plain",
+                "scale": 1
+              },
+              "style": "tantive",
+              "ribSpacing": 4
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "5ac7e8e8-c6d4-4483-84df-5488ed1ea404",
+      "type": "stair-route",
+      "name": "Flank return to freight court",
+      "color": "#c4c9bc",
+      "position": [
+        -31,
+        0,
+        24
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 2.4,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "5ce18b3c-afc0-4547-811b-c53c2054e624",
+            "platformSection": "62610c37-2062-48d7-af8a-e3367280b250",
+            "side": "right"
+          },
+          "end": {
+            "partId": "bef03ff4-f919-441c-976c-620ebe83265c",
+            "platformSection": "26cd5df0-d5a5-404c-9668-b70c17bf1b94",
+            "side": "left"
+          }
+        },
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 25,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "none",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            },
+            "hallway": {
+              "height": 3.2,
+              "thickness": 0.2,
+              "ceiling": true,
+              "color": "#e5e3d9",
+              "surface": {
+                "preset": "plain",
+                "scale": 1
+              },
+              "style": "tantive",
+              "ribSpacing": 4
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "c09cfc11-1ee4-45c2-ac34-c7bb026ab164",
+      "type": "interior",
+      "name": "03 · Relay archive / welded sub-room",
+      "color": "#a1b0aa",
+      "position": [
+        24,
+        3.2,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "interior": {
+        "height": 3,
+        "thickness": 0.2,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "room",
+            "x": -7,
+            "z": -6,
+            "w": 14,
+            "d": 12,
+            "points": [
+              {
+                "x": -7,
+                "z": -6
+              },
+              {
+                "x": 7,
+                "z": -6
+              },
+              {
+                "x": 7,
+                "z": 0
+              },
+              {
+                "x": 7,
+                "z": 6
+              },
+              {
+                "x": -7,
+                "z": 6
+              },
+              {
+                "x": -7,
+                "z": 0
+              }
+            ]
+          }
+        ],
+        "doors": [
+          {
+            "id": "f0d08e45-7d86-4fa6-bd9b-041f8f62fec6",
+            "axis": "x",
+            "line": 0,
+            "offset": 0,
+            "width": 2,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "id": "9964d298-195d-4a17-8248-6cba8c931a5c",
+            "axis": "x",
+            "line": 6,
+            "offset": 0,
+            "width": 2.4,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "id": "b45aa545-5066-46ab-b4c8-cad3b47b9bfa",
+            "axis": "x",
+            "line": -6,
+            "offset": 0,
+            "width": 2.4,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "id": "8cffc0b7-fb5d-4765-b023-8f8186ebd7b4",
+            "axis": "z",
+            "line": 7,
+            "offset": -3,
+            "width": 2,
+            "height": 1.2,
+            "kind": "window",
+            "sill": 1
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#ffffff",
+            "preset": "cor-walkway-grate",
+            "scale": 0.5
+          },
+          "wall": {
+            "color": "#ffffff",
+            "preset": "cor-riveted-wall",
+            "scale": 0.4
+          },
+          "outside": {
+            "color": "#a7b6ad",
+            "preset": "cor-concrete",
+            "scale": 0.4
+          },
+          "ceiling": {
+            "color": "#d5d8c9",
+            "preset": "plain",
+            "scale": 1
+          },
+          "roof": {
+            "color": "#d5d8c9",
+            "preset": "plain",
+            "scale": 1
+          }
+        },
+        "partitions": [
+          {
+            "id": "archive-divider",
+            "roomId": "room",
+            "a": {
+              "x": -7,
+              "z": 0
+            },
+            "b": {
+              "x": 7,
+              "z": 0
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "f75a66e0-5571-4ff2-ba3c-0ce84aae1efc",
+      "type": "stair-route",
+      "name": "Transit to archive · Tantive passage",
+      "color": "#c4c9bc",
+      "position": [
+        24,
+        3.2,
+        -5.96713137220964
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 2.4,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "793aa277-e22e-4021-8d20-4ec86a74881f",
+            "platformSection": "866867c5-d3e2-423f-8974-229d9acb7102",
+            "side": "front"
+          },
+          "end": {
+            "partId": "c09cfc11-1ee4-45c2-ac34-c7bb026ab164",
+            "levelId": "ground",
+            "roomDoorId": "9964d298-195d-4a17-8248-6cba8c931a5c"
+          }
+        },
+        "segments": [
+          {
+            "kind": "landing",
+            "run": 6.032868627790361,
+            "rise": 0,
+            "steps": 1,
+            "turn": "straight",
+            "railing": {
+              "style": "none",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            },
+            "hallway": {
+              "height": 3.2,
+              "thickness": 0.2,
+              "ceiling": true,
+              "color": "#e5e3d9",
+              "surface": {
+                "preset": "plain",
+                "scale": 1
+              },
+              "style": "tantive",
+              "ribSpacing": 4
+            }
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "f0d67969-dc98-4ffd-9f64-8243a189c514",
+      "type": "block",
+      "name": "Archive hull A · cut by shared interior",
+      "color": "#77908b",
+      "position": [
+        20.5,
+        0,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        7,
+        12,
+        12
+      ],
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-6c41716f3125144d-0",
+      "instanceName": "Archive hull A · cut by shared interior"
+    },
+    {
+      "id": "11593911-e11d-4c64-9dde-608787739d09",
+      "type": "block",
+      "name": "Archive hull B · face-to-face hull cut",
+      "color": "#77908b",
+      "position": [
+        27.5,
+        0,
+        -18
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        7,
+        12,
+        12
+      ],
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-6c41716f3125144d-0",
+      "instanceName": "Archive hull A · cut by shared interior",
+      "instanceCopy": true
+    },
+    {
+      "id": "463e4817-ddc4-454b-adbb-f727dcec1bda",
+      "type": "cor-roundtop-body",
+      "name": "Watchtower · elevated entrance / overlook",
+      "color": "#8da49e",
+      "position": [
+        24,
+        0,
+        -40
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        8,
+        4
+      ],
+      "surface": {
+        "preset": "cor-window-ribs",
+        "scale": 0.5
+      },
+      "entrances": [
+        {
+          "id": "b354f68f-1cc1-4e74-895e-539f4588f6fe",
+          "anchor": [
+            0,
+            0.8,
+            1.5
+          ],
+          "yaw": 0,
+          "width": 2.4,
+          "height": 2.6,
+          "landingWidth": 4,
+          "depth": 4
+        }
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "a8cea275-beca-43e5-b200-541365792dcf",
+      "type": "stair-route",
+      "name": "Archive exit · rising Bespin overlook stair",
+      "color": "#c4c9bc",
+      "position": [
+        24,
+        3.2,
+        -24
+      ],
+      "rotation": [
+        0,
+        3.141592653589793,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "route": {
+        "width": 2.4,
+        "thickness": 0.18,
+        "gap": 0.2,
+        "links": {
+          "start": {
+            "partId": "c09cfc11-1ee4-45c2-ac34-c7bb026ab164",
+            "levelId": "ground",
+            "roomDoorId": "b45aa545-5066-46ab-b4c8-cad3b47b9bfa"
+          },
+          "end": {
+            "partId": "463e4817-ddc4-454b-adbb-f727dcec1bda",
+            "entranceId": "b354f68f-1cc1-4e74-895e-539f4588f6fe"
+          }
+        },
+        "segments": [
+          {
+            "kind": "stairs",
+            "run": 9.999999999999996,
+            "rise": 3.2,
+            "steps": 33,
+            "turn": "straight",
+            "railing": {
+              "style": "bespin",
+              "height": 0.8,
+              "color": "#b0b9b1"
+            },
+            "treadDepth": 0.3030303030303029
+          }
+        ]
+      },
+      "surface": {
+        "preset": "cor-walkway-grate",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "07334765-25f0-460c-b4a2-54d21e7c0db7",
+      "type": "cor-half-round-roof",
+      "name": "Watchtower acorn roof",
+      "color": "#b3c1b3",
+      "position": [
+        24,
+        32,
+        -40
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        2,
+        4
+      ],
+      "surface": {
+        "preset": "cor-weathered-cladding",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "e78d197b-08f1-4200-afef-085a25eb1073",
+      "type": "block",
+      "name": "Atrium lower hull",
+      "color": "#869a93",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        12,
+        11,
+        14
+      ],
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "a73ebf7c-4993-4d2e-b71e-e3bb39113c65",
+      "type": "block",
+      "name": "Atrium upper hull overlap",
+      "color": "#869a93",
+      "position": [
+        0,
+        6,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        12,
+        12,
+        14
+      ],
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "c1cb0ca0-734f-46a8-8181-6281f63d4bec",
+      "type": "cor-half-round-roof",
+      "name": "Atrium rounded crown",
+      "color": "#b2baaa",
+      "position": [
+        0,
+        18,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        2,
+        4.67
+      ],
+      "surface": {
+        "preset": "cor-weathered-cladding",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "fc1afef0-5b60-4457-8f77-02cedc365794",
+      "type": "block",
+      "name": "Cover · freight crate",
+      "color": "#738b8d",
+      "position": [
+        -3,
+        0,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.5,
+        0.95,
+        1.2
+      ],
+      "surface": {
+        "preset": "cor-riveted-wall",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-cbb38b478b283379-0",
+      "instanceName": "Cover · freight crate"
+    },
+    {
+      "id": "81ed67e4-f230-490e-a70e-7bf82c73cbfc",
+      "type": "block",
+      "name": "Cover · freight crate",
+      "color": "#738b8d",
+      "position": [
+        3,
+        0,
+        26
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.5,
+        0.95,
+        1.2
+      ],
+      "surface": {
+        "preset": "cor-riveted-wall",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-cbb38b478b283379-0",
+      "instanceName": "Cover · freight crate",
+      "instanceCopy": true
+    },
+    {
+      "id": "0b13985d-0abd-47ef-91eb-2be8d3318907",
+      "type": "block",
+      "name": "Cover · freight crate",
+      "color": "#738b8d",
+      "position": [
+        -16,
+        0,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.5,
+        0.95,
+        1.2
+      ],
+      "surface": {
+        "preset": "cor-riveted-wall",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-cbb38b478b283379-0",
+      "instanceName": "Cover · freight crate",
+      "instanceCopy": true
+    },
+    {
+      "id": "3d14e0e5-9fb5-4507-beaf-14aaffd0ae9c",
+      "type": "block",
+      "name": "Cover · freight crate",
+      "color": "#738b8d",
+      "position": [
+        23,
+        3.2,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.5,
+        0.95,
+        1.2
+      ],
+      "surface": {
+        "preset": "cor-riveted-wall",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-cbb38b478b283379-0",
+      "instanceName": "Cover · freight crate",
+      "instanceCopy": true
+    },
+    {
+      "id": "f45378a0-5251-41a6-a969-1f84cec84e1c",
+      "type": "block",
+      "name": "Cover · freight crate",
+      "color": "#738b8d",
+      "position": [
+        26,
+        3.2,
+        -2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.5,
+        0.95,
+        1.2
+      ],
+      "surface": {
+        "preset": "cor-riveted-wall",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-cbb38b478b283379-0",
+      "instanceName": "Cover · freight crate",
+      "instanceCopy": true
+    },
+    {
+      "id": "c1335d91-050e-4e06-b808-700c4f6df250",
+      "type": "block",
+      "name": "Cover · freight crate",
+      "color": "#738b8d",
+      "position": [
+        -3,
+        6.4,
+        -24
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.5,
+        0.95,
+        1.2
+      ],
+      "surface": {
+        "preset": "cor-riveted-wall",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-cbb38b478b283379-0",
+      "instanceName": "Cover · freight crate",
+      "instanceCopy": true
+    },
+    {
+      "id": "8b804b82-980e-4f36-804f-d6b2ac5e9f6c",
+      "type": "block",
+      "name": "Cover · freight crate",
+      "color": "#738b8d",
+      "position": [
+        4,
+        6.4,
+        -25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.5,
+        0.95,
+        1.2
+      ],
+      "surface": {
+        "preset": "cor-riveted-wall",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-cbb38b478b283379-0",
+      "instanceName": "Cover · freight crate",
+      "instanceCopy": true
+    },
+    {
+      "id": "50060be4-9c76-47eb-990d-ad9a1f5acd00",
+      "type": "block",
+      "name": "Cover · freight crate",
+      "color": "#738b8d",
+      "position": [
+        -18,
+        0,
+        -15
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.5,
+        0.95,
+        1.2
+      ],
+      "surface": {
+        "preset": "cor-riveted-wall",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-cbb38b478b283379-0",
+      "instanceName": "Cover · freight crate",
+      "instanceCopy": true
+    },
+    {
+      "id": "b92383c3-0295-4dc7-a141-2dad49edfe28",
+      "type": "block",
+      "name": "Cover · freight crate",
+      "color": "#738b8d",
+      "position": [
+        21,
+        3.2,
+        -21
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.5,
+        0.95,
+        1.2
+      ],
+      "surface": {
+        "preset": "cor-riveted-wall",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-cbb38b478b283379-0",
+      "instanceName": "Cover · freight crate",
+      "instanceCopy": true
+    },
+    {
+      "id": "0ae5baab-13e8-4bc3-9e07-0c5b4eb39724",
+      "type": "block",
+      "name": "START · cyan beacon",
+      "color": "#69d6de",
+      "position": [
+        0,
+        0,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1.1,
+        0.7
+      ],
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "7cee479c-efcb-4f52-826a-c8638912107f",
+      "type": "antenna",
+      "name": "START · cyan beacon antenna",
+      "color": "#69d6de",
+      "position": [
+        0,
+        1.1,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "96d24a7c-91d5-4cde-b828-d3ca6a6fad32",
+      "type": "block",
+      "name": "OBJECTIVE B · archive power console",
+      "color": "#e9b76d",
+      "position": [
+        25,
+        3.2,
+        -21
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1.1,
+        0.7
+      ],
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-7559dd267e205870-0",
+      "instanceName": "OBJECTIVE B · archive power console"
+    },
+    {
+      "id": "6a891a70-5635-4162-a05a-c938cad30f5f",
+      "type": "antenna",
+      "name": "OBJECTIVE B · archive power console antenna",
+      "color": "#e9b76d",
+      "position": [
+        25,
+        4.300000000000001,
+        -21
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-0fb74b4359427e4d-0",
+      "instanceName": "OBJECTIVE B · archive power console antenna"
+    },
+    {
+      "id": "706418ad-4f11-4f99-af4d-872d09d46756",
+      "type": "block",
+      "name": "OBJECTIVE A · relay console",
+      "color": "#e9b76d",
+      "position": [
+        0,
+        6.4,
+        -25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1.1,
+        0.7
+      ],
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-7559dd267e205870-0",
+      "instanceName": "OBJECTIVE B · archive power console",
+      "instanceCopy": true
+    },
+    {
+      "id": "6389b60a-7bba-4569-9733-cf8690eee785",
+      "type": "antenna",
+      "name": "OBJECTIVE A · relay console antenna",
+      "color": "#e9b76d",
+      "position": [
+        0,
+        7.5,
+        -25
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "surface": {
+        "preset": "plain",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-0fb74b4359427e4d-0",
+      "instanceName": "OBJECTIVE B · archive power console antenna",
+      "instanceCopy": true
+    },
+    {
+      "id": "a220724b-05dc-44bf-b300-0bd04f07a1bf",
+      "type": "character-reference",
+      "name": "Player scale / arrival spawn",
+      "color": "#a1b0aa",
+      "position": [
+        0,
+        0,
+        27
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "f055787a-5570-4bb3-b561-6793b112cf45",
+      "type": "cor-roundtop-body",
+      "name": "District skyline tower",
+      "color": "#849a9b",
+      "position": [
+        -48,
+        0,
+        -42
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        11,
+        5
+      ],
+      "surface": {
+        "preset": "cor-window-ribs",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "dfa5c778-8189-45d5-b3cb-02ca1ad0fc55",
+      "type": "cor-half-round-roof",
+      "name": "District skyline crown",
+      "color": "#a2b4ad",
+      "position": [
+        -48,
+        44,
+        -42
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        5
+      ],
+      "surface": {
+        "preset": "cor-weathered-cladding",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-07ca9df2ded81b20-0",
+      "instanceName": "District skyline crown"
+    },
+    {
+      "id": "f2eaea67-bd03-41e4-a907-6b44a3d5d0b7",
+      "type": "cor-roundtop-body",
+      "name": "District skyline tower",
+      "color": "#849a9b",
+      "position": [
+        48,
+        0,
+        -48
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        15,
+        5
+      ],
+      "surface": {
+        "preset": "cor-window-ribs",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "c4f5b3c9-b302-4153-ae25-fdf7167a1ff1",
+      "type": "cor-half-round-roof",
+      "name": "District skyline crown",
+      "color": "#a2b4ad",
+      "position": [
+        48,
+        60,
+        -48
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        5
+      ],
+      "surface": {
+        "preset": "cor-weathered-cladding",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-07ca9df2ded81b20-0",
+      "instanceName": "District skyline crown",
+      "instanceCopy": true
+    },
+    {
+      "id": "e3bb350f-8b06-4ae0-96fc-ce34ee318a44",
+      "type": "cor-roundtop-body",
+      "name": "District skyline tower",
+      "color": "#849a9b",
+      "position": [
+        -48,
+        0,
+        12
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        9,
+        5
+      ],
+      "surface": {
+        "preset": "cor-window-ribs",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "f0cacd1f-7a50-400f-bdbd-dbb0c163b323",
+      "type": "cor-half-round-roof",
+      "name": "District skyline crown",
+      "color": "#a2b4ad",
+      "position": [
+        -48,
+        36,
+        12
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        5
+      ],
+      "surface": {
+        "preset": "cor-weathered-cladding",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-07ca9df2ded81b20-0",
+      "instanceName": "District skyline crown",
+      "instanceCopy": true
+    },
+    {
+      "id": "5cbe2791-d113-46f4-b4f4-c85472ead4b7",
+      "type": "cor-roundtop-body",
+      "name": "District skyline tower",
+      "color": "#849a9b",
+      "position": [
+        45,
+        0,
+        22
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        10.5,
+        5
+      ],
+      "surface": {
+        "preset": "cor-window-ribs",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "054b6cbe-2661-40cb-9261-8531e00d2f72",
+      "type": "cor-half-round-roof",
+      "name": "District skyline crown",
+      "color": "#a2b4ad",
+      "position": [
+        45,
+        42,
+        22
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        5
+      ],
+      "surface": {
+        "preset": "cor-weathered-cladding",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-07ca9df2ded81b20-0",
+      "instanceName": "District skyline crown",
+      "instanceCopy": true
+    },
+    {
+      "id": "6a0be76d-3388-435e-b777-1503cab71568",
+      "type": "cor-roundtop-body",
+      "name": "District skyline tower",
+      "color": "#849a9b",
+      "position": [
+        2,
+        0,
+        -60
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        17,
+        5
+      ],
+      "surface": {
+        "preset": "cor-window-ribs",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "113da81f-5b5b-4418-8c26-0c25956977ab",
+      "type": "cor-half-round-roof",
+      "name": "District skyline crown",
+      "color": "#a2b4ad",
+      "position": [
+        2,
+        68,
+        -60
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        5
+      ],
+      "surface": {
+        "preset": "cor-weathered-cladding",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "instanceFamily": "relay-district-copy-07ca9df2ded81b20-0",
+      "instanceName": "District skyline crown",
+      "instanceCopy": true
+    },
+    {
+      "id": "0be88f78-a7db-4af1-b66a-a9bc7d344ffc",
+      "type": "block",
+      "name": "District foundation",
+      "color": "#506a71",
+      "position": [
+        0,
+        -2.8,
+        -9
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        110,
+        1.4,
+        120
+      ],
+      "surface": {
+        "preset": "cor-concrete",
+        "scale": 0.5
+      },
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "surfaceScaling": "fixed"
+}

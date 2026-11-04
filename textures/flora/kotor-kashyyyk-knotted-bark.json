@@ -1,0 +1,13 @@
+{
+  "id": "kotor-kashyyyk-knotted-bark",
+  "name": "Kashyyyk · knotted bark",
+  "game": "KOTOR",
+  "group": "Flora",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 39,
+  "themes": [
+    "Flora",
+    "KOTOR"
+  ]
+}

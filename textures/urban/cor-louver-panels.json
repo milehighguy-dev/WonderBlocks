@@ -1,0 +1,10 @@
+{
+  "id": "cor-louver-panels",
+  "name": "Louvered service panels",
+  "roughness": 0.75,
+  "metalness": 0.18,
+  "order": 81,
+  "themes": [
+    "Coruscant"
+  ]
+}

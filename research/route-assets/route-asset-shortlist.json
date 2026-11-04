@@ -1,0 +1,826 @@
+[
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\MUS\\msh\\mus1_bldg_hallway_ribbed_1.msh",
+    "relative": "MUS\\msh\\mus1_bldg_hallway_ribbed_1.msh",
+    "name": "mus1_bldg_hallway_ribbed_1.msh",
+    "triangles": 721,
+    "vertices": 1121,
+    "dimensions": [
+      5.47,
+      6.3,
+      15.47
+    ],
+    "bounds": [
+      [
+        -2.7875516414642334,
+        1,
+        17.031198501586914
+      ],
+      [
+        2.67861008644104,
+        7.297790050506592,
+        32.5
+      ]
+    ],
+    "models": [
+      "mus1_bldg_hallway_ribbed_1",
+      "lights2"
+    ],
+    "textures": [
+      "mus1_bldg_control03.tga",
+      "mus1_bldg_control06.tga",
+      "mus1_bldg_hall_1.tga",
+      "mus1_bldg_hall_3.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "ad2ca7f9c579b1c1eeb45d0e84d2629bca42ef8b85e83bb10d44eb1c4087dacd"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\MUS\\msh\\mus1_bldg_hallway_ribbed_2.msh",
+    "relative": "MUS\\msh\\mus1_bldg_hallway_ribbed_2.msh",
+    "name": "mus1_bldg_hallway_ribbed_2.msh",
+    "triangles": 990,
+    "vertices": 1571,
+    "dimensions": [
+      10.5,
+      6.3,
+      22.1
+    ],
+    "bounds": [
+      [
+        -37.5,
+        1,
+        10.399999618530273
+      ],
+      [
+        -27.000944137573242,
+        7.303182601928711,
+        32.5
+      ]
+    ],
+    "models": [
+      "mus1_bldg_halway_ribbed_2",
+      "lights27",
+      "lights1",
+      "polymsh",
+      "polymsh_detached"
+    ],
+    "textures": [
+      "mus1_bldg_control02.tga",
+      "mus1_bldg_control03.tga",
+      "mus1_bldg_control06.tga",
+      "mus1_bldg_hall_1.tga",
+      "mus1_bldg_hall_3.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "124086d682f036a2b3b22be34ba607663fd5c8c9a95929038fb37e95f036213e"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\MUS\\msh\\mus1_bldg_hallway_window.msh",
+    "relative": "MUS\\msh\\mus1_bldg_hallway_window.msh",
+    "name": "mus1_bldg_hallway_window.msh",
+    "triangles": 414,
+    "vertices": 664,
+    "dimensions": [
+      16.02,
+      6.3,
+      10.22
+    ],
+    "bounds": [
+      [
+        -52.89905548095703,
+        1,
+        10.384016036987305
+      ],
+      [
+        -36.87980270385742,
+        7.303182601928711,
+        20.599056243896484
+      ]
+    ],
+    "models": [
+      "hallway_window",
+      "polymsh412",
+      "polymsh419",
+      "lights_hall_widow"
+    ],
+    "textures": [
+      "mus1_bldg_control03.tga",
+      "mus1_bldg_control04.tga",
+      "mus1_bldg_control06.tga",
+      "mus1_bldg_hall_1.tga",
+      "mus1_bldg_hall_2.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "93f10b5761d78100c5a74e6d23753897852aa4992ab534b6f18f56c234d7af4b"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\UTA\\msh\\uta1_bldg_catwalk.msh",
+    "relative": "UTA\\msh\\uta1_bldg_catwalk.msh",
+    "name": "uta1_bldg_catwalk.msh",
+    "triangles": 612,
+    "vertices": 800,
+    "dimensions": [
+      108.88,
+      4.6,
+      31.28
+    ],
+    "bounds": [
+      [
+        -7.285951614379883,
+        -4,
+        -234.1524200439453
+      ],
+      [
+        101.595458984375,
+        0.6022207140922546,
+        -202.87722778320312
+      ]
+    ],
+    "models": [
+      "uta1_bldg_catwalk"
+    ],
+    "textures": [
+      "uta1_bldg_catwalk.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "7f6900108fc4d3bde70b607bef870c837eead8d81b002bb7a783ae9782e97c89"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\UTA\\msh\\uta1_bldg_catwalk2.msh",
+    "relative": "UTA\\msh\\uta1_bldg_catwalk2.msh",
+    "name": "uta1_bldg_catwalk2.msh",
+    "triangles": 98,
+    "vertices": 126,
+    "dimensions": [
+      33.48,
+      12.33,
+      38.67
+    ],
+    "bounds": [
+      [
+        96.48206329345703,
+        -3.9339327812194824,
+        -213.2950897216797
+      ],
+      [
+        129.9578399658203,
+        8.399442672729492,
+        -174.62619018554688
+      ]
+    ],
+    "models": [
+      "uta1_bldg_catwalk2"
+    ],
+    "textures": [
+      "uta1_bldg_catwalk.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "39c924aa513978257460e6f516418daa2a4e4e2895965add490de81398ac57fa"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\DEA\\msh\\dea1_bldg_corridor_prison_C.msh",
+    "relative": "DEA\\msh\\dea1_bldg_corridor_prison_C.msh",
+    "name": "dea1_bldg_corridor_prison_C.msh",
+    "triangles": 132,
+    "vertices": 249,
+    "dimensions": [
+      12.72,
+      5.81,
+      13.26
+    ],
+    "bounds": [
+      [
+        -18.353322982788086,
+        -0.6951040029525757,
+        42.544212341308594
+      ],
+      [
+        -5.634825229644775,
+        5.11042594909668,
+        55.8082389831543
+      ]
+    ],
+    "models": [
+      "dea1_bldg_corridor_prison_C",
+      "polymsh_detached2",
+      "floor",
+      "polymsh_detached"
+    ],
+    "textures": [
+      "dea1_bldg_conference_room_floor.tga",
+      "dea1_bldg_corridor_prison.tga",
+      "dea1_bldg_corridor_prison_floor.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "b6509dd93fb8b618cfad413592eb45287263857f05f518ebf72c20ce695f1d76"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\DEA\\msh\\dea1_bldg_corridor_prison.msh",
+    "relative": "DEA\\msh\\dea1_bldg_corridor_prison.msh",
+    "name": "dea1_bldg_corridor_prison.msh",
+    "triangles": 1347,
+    "vertices": 2622,
+    "dimensions": [
+      6.78,
+      6.62,
+      70.32
+    ],
+    "bounds": [
+      [
+        -3.4410881996154785,
+        -0.2483700066804886,
+        48.81050491333008
+      ],
+      [
+        3.3429369926452637,
+        6.368749141693115,
+        119.13477325439453
+      ]
+    ],
+    "models": [
+      "dea1_bldg_corridor_prison",
+      "hp_steam2",
+      "hp_steam3",
+      "hp_steam1",
+      "corridor_floor2",
+      "corridor_ceiling_glow",
+      "grow_red",
+      "grates",
+      "conferenceroomfllorprisona2",
+      "cylinder",
+      "jail_doors_buttons_A",
+      "hp_light_prison_1"
+    ],
+    "textures": [
+      "dea1_bldg_blast_corridor.tga",
+      "dea1_bldg_conference_room_floor.tga",
+      "dea1_bldg_corridor_prison.tga",
+      "dea1_bldg_corridor_prison_floor.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "0c9640a7d73561fa4861a3954db79ce707bac99bd6f77c798e8fd5f1c20ff043"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\DEA\\msh\\dea1_bldg_conference_room_corridor.msh",
+    "relative": "DEA\\msh\\dea1_bldg_conference_room_corridor.msh",
+    "name": "dea1_bldg_conference_room_corridor.msh",
+    "triangles": 390,
+    "vertices": 629,
+    "dimensions": [
+      24,
+      5.02,
+      40.5
+    ],
+    "bounds": [
+      [
+        66,
+        8,
+        -86
+      ],
+      [
+        90,
+        13.015625,
+        -45.5
+      ]
+    ],
+    "models": [
+      "dea1_bldg_conference_room_corridor",
+      "conferenceroom_corridor",
+      "corridor_wall"
+    ],
+    "textures": [
+      "dea1_bldg_center_core_wall_01.tga",
+      "dea1_bldg_conference_room_floor.tga",
+      "dea1_bldg_conference_room_wall01.tga",
+      "dea1_bldg_over_bridge_floor.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "677098b8b7ca6b0bee484c44ee07912f99365bf525e84d84efc88f96e8cc1459"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\END\\msh\\end_bldg_ewok_walkway_8.msh",
+    "relative": "END\\msh\\end_bldg_ewok_walkway_8.msh",
+    "name": "end_bldg_ewok_walkway_8.msh",
+    "triangles": 516,
+    "vertices": 890,
+    "dimensions": [
+      3.53,
+      1.53,
+      8.06
+    ],
+    "bounds": [
+      [
+        -2.020185947418213,
+        0.006807264871895313,
+        -15.029029846191406
+      ],
+      [
+        1.5116873979568481,
+        1.536261796951294,
+        -6.971920490264893
+      ]
+    ],
+    "models": [
+      "end_bldg_ewok_walkway_8",
+      "walkway_8_support",
+      "Fence29",
+      "walkway_8_support1",
+      "Fence31",
+      "Fence30",
+      "Fence33",
+      "Fence32",
+      "Fence34"
+    ],
+    "textures": [
+      "end_bldg_circleplatform_03.tga"
+    ],
+    "missing_textures": [
+      "end_bldg_circleplatform_03.tga"
+    ],
+    "sha256": "f8fae6ac22072a334505fbb402cab2127b2787b5c0b4e51a9c7c8e47a87a3137"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\END\\msh\\end_bldg_ewok_ramp_8.msh",
+    "relative": "END\\msh\\end_bldg_ewok_ramp_8.msh",
+    "name": "end_bldg_ewok_ramp_8.msh",
+    "triangles": 518,
+    "vertices": 894,
+    "dimensions": [
+      3.53,
+      4.4,
+      7.7
+    ],
+    "bounds": [
+      [
+        -2.020185947418213,
+        0.12720699608325958,
+        -13.701125144958496
+      ],
+      [
+        1.5116873979568481,
+        4.529662132263184,
+        -6.00446081161499
+      ]
+    ],
+    "models": [
+      "end_bldg_ewok_ramp_8",
+      "end_bldg_ewok_ramp_25",
+      "walkway_8_support3",
+      "walkway_8_support2",
+      "Fence73",
+      "Fence74",
+      "Fence75",
+      "Fence77",
+      "Fence78",
+      "Fence97"
+    ],
+    "textures": [
+      "end_bldg_circleplatform_03.tga"
+    ],
+    "missing_textures": [
+      "end_bldg_circleplatform_03.tga"
+    ],
+    "sha256": "de0be094ce938efb5f5cbdbfd7df7b318be347ff466774c7bbb062927df0b3f5"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\HOT\\msh\\hoth_bldg_corridor_cut.msh",
+    "relative": "HOT\\msh\\hoth_bldg_corridor_cut.msh",
+    "name": "hoth_bldg_corridor_cut.msh",
+    "triangles": 214,
+    "vertices": 203,
+    "dimensions": [
+      34.55,
+      6.62,
+      6.62
+    ],
+    "bounds": [
+      [
+        -17.274335861206055,
+        -4.574335098266602,
+        -3.338210344314575
+      ],
+      [
+        17.274335861206055,
+        2.0494425296783447,
+        3.2832834720611572
+      ]
+    ],
+    "models": [
+      "HOTH_bldg_corridor_cut"
+    ],
+    "textures": [
+      "HOTH_Tunnels_01.tga",
+      "HOTH_Tunnels_02.tga",
+      "HOTH_Tunnels_03.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "53f72cae63b377da3216a47ede35ee883aac3b6a42ef027b85f18727975ed670"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\HOT\\msh\\hoth_prop_bridge_short.msh",
+    "relative": "HOT\\msh\\hoth_prop_bridge_short.msh",
+    "name": "hoth_prop_bridge_short.msh",
+    "triangles": 242,
+    "vertices": 434,
+    "dimensions": [
+      6.35,
+      1.54,
+      20.57
+    ],
+    "bounds": [
+      [
+        -48.411033630371094,
+        -4.535694599151611,
+        19.008604049682617
+      ],
+      [
+        -42.065635681152344,
+        -2.9920332431793213,
+        39.58131408691406
+      ]
+    ],
+    "models": [
+      "HOTH_prop_bridge_short",
+      "icicles3",
+      "icicles2",
+      "Bridge-Rail_9",
+      "Bridge-Rail_6",
+      "Bridge-Rail_7",
+      "Bridge-Posts_4",
+      "Bridge-Posts_3",
+      "Bridge-Rail_11"
+    ],
+    "textures": [
+      "HOTH_Frosty_metals.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "cca772908216e1d6f9ab79f04e151fa965b2f0d22a3f84643fff19213895b43b"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\MYG\\msh\\myg1_bldg_walkway_24.msh",
+    "relative": "MYG\\msh\\myg1_bldg_walkway_24.msh",
+    "name": "myg1_bldg_walkway_24.msh",
+    "triangles": 230,
+    "vertices": 385,
+    "dimensions": [
+      6.86,
+      6.5,
+      25.99
+    ],
+    "bounds": [
+      [
+        -26.986221313476562,
+        -2,
+        -21.4406681060791
+      ],
+      [
+        -20.125,
+        4.5,
+        4.549323081970215
+      ]
+    ],
+    "models": [
+      "walkway_24"
+    ],
+    "textures": [
+      "myg1_bldg_base_a.tga",
+      "myg1_bldg_base_c.tga",
+      "myg1_bldg_bridge.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "3d0b92ffc20d16214c2d46741f683b64de075bdba0beafb2ed9d5d3ff2396e12"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\KAS\\msh\\kas2_bldg_bridge_short.msh",
+    "relative": "KAS\\msh\\kas2_bldg_bridge_short.msh",
+    "name": "kas2_bldg_bridge_short.msh",
+    "triangles": 144,
+    "vertices": 183,
+    "dimensions": [
+      16.46,
+      1.38,
+      9.46
+    ],
+    "bounds": [
+      [
+        11.710612297058105,
+        -1.4549373388290405,
+        -4.778995990753174
+      ],
+      [
+        28.165786743164062,
+        -0.07759961485862732,
+        4.682006359100342
+      ]
+    ],
+    "models": [
+      "kas2_bridge_short",
+      "bridge_strut_19",
+      "bridge_strut_20",
+      "bridge_strut_21"
+    ],
+    "textures": [
+      "kas2_bldg_platform_EDGE.tga",
+      "kas2_metals.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "c767ece2dedb48b4a0c095e5ff2add82d8d2100a3d8b715076677d73de8fda65"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\POL\\msh\\pol1_bldg_hall_hanger.msh",
+    "relative": "POL\\msh\\pol1_bldg_hall_hanger.msh",
+    "name": "pol1_bldg_hall_hanger.msh",
+    "triangles": 696,
+    "vertices": 1266,
+    "dimensions": [
+      6.73,
+      6.86,
+      28.19
+    ],
+    "bounds": [
+      [
+        -129.34033203125,
+        1.4696623086929321,
+        -50.192142486572266
+      ],
+      [
+        -122.60649108886719,
+        8.326441764831543,
+        -22
+      ]
+    ],
+    "models": [
+      "hall",
+      "hall_hanger_window"
+    ],
+    "textures": [
+      "Pol1_bldg_window.tga",
+      "pol1_bldg_radarfloor.tga",
+      "pol1_bldg_radarwall_4.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "2df98037f9c76772c4b51d83888314398e0448a3a149c4e0cf18ac5e5c6c5882"
+  },
+  {
+    "source": "SWBF1",
+    "path": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\RhenVar\\MSH\\rhn1_prop_tunnel_straight_4.msh",
+    "relative": "RhenVar\\MSH\\rhn1_prop_tunnel_straight_4.msh",
+    "name": "rhn1_prop_tunnel_straight_4.msh",
+    "triangles": 140,
+    "vertices": 128,
+    "dimensions": [
+      13.02,
+      10.3,
+      24.1
+    ],
+    "bounds": [
+      [
+        -7.95339822769165,
+        -3.317164421081543,
+        -12.038201332092285
+      ],
+      [
+        5.065310478210449,
+        6.980230808258057,
+        12.061137199401855
+      ]
+    ],
+    "models": [
+      "rhn1_prop_tunnel_straight_4",
+      "bottom9"
+    ],
+    "textures": [
+      "rhn1_prop_tunnel_1.tga",
+      "rhn1_prop_tunnel_2.tga",
+      "rhn1_prop_tunnel_3.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "9067a42d73dcfb7facd7e22f60c27b117b753cb8b65807674ce35d38c21784e4"
+  },
+  {
+    "source": "SWBF1",
+    "path": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\RhenVar\\MSH\\rhn1_prop_tunnel_turn.msh",
+    "relative": "RhenVar\\MSH\\rhn1_prop_tunnel_turn.msh",
+    "name": "rhn1_prop_tunnel_turn.msh",
+    "triangles": 622,
+    "vertices": 364,
+    "dimensions": [
+      23.43,
+      8.87,
+      22.44
+    ],
+    "bounds": [
+      [
+        -22.9322452545166,
+        0.47166943550109863,
+        -6.624825477600098
+      ],
+      [
+        0.5,
+        9.339337348937988,
+        15.815505981445312
+      ]
+    ],
+    "models": [
+      "rhn1_prop_tunnel_turn",
+      "turn_floor"
+    ],
+    "textures": [
+      "Rhn1_prop_floor_01.tga",
+      "rhn1_prop_tunnel_1.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "64acfae32867beed8cba54c65fe3a3ff945216d2b092ac5ac6e8e6d6576adbeb"
+  },
+  {
+    "source": "SWBF1",
+    "path": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\RhenVar\\MSH\\rhn1_prop_tunnel_cross.msh",
+    "relative": "RhenVar\\MSH\\rhn1_prop_tunnel_cross.msh",
+    "name": "rhn1_prop_tunnel_cross.msh",
+    "triangles": 470,
+    "vertices": 400,
+    "dimensions": [
+      19.18,
+      10,
+      19.18
+    ],
+    "bounds": [
+      [
+        -9.590999603271484,
+        -2.1735689640045166,
+        -9.590999603271484
+      ],
+      [
+        9.590999603271484,
+        7.824567794799805,
+        9.590999603271484
+      ]
+    ],
+    "models": [
+      "rhn1_prop_tunnel_crossa1",
+      "wall6"
+    ],
+    "textures": [
+      "Rhn1_prop_floor_01.tga",
+      "rhn1_prop_tunnel_1.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "865247e3577f516e96f33e654c5f3782714ee8daeb1f875ce64ad4913e309ca9"
+  },
+  {
+    "source": "SWBF1",
+    "path": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\RhenVar\\MSH\\Rhn_bldg_lego_tunnel.msh",
+    "relative": "RhenVar\\MSH\\Rhn_bldg_lego_tunnel.msh",
+    "name": "Rhn_bldg_lego_tunnel.msh",
+    "triangles": 32,
+    "vertices": 48,
+    "dimensions": [
+      8,
+      8,
+      8
+    ],
+    "bounds": [
+      [
+        -4,
+        0,
+        -4
+      ],
+      [
+        4,
+        8,
+        4
+      ]
+    ],
+    "models": [
+      "rhn_bldg_lego_tunnel"
+    ],
+    "textures": [
+      "Rhn_bldg_brick_09.tga",
+      "Rhn_bldg_floor_tile.tga",
+      "Rhn_bldg_interior_02.tga",
+      "rhn_bldg_lego_tunnel.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "429fccda40ba746efce95e443642dccf6feed67424615a39fc07dbf3b25860f9"
+  },
+  {
+    "source": "SWBF1",
+    "path": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\Bespin\\MSH\\bes2_bldg_skyway_45.msh",
+    "relative": "Bespin\\MSH\\bes2_bldg_skyway_45.msh",
+    "name": "bes2_bldg_skyway_45.msh",
+    "triangles": 62,
+    "vertices": 108,
+    "dimensions": [
+      12.83,
+      1.65,
+      15.96
+    ],
+    "bounds": [
+      [
+        -4.012937068939209,
+        0,
+        -7.96250057220459
+      ],
+      [
+        8.814481735229492,
+        1.6484235525131226,
+        8
+      ]
+    ],
+    "models": [
+      "bes2_bldg_skyway_45"
+    ],
+    "textures": [
+      "bes2_bldg_set05.tga",
+      "bes2_main_1.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "7fe7790d96fab7271be9f9b47cffe72193a07ce37f4345f9a38cc831104f53d7"
+  },
+  {
+    "source": "SWBF1",
+    "path": "C:\\Users\\mileh\\Downloads\\unsupported_swbf_mod_tools\\BFBuilder\\Assets\\Shipped Worlds\\Bespin\\MSH\\bes2_bldg_skyway_T.msh",
+    "relative": "Bespin\\MSH\\bes2_bldg_skyway_T.msh",
+    "name": "bes2_bldg_skyway_T.msh",
+    "triangles": 78,
+    "vertices": 141,
+    "dimensions": [
+      12,
+      1.65,
+      16
+    ],
+    "bounds": [
+      [
+        -4,
+        0,
+        -8
+      ],
+      [
+        8,
+        1.6484235525131226,
+        8
+      ]
+    ],
+    "models": [
+      "bes2_bldg_skyway_T"
+    ],
+    "textures": [
+      "bes2_bldg_set05.tga",
+      "bes2_main_1.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "4b90244a019a85384597bf2c2be075a5891fc1e6364a4250b8f7b5db1fbd2f70"
+  },
+  {
+    "source": "SWBF2",
+    "path": "C:\\SWBF2_ModTools\\BF2_ModTools\\assets\\worlds\\NAB\\msh\\nab2_bldg_rotunda_footbridge.msh",
+    "relative": "NAB\\msh\\nab2_bldg_rotunda_footbridge.msh",
+    "name": "nab2_bldg_rotunda_footbridge.msh",
+    "triangles": 658,
+    "vertices": 1102,
+    "dimensions": [
+      51.3,
+      20,
+      20.34
+    ],
+    "bounds": [
+      [
+        -25.65023422241211,
+        -1.003011475958493e-12,
+        -128.1132049560547
+      ],
+      [
+        25.65023422241211,
+        20,
+        -107.77266693115234
+      ]
+    ],
+    "models": [
+      "nab2_bldg_rotunda_footbridge"
+    ],
+    "textures": [
+      "nab2_bldg_arch1.tga",
+      "nab2_bldg_arch1_brick_tile.tga",
+      "nab2_bldg_brick06.tga",
+      "nab2_bldg_window03.tga"
+    ],
+    "missing_textures": [],
+    "sha256": "76b25a4f0c644d4037b590ab93144a18c16952cf3f86adc87829ac56840c4069"
+  }
+]

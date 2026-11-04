@@ -1,0 +1,10 @@
+{
+  "id": "cor-walkway-grate",
+  "name": "Walkway grate",
+  "roughness": 0.75,
+  "metalness": 0.18,
+  "order": 87,
+  "themes": [
+    "Coruscant"
+  ]
+}

@@ -1,0 +1,732 @@
+{
+  "provenance": "Original BF2 PC Mod Tools models compiled with pc_ModelMunge, stock .option files, zero compiler errors and warnings. Numeric collision metadata only; no game mesh vertices or textures are included. Two Naboo palace pieces explicitly use -nocollision. Candidate probes do not establish reachable runtime contacts.",
+  "method": "tools/review-native-collision.mjs; infantry half sizes [.35,1.1,.35], vehicle [2,2,4] and [4,2,2]; native polygon winding; mask filtering.",
+  "models": [
+    {
+      "name": "Cor1_bldg_Grand_hall",
+      "sha256": "a19483eecc793c8e35b1af2b1a28b82751eefa68567a38fae62b820de05eb9fc",
+      "primitiveCount": 19,
+      "primitiveMasks": [
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17
+      ],
+      "meshes": [
+        {
+          "mask": 31,
+          "polygons": 120,
+          "review": {
+            "infantry": {
+              "samples": 120,
+              "flaggedSamples": 0,
+              "maximumPolygons": 11,
+              "maximumVertices": 36
+            },
+            "vehicle": {
+              "samples": 240,
+              "flaggedSamples": 0,
+              "maximumPolygons": 38,
+              "maximumVertices": 127
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cor1_bldg_Minor_hall_02",
+      "sha256": "f0b0cf7b381e2d354f8bfbee2a3f3aa0d11f3d4275b21b1c4b5b549519311eed",
+      "primitiveCount": 32,
+      "primitiveMasks": [
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17
+      ],
+      "meshes": [
+        {
+          "mask": 31,
+          "polygons": 18,
+          "review": {
+            "infantry": {
+              "samples": 18,
+              "flaggedSamples": 0,
+              "maximumPolygons": 1,
+              "maximumVertices": 4
+            },
+            "vehicle": {
+              "samples": 36,
+              "flaggedSamples": 0,
+              "maximumPolygons": 11,
+              "maximumVertices": 44
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "myg1_bldg_broken_spire",
+      "sha256": "913d03a39d0011f395282809f60ca8855766aa0b03991ba5de80ca1c35be4dc8",
+      "primitiveCount": 4,
+      "primitiveMasks": [
+        17,
+        17,
+        17,
+        17
+      ],
+      "meshes": []
+    },
+    {
+      "name": "myg1_bldg_central_building",
+      "sha256": "fce8c2c2cfe3d6222e902ecc5ab104ac3e2cb8e6d70b6f22b212dac2d230a9bf",
+      "primitiveCount": 46,
+      "primitiveMasks": [
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        2,
+        17,
+        19,
+        19,
+        17,
+        19,
+        19,
+        17,
+        19,
+        17,
+        19
+      ],
+      "meshes": [
+        {
+          "mask": 19,
+          "polygons": 854,
+          "review": {
+            "infantry": {
+              "samples": 854,
+              "flaggedSamples": 0,
+              "maximumPolygons": 22,
+              "maximumVertices": 79
+            },
+            "vehicle": {
+              "samples": 1708,
+              "flaggedSamples": 11,
+              "maximumPolygons": 97,
+              "maximumVertices": 356
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "myg1_bldg_central_building_b",
+      "sha256": "c9fc50dadb78a7f5e8d770e75c83ddb0f5262e55b73a4785779005679cded803",
+      "primitiveCount": 2,
+      "primitiveMasks": [
+        17,
+        17
+      ],
+      "meshes": [
+        {
+          "mask": 17,
+          "polygons": 154,
+          "review": {
+            "infantry": {
+              "samples": 154,
+              "flaggedSamples": 0,
+              "maximumPolygons": 6,
+              "maximumVertices": 22
+            },
+            "vehicle": {
+              "samples": 0,
+              "flaggedSamples": 0,
+              "maximumPolygons": 0,
+              "maximumVertices": 0
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "myg1_bldg_central_building_c",
+      "sha256": "1d35ad531feb691e7692d41f047d4cc067384107876f0933af3fc722c4a1db7d",
+      "primitiveCount": 1,
+      "primitiveMasks": [],
+      "meshes": []
+    },
+    {
+      "name": "myg1_bldg_large_platform_b",
+      "sha256": "32a6a1a43840a1e71b849de245def6b48711dcd8fa3439500d290392028bf978",
+      "primitiveCount": 12,
+      "primitiveMasks": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "meshes": [
+        {
+          "mask": 17,
+          "polygons": 35,
+          "review": {
+            "infantry": {
+              "samples": 35,
+              "flaggedSamples": 0,
+              "maximumPolygons": 3,
+              "maximumVertices": 10
+            },
+            "vehicle": {
+              "samples": 0,
+              "flaggedSamples": 0,
+              "maximumPolygons": 0,
+              "maximumVertices": 0
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "myg1_bldg_large_platform_b_collisions",
+      "sha256": "ead95b1cdb0a71e8c96abb52306c9e4664212d7001de12edf53e5a9e029f4a1c",
+      "primitiveCount": 3,
+      "primitiveMasks": [
+        19,
+        19,
+        19
+      ],
+      "meshes": []
+    },
+    {
+      "name": "myg1_bldg_large_spiral",
+      "sha256": "79fa6788460ac700c3eb0af41800f8fb36b854a6f27fbf27983511b18afe79d4",
+      "primitiveCount": 21,
+      "primitiveMasks": [
+        2,
+        2,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        2,
+        17
+      ],
+      "meshes": [
+        {
+          "mask": 17,
+          "polygons": 76,
+          "review": {
+            "infantry": {
+              "samples": 76,
+              "flaggedSamples": 0,
+              "maximumPolygons": 6,
+              "maximumVertices": 23
+            },
+            "vehicle": {
+              "samples": 0,
+              "flaggedSamples": 0,
+              "maximumPolygons": 0,
+              "maximumVertices": 0
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "myg1_bldg_med_spiral",
+      "sha256": "b9edae1343416ff651229f8c007e693328cf44263e5c13b6c8fc8e289bc1a361",
+      "primitiveCount": 2,
+      "primitiveMasks": [
+        2,
+        17
+      ],
+      "meshes": [
+        {
+          "mask": 17,
+          "polygons": 198,
+          "review": {
+            "infantry": {
+              "samples": 198,
+              "flaggedSamples": 0,
+              "maximumPolygons": 8,
+              "maximumVertices": 29
+            },
+            "vehicle": {
+              "samples": 0,
+              "flaggedSamples": 0,
+              "maximumPolygons": 0,
+              "maximumVertices": 0
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "myg1_bldg_small_spiral",
+      "sha256": "a77cb7f2c9c601646ade5f490a5febc587b7ff0efdf3b8379601f060aa178b49",
+      "primitiveCount": 2,
+      "primitiveMasks": [
+        17,
+        2
+      ],
+      "meshes": [
+        {
+          "mask": 17,
+          "polygons": 19,
+          "review": {
+            "infantry": {
+              "samples": 19,
+              "flaggedSamples": 0,
+              "maximumPolygons": 9,
+              "maximumVertices": 32
+            },
+            "vehicle": {
+              "samples": 0,
+              "flaggedSamples": 0,
+              "maximumPolygons": 0,
+              "maximumVertices": 0
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "myg1_bldg_stump_spiral",
+      "sha256": "92bbb70780649f72e5b13421cb8eb92d0cbbae6bf5384af1ef33aa8c0f9a5b8e",
+      "primitiveCount": 9,
+      "primitiveMasks": [
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        19
+      ],
+      "meshes": []
+    },
+    {
+      "name": "myg1_prop_shield_generator",
+      "sha256": "bee832614fa0b677d3dc690122bdc9f5c7ae56f736f7d45cac99ae189eee0e12",
+      "primitiveCount": 1,
+      "primitiveMasks": [
+        19
+      ],
+      "meshes": []
+    },
+    {
+      "name": "nab2_bldg_b_tower_34",
+      "sha256": "c27507d6d2df106560015ce7fcd8caf9a479a1591308b8312d4516bd0c343cc9",
+      "primitiveCount": 0,
+      "primitiveMasks": [],
+      "meshes": [
+        {
+          "mask": 31,
+          "polygons": 35,
+          "review": {
+            "infantry": {
+              "samples": 35,
+              "flaggedSamples": 0,
+              "maximumPolygons": 6,
+              "maximumVertices": 22
+            },
+            "vehicle": {
+              "samples": 70,
+              "flaggedSamples": 0,
+              "maximumPolygons": 17,
+              "maximumVertices": 67
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "nab2_bldg_canal_home",
+      "sha256": "2f769426d98a2194e1f5438ca4b95bc9e45f3b432fc50587c633561a63d30572",
+      "primitiveCount": 5,
+      "primitiveMasks": [],
+      "meshes": [
+        {
+          "mask": 31,
+          "polygons": 351,
+          "review": {
+            "infantry": {
+              "samples": 351,
+              "flaggedSamples": 0,
+              "maximumPolygons": 11,
+              "maximumVertices": 43
+            },
+            "vehicle": {
+              "samples": 702,
+              "flaggedSamples": 0,
+              "maximumPolygons": 38,
+              "maximumVertices": 149
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "nab2_bldg_palace",
+      "sha256": "4fb017e99497b1395e4c7ff73cad9a7288ac8662c1e6ec1dc5d5a80c92aae882",
+      "primitiveCount": 0,
+      "primitiveMasks": [],
+      "meshes": []
+    },
+    {
+      "name": "nab2_bldg_palacer_01",
+      "sha256": "09fe2be5abcb22e891e477dc4d848419c03838fc88fd503cbe07fcfff5a4c229",
+      "primitiveCount": 0,
+      "primitiveMasks": [],
+      "meshes": []
+    },
+    {
+      "name": "tat2_bldg_dockingbay_01",
+      "sha256": "1b84b6a42b6313965e6271232387cdd25f30769c0bd1a762582f216956004654",
+      "primitiveCount": 3,
+      "primitiveMasks": [],
+      "meshes": [
+        {
+          "mask": 31,
+          "polygons": 116,
+          "review": {
+            "infantry": {
+              "samples": 116,
+              "flaggedSamples": 0,
+              "maximumPolygons": 20,
+              "maximumVertices": 69
+            },
+            "vehicle": {
+              "samples": 232,
+              "flaggedSamples": 0,
+              "maximumPolygons": 54,
+              "maximumVertices": 186
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "tat2_bldg_dome1",
+      "sha256": "4782add0d32b080c469074c11c1227607f038362618941bdfdf8f7b4c89d06bf",
+      "primitiveCount": 1,
+      "primitiveMasks": [],
+      "meshes": [
+        {
+          "mask": 31,
+          "polygons": 22,
+          "review": {
+            "infantry": {
+              "samples": 22,
+              "flaggedSamples": 0,
+              "maximumPolygons": 3,
+              "maximumVertices": 14
+            },
+            "vehicle": {
+              "samples": 44,
+              "flaggedSamples": 0,
+              "maximumPolygons": 12,
+              "maximumVertices": 50
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "tat2_bldg_fourways",
+      "sha256": "60d012b7342a71dca5f614e628ea9d4b71bb6daa314aaf8b43e4bd2b902e007a",
+      "primitiveCount": 0,
+      "primitiveMasks": [],
+      "meshes": [
+        {
+          "mask": 31,
+          "polygons": 88,
+          "review": {
+            "infantry": {
+              "samples": 88,
+              "flaggedSamples": 0,
+              "maximumPolygons": 8,
+              "maximumVertices": 29
+            },
+            "vehicle": {
+              "samples": 176,
+              "flaggedSamples": 0,
+              "maximumPolygons": 35,
+              "maximumVertices": 122
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "yav2_bldg_Temple",
+      "sha256": "1e2a0dc475da6df4b83c4b4ea226f62bd169871a4747ff4572f511d65a241aa4",
+      "primitiveCount": 0,
+      "primitiveMasks": [],
+      "meshes": [
+        {
+          "mask": 31,
+          "polygons": 166,
+          "review": {
+            "infantry": {
+              "samples": 166,
+              "flaggedSamples": 0,
+              "maximumPolygons": 6,
+              "maximumVertices": 24
+            },
+            "vehicle": {
+              "samples": 332,
+              "flaggedSamples": 0,
+              "maximumPolygons": 16,
+              "maximumVertices": 59
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "yav_bldg_controlroom",
+      "sha256": "7c46bf09e7e63aebe4d9160c37beef41ee0ca4a4d6508f934738566d1aec5c4d",
+      "primitiveCount": 16,
+      "primitiveMasks": [],
+      "meshes": [
+        {
+          "mask": 31,
+          "polygons": 66,
+          "review": {
+            "infantry": {
+              "samples": 66,
+              "flaggedSamples": 0,
+              "maximumPolygons": 8,
+              "maximumVertices": 26
+            },
+            "vehicle": {
+              "samples": 132,
+              "flaggedSamples": 0,
+              "maximumPolygons": 19,
+              "maximumVertices": 78
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "yav_bldg_ruins_wall_corner1",
+      "sha256": "dc5c2d64585bd432bfdfc3eada909793d91a16529fa6e4618e6c397c968c4de3",
+      "primitiveCount": 0,
+      "primitiveMasks": [],
+      "meshes": [
+        {
+          "mask": 31,
+          "polygons": 131,
+          "review": {
+            "infantry": {
+              "samples": 131,
+              "flaggedSamples": 0,
+              "maximumPolygons": 24,
+              "maximumVertices": 94
+            },
+            "vehicle": {
+              "samples": 262,
+              "flaggedSamples": 0,
+              "maximumPolygons": 82,
+              "maximumVertices": 290
+            },
+            "limits": {
+              "polygons": 100,
+              "vertices": 300
+            },
+            "basis": "compiled-polygons",
+            "reachabilityChecked": false
+          }
+        }
+      ]
+    }
+  ]
+}

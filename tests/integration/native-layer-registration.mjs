@@ -1,0 +1,28 @@
+// Development-only native compilation; never runs as part of a user export.
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {tmpdir} from 'node:os';
+import {Directory} from '../fixtures/directory-handle.js';
+import {createInstanceCopies} from '../../src/core/instances.js';
+import {makePart} from '../../src/core/model.js';
+import {createSWBF2Package} from '../../src/swbf2/export-swbf2.js';
+import {writeWorldFolder} from '../../src/swbf2/swbf2-world-folder.js';
+import {SWBF2_VALIDATION_SCRIPT} from '../../src/swbf2/swbf2-validation.js';
+import {runProcess} from '../../tools/test-process.mjs';
+const root=process.argv[2]?path.resolve(process.argv[2]):await fs.mkdtemp(path.join(tmpdir(),'wb-layer-native-'));
+if(process.argv[2])await fs.mkdir(root,{recursive:false});for(const name of ['msh','odf','world1'])await fs.mkdir(path.join(root,name));
+const project={format:'open-building-studio',version:1,name:'Layer registration fixture',parts:[makePart('block',{position:[7,2,-8]})]};project.parts.push(...createInstanceCopies(project.parts,new Set(project.parts.map(p=>p.id))));project.parts[1].position=[20,2,-8];const result=createSWBF2Package(project,{aiNavigation:false,shadows:false,lowDetail:false});
+const index='Version(1);\nNextID(2);\nLayer("[Base]",0,0)\n{\n Description("");\n}\nLayer("conquest",1,0)\n{\n Description("");\n}\nLayer("trees",5,0)\n{\n Description("");\n}\nGameMode("Common")\n{\n Layer(0);\n Layer(5);\n}\nGameMode("conquest")\n{\n Layer(1);\n}\n';
+const base='Version(3);\nSaveType(0);\nNextSequence(150);\n',tree='Version(3);\nSaveType(0);\nNextSequence(200);\nObject("authored_tree", "'+result.manifest.assets[0].name+'", 150)\n{\n ChildRotation(1,0,0,0);\n ChildPosition(12,0,0);\n SeqNo(150);\n Layer(5);\n Team(0);\n NetworkId(-1);\n}\n';
+for(const [name,text] of [['ABC.wld',base],['ABC.ldx',index],['ABC_trees.lyr',tree],['ABC.req','ucft\n{\n REQN\n {\n  "world"\n  "ABC"\n  "ABC_trees"\n }\n}\n']])await fs.writeFile(path.join(root,'world1',name),text);
+await fs.mkdir(path.join(root,'_wonderblocks/backups/legacy/msh'),{recursive:true});await fs.writeFile(path.join(root,'_wonderblocks/backups/legacy/msh/broken.msh'),'This is an invalid legacy backup, not a model.');
+const saved=await writeWorldFolder(new Directory(root),result,{worldName:'ABC',backupName:'original'});assert.equal(saved.registration.id,2);assert.equal(await fs.readFile(path.join(root,'world1/ABC.wld'),'utf8'),base);assert.equal(await fs.readFile(path.join(root,'world1/ABC_trees.lyr'),'utf8'),tree);assert.ok(await fs.readFile(path.join(root,'_wonderblocks/backups/legacy/msh/broken.msh.wbbackup')));
+const layer=await fs.readFile(path.join(root,saved.layer),'utf8'),instance=/Object\("([^"\r\n]+)"/.exec(layer)[1];assert.match(layer,/SeqNo\(200\)/);assert.match(layer,/Layer\(2\)/);assert.equal((layer.match(/Object\(/g)||[]).length,2);assert.equal(result.manifest.assets.filter(a=>a.role!=='collision').length,1);
+const report=JSON.parse(await fs.readFile(path.join(root,'_wonderblocks/exports/layer_registration_fixture/export-report.json'),'utf8'));report.files.push('world1/ABC.wld','world1/ABC_trees.lyr');await fs.writeFile(path.join(root,'export-report.json'),JSON.stringify(report,null,2));await fs.writeFile(path.join(root,'validate-swbf2.ps1'),SWBF2_VALIDATION_SCRIPT);
+await runProcess('powershell.exe',['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',path.join(root,'validate-swbf2.ps1'),'-ToolsPath',process.env.SWBF2_TOOLS_PATH||'C:/SWBF2_ModTools/BF2_ModTools/ToolsFL/bin'],{cwd:root,timeout:180000});
+const validation=path.join(root,'_validation'),runs=await fs.readdir(validation,{withFileTypes:true}),built=path.join(validation,runs.find(entry=>entry.isDirectory()).name);
+const compiled=await fs.readFile(path.join(built,'ABC_wonderblocks.world')),packed=await fs.readFile(path.join(built,'ABC.lvl'));
+assert.ok(compiled.includes(Buffer.from(instance+'\0')));assert.ok(packed.includes(Buffer.from(instance+'\0')));assert.ok(packed.includes(Buffer.from('authored_tree\0')));
+const recursive=path.join(root,'recursive');await fs.mkdir(recursive);await runProcess(path.join(process.env.SWBF2_TOOLS_PATH||'C:/SWBF2_ModTools/BF2_ModTools/ToolsFL/bin','pc_ModelMunge.exe'),['-inputfile','$*.msh','-sourcedir',root,'-outputdir',recursive,'-platform','PC'],{cwd:recursive,timeout:60000});const log=await fs.readFile(path.join(recursive,'pc_ModelMunge.log'),'utf8');assert.doesNotMatch(log,/ERROR\[/);assert.match(log,/0 Errors/);
+console.log('PASS automatic registered layer and authored layer compiled and packed into the same native world bundle; base world preserved. Artifacts: '+root);

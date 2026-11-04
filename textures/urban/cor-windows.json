@@ -1,0 +1,10 @@
+{
+  "id": "cor-windows",
+  "name": "Coruscant window grid",
+  "roughness": 0.7,
+  "metalness": 0.18,
+  "order": 95,
+  "themes": [
+    "Coruscant"
+  ]
+}

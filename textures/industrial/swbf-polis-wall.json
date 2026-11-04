@@ -1,0 +1,10 @@
+{
+  "id": "swbf-polis-wall",
+  "name": "Polis Massa panels",
+  "roughness": 0.8,
+  "metalness": 0,
+  "order": 73,
+  "themes": [
+    "Hallway references"
+  ]
+}

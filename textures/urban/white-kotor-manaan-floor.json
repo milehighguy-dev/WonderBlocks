@@ -1,0 +1,13 @@
+{
+  "id": "white-kotor-manaan-floor",
+  "name": "White · geometric tiles",
+  "sourceId": "kotor-manaan-floor",
+  "sourceGame": "KOTOR",
+  "game": "Tintable whites",
+  "roughness": 0.55,
+  "metalness": 0.1,
+  "order": 9,
+  "themes": [
+    "Tintable whites"
+  ]
+}

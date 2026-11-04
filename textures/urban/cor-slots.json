@@ -1,0 +1,10 @@
+{
+  "id": "cor-slots",
+  "name": "Coruscant recessed windows",
+  "roughness": 0.7,
+  "metalness": 0.18,
+  "order": 98,
+  "themes": [
+    "Coruscant"
+  ]
+}

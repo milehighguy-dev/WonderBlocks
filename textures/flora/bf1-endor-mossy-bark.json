@@ -1,0 +1,13 @@
+{
+  "id": "bf1-endor-mossy-bark",
+  "name": "Endor · mossy redwood bark",
+  "game": "SWBF1",
+  "group": "Flora",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 31,
+  "themes": [
+    "Flora",
+    "SWBF1"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "mos-sand-floor",
+  "name": "Mos Eisley · sandy floor",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 61,
+  "themes": [
+    "Mos Eisley"
+  ]
+}

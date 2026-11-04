@@ -1,0 +1,10 @@
+{
+  "id": "swbf-prison-floor",
+  "name": "Prison corridor grating",
+  "roughness": 0.8,
+  "metalness": 0,
+  "order": 66,
+  "themes": [
+    "Hallway references"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "bf2-utapau-wall",
+  "name": "Utapau · teal wall courses",
+  "game": "SWBF2",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 17,
+  "themes": [
+    "SWBF2"
+  ]
+}

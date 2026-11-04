@@ -1,0 +1,11 @@
+{
+  "id": "bf1-rhenvar-masonry",
+  "name": "Rhen Var · cold masonry",
+  "game": "SWBF1",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 10,
+  "themes": [
+    "SWBF1"
+  ]
+}

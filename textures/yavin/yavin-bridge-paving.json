@@ -1,0 +1,10 @@
+{
+  "id": "yavin-bridge-paving",
+  "name": "Yavin · temple bridge paving",
+  "roughness": 1,
+  "metalness": 0,
+  "order": 53,
+  "themes": [
+    "Yavin"
+  ]
+}

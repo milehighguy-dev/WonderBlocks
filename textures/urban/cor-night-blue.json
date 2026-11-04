@@ -1,0 +1,10 @@
+{
+  "id": "cor-night-blue",
+  "name": "Blue night windows",
+  "roughness": 0.75,
+  "metalness": 0.18,
+  "order": 77,
+  "themes": [
+    "Coruscant"
+  ]
+}

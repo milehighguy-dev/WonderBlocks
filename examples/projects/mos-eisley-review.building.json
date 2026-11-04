@@ -1,0 +1,1024 @@
+{
+  "format": "open-building-studio",
+  "version": 1,
+  "name": "Mos Eisley · building collection",
+  "surfaceScaling": "fixed",
+  "parts": [
+    {
+      "id": "mos-review-0",
+      "type": "block",
+      "name": "Sample ground",
+      "color": "#ffffff",
+      "position": [
+        -20,
+        -0.16,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        17,
+        0.16,
+        17
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-01",
+      "assemblyName": "01 · Block building kit",
+      "surface": {
+        "preset": "mos-sand-floor",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "mos-review-1",
+      "type": "block",
+      "name": "Mos Eisley building block",
+      "color": "#ffffff",
+      "position": [
+        -20,
+        0,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        7.5,
+        3.4,
+        7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-01",
+      "assemblyName": "01 · Block building kit",
+      "parameters": {
+        "parapetHeight": 0.4,
+        "parapetThickness": 0.3,
+        "baseSlopeHeight": 0.55,
+        "baseSlopeProjection": 0.3
+      },
+      "surface": {
+        "preset": "mos-stucco",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "mos-review-2",
+      "type": "mos-dome",
+      "name": "dome",
+      "color": "#ffffff",
+      "position": [
+        -20.6,
+        3.42,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.55,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-01",
+      "assemblyName": "01 · Block building kit"
+    },
+    {
+      "id": "mos-review-3",
+      "type": "mos-buttress",
+      "name": "buttress",
+      "color": "#ffffff",
+      "position": [
+        -23.1,
+        0,
+        -7.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.75,
+        0.85,
+        0.8
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-01",
+      "assemblyName": "01 · Block building kit"
+    },
+    {
+      "id": "mos-review-4",
+      "type": "mos-buttress",
+      "name": "buttress",
+      "color": "#ffffff",
+      "position": [
+        -16.9,
+        0,
+        -7.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.75,
+        0.85,
+        0.8
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-01",
+      "assemblyName": "01 · Block building kit"
+    },
+    {
+      "id": "mos-review-5",
+      "type": "mos-entry-a",
+      "name": "entry-a",
+      "color": "#ffffff",
+      "position": [
+        -20,
+        0,
+        -7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.76,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-01",
+      "assemblyName": "01 · Block building kit"
+    },
+    {
+      "id": "mos-review-6",
+      "type": "mos-vent",
+      "name": "vent",
+      "color": "#ffffff",
+      "position": [
+        -17.6,
+        3.43,
+        -12.7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-01",
+      "assemblyName": "01 · Block building kit"
+    },
+    {
+      "id": "mos-review-7",
+      "type": "block",
+      "name": "Sample ground",
+      "color": "#ffffff",
+      "position": [
+        0,
+        -0.16,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        17,
+        0.16,
+        17
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-02",
+      "assemblyName": "02 · Weathered shop kit",
+      "surface": {
+        "preset": "mos-sand-floor",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "mos-review-8",
+      "type": "block",
+      "name": "Mos Eisley building block",
+      "color": "#ffffff",
+      "position": [
+        0,
+        0,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        7.5,
+        4.2,
+        6.5
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-02",
+      "assemblyName": "02 · Weathered shop kit",
+      "parameters": {
+        "parapetHeight": 0.4,
+        "parapetThickness": 0.3,
+        "baseSlopeHeight": 0.55,
+        "baseSlopeProjection": 0.3
+      },
+      "surface": {
+        "preset": "mos-worn-stucco",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "mos-review-9",
+      "type": "block",
+      "name": "Stepped upper room",
+      "color": "#ffffff",
+      "position": [
+        -1,
+        4.2,
+        -11.65
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        4,
+        2.4,
+        4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-02",
+      "assemblyName": "02 · Weathered shop kit",
+      "surface": {
+        "preset": "mos-worn-stucco",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "mos-review-10",
+      "type": "mos-dome",
+      "name": "dome",
+      "color": "#ffffff",
+      "position": [
+        -1,
+        6.58,
+        -11.65
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.52,
+        0.32,
+        0.52
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-02",
+      "assemblyName": "02 · Weathered shop kit"
+    },
+    {
+      "id": "mos-review-11",
+      "type": "mos-entry-b",
+      "name": "entry-b",
+      "color": "#ffffff",
+      "position": [
+        1,
+        0,
+        -7.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.75,
+        0.8,
+        0.65
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-02",
+      "assemblyName": "02 · Weathered shop kit"
+    },
+    {
+      "id": "mos-review-12",
+      "type": "mos-canopy",
+      "name": "canopy",
+      "color": "#ffffff",
+      "position": [
+        -1,
+        0,
+        -5.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.8,
+        0.8,
+        0.55
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-02",
+      "assemblyName": "02 · Weathered shop kit"
+    },
+    {
+      "id": "mos-review-13",
+      "type": "block",
+      "name": "Sample ground",
+      "color": "#ffffff",
+      "position": [
+        20,
+        -0.16,
+        -11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        17,
+        0.16,
+        17
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-03",
+      "assemblyName": "03 · Recessed doorways",
+      "surface": {
+        "preset": "mos-sand-floor",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "mos-review-14",
+      "type": "mos-entry-a",
+      "name": "entry-a",
+      "color": "#ffffff",
+      "position": [
+        16,
+        0,
+        -7.7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-03",
+      "assemblyName": "03 · Recessed doorways"
+    },
+    {
+      "id": "mos-review-15",
+      "type": "mos-entry-b",
+      "name": "entry-b",
+      "color": "#ffffff",
+      "position": [
+        16,
+        0,
+        -14.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-03",
+      "assemblyName": "03 · Recessed doorways"
+    },
+    {
+      "id": "mos-review-16",
+      "type": "mos-entry-a-open",
+      "name": "entry-a-open",
+      "color": "#ffffff",
+      "position": [
+        24,
+        0,
+        -7.7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-03",
+      "assemblyName": "03 · Recessed doorways"
+    },
+    {
+      "id": "mos-review-17",
+      "type": "mos-entry-b-open",
+      "name": "entry-b-open",
+      "color": "#ffffff",
+      "position": [
+        24,
+        0,
+        -14.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-03",
+      "assemblyName": "03 · Recessed doorways"
+    },
+    {
+      "id": "mos-review-18",
+      "type": "block",
+      "name": "Sample ground",
+      "interiorProp": true,
+      "color": "#ffffff",
+      "position": [
+        -10,
+        -0.16,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        17,
+        0.16,
+        17
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-04",
+      "assemblyName": "04 · Editable interior style",
+      "surface": {
+        "preset": "mos-sand-floor",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "mos-review-19",
+      "type": "interior",
+      "name": "Editable cantina-style rooms",
+      "interior": {
+        "height": 3.6,
+        "thickness": 0.3,
+        "slab": 0.2,
+        "rooms": [
+          {
+            "id": "main",
+            "x": -5,
+            "z": -4,
+            "w": 6,
+            "d": 8
+          },
+          {
+            "id": "store",
+            "x": 1,
+            "z": -4,
+            "w": 4,
+            "d": 3.5
+          },
+          {
+            "id": "side",
+            "x": 1,
+            "z": -0.5,
+            "w": 4,
+            "d": 4.5
+          }
+        ],
+        "doors": [
+          {
+            "axis": "x",
+            "line": 4,
+            "offset": -2,
+            "width": 1.8,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "axis": "x",
+            "line": -4,
+            "offset": 2.8,
+            "width": 1.6,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "axis": "z",
+            "line": 1,
+            "offset": 1.6,
+            "width": 1.5,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "axis": "z",
+            "line": 1,
+            "offset": -2,
+            "width": 1.3,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "axis": "x",
+            "line": -0.5,
+            "offset": 3,
+            "width": 1.2,
+            "height": 2.6,
+            "kind": "door"
+          },
+          {
+            "axis": "z",
+            "line": -5,
+            "offset": -1.5,
+            "width": 1,
+            "height": 0.65,
+            "sill": 2.3,
+            "kind": "window"
+          }
+        ],
+        "finishes": {
+          "floor": {
+            "color": "#ffffff",
+            "preset": "mos-sand-floor",
+            "scale": 0.25
+          },
+          "wall": {
+            "color": "#ffffff",
+            "preset": "mos-interior-plaster",
+            "scale": 0.3
+          },
+          "outside": {
+            "color": "#ffffff",
+            "preset": "mos-worn-stucco",
+            "scale": 0.25
+          },
+          "ceiling": {
+            "color": "#ffffff",
+            "preset": "mos-interior-plaster",
+            "scale": 0.3
+          },
+          "roof": {
+            "color": "#ffffff",
+            "preset": "mos-stucco",
+            "scale": 0.25
+          }
+        },
+        "buildingStyle": {
+          "type": "mos-eisley",
+          "rimHeight": 0.4,
+          "rimThickness": 0.3,
+          "baseHeight": 0.55,
+          "baseProjection": 0.3
+        }
+      },
+      "color": "#ffffff",
+      "position": [
+        -10,
+        0,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-04",
+      "assemblyName": "04 · Editable interior style"
+    },
+    {
+      "id": "mos-review-20",
+      "type": "block",
+      "name": "Low plaster bar",
+      "interiorProp": true,
+      "color": "#ffffff",
+      "position": [
+        -12.9,
+        0,
+        8.7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.9,
+        1.05,
+        0.65
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-04",
+      "assemblyName": "04 · Editable interior style",
+      "surface": {
+        "preset": "mos-stucco",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "mos-review-21",
+      "type": "block",
+      "name": "Side booth seat",
+      "interiorProp": true,
+      "color": "#ffffff",
+      "position": [
+        -14,
+        0.08,
+        12.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.9,
+        0.45,
+        2.9
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-04",
+      "assemblyName": "04 · Editable interior style",
+      "surface": {
+        "preset": "mos-stucco",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "mos-review-22",
+      "type": "block",
+      "name": "Back booth seat",
+      "interiorProp": true,
+      "color": "#ffffff",
+      "position": [
+        -12.7,
+        0.08,
+        7.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2.6,
+        0.45,
+        0.65
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-04",
+      "assemblyName": "04 · Editable interior style",
+      "surface": {
+        "preset": "mos-stucco",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "mos-review-23",
+      "type": "block",
+      "name": "Service-wall sample",
+      "interiorProp": true,
+      "color": "#ffffff",
+      "position": [
+        -5.2,
+        0.1,
+        8.7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.12,
+        3,
+        2.4
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-04",
+      "assemblyName": "04 · Editable interior style",
+      "surface": {
+        "preset": "mos-service-plaster",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "mos-review-24",
+      "type": "mos-vent",
+      "name": "vent",
+      "interiorProp": true,
+      "color": "#ffffff",
+      "position": [
+        -7.2,
+        0,
+        8.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.7,
+        0.7
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-04",
+      "assemblyName": "04 · Editable interior style"
+    },
+    {
+      "id": "mos-review-25",
+      "type": "block",
+      "name": "Sample ground",
+      "color": "#ffffff",
+      "position": [
+        10,
+        -0.16,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        17,
+        0.16,
+        17
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-05",
+      "assemblyName": "05 · Street arch",
+      "surface": {
+        "preset": "mos-sand-floor",
+        "scale": 0.25
+      }
+    },
+    {
+      "id": "mos-review-26",
+      "type": "mos-arch",
+      "name": "arch",
+      "color": "#ffffff",
+      "position": [
+        10,
+        0,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "pattern": {
+        "mode": "fixed",
+        "texture": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblyId": "mos-review-05",
+      "assemblyName": "05 · Street arch"
+    }
+  ]
+}

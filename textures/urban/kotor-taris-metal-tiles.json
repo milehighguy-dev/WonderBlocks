@@ -1,0 +1,11 @@
+{
+  "id": "kotor-taris-metal-tiles",
+  "name": "Taris · oxidized metal tiles",
+  "game": "KOTOR",
+  "roughness": 0.8,
+  "metalness": 0.15,
+  "order": 42,
+  "themes": [
+    "KOTOR"
+  ]
+}

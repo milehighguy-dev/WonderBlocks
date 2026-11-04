@@ -1,0 +1,11 @@
+{
+  "id": "forest-bark",
+  "name": "Elder tree bark",
+  "roughness": 0.95,
+  "metalness": 0,
+  "order": 110,
+  "themes": [
+    "General",
+    "Flora"
+  ]
+}
