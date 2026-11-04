@@ -15,7 +15,9 @@ test('local module imports and module-owned assets resolve in the organized layo
   for(const match of text.matchAll(/(?:\bfrom\s*|\bimport\s*\(?\s*|new URL\(\s*)(['"])(\.{1,2}\/[^'"\n]+)\1/g)){
    const target=path.resolve(path.dirname(file),match[2].split('?')[0]);
    const prefixExists=!path.extname(target)&&fs.existsSync(path.dirname(target))&&fs.readdirSync(path.dirname(target)).some(name=>name.startsWith(path.basename(target)));
-   assert.ok(fs.existsSync(target)||prefixExists,`${path.relative(root,file)}: ${match[2]}`);
+   // Only the user-supplied character is optional; walk mode has a built-in fallback.
+   const optionalReference=file===path.join(root,'src/walk/character.js')&&['../../assets/character/character.json','../../assets/character/character.png'].includes(match[2]);
+   assert.ok(fs.existsSync(target)||prefixExists||optionalReference,`${path.relative(root,file)}: ${match[2]}`);
   }
   if(file.endsWith('.html')){
    for(const match of text.matchAll(/\b(?:src|href)=["']((?:\.{1,2}\/)?[^'":#]+\.(?:js|css|html|json)(?:\?[^'"]*)?)["']/g))assert.ok(fs.existsSync(path.resolve(path.dirname(file),match[1].split('?')[0])),`${path.relative(root,file)}: ${match[1]}`);

@@ -1,11 +1,14 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
 import * as T from '../vendor/three.module.js';
 import {buildPart,disposePart} from '../src/core/geometry.js';
 import {prepareInteriorCuts} from '../src/interiors/interior-hull-cuts.js';
 import {createWalkCollision} from '../src/walk/walk-collision.js';
 import {groundAt,moveWalker} from '../src/walk/walk-physics.js';
-const out=new URL('../../../outputs/swbf2-cinderlock-2026-10-20/',import.meta.url);
+if(!process.argv[2])throw Error('Usage: node tools/check-cinderlock-spawns.mjs <map-output-folder>');
+const out=pathToFileURL(path.resolve(process.argv[2])+path.sep);
 const project=JSON.parse(fs.readFileSync(new URL('export/source/clf.building.json',out),'utf8'));
 const spawns=JSON.parse(fs.readFileSync(new URL('spawn-points.json',out),'utf8'));
 const cuts=prepareInteriorCuts(project.parts),roots=project.parts.map(p=>buildPart(p,{parts:project.parts,openingCuts:cuts,batch:true,collision:'sync'}));

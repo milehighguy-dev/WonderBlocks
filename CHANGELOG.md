@@ -2,6 +2,10 @@
 
 **Audience:** Users.
 
+## 1.0.1
+
+- Fixed Windows release checks and updated the build actions for Node.js 24.
+
 ## 1.0.0
 
 - Windows installer and portable app with a bundled runtime.

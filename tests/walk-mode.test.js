@@ -2,10 +2,18 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as T from '../vendor/three.module.js';
 import {groundAt,moveWalker,cameraPosition} from '../src/walk/walk-physics.js';
-import {setCharacterData,buildCharacter} from '../src/walk/character.js';
+import {setCharacterData,buildCharacter,loadCharacter,characterInfo} from '../src/walk/character.js';
 import {makePart,validateProject} from '../src/core/model.js';
 import {buildPart,disposePart} from '../src/core/geometry.js';
 import {exportOBJ} from '../src/export/export.js';
+
+test('walk reference falls back to built-in geometry when optional local character assets are absent',async t=>{
+ t.mock.method(globalThis,'fetch',async()=>({ok:false,status:404}));
+ assert.equal(await loadCharacter(),false);assert.equal(characterInfo.loaded,false);
+ const reference=buildCharacter(),bounds=new T.Box3().setFromObject(reference);
+ assert.equal(reference.userData.referenceOnly,true);assert.equal(reference.children.length,2);
+ assert.ok(Math.abs(bounds.max.y-1.8)<1e-6);disposePart(reference);
+});
 
 test('canceling and restarting walk preparation cannot activate an older snapshot',async()=>{
  const {createWalkMode}=await import('../src/walk/walk-mode.js'),previous={document:globalThis.document,window:globalThis.window};
