@@ -6,6 +6,14 @@ A 3D scene and object builder for **Star Wars Battlefront II (2005)**.
 - Apply textures, group and copy objects, and explore scenes in walk mode.
 - Save editable projects or export OBJ and SWBF2 assets and scene placements.
 
+## Screenshots
+
+![Basic objects and editing controls](docs/screenshots/basic-objects.png)
+
+| Yavin Rainwell | Levantine vine passage |
+| --- | --- |
+| ![Yavin Rainwell example scene](docs/screenshots/yavin-rainwell.png) | ![Levantine vine passage example scene](docs/screenshots/levantine.png) |
+
 ## Windows app
 
 Download the installer or portable ZIP from [Releases](https://github.com/milehighguy-dev/WonderBlocks/releases).
