@@ -27,18 +27,30 @@ import {recommendSceneryClass,sceneryDimensions} from './swbf2-class-label.js';
 
 export const SWBF2_EXPORT_DEFAULTS={output:'scene',assetsOnly:false,classLabel:'auto',uniqueAssetNames:false,routeSections:6,maxTextureSize:512,includeCollision:true,separateCollisionHelpers:true,projectileCollision:true,shadows:true,preserveCollision:false,foliage:'native',lowDetail:true,collisionTriangles:1200,aiNavigation:true};
 export const routeSectionError=value=>!Number.isInteger(value)||value<1||value>24?'Split routes after 1–24 sections.':null;
-export const swbfName=value=>String(value).normalize('NFKD').replace(/[^a-zA-Z0-9_]/g,'_').replace(/_+/g,'_').replace(/^_|_$/g,'').toLowerCase().slice(0,40)||'scene';
+const normalizedName=value=>String(value).normalize('NFKD').replace(/[^a-zA-Z0-9_]/g,'_').replace(/_+/g,'_').replace(/^_|_$/g,'').toLowerCase()||'scene';
+export const swbfName=value=>normalizedName(value).slice(0,40);
 const qstr=value=>JSON.stringify(String(value));
 const f=value=>{if(!Number.isFinite(value))throw Error('Non-finite world transform.');return Number(value.toFixed(6)).toString();};
 const transform=p=>new T.Matrix4().compose(new T.Vector3(...p.position),new T.Quaternion().setFromEuler(new T.Euler(...p.rotation)),new T.Vector3(...p.scale));
-function assetNameAllocator(names=[]){const used=new Set(['wb_leaf_anchor',...names]);return base=>{let name=base,n=2;while(used.has(name))name=base+'_'+n++;used.add(name);return name;};}
+function assetNameAllocator(names=[]){
+ const used=new Set(['wb_leaf_anchor',...names]);
+ return base=>{
+  // CollisionMesh::Read looks up NAME through a 32-byte C buffer. A longer
+  // name sharing a loaded 31-character prefix can leave its tree uninitialized.
+  // Keep readable stems; long names use a stable suffix derived from the name,
+  // while optional identity hashes and duplicate counters retain their suffix.
+  const tail=base.match(/_[a-f0-9]{8}$/)?.[0]??(base.length>31?'_'+crc32(new TextEncoder().encode(base)).toString(16).padStart(8,'0'):''),stem=tail&&base.endsWith(tail)?base.slice(0,-tail.length):base;
+  const fit=suffix=>stem.slice(0,31-tail.length-suffix.length).replace(/_$/,'')+tail+suffix;
+  let name=fit(''),n=2;while(used.has(name))name=fit('_'+n++);used.add(name);return name;
+ };
+}
 function assignAssetNames(assets,projectName,options){
  const allocate=assetNameAllocator(),single=options.output!=='scene';
  // Sort identity keys only to disambiguate repeated labels consistently when a
  // scene's parts are reordered. Plain standalone names never depend on IDs.
  for(const a of [...assets].sort((a,b)=>Number(b.key.startsWith('instance:'))-Number(a.key.startsWith('instance:'))||a.key.localeCompare(b.key))){
   if(options.uniqueAssetNames){const identity=single?projectName+'|'+a.key+'|'+[...a.partIds].sort().join('|'):a.key;a.name=allocate('wb_'+swbfName(projectName).slice(0,8)+'_'+swbfName(a.label).slice(0,14)+'_'+a.role+(a.section===null?'':'_'+(a.section+1))+'_'+crc32(new TextEncoder().encode(identity)).toString(16).padStart(8,'0'));}
-  else a.name=allocate(single?swbfName(projectName):swbfName(projectName).slice(0,10)+'_'+swbfName(a.label).slice(0,18)+'_'+a.role+(a.section===null?'':'_'+(a.section+1)));
+  else a.name=allocate(single?normalizedName(projectName):swbfName(projectName).slice(0,10)+'_'+swbfName(a.label).slice(0,18)+'_'+a.role+(a.section===null?'':'_'+(a.section+1)));
  }
  return assets;
 }
@@ -171,7 +183,7 @@ function* packageSteps(project,settings={},collisionSource=null,navigationMerge=
    const name=plan.options.uniqueAssetNames?'wb_leaf_'+crc32(new TextEncoder().encode(JSON.stringify(leaf.fields))).toString(16):allocateName(asset.name+'_leaves_'+(i+1)),hp='hp_leaf_'+i;models.push({name:hp,parent:'root',position:leaf.position,rotation:leaf.rotation});properties.push(`AttachOdf = "${name}"\nAttachToHardPoint = "${hp}"`);const d=leaf.fields;files.set('odf/'+name+'.odf',`[GameObjectClass]\nClassLabel = "leafpatch"\nGeometryName = "wb_leaf_anchor.msh"\n\n[Properties]\nOffset = "0 ${f(d.offset)} 0"\nHeightScale = "${f(d.heightScale)}"\nMinSize = "${f(d.minSize)}"\nMaxSize = "${f(d.maxSize)}"\nAlpha = "1"\nNumParticles = "${d.count}"\nMaxDistance = "1000"\nTexture = "${d.texture}"\nRadius = "${f(d.radius)}"\nHeight = "${f(d.height)}"\nMaxFallingLeaves = "0"\nMaxScatterBirds = "0"\nDarknessMin = "${f(d.darknessMin)}"\nDarknessMax = "${f(d.darknessMax)}"\n`);leafAnchor=true;
    if(d.atlas>2)manifest.warnings.push(`${asset.label}: the native 2×2 leafpatch atlas uses four tiles from the ${d.atlas}×${d.atlas} source sheet.`);
   }
-  let collisionIndex=0;const collisionName=suffix=>plan.options.uniqueAssetNames?asset.name+suffix:allocateName(asset.name+'_collision_'+(++collisionIndex));
+  let collisionIndex=0;const collisionName=suffix=>allocateName(plan.options.uniqueAssetNames?asset.name+suffix:asset.name+'_collision_'+(++collisionIndex));
   const placement={position:asset.pivot,rotation:asset.rotation,...(asset.instances?{instances:asset.instances}:{})},record={name:asset.name,label:asset.label,role:asset.role,classRecommendation:asset.classRecommendation,sourcePartIds:asset.partIds,routeSections:asset.routeIndices.map(i=>i+1),triangles:asset.segments.reduce((n,s)=>n+s.triangles.length,0),lowDetailTriangles,primitiveCollision:primitives.length,...(primaryBodies.length?collisionRecord(primaryMask,primaryBodies):{}),...(!plan.options.separateCollisionHelpers&&primaryBodies.length?{collisionHelpersDisabled:true,maximumContactTriangles:layout.recommendation.maximumContactTriangles}:{}),ordnanceCollision:ordnanceTriangles>0,ordnanceTriangles,shadowTriangles,nativeLeafPatches:asset.leaves.length,nativeLeafTriangles:asset.leaves.reduce((n,l)=>n+l.fields.count*2,0)};if(layout.embeddedBoxes)record.meshSerializedBoxes=layout.embeddedBoxes;emit(asset.name,models,properties.join('\n')+'\n',placement,record,asset.leaves.flatMap(leafBounds));
   // Extra collision assets keep each model below the engine's 64-object limit.
   for(let i=primitiveLimit;i<nativePrimitives.length;i+=64){const name=collisionName('_p'+Math.floor(i/64+1));emit(name,[{name:'root'},...primitiveModels(nativePrimitives.slice(i,i+64))],'',placement,{name,label:asset.label,role:'collision',sourcePartIds:asset.partIds,primitiveCollision:Math.min(64,nativePrimitives.length-i),triangles:0});}

@@ -1,0 +1,12 @@
+{
+  "id": "bf2-kashyyyk-cliff",
+  "name": "Kashyyyk · mossy cliff",
+  "game": "SWBF2",
+  "source": "KAS/world2/kas2_main_1.tga",
+  "roughness": 1,
+  "metalness": 0,
+  "themes": [
+    "SWBF2",
+    "Terrain"
+  ]
+}

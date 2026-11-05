@@ -25,7 +25,7 @@ test('category cards browse without painting, search crosses collections, and pa
   const gallery=find('texture-category-grid'),search=find('texture-search'),back=find('texture-back');assert.equal(gallery.hidden,false);assert.equal(cards().length,0);
   gallery.children.find(b=>b.dataset.textureCategory==='rhen-var').onclick();assert.equal(applied.length,0);assert.equal(gallery.hidden,true);assert.deepEqual(cards().map(b=>b.dataset.surface),texturesForCategory('rhen-var').map(s=>s.id));
   const selected=cards()[0];selected.onclick();assert.deepEqual(applied,[selected.dataset.surface]);palette.setSelected(selected.dataset.surface);assert.equal(selected.attrs['aria-pressed'],'true');
-  search.value='Kashyyyk mossy';search.oninput();assert.deepEqual(cards().map(b=>b.dataset.surface),['kotor-kashyyyk-mossy-bark']);
+  search.value='Kashyyyk mossy';search.oninput();assert.deepEqual(cards().map(b=>b.dataset.surface),['kotor-kashyyyk-mossy-bark','bf2-kashyyyk-cliff']);
   search.value='no matching texture';search.oninput();assert.equal(cards().length,0);
   back.onclick();assert.equal(search.value,'');assert.equal(gallery.hidden,false);assert.equal(cards().length,0);
   gallery.children.find(b=>b.dataset.textureCategory==='urban').onclick();assert.equal(applied.length,1);assert.ok(cards().some(b=>b.dataset.surface==='ny-brick'));

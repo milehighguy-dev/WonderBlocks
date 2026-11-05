@@ -10,6 +10,7 @@ import {applyPlatformFinishes} from '../platforms/platform-finishes.js';
 import {buildKashyyykBridges} from '../routes/kashyyyk-bridges.js';
 import {buildFlora} from '../flora/flora.js';
 import {metaballGeometry} from '../parts/metaballs.js';
+import {rockGeometry} from '../parts/rock.js';
 import {applyHighwayFinishes} from '../highways/highway-finishes.js';
 import {buildHighway} from '../highways/highway-mesh.js';
 import {buildRingBody} from '../parts/ring-body.js';
@@ -63,6 +64,7 @@ export function buildPart(p,{batch=false,parts=[],openingCuts,floraEditing=false
  case 'waterfall':mesh(new THREE.PlaneGeometry(1,1),[0,.5,0]);break;
  case 'slab':box(1,.3,1);break;
  case 'hex':mesh(new THREE.CylinderGeometry(.5,.5,1,6,1),[0,.5,0]);break;
+ case 'rock':mesh(rockGeometry(p.parameters));break;
  case 'ring-body':buildRingBody(group,material,p.parameters,p.shape);break;
  case 'round':mesh(new THREE.CylinderGeometry(.5,.5,1,p.parameters?.sides??24,3),[0,.5,0]);break;
  case 'taper':mesh(new THREE.CylinderGeometry(.3,.5,1,6,3),[0,.5,0]);break;

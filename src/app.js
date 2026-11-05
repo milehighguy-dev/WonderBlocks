@@ -2,6 +2,7 @@ import {sceneRenderKey} from './editor/scene-render-key.js';
 import {createInstanceCopies,detachEditedInstances} from './core/instances.js';
 import {groupScaleLimits,groupScalePivot,scaleObjectGroup} from './editor/group-scale.js';
 import {EXAMPLE_SCENES} from './editor/example-scenes.js';
+import {applySceneHeightFog} from './editor/scene-atmosphere.js';
 import {createSceneLoading} from './editor/scene-loading.js';
 import {YAVIN_PRESETS} from './parts/yavin-presets.js';
 import {MOS_EISLEY_PRESETS} from './parts/mos-eisley-presets.js';
@@ -92,7 +93,7 @@ let selectedSurface=null,surfaceOverlay=null;
 const floorSelection=createFloorSelection();let selectedSpace='interior';
 const floorModeButtons=document.querySelector('.workspace-modes'),floorModeHome=document.createComment('workspace modes');floorModeButtons.before(floorModeHome);
 let collisionOverlay=null;
-const buildPart=(p,context=project.parts,openingCuts,collision=true)=>{const m=buildRawPart(p,{batch:true,parts:context,openingCuts,collision});cutawayInterior(m,interiorCutaway);if(p.route)m.userData.routePreviewDefinition=JSON.stringify(p);m.userData.collision?.whenReady?.then(()=>{if(meshes.get(p.id)===m)collisionOverlay?.refresh();});return m;};
+const buildPart=(p,context=project.parts,openingCuts,collision=true,atmosphere=EXAMPLE_SCENES.find(s=>s.name===project.name)?.view)=>{const m=buildRawPart(p,{batch:true,parts:context,openingCuts,collision});cutawayInterior(m,interiorCutaway);applySceneHeightFog(m,atmosphere);if(p.route)m.userData.routePreviewDefinition=JSON.stringify(p);m.userData.collision?.whenReady?.then(()=>{if(meshes.get(p.id)===m)collisionOverlay?.refresh();});return m;};
 let renderDirty=true,metaballEditor,floraEditor,floraWorkspace;
 const $=id=>document.getElementById(id), viewport=$('viewport');
 const hiddenParts=new Set(),selectionMemory=new SelectionMemory();
@@ -430,19 +431,31 @@ $('title').onchange=()=>{project.name=$('title').value.trim().slice(0,80)||'Unti
 for(const color of ['#d9d4bd','#609d9b','#deb66d','#b56c5d','#72926e','#65768c']){const b=document.createElement('button');b.style.background=color;b.title=color;b.setAttribute('aria-label',`Paint ${color}`);b.onclick=()=>changeColor(color);$('swatches').append(b);}
 $('grid').onclick=()=>{grid.visible=!grid.visible;$('grid').textContent=grid.visible?'Grid on':'Grid off';$('grid').setAttribute('aria-pressed',String(grid.visible));renderDirty=true;};
 $('floor-toggle').onclick=()=>{floor.visible=!floor.visible;$('floor-toggle').textContent=floor.visible?'Floor on':'Floor off';$('floor-toggle').setAttribute('aria-pressed',String(floor.visible));renderDirty=true;};
-let projectLoading=false,projectLoadFinished=Promise.resolve();
+let projectLoading=false,projectLoadFinished=Promise.resolve(),exampleViewActive=false;
+function applyExampleView(){
+ const view=EXAMPLE_SCENES.find(s=>s.name===project.name)?.view;
+ if(view||exampleViewActive){
+  scene.background.set(view?.background||'#b7c9cf');viewportFog.color.copy(scene.background);camera.fov=view?.fov||42;camera.updateProjectionMatrix();
+  floor.visible=view?.floor??true;grid.visible=view?.grid??true;
+  for(const [id,visible,label] of [['floor-toggle',floor.visible,'Floor'],['grid',grid.visible,'Grid']]){$(id).textContent=label+(visible?' on':' off');$(id).setAttribute('aria-pressed',String(visible));}
+  $('fog-strength').value=view?50:0;
+ }
+ if(view){for(const root of assembly.children)applySceneHeightFog(root,view);camera.position.set(...view.eye);orbit.target.set(...view.target);setViewFogRange(...view.fog);orbit.update();}
+ else if(exampleViewActive)updateViewFog();
+ exampleViewActive=!!view;
+}
 async function replaceProject(source,remember=true){
  while(projectLoading)await projectLoadFinished;let release;projectLoadFinished=new Promise(resolve=>{release=resolve;});projectLoading=true;const staged=[];let installed=false;sceneLoading.start();
  try{
   sceneLoading.update(2,'Reading scene…');await sceneLoading.paint();
   const next=preparePatternScaling(validateProject(await (typeof source==='function'?source():source)),project.surfaceScaling),resolved=resolveRouteLinks(next.parts);sceneLoading.start(next.name);sceneLoading.update(5,'Preparing scene…');await sceneLoading.paint();
   const context=resolved.map(p=>{const copy=structuredClone(p);if(copy.route)delete copy.route.externalOpenings;return copy;}),openingCuts=prepareInteriorCuts(context);let lastPaint=performance.now();
-  for(let i=0;i<resolved.length;i++){const p=resolved[i];staged.push(buildPart(p,context,openingCuts));if(performance.now()-lastPaint>35||i===resolved.length-1){sceneLoading.update(8+82*(i+1)/resolved.length,'Building scene…',(i+1)+' of '+resolved.length+' objects');await sceneLoading.paint();lastPaint=performance.now();}}
+  for(let i=0;i<resolved.length;i++){const p=resolved[i];staged.push(buildPart(p,context,openingCuts,true,EXAMPLE_SCENES.find(s=>s.name===next.name)?.view??null));if(performance.now()-lastPaint>35||i===resolved.length-1){sceneLoading.update(8+82*(i+1)/resolved.length,'Building scene…',(i+1)+' of '+resolved.length+' objects');await sceneLoading.paint();lastPaint=performance.now();}}
   sceneLoading.update(93,'Finishing scene…');await sceneLoading.paint();
   cancelPlace();restoreMaterialPeek();restoreMaterialPeek=()=>{};stopShapeEditing();transform.detach();outline.visible=false;
   for(const m of [...assembly.children]){assembly.remove(m);disposePart(m);}meshes.clear();hiddenParts.clear();project={...next,parts:context};selected=null;selectedIds.clear();
   for(let i=0;i<staged.length;i++){assembly.add(staged[i]);meshes.set(resolved[i].id,staged[i]);}installed=true;prepareAssemblyCollisions(resolved,staged);attachSelection();collisionOverlay?.refresh();renderedPartsKey=sceneRenderKey(project.parts);
-  if(remember){history.push(project);rememberSelection();selectionMemory.retain(history.entries);persist();}refresh();frame();
+  if(remember){history.push(project);rememberSelection();selectionMemory.retain(history.entries);persist();}refresh();frame();applyExampleView();
   sceneLoading.update(98,'Drawing scene…');await sceneLoading.paint();syncEditingContext();renderer.render(scene,camera);sceneLoading.update(100,'Scene ready');await sceneLoading.paint();
  }catch(error){if(!installed)for(const m of staged)disposePart(m);throw error;}
  finally{projectLoading=false;sceneLoading.finish();release();}

@@ -9,13 +9,14 @@ import {buildPart,disposePart} from '../src/core/geometry.js';
 import {exportMaterial} from '../src/swbf2/swbf2-textures.js';
 import {defaultFlora,addFloraAsset} from '../src/flora/flora.js';
 import {editMaterial} from '../src/editor/material-editing.js';
+import {libraryImage} from '../src/materials/texture-library.js';
 
 test('curated architectural and flora tiles appear in their source themes and save as ordinary surfaces',()=>{
  const manifest=JSON.parse(readFileSync(new URL('../assets/materials/tiling-sources.json',import.meta.url)));
- assert.equal(manifest.filter(s=>s.group!=='Flora').length,28);assert.equal(manifest.filter(s=>s.group==='Flora').length,12);assert.deepEqual(IMPORTED_TILING_TEXTURES.map(s=>s.id),manifest.map(s=>s.id));
+ assert.equal(manifest.filter(s=>s.group!=='Flora').length,28);assert.equal(manifest.filter(s=>s.group==='Flora').length,12);assert.ok(manifest.every(item=>IMPORTED_TILING_TEXTURES.some(s=>s.id===item.id)),'original imports remain available alongside directory-added textures');
  assert.equal(manifest.filter(s=>s.game==='KOTOR'&&s.group==='Flora').length,4);assert.equal(manifest.filter(s=>s.game==='KOTOR'&&s.group!=='Flora').length,8);
- for(const [theme,count] of [['SWBF1',10],['SWBF2',9],['Jedi Academy',9],['KOTOR',12]]){
-  const surfaces=surfacesForTheme(theme);assert.equal(surfaces.length,count+1);assert.ok(surfaces.some(s=>s.id==='plain'));
+ for(const theme of ['SWBF1','SWBF2','Jedi Academy','KOTOR']){
+  const surfaces=surfacesForTheme(theme);assert.equal(surfaces.length,IMPORTED_TILING_TEXTURES.filter(s=>s.game===theme).length+1);assert.ok(surfaces.some(s=>s.id==='plain'));
   assert.ok(surfaces.every(s=>s.id==='plain'||s.game===theme));
  }
  for(const item of manifest){
@@ -45,7 +46,7 @@ test('imported materials render on blocks and reach native export with their com
   const root=buildPart(makePart('block',{color:'#ffffff',surface:{preset:surface.id,scale:.5}}));
   try{let material;root.traverse(m=>{if(m.isMesh&&m.material.map?.userData.surfacePreset===surface.id)material=m.material;});assert.ok(material);
    const exported=exportMaterial(material);assert.ok(exported);
-   assert.equal(material.map.image.width,128);assert.deepEqual(material.map.image.data,surfacePixels(surface.id));
+   const source=libraryImage(surface.id);assert.equal(material.map.image.width,source.width);assert.equal(material.map.image.height,source.height);assert.deepEqual(material.map.image.data,source.data);assert.equal(exported.width,Math.min(512,source.width));
   }finally{disposePart(root);}
  }
 });

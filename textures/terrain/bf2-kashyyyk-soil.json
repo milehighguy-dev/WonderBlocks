@@ -1,0 +1,12 @@
+{
+  "id": "bf2-kashyyyk-soil",
+  "name": "Kashyyyk · stony earth",
+  "game": "SWBF2",
+  "source": "KAS/world2/kas2_main_2.tga",
+  "roughness": 1,
+  "metalness": 0,
+  "themes": [
+    "SWBF2",
+    "Terrain"
+  ]
+}

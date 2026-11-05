@@ -231,6 +231,10 @@ function Get-CollisionMasks([byte[]]$Data, [hashtable]$Details) {
             if ($tag -eq 'MASK' -and $Context -in @('prim','coll')) {
                 $found.Add([pscustomobject]@{Type=$Context;Mask=[BitConverter]::ToUInt32($Data,$Start+8)})
             }
+            if ($tag -eq 'NAME' -and $Context -eq 'coll') {
+                $name = [Text.Encoding]::ASCII.GetString($Data,$Start+8,$size).TrimEnd([char]0)
+                if ($name.Length -gt 31) { throw ('Collision mesh name exceeds the engine 31-character lookup buffer: '+$name) }
+            }
             if ($tag -eq 'DATA' -and $Context -eq 'prim') {
                 $shape = [BitConverter]::ToUInt32($Data,$Start+8)
                 if ($shape -notin @(0,4)) { throw ('Unexpected collision primitive shape: ' + $shape) }

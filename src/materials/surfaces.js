@@ -26,6 +26,13 @@ export function updateSurfaceUVs(group,primary,part){
  // Flora branches own an attachment matrix; recomposing it from their default
  // position/rotation/scale drops the live mesh to the plant origin.
  group.traverse(m=>{if(!m.isMesh||m.material!==primary)return;if(m.matrixAutoUpdate)m.updateMatrix();const old=m.geometry;const g=old.index?old.toNonIndexed():old;if(g!==old){m.geometry=g;old.dispose();}const pos=g.attributes.position,uv=new Float32Array(pos.count*2);
+ if(g.attributes.floraBranchUV){
+  const source=g.attributes.floraBranchUV,factor=Math.cbrt(Math.abs(scale.x*scale.y*scale.z))*density;
+  for(let i=0;i<pos.count;i+=3){const angles=[0,1,2].map(j=>source.getX(i+j)),seam=Math.max(...angles)-Math.min(...angles)>.5;
+   for(let j=0;j<3;j++){let angle=angles[j];if(seam&&angle<.5)angle+=1;uv[(i+j)*2]=angle*source.getY(i+j)*factor;uv[(i+j)*2+1]=source.getZ(i+j)*factor;}
+  }
+  g.setAttribute('uv',new THREE.BufferAttribute(uv,2));return;
+ }
  if(g.attributes.aqueductUV){const source=g.attributes.aqueductUV,u=g.attributes.aqueductU,v=g.attributes.aqueductV;for(let i=0;i<pos.count;i++){uv[i*2]=source.getX(i)*new THREE.Vector3().fromBufferAttribute(u,i).multiply(scale).length()*density;uv[i*2+1]=source.getY(i)*new THREE.Vector3().fromBufferAttribute(v,i).multiply(scale).length()*density;}g.setAttribute('uv',new THREE.BufferAttribute(uv,2));return;}
  if(g.attributes.yavinTrimUV&&part.surface.preset==='yavin-bridge-trim'){const source=g.attributes.yavinTrimUV,u=g.attributes.yavinTrimU,v=g.attributes.yavinTrimV;for(let i=0;i<pos.count;i++){uv[i*2]=source.getX(i)*new THREE.Vector3().fromBufferAttribute(u,i).multiply(scale).length()*density;uv[i*2+1]=source.getY(i)*new THREE.Vector3().fromBufferAttribute(v,i).multiply(scale).length()*density;}g.setAttribute('uv',new THREE.BufferAttribute(uv,2));return;}
  if(g.attributes.roofUV){const source=g.attributes.roofUV,u=g.attributes.roofU,v=g.attributes.roofV;for(let i=0;i<pos.count;i++){const ud=new THREE.Vector3().fromBufferAttribute(u,i).multiply(scale),vd=new THREE.Vector3().fromBufferAttribute(v,i).multiply(scale);uv[i*2]=source.getX(i)*ud.length()*density;uv[i*2+1]=source.getY(i)*vd.length()*density;}g.setAttribute('uv',new THREE.BufferAttribute(uv,2));return;}

@@ -6,6 +6,7 @@ import {floraAsset,floraPlacementCategory} from './flora-palette.js';
 import {deformFloraSkeleton,floraSkeletonDescendants,alignFloraBoneRotation,floraBoneFrameRotation} from './flora-skeleton.js';
 import {skinBone,skinSolid,floraSkinGeometry,cachedFloraSkin} from './flora-skin.js';
 import {floraMuscleShape,floraMuscleRadius,floraMuscleCurve,floraMuscleGeometry} from './flora-muscle.js';
+import {floraVineGeometry} from './flora-vine.js';
 import {buildBillboardMesh,billboardGeometry,validateBillboard} from './flora-billboards.js';
 export const FLORA_PARTS={leaf:'Leaf',bark:'Root or branch'};
 function orientBillboardCanopy(f,o,angle=0){const q=new T.Quaternion();floraAttachmentFrame(f,o).decompose(new T.Vector3(),q,new T.Vector3());q.invert().multiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),angle));const e=new T.Euler().setFromQuaternion(q);o.rotation=[e.x,e.y,e.z];}
@@ -258,7 +259,19 @@ export function floraBranchCaps(f,b){
  if(children.length){const incoming=curve.getTangent(1),outgoing=new T.Vector3(),rotation=branchJointRotation(b,1);for(const child of children){if(child.points)outgoing.add(floraMuscleCurve(child).getTangent(0).applyQuaternion(rotation));else{const nodes=floraSockets(child.asset),root=nodes.find(n=>!n.parent),next=nodes.find(n=>n.parent===root.id);if(next)outgoing.add(v(floraSocketPose(child,next).point).sub(v(floraSocketPose(child,root).point)).multiply(v(child.scale)).applyEuler(new T.Euler(...child.rotation)).applyQuaternion(rotation).normalize());}}if(outgoing.lengthSq()>1e-8)caps.endTangent=blend(incoming,outgoing.normalize());}
  return caps;
 }
-export function branchGeometry(f,b){return floraMuscleGeometry(b,floraBranchCaps(f,b)).applyMatrix4(floraAttachmentFrame(f,b));}
+export function branchGeometry(f,b){
+ if(f.finishes?.bark?.mapping==='branch'&&b.profile==='flora-basic-branch'&&f.branches.length===1)return floraVineGeometry(floraMuscleCurve(b),t=>floraBranchRadius(b,t)).applyMatrix4(floraAttachmentFrame(f,b));
+ const geometry=floraMuscleGeometry(b,floraBranchCaps(f,b));
+ if(f.finishes?.bark?.mapping==='branch'){
+  const source=floraMuscleShape(b.profile).mesh,curve=floraMuscleCurve(b),lengths=curve.getLengths(256),uv=[];
+  for(const [i,t] of source.bindings.entries()){
+   const x=t*256,j=Math.min(255,Math.floor(x)),distance=T.MathUtils.lerp(lengths[j],lengths[j+1],x-j);
+   uv.push(source.uv[i*2],Math.PI*2*floraBranchRadius(b,t),distance);
+  }
+  geometry.setAttribute('floraBranchUV',new T.Float32BufferAttribute(uv,3));
+ }
+ return geometry.applyMatrix4(floraAttachmentFrame(f,b));
+}
 // Body presets use an implicit field rather than a native branch mesh. Their
 // continued terminal joints need the same shared section as the outgoing part.
 export function floraBodyCaps(f,o){
@@ -282,7 +295,12 @@ export function floraWeldKey(f){
  const nodes=canonicalFloraNodes(f.branches,f.organs.filter(o=>needed.has(o.id)));
  return JSON.stringify([nodes.branches,nodes.organs,f.detail]);
 }
-export function floraNeedsWeld(f){return f.branches.filter(b=>!b.anchor&&!floraAsset(b.profile)?.nativeSkin).length+f.organs.filter(floraBodyOrgan).length>(f.detail==='swbf2'?0:1);}
+export function floraNeedsWeld(f){
+ // A single closed vine has no joints to fuse. Voxelizing a very long tube
+ // erodes its walking surface and introduces ridges between coarse cells.
+ if(f.finishes?.bark?.mapping==='branch'&&f.branches.length===1&&f.branches[0].profile==='flora-basic-branch'&&!f.organs.some(floraBodyOrgan))return false;
+ return f.branches.filter(b=>!b.anchor&&!floraAsset(b.profile)?.nativeSkin).length+f.organs.filter(floraBodyOrgan).length>(f.detail==='swbf2'?0:1);
+}
 export function floraWeldGeometry(f){
  if(!floraNeedsWeld(f))return null;
  const key=floraWeldKey(f),cached=cachedFloraSkin(key);if(cached)return cached;

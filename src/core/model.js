@@ -30,6 +30,7 @@ export const PARTS = [
  {id:'metaballs',name:'Metaballs',category:'Metaballs',icon:'◉',color:'#92aaa1'},
  {id:'block',name:'Body',category:'Bodies',icon:'▰',color:'#d9d4bd'},
  {id:'hex',name:'Hexagonal tower',category:'Bodies',icon:'⬡',color:'#d9d4bd'},
+ {id:'rock',name:'Rock',category:'Bodies',icon:'⬟',color:'#ffffff'},
  {id:'round',name:'Round tower',category:'Bodies',icon:'▥',color:'#d9d4bd'},
  {id:'ring-body',name:'Ring body',category:'Bodies',icon:'◎',color:'#d9d4bd'},
  {id:'taper',name:'Tapered tower',category:'Bodies',icon:'▱',color:'#d9d4bd'},

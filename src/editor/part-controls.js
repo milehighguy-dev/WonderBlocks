@@ -1,6 +1,7 @@
 const sides={key:'sides',label:'Sides',min:12,max:48,default:24,options:[12,24,48],unit:''};
 const pitch=Math.atan(.28)*180/Math.PI;
 export function partControls(type,parameters={}){
+ if(type==='rock')return [{key:'roughness',label:'Rock roughness',min:0,max:.4,step:.01,default:.16,unit:''},{key:'taper',label:'Rock taper',min:0,max:.85,step:.05,default:.4,unit:''},{key:'seed',label:'Rock variation',min:1,max:9999,step:1,default:1,unit:''}];
  if(type==='yavin-gallery')return [{key:'bayWidth',label:'Gallery width',min:10,max:28,step:.5,default:16,unit:'m'},{key:'bayDepth',label:'Gallery depth',min:4,max:12,step:.5,default:7,unit:'m'},{key:'terraceHeight',label:'Terrace height',min:3.6,max:8,step:.1,default:4.2,unit:'m'},{key:'passageWidth',label:'Underpass width',min:2.4,max:5,step:.1,default:3.6,unit:'m'},{key:'passageHeight',label:'Underpass height',min:2.4,max:5,step:.1,default:3.2,unit:'m'},{key:'pierHeight',label:'Back pier height',min:0,max:5,step:.25,default:3,unit:'m'}];
  if(type==='block')return [{key:'parapetHeight',label:'Roof rim height',min:0,max:2,step:.05,default:0,unit:'m'},{key:'parapetThickness',label:'Roof rim thickness',min:.05,max:1,step:.05,default:.3,unit:'m'},{key:'baseSlopeHeight',label:'Base slope height',min:0,max:2,step:.05,default:0,unit:'m'},{key:'baseSlopeProjection',label:'Base slope projection',min:0,max:1.5,step:.05,default:.3,unit:'m'}].filter(c=>!c.key.startsWith('baseSlope')||parameters.baseSlopeHeight!==undefined||parameters.baseSlopeProjection!==undefined);
  if(type==='round')return [sides];

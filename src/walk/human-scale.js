@@ -6,7 +6,7 @@ export const placementScales={
  'yavin-gallery':[1,1,1],
  // Stock Mos Eisley components are already authored in metres.
  ...Object.fromEntries(MOS_EISLEY_PARTS.map(p=>[p.id,[1,1,1]])),
- flora:[1,1,1],highway:[1,1,1],platform:[1,1,1],'wall-route':[1,1,1],
+ flora:[1,1,1],rock:[1,1,1],highway:[1,1,1],platform:[1,1,1],'wall-route':[1,1,1],
  ...Object.fromEntries(['cor-skyscraper-blade','cor-balcony','cor-shoulder','cor-swept-spire','cor-transfer-deck','cor-bulb-cap','cor-curved-strut','cor-half-round-roof','cor-roundtop-body'].map(id=>[id,[1,1,1]])),
  ...Object.fromEntries(['character-reference','interior','stair-route','block','metaballs','hex','round','ring-body','taper','slab','capsule','orb','bell','waist','ring','gear','crystal','pipe','doric','ionic','corinthian','doric-smooth','ionic-smooth','corinthian-smooth','column-drum','acroterion','jp-bracket','jp-shachi','jp-crest','jp-tiger','chimney','antenna'].map(id=>[id,[1,1,1]])),
  // Open passage frames have at least 2.4 m vertical clearance.
