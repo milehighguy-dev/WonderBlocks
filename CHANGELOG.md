@@ -2,6 +2,12 @@
 
 **Audience:** Users.
 
+## 1.0.1
+
+- Scene collision helpers attach to their owning objects and respect the engine's attachment limits.
+- Platforms placed on shapes sit at the correct height without overlapping faces.
+- Route entrance previews explain how to finish using **Done → Scene**.
+
 ## 1.0.0
 
 - Windows installer and portable app with a bundled runtime.
