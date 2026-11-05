@@ -101,7 +101,11 @@ test('collision can be excluded without changing visible geometry, foliage, LODs
    assert.ok(actual.every(m=>!m.name.startsWith('collision')&&!m.name.startsWith('p_-')&&!m.fields.some(f=>f.tag==='SWCI')));
    for(const model of actual){const source=expected.find(m=>m.name===model.name);assert.ok(source);assert.deepEqual(model.fields.filter(f=>f.tag!=='MNDX'),source.fields.filter(f=>f.tag!=='MNDX'),name+' / '+model.name);}
   }
-  if(name.endsWith('.tga')||name.endsWith('.odf')||name.endsWith('.pln')||name.endsWith('.bar'))assert.deepEqual(bytes,included.files.get(name),name);
+  if(name.endsWith('.odf')){
+   const helperNames=new Set(included.manifest.assets.filter(a=>a.role==='collision').map(a=>a.name));
+   const withoutHelpers=included.files.get(name).replace(/AttachOdf = "([^"]+)"\nAttachToHardPoint = "[^"]+"\n/g,(pair,odf)=>helperNames.has(odf)?'':pair);
+   assert.equal(bytes,withoutHelpers,name);
+  }else if(name.endsWith('.tga')||name.endsWith('.pln')||name.endsWith('.bar'))assert.deepEqual(bytes,included.files.get(name),name);
  }
  assert.deepEqual(excluded.files.get('source/ai-navigation.json'),included.files.get('source/ai-navigation.json'));
  assert.match(excluded.files.get('README.txt'),/Physical collision was excluded/);

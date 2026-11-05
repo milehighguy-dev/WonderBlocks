@@ -30,7 +30,7 @@ Choose the ZIP destination, download and extract it. Copy `msh/` and `odf/` into
 
 ## Options worth knowing
 
-- **Separate collision helpers:** Follow the recommendation unless you have a reason to override it. Large size alone does not require helpers.
+- **Separate collision helpers:** Follow the recommendation unless you have a reason to override it. Large size alone does not require helpers. Helpers attach to their owning objects, so you move only the main object in WorldEdit. To remove loose helpers from an older export, use **Replace scene placements** and reopen the world.
 - **Class label:** Single assets get a suggested `prop` or `building` label. Scene exports choose automatically.
 - **Unique mesh / ODF names:** Off by default, so exporting under the same name updates matching assets. Textures are shared when their baked images match.
 - **Generate AI planning and barriers:** An optional starting point. Finish real planning in WorldEdit. For an existing world, enable planning merge and keep its world filenames; connect the graphs manually where needed.

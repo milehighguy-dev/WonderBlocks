@@ -36,7 +36,7 @@ async function integrations(native=false){
   const standalone=path.join(parent,'standalone');await node(['tests/integration/native-standalone.mjs',standalone],180000);
   for(const name of ['assembly','tree','primitive-overflow']){await stageChecker(path.join(standalone,name));await ps(path.join(standalone,name,'validate-swbf2.ps1'),['-ToolsPath',tools]);}
   const helpers=path.join(parent,'collision-helpers');await node(['tests/integration/native-collision-helpers.mjs',helpers],180000);
-  for(const name of ['tree-helpers','tree-embedded','tree-unique','acorn-embedded','boxes-embedded']){await stageChecker(path.join(helpers,name));await ps(path.join(helpers,name,'validate-swbf2.ps1'),['-ToolsPath',tools]);}
+  for(const name of ['tree-helpers','tree-embedded','tree-unique','acorn-embedded','boxes-embedded','scene-helpers','asset-many-helpers']){await stageChecker(path.join(helpers,name));await ps(path.join(helpers,name,'validate-swbf2.ps1'),['-ToolsPath',tools]);}
  }
  console.log('PASS '+(native?'native model/texture/object/world/planning':'PowerShell package/merge')+' integration');
 }
