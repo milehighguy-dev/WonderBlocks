@@ -54,6 +54,7 @@ try{
   await node(['tests/integration/export-workflows.mjs'],120000);
   await node(['tests/integration/instances.mjs'],120000);
   await node(['tests/integration/scene-edit-regressions.mjs'],120000);
+  await node(['tests/integration/scene-deletion.mjs'],120000);
   await node(['tests/integration/worker-startup.mjs'],120000);
   await node(['tests/integration/group-scale.mjs'],120000);
   await node(['tests/integration/texture-palette.mjs'],120000);

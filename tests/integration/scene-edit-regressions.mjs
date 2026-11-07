@@ -15,7 +15,7 @@ try{
  const parts=Array.from({length:32},(_,i)=>makePart('block',{name:'Block '+i,position:[i%8*3,0,Math.floor(i/8)*3],...(i<2?{assemblyId:'group',assemblyName:'Two blocks'}:{})}));
  await load(parts,'Render regression');await page.evaluate(async()=>{const T=await import('/vendor/three.module.js'),remove=T.Object3D.prototype.remove;window.partRemovals=0;T.Object3D.prototype.remove=function(...objects){partRemovals+=objects.filter(o=>o.userData?.partId).length;return remove.apply(this,objects);};});
  await page.getByRole('button',{name:'Block 5',exact:true}).click();await page.locator('#part-name').fill('Renamed block');await page.locator('#part-name').press('Tab');assert.equal(await page.evaluate(()=>partRemovals),0,'renaming does not rebuild scene geometry');
- await page.evaluate(()=>partRemovals=0);await page.locator('#duplicate-toolbar').click();assert.equal((await save()).parts.length,33);assert.equal(await page.evaluate(()=>partRemovals),32,'duplicate rebuilds the scene once instead of repeating it during commit');
+ await page.evaluate(()=>partRemovals=0);await page.locator('#duplicate-toolbar').click();assert.equal((await save()).parts.length,33);assert.equal(await page.evaluate(()=>partRemovals),0,'duplicate retains existing scene geometry');
  const host=makePart('block',{name:'Fit host',scale:[4,4,4]}),route=makePart('stair-route',{name:'Fitted passage',route:defaultHallwayRoute(),position:[0,0,2]});route.route.segments[0].hallway.entranceFit={partId:host.id,end:'start'};
  await load([host,route],'Host removal');await page.getByRole('button',{name:'Fit host',exact:true}).click();await page.locator('#delete-toolbar').click();const removed=await save();assert.equal(removed.parts.length,1);assert.equal(removed.parts[0].route.segments[0].hallway.entranceFit,undefined);
  await page.locator('#undo').click();const restored=await save();assert.equal(restored.parts.length,2);assert.equal(restored.parts[1].route.segments[0].hallway.entranceFit.partId,host.id);
@@ -43,5 +43,5 @@ try{
  const placed=(await save()).parts.find(p=>p.platform);assert.ok(Math.abs(placed.position[1]-placed.platform.thickness-6)<1e-6,'saved deck remains above the supporting cylinder');
  await load([],'Ground placement');await page.getByRole('button',{name:'Place Platform',exact:true}).click();const ground=await screen([0,0,0]);await page.mouse.click(ground.x,ground.y);await platform.waitFor({state:'visible'});assert.equal(Number(await platform.locator('[data-y]').inputValue()),0,'ground placement retains the ground-level walking surface');await page.locator('[data-context-action=cancel]').click();
  console.log('PASS entrance finish subtitle and action, platform body-on-surface placement and ground placement. Screenshots: '+artifacts);
- assert.deepEqual(errors,[]);console.log('PASS no geometry rebuild on rename, one rebuild per duplicate, fitted-host deletion cleanup, connected route updates and undo/redo.');
+ assert.deepEqual(errors,[]);console.log('PASS no geometry rebuild on rename or duplicate, fitted-host deletion cleanup, connected route updates and undo/redo.');
 }finally{await browser?.close();await new Promise(r=>server.close(r));}

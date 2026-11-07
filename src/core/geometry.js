@@ -106,6 +106,7 @@ export function buildPart(p,{batch=false,parts=[],openingCuts,floraEditing=false
  else if(p.route){const layout=routeLayout(p.route);buildYavinAqueducts(group,p,layout);buildYavinBridgeStructure(group,p,layout);buildYavinTempleBridge(group,p,layout);buildKashyyykBridges(group,p,layout);buildKotorWalkways(group,p,layout);buildRouteRailings(group,p,layout.map(l=>l.segment.hallway?{...l,segment:{...l.segment,railing:{style:'none'}}}:l));buildRouteHallways(group,p,layout);applyRouteFinishes(group,p);bendRouteMeshes(group,layout);finishYavinAqueducts(group,p,layout);}
  conformRouteEntrances(group,p,parts,buildPart);
  if(collision&&!floraEditing&&!floraLive)rememberAssemblyHull(p,group);
+ group.userData.uncutBounds=new THREE.Box3().setFromObject(group);
  cutNeighborInteriors(group,p,parts,openingCuts);
  buildConnectedInteriors(group,p);buildConnectedWindows(group,p,parts,openingCuts?.get(p.id));
  buildEntrances(group,p);
