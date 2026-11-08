@@ -11,6 +11,80 @@ import {defaultFlora,addFloraAsset,floraSockets,floraSurfaceTarget,floraDeformPo
 class Element{constructor(tag){this.tag=tag;this.children=[];this.attrs={};this.listeners={};this.clientHeight=600;}append(...items){for(const item of items){if(item.parent)item.parent.children.splice(item.parent.children.indexOf(item),1);this.children.push(item);item.parent=this;}}replaceChildren(...items){for(const child of this.children)child.parent=null;this.children=[];this.append(...items);}setAttribute(k,v){this.attrs[k]=v;}addEventListener(k,fn){(this.listeners[k]||=[]).push(fn);}getBoundingClientRect(){return {left:0,top:0,width:800,height:600};}}
 class Controls extends T.EventDispatcher{constructor(){super();this.helper=new T.Group();this.axis=null;}getHelper(){return this.helper;}setMode(v){this.mode=v;}setSpace(v){this.space=v;}setSize(v){this.size=v;}setTranslationSnap(){}setRotationSnap(){}setScaleSnap(){}attach(o){this.object=o;}detach(){this.object=null;}}
 
+test('manually extending and moving a Basic Branch recreates an authored eight-joint vine',()=>{
+ const s=setup();try{
+  const e=s.editor,f=defaultFlora(),root=addFloraAsset(f,f.branches[0].id,'flora-basic-branch');e.open(makePart('flora',{flora:f}));e.setMoveWithMouse(false);
+  const points=[[0,0,0],[1,-2,5],[-2,-4,10],[-5,-3,15],[-4,0,20],[0,3,24],[5,1,28],[7,-1,33]];
+  for(let i=1;i<points.length;i++){
+   if(i>1)s.action('extend-branch').onclick();
+   const b=e.draft.flora.branches[0];e.select({branch:b.id,index:i});const c=e.controls;c.dispatchEvent({type:'dragging-changed',value:true});c.object.position.fromArray(points[i]);c.dispatchEvent({type:'objectChange'});c.dispatchEvent({type:'dragging-changed',value:false});
+  }
+  assert.deepEqual(e.draft.flora.branches[0].points,points);assert.equal(e.draft.flora.branches.length,1);assert.equal(e.selection.index,7);
+  const reference=structuredClone(e.draft);reference.flora.branches[0].points=structuredClone(points);const authored=buildPart(reference,{floraEditing:true,floraLive:true});
+  try{const actual=e.preview.children.find(m=>m.userData.floraBranch),expected=authored.children.find(m=>m.userData.floraBranch);for(const key of ['position','normal','uv'])assert.deepEqual(actual.geometry.attributes[key].array,expected.geometry.attributes[key].array,key+' matches authored vine');assert.ok(actual.geometry.attributes.position.count>1000,'long vines receive enough surface samples');}finally{disposePart(authored);}
+  const before=structuredClone(e.draft);s.action('extend-branch').onclick();assert.equal(e.draft.flora.branches.length,2);e.undo();assert.deepEqual(e.draft,before);e.undo(true);assert.equal(e.draft.flora.branches.length,2);e.finish();assert.equal(s.saved.flora.branches.length,2);
+ }finally{s.cleanup();}
+});
+
+test('R activates direct scaling after hovering a rotation handle',()=>{
+ const s=setup();try{const f=defaultFlora(),root=addFloraAsset(f,f.branches[0].id,'flora-basic-branch'),e=s.editor;e.open(makePart('flora',{flora:f}));e.select({branch:root.id,index:1});e.setMode('rotate');e.controls.axis='Y';
+  for(const fn of window.listeners.keydown)fn({key:'r',target:{},preventDefault(){},stopImmediatePropagation(){}});
+  assert.equal(e.controls.mode,'scale');const marker=e.handles.children.find(m=>m.userData.floraHandle.branch===root.id&&m.userData.floraHandle.index===1),point=marker.getWorldPosition(new T.Vector3()).project(s.camera),event={button:0,pointerId:3,clientX:(point.x+1)*400,clientY:(1-point.y)*300,preventDefault(){},stopImmediatePropagation(){}};
+  const before=e.draft.flora.branches[0].radii[1];for(const fn of s.canvas.listeners.pointerdown)fn(event);for(const fn of s.canvas.listeners.pointermove)fn({...event,clientY:event.clientY-40});for(const fn of s.canvas.listeners.pointerup)fn({...event,clientY:event.clientY-40});
+  assert.ok(e.draft.flora.branches[0].radii[1]>before,'R enables an actual scale drag, not just the selected mode');assert.equal(e.controls.axis,null);e.undo();assert.equal(e.draft.flora.branches[0].radii[1],before);
+ }finally{s.cleanup();}
+});
+
+test('dragging a branch beyond the old 24-piece cap stays enabled and is undoable',()=>{
+ const s=setup();try{const f=defaultFlora();let last;for(let i=0;i<24;i++){last=addFloraAsset(f,last?.id||f.branches[0].id,'flora-basic-branch',1);last.points=[[0,0,0],[0,.5,0]];last.radii=[.1,.1];}const e=s.editor;e.open(makePart('flora',{flora:f}));e.select({branch:last.id,index:1});s.camera.position.set(5,13,22);s.camera.lookAt(0,8,0);s.camera.updateMatrixWorld(true);e.beginAssetDrag('flora-basic-branch');const target=e.connections.children.find(m=>m.userData.floraConnection.branch===last.id&&m.userData.floraConnection.at===1),point=target.position.clone().project(s.camera),event={clientX:(point.x+1)*400,clientY:(1-point.y)*300,dataTransfer:{},preventDefault(){},stopPropagation(){}};
+  for(const fn of s.canvas.listeners.dragover)fn(event);assert.deepEqual(e.dropTarget,{branch:last.id,at:1});assert.ok(e.ghost,'the 25th branch is previewed');for(const fn of s.canvas.listeners.drop)fn(event);assert.equal(e.draft.flora.branches.length,25);e.undo();assert.equal(e.draft.flora.branches.length,24);e.undo(true);assert.equal(e.draft.flora.branches.length,25);e.finish();assert.equal(s.saved.flora.branches.length,25);
+ }finally{s.cleanup();}
+});
+
+test('plant pose undo and redo reuse preview and unchanged foliage geometry',()=>{
+ const s=setup();try{
+  const e=s.editor;e.open(s.part);e.setMoveWithMouse(false);
+  const leaf=e.draft.flora.organs.find(o=>o.kind==='leaf');e.select({organ:leaf.id,branch:leaf.branch});
+  const original=structuredClone(e.draft),c=e.controls;
+  c.dispatchEvent({type:'dragging-changed',value:true});c.object.position.x+=.3;c.dispatchEvent({type:'objectChange'});c.dispatchEvent({type:'dragging-changed',value:false});
+  const edited=structuredClone(e.draft),preview=e.preview,geometries=[];preview.traverse(m=>{if(m.userData.floraComponent==='leaf')geometries.push(m.geometry);});
+  for(const [redo,expected] of [[false,original],[true,edited],[false,original]]){
+   e.undo(redo);assert.equal(e.preview,preview);assert.deepEqual(e.draft,expected);
+   const after=[];e.preview.traverse(m=>{if(m.userData.floraComponent==='leaf')after.push(m.geometry);});assert.deepEqual(after,geometries);
+   const rebuilt=buildPart(e.draft,{floraEditing:true,floraLive:true});
+   try{e.preview.updateMatrixWorld(true);rebuilt.updateMatrixWorld(true);const actual=e.preview.children.find(o=>o.userData.floraOrgan===leaf.id),fresh=rebuilt.children.find(o=>o.userData.floraOrgan===leaf.id);assert.deepEqual(actual.matrixWorld.elements,fresh.matrixWorld.elements);}finally{disposePart(rebuilt);}
+  }
+ }finally{s.cleanup();}
+});
+
+test('cancel during a plant drag discards the preview without building another',()=>{
+ const s=setup();try{
+  const e=s.editor;e.open(s.part);e.setMoveWithMouse(false);const c=e.controls;
+  c.dispatchEvent({type:'dragging-changed',value:true});c.object.position.x+=.3;c.dispatchEvent({type:'objectChange'});
+  let added=0;const add=s.scene.add;s.scene.add=function(...objects){added+=objects.length;return add.apply(this,objects);};
+  e.close();assert.equal(added,0);assert.equal(e.active,false);assert.equal(s.source.visible,true);assert.equal(s.orbit.enabled,true);assert.equal(s.saved,null);
+ }finally{s.cleanup();}
+});
+
+test('a textured vine keeps its finished UVs during a live joint drag',()=>{
+ const s=setup();try{s.part.flora.finishes.bark={preset:'forest-bark',scale:.15};const e=s.editor;e.open(s.part);e.setMoveWithMouse(false);const branch=e.draft.flora.branches[0];e.select({branch:branch.id,index:1});const c=e.controls;c.dispatchEvent({type:'dragging-changed',value:true});c.object.position.x+=.4;c.dispatchEvent({type:'objectChange'});
+  const fresh=buildPart(e.draft,{floraEditing:true,floraLive:true});try{for(const mesh of e.preview.children.filter(m=>m.userData.floraBranch)){const expected=fresh.children.find(m=>m.userData.floraBranch===mesh.userData.floraBranch);for(const key of ['position','normal','uv']){const a=mesh.geometry.attributes[key].array,b=expected.geometry.attributes[key].array;assert.equal(a.length,b.length);let error=0;for(let i=0;i<a.length;i++)error=Math.max(error,Math.abs(a[i]-b[i]));assert.ok(error<2e-5,'live '+key+' matches the finished sweep: '+error);}}}finally{disposePart(fresh);}c.dispatchEvent({type:'dragging-changed',value:false});
+ }finally{s.cleanup();}
+});
+
+test('textured branch history matches fresh geometry and UVs while retaining its preview',()=>{
+ const s=setup();try{
+  s.part.flora.finishes.bark={preset:'forest-bark',scale:.5};
+  const e=s.editor;e.open(s.part);e.setMoveWithMouse(false);const branch=e.draft.flora.branches[0];e.select({branch:branch.id,index:1});
+  const c=e.controls;c.dispatchEvent({type:'dragging-changed',value:true});c.object.position.x+=.4;c.dispatchEvent({type:'objectChange'});c.dispatchEvent({type:'dragging-changed',value:false});
+  const preview=e.preview;
+  for(const redo of [false,true]){
+   e.undo(redo);assert.equal(e.preview,preview);const fresh=buildPart(e.draft,{floraEditing:true,floraLive:true});
+   try{const actual=e.preview.children.find(o=>o.userData.floraBranch===branch.id),expected=fresh.children.find(o=>o.userData.floraBranch===branch.id);for(const key of ['position','normal','uv'])assert.deepEqual(actual.geometry.attributes[key].array,expected.geometry.attributes[key].array,key+' matches a full rebuild');}finally{disposePart(fresh);}
+  }
+ }finally{s.cleanup();}
+});
+
 test('Move with mouse defaults on and switches to the standard object move gizmo without editing the plant',()=>{
  const s=setup();try{const e=s.editor;e.open(s.part);const original=structuredClone(e.draft);assert.equal(s.field('Move with mouse').checked,true);assert.equal(e.moveControl.hidden,false);assert.ok(!all(e.panel).includes(s.field('Move with mouse')),'checkbox is outside the sidebar');assert.equal(e.controls.enabled,false);assert.equal(e.controls.getHelper().visible,false);
  const toggle=s.field('Move with mouse');toggle.checked=false;toggle.onchange();assert.equal(e.moveWithMouse,false);assert.equal(e.controls.enabled,true);assert.equal(e.controls.getHelper().visible,true);assert.equal(e.controls.space,'world');assert.equal(e.controls.size,.8);assert.deepEqual(e.draft,original);assert.equal(s.action('undo').disabled,true);

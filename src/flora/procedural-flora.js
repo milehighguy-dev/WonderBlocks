@@ -14,21 +14,21 @@ import {TEMP_BASE_FIELDS} from './temp-bases.js';
 // source animations or source-game color maps are used; reference alpha silhouettes are retained.
 const tau=Math.PI*2,vec=a=>new T.Vector3(...a),mix=T.MathUtils.lerp;
 const empty=()=>({positions:[],uv:[],indices:[]});
-function tube(points,radii,{rings=16,sides=10,rounded=false}={}){
- const curve=new T.CatmullRomCurve3(points.map(vec),false,'centripetal'),frames=curve.computeFrenetFrames(rings,false),mesh=empty(),bindings=[];
+function tube(points,radii,{rings=16,sides=10,rounded=false,seam=false}={}){
+ const curve=new T.CatmullRomCurve3(points.map(vec),false,'centripetal'),frames=curve.computeFrenetFrames(rings,false),mesh=empty(),bindings=[],stride=sides+(seam?1:0);
  for(let i=0;i<=rings;i++){
   const t=i/rings,center=curve.getPoint(t),x=t*(radii.length-1),j=Math.min(radii.length-2,Math.floor(x)),radius=mix(radii[j],radii[j+1],x-j);
-  for(let k=0;k<sides;k++){const angle=k/sides*tau,p=center.clone().addScaledVector(frames.normals[i],Math.cos(angle)*radius).addScaledVector(frames.binormals[i],Math.sin(angle)*radius);mesh.positions.push(...p.toArray());mesh.uv.push(k/sides,t);bindings.push(t);}
+  for(let k=0;k<stride;k++){const angle=k/sides*tau,p=center.clone().addScaledVector(frames.normals[i],Math.cos(angle)*radius).addScaledVector(frames.binormals[i],Math.sin(angle)*radius);mesh.positions.push(...p.toArray());mesh.uv.push(k/sides,t);bindings.push(t);}
  }
- for(let i=0;i<rings;i++)for(let k=0;k<sides;k++){const a=i*sides+k,b=i*sides+(k+1)%sides,c=b+sides,d=a+sides;mesh.indices.push(a,b,d,b,c,d);}
+ for(let i=0;i<rings;i++)for(let k=0;k<sides;k++){const a=i*stride+k,b=i*stride+(seam?k+1:(k+1)%sides),c=b+stride,d=a+stride;mesh.indices.push(a,b,d,b,c,d);}
  for(const [i,end] of [[0,false],[rings,true]]){
-  const t=i/rings,radius=radii[end?radii.length-1:0],direction=frames.tangents[i].clone().multiplyScalar(end?1:-1);let prior=i*sides;
+  const t=i/rings,radius=radii[end?radii.length-1:0],direction=frames.tangents[i].clone().multiplyScalar(end?1:-1);let prior=i*stride;
   if(rounded)for(let ring=1;ring<3;ring++){
    const angle=ring*Math.PI/6,offset=mesh.positions.length/3,center=curve.getPoint(t).addScaledVector(direction,radius*Math.sin(angle));
-   for(let k=0;k<sides;k++){const theta=k/sides*tau,p=center.clone().addScaledVector(frames.normals[i],Math.cos(theta)*radius*Math.cos(angle)).addScaledVector(frames.binormals[i],Math.sin(theta)*radius*Math.cos(angle));mesh.positions.push(...p.toArray());mesh.uv.push(k/sides,t);bindings.push(t);}
-   for(let k=0;k<sides;k++){const a=prior+k,b=prior+(k+1)%sides,c=offset+(k+1)%sides,d=offset+k;mesh.indices.push(...(end?[a,b,d,b,c,d]:[a,d,b,b,d,c]));}prior=offset;
+   for(let k=0;k<stride;k++){const theta=k/sides*tau,p=center.clone().addScaledVector(frames.normals[i],Math.cos(theta)*radius*Math.cos(angle)).addScaledVector(frames.binormals[i],Math.sin(theta)*radius*Math.cos(angle));mesh.positions.push(...p.toArray());mesh.uv.push(k/sides,t);bindings.push(t);}
+   for(let k=0;k<sides;k++){const next=seam?k+1:(k+1)%sides,a=prior+k,b=prior+next,c=offset+next,d=offset+k;mesh.indices.push(...(end?[a,b,d,b,c,d]:[a,d,b,b,d,c]));}prior=offset;
   }
-  const center=mesh.positions.length/3;mesh.positions.push(...curve.getPoint(t).addScaledVector(direction,rounded?radius:0).toArray());mesh.uv.push(.5,t);bindings.push(t);for(let k=0;k<sides;k++){const a=prior+k,b=prior+(k+1)%sides;mesh.indices.push(center,...(end?[a,b]:[b,a]));}
+  const center=mesh.positions.length/3;mesh.positions.push(...curve.getPoint(t).addScaledVector(direction,rounded?radius:0).toArray());mesh.uv.push(.5,t);bindings.push(t);for(let k=0;k<sides;k++){const a=prior+k,b=prior+(seam?k+1:(k+1)%sides);mesh.indices.push(center,...(end?[a,b]:[b,a]));}
  }
  mesh.bindings=bindings;return mesh;
 }
@@ -121,7 +121,9 @@ const leafTexture=(id,name)=>compound(name)?/Palm|Willow/.test(name)?'cards-fern
 export const FLORA_PROFILES={},FLORA_BODY_FIELDS={...TEMP_BASE_FIELDS},FLORA_BODY_EXTRAS={};
 // Neutral joint primitives use the same editable branch and attachment system.
 const basicPoints=[[0,0,0],[0,.5,0],[0,1,0]],basicRadii=[.1,.1,.1];
-FLORA_PROFILES['flora-basic-branch']={points:basicPoints,radii:basicRadii,length:3,joints:2,mesh:tube(basicPoints,basicRadii,{rings:24,sides:12,rounded:true})};
+const basicMeshes=new Map();
+export function basicBranchMesh(rings=24,seam=false){const key=rings+':'+seam;if(!basicMeshes.has(key))basicMeshes.set(key,tube(basicPoints,basicRadii,{rings,sides:12,rounded:true,seam}));return basicMeshes.get(key);}
+FLORA_PROFILES['flora-basic-branch']={points:basicPoints,radii:basicRadii,length:3,joints:2,mesh:basicBranchMesh()};
 const trunkRadii=[.12,.10,.08];
 FLORA_PROFILES['flora-basic-trunk']={points:basicPoints,radii:trunkRadii,length:4,joints:3,mesh:tube(basicPoints,trunkRadii,{rings:16,sides:12,rounded:true})};
 const authoredParts=new Map([...BARK_BRANCH_PARTS,...MODELED_LEAF_PARTS].map(part=>[part.id,part]));

@@ -140,9 +140,9 @@ function commit(){
   if(connected)project.parts=cleanResolvedRoutes(project.parts);
   detachEditedInstances(project.parts,previous);
   const contextual=connected||project.parts.some(p=>p.assemblyId||p.interior||p.entranceInteriors?.length||p.platform||p.route?.segments.some(s=>s.hallway?.entranceFit))||project.parts.filter(p=>p.highway).length>1;
-  if(contextual&&sceneRenderKey(project.parts)!==renderedPartsKey)renderProject();
+  if(contextual&&sceneRenderKey(project.parts)!==renderedPartsKey)renderProject({reuseUnchanged:true});
  }catch(e){project=JSON.parse(history.entries[history.index]);renderProject();notify(e.message);return;}
- history.push(project);rememberSelection();selectionMemory.retain(history.entries);persist();refresh();
+ renderedPartsKey=sceneRenderKey(project.parts);history.push(project);rememberSelection();selectionMemory.retain(history.entries);persist();refresh();
 }
 function renderProject({reuseUnchanged=false}={}){
  const reusable=reuseUnchanged&&renderedPartsKey?reusableSceneParts(JSON.parse(renderedPartsKey),project.parts,meshes):new Set();
@@ -273,6 +273,13 @@ function refreshRouteHandles(surfaceSnap=null){
  }
  renderDirty=true;
 }
+function replaceRouteBackground(id,next){
+ const old=meshes.get(id),originals=routeSession.originalMeshes;
+ if(!originals.has(id))originals.set(id,old);
+ assembly.remove(old);
+ if(old!==originals.get(id))disposePart(old);
+ assembly.add(next);meshes.set(id,next);
+}
 function routePreview(route,index=0,surfaceSnap=null){
  if(!routeSession)return;routeSession.index=index;routeSession.part.route=structuredClone(route);
  const previewKey=JSON.stringify([route,routeSession.part.position,routeSession.part.rotation,routeSession.part.scale,!!routeDrag,!!routeDraw]),contextParts=routeSceneParts();
@@ -286,14 +293,14 @@ function routePreview(route,index=0,surfaceSnap=null){
  const platformTargets=new Set([...changedRoutes,...project.parts.filter(p=>changedIds.has(p.id))].flatMap(p=>[...Object.values(p.route?.links||{}),...(p.route?.attachments||[]).map(a=>a.ref)].filter(ref=>ref.platformSection).map(ref=>ref.partId)));
  for(const id of routeSession.previewPlatforms||[])platformTargets.add(id);
  routeSession.previewPlatforms=platformTargets;
- for(const p of resolved.filter(p=>p.id!==effective.id&&(p.route||p.platform&&platformTargets.has(p.id)))){const old=meshes.get(p.id);if(old&&(!p.route||old.userData.routePreviewDefinition!==JSON.stringify(p))){assembly.remove(old);disposePart(old);const m=buildPart(p,resolved,undefined,false);m.visible=!hiddenParts.has(p.id);assembly.add(m);meshes.set(p.id,m);}}
+ for(const p of resolved.filter(p=>p.id!==effective.id&&(p.route||p.platform&&platformTargets.has(p.id)))){const old=meshes.get(p.id);if(old&&(!p.route||old.userData.routePreviewDefinition!==JSON.stringify(p))){const m=buildPart(p,resolved,undefined,false);m.visible=!hiddenParts.has(p.id);replaceRouteBackground(p.id,m);}}
  // Rebuild affected hulls after a drag, rather than subtracting on every pointer move.
  // Remember previous targets so moving away or disabling cuts restores their solids.
  if(!routeSession.interiorRoute&&!routeDrag&&!routeDraw){
   const targets=new Set(routeSession.previewHulls||[]),volumes=routeCutVolumes(effective);
   if(volumes.length)for(const p of resolved){if(p.id===effective.id||p.route||p.interiorProp||p.type==='character-reference'||p.interior&&!p.interior.shell)continue;const old=meshes.get(p.id);if(!old)continue;const box=new THREE.Box3().setFromObject(old);if(volumes.some(v=>box.intersectsBox(new THREE.Box3(new THREE.Vector3(v.bounds[0],v.bounds[2],v.bounds[4]),new THREE.Vector3(v.bounds[1],v.bounds[3],v.bounds[5])))))targets.add(p.id);}
   routeSession.previewHulls=targets;const cuts=targets.size?prepareInteriorCuts(resolved):null;
-  for(const p of resolved.filter(p=>targets.has(p.id))){const old=meshes.get(p.id);if(!old)continue;assembly.remove(old);disposePart(old);const next=buildPart(p,resolved,cuts);next.visible=!hiddenParts.has(p.id);assembly.add(next);meshes.set(p.id,next);}
+  for(const p of resolved.filter(p=>targets.has(p.id))){const old=meshes.get(p.id);if(!old)continue;const next=buildPart(p,resolved,cuts);next.visible=!hiddenParts.has(p.id);replaceRouteBackground(p.id,next);}
  }
  renderer.shadowMap.needsUpdate=true;
  if(!routeSession.interiorRoute)for(const [id,m] of meshes)if(id!==routeSession.part.id)m.visible=resolved.some(p=>p.id===id)&&!hiddenParts.has(id);
@@ -313,8 +320,10 @@ function routePreview(route,index=0,surfaceSnap=null){
 }
 function closeRouteWorkflow(){entranceTools?.clear();clearWallPick();wallGesture=null;renderer.domElement.style.cursor='';
  if(!routeSession)return;const session=routeSession,captured=routeDraw?.pointerId??routeDrag?.pointerId;if(captured!==undefined&&renderer.domElement.hasPointerCapture(captured))renderer.domElement.releasePointerCapture(captured);if(session.interiorRoute?.mesh){scene.remove(session.interiorRoute.mesh);disposePart(session.interiorRoute.mesh);}routeSession=null;routeDrag=null;routeDraw=null;refreshRouteBubbles();orbit.enabled=true;if(routePreviewMesh){scene.remove(routePreviewMesh);disposePart(routePreviewMesh);routePreviewMesh=null;}
+ for(const [id,original] of session.originalMeshes){const preview=meshes.get(id);if(preview!==original){assembly.remove(preview);disposePart(preview);assembly.add(original);meshes.set(id,original);}}
+ session.originalMeshes.clear();
  for(const [id,m] of meshes)m.visible=!hiddenParts.has(id);routePanel.close();routeWorkspace.hidden=true;viewportHome.after(viewport);document.body.classList.remove('route-active');document.querySelector('main').inert=false;document.querySelector('header').inert=false;
- renderProject();camera.position.copy(session.camera);orbit.target.copy(session.target);orbit.enableRotate=true;orbit.update();attachSelection();renderDirty=true;renderer.shadowMap.needsUpdate=true;session.interiorRoute?.resume?.(session.interiorRoute.draft,false);
+ attachSelection();refresh();camera.position.copy(session.camera);orbit.target.copy(session.target);orbit.enableRotate=true;orbit.update();collisionOverlay?.refresh();renderDirty=true;renderer.shadowMap.needsUpdate=true;session.interiorRoute?.resume?.(session.interiorRoute.draft,false);
 }
 const routePanel=createRoutePanel(routeWorkspace.querySelector('.route-sidebar'),{
  wallTool:mode=>{if(routeSession){routeSession.wallTool=mode;renderer.domElement.style.cursor='crosshair';}},
@@ -352,7 +361,7 @@ intoRoom.onclick=()=>{try{
 }catch(e){notify(e.message);}};
 function openRouteWorkflow(forceNew=false,hallway=false,seed=null,revertCreation=null,interiorRoute=null){
  if(routeSession)return;cancelPlace();const current=project.parts.find(p=>p.id===selected),editing=!forceNew&&['stair-route','wall-route'].includes(current?.type);
- routeSession={interiorRoute,revertCreation,part:seed|| (editing?structuredClone(current):makePart('stair-route',hallway?{name:'Hallway route',route:defaultHallwayRoute()}:{})),editId:editing?current.id:null,placed:!!editing||!!seed,camera:camera.position.clone(),target:orbit.target.clone()};
+ routeSession={originalMeshes:new Map(),interiorRoute,revertCreation,part:seed|| (editing?structuredClone(current):makePart('stair-route',hallway?{name:'Hallway route',route:defaultHallwayRoute()}:{})),editId:editing?current.id:null,placed:!!editing||!!seed,camera:camera.position.clone(),target:orbit.target.clone()};
  if(!editing&&!seed)routeSession.part.position=[orbit.target.x,0,orbit.target.z];else if(editing)meshes.get(current.id).visible=false;
  transform.detach();outline.visible=false;document.body.classList.add('route-active');routeWorkspace.hidden=false;routeWorkspace.querySelector('.route-workspace-title').firstChild.textContent=routeSession.part.type==='wall-route'?'WALL / FENCE WORKSHOP ':'STAIRS / HALLWAYS WORKSHOP ';routeWorkspace.querySelector('.route-view').append(viewport);document.querySelector('main').inert=true;document.querySelector('header').inert=true;orbit.enableRotate=!!editing||!!seed;
  routePanel.open(routeSession.part.route,editing||!!seed,routeSession.part.rotation[1],routeSession.part.type==='wall-route');if(editing)fitRoute();renderer.shadowMap.needsUpdate=true;
@@ -444,8 +453,8 @@ renderer.domElement.addEventListener('dblclick',event=>{
 });
 function duplicate(mirror=false){if(!selected)return;try{const copies=mirror?copyParts(project.parts,selectedIds,true):createInstanceCopies(project.parts,selectedIds);project.parts.push(...copies);selectedIds=new Set(copies.map(p=>p.id));selected=copies.at(-1)?.id;renderProject({reuseUnchanged:true});commit();}catch(error){notify(error.message);}}
 function remove(){if(floraEditor?.active){floraEditor.removeSelected();return;}if(!selected)return;project.parts=project.parts.filter(p=>!selectedIds.has(p.id));detachDeletedPartReferences(project.parts,selectedIds);selected=null;selectedIds.clear();renderProject({reuseUnchanged:true});commit();}
-function undo(){if(floraEditor?.active){floraEditor.undo();return;}if(dragging){transform.reset();return;}cancelPlace();rememberSelection();const p=history.undo();if(p){const preferences=project.swbf2Exports,sameProject=p.parts.some(part=>project.parts.some(old=>old.id===part.id))||p.name===project.name;project=p;if(sameProject&&preferences)project.swbf2Exports=preferences;restoreSelection();renderProject();persist();}}
-function redo(){if(floraEditor?.active){floraEditor.undo(true);return;}if(dragging)return;cancelPlace();rememberSelection();const p=history.redo();if(p){const preferences=project.swbf2Exports,sameProject=p.parts.some(part=>project.parts.some(old=>old.id===part.id))||p.name===project.name;project=p;if(sameProject&&preferences)project.swbf2Exports=preferences;restoreSelection();renderProject();persist();}}
+function undo(){if(floraEditor?.active){floraEditor.undo();return;}if(dragging){transform.reset();return;}cancelPlace();rememberSelection();const p=history.undo();if(p){const preferences=project.swbf2Exports,sameProject=p.parts.some(part=>project.parts.some(old=>old.id===part.id))||p.name===project.name;project=p;if(sameProject&&preferences)project.swbf2Exports=preferences;restoreSelection();renderProject({reuseUnchanged:true});persist();}}
+function redo(){if(floraEditor?.active){floraEditor.undo(true);return;}if(dragging)return;cancelPlace();rememberSelection();const p=history.redo();if(p){const preferences=project.swbf2Exports,sameProject=p.parts.some(part=>project.parts.some(old=>old.id===part.id))||p.name===project.name;project=p;if(sameProject&&preferences)project.swbf2Exports=preferences;restoreSelection();renderProject({reuseUnchanged:true});persist();}}
 function frame(target){const box=target?.isBox3?target:new THREE.Box3();if(!target?.isBox3)for(const object of assembly.children)if(object.visible)box.union(new THREE.Box3().setFromObject(object));if(box.isEmpty()){orbit.target.set(0,1,0);camera.position.set(12,10,16);}else{const size=box.getSize(new THREE.Vector3()).length();orbit.maxDistance=Math.max(100,size*5);camera.far=Math.max(250,size*10);camera.updateProjectionMatrix();setViewFogRange(Math.max(45,size*2.5),Math.max(110,size*5));frameViewportBox(camera,orbit,box,viewport,{direction:new THREE.Vector3(1,.7,1.3),minDistance:target?.isBox3?2:8});}orbit.update();}
 $('duplicate').onclick=()=>duplicate();$('mirror').onclick=()=>duplicate(true);$('delete').onclick=remove;$('undo').onclick=undo;$('redo').onclick=redo;$('frame').onclick=frame;
 const deleteToolbar=document.createElement('button');deleteToolbar.id='delete-toolbar';deleteToolbar.textContent='Delete';deleteToolbar.title='Delete selected part (Delete)';deleteToolbar.onclick=remove;$('undo').before(deleteToolbar);$('undo').setAttribute('aria-label','Undo');$('redo').setAttribute('aria-label','Redo');

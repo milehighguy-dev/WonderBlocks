@@ -1,3 +1,5 @@
+import {floraCapacityError} from './flora-limits.js';
+import {neutralBranchChains} from './flora-neutral-chains.js';
 import {floraBodyGeometry,floraBodyField,floraBodySurface,floraBodyExtras,floraBodyPinSurface,floraBodyJointIds,floraBodyJointRadius,floraBodyExtraTriangle} from './flora-body.js';
 import {SURFACES,applySurface,surfaceTexture} from '../materials/surfaces.js';
 import {canonicalFloraNodes} from './flora-node-identity.js';
@@ -6,7 +8,7 @@ import {floraAsset,floraPlacementCategory} from './flora-palette.js';
 import {deformFloraSkeleton,floraSkeletonDescendants,alignFloraBoneRotation,floraBoneFrameRotation} from './flora-skeleton.js';
 import {skinBone,skinSolid,floraSkinGeometry,cachedFloraSkin} from './flora-skin.js';
 import {floraMuscleShape,floraMuscleRadius,floraMuscleCurve,floraMuscleGeometry} from './flora-muscle.js';
-import {floraVineGeometry} from './flora-vine.js';
+import {basicBranchMesh} from './procedural-flora.js';
 import {buildBillboardMesh,billboardGeometry,validateBillboard} from './flora-billboards.js';
 export const FLORA_PARTS={leaf:'Leaf',bark:'Root or branch'};
 function orientBillboardCanopy(f,o,angle=0){const q=new T.Quaternion();floraAttachmentFrame(f,o).decompose(new T.Vector3(),q,new T.Vector3());q.invert().multiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),angle));const e=new T.Euler().setFromQuaternion(q);o.rotation=[e.x,e.y,e.z];}
@@ -77,16 +79,16 @@ function attachmentFrame(f,node,seen=new Set()){
  if(node.parentOrgan){const parent=f.organs.find(o=>o.id===node.parentOrgan);if(node.pin){const source=floraAsset(parent.asset).meshes[node.pin.mesh],positions=floraDeformPositions(parent,source.positions),index=source.indices.slice(node.pin.triangle*3,node.pin.triangle*3+3),points=index.map(i=>new T.Vector3().fromArray(positions,i*3)),point=new T.Vector3();for(let i=0;i<3;i++)point.addScaledVector(points[i],node.pin.bary[i]);const normal=points[1].clone().sub(points[0]).cross(points[2].clone().sub(points[0])).normalize();if(floraBodyOrgan(parent)){const joins=floraBodyCaps(f,parent),surface=floraBodyField(parent,joins)?floraBodyPinSurface(parent,node.pin,joins):floraBodySurface(parent,point,joins);point.copy(surface.point);normal.copy(surface.normal);}const frame=floraOrganMatrix(f,parent,seen).multiply(new T.Matrix4().compose(point,new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),normal),new T.Vector3(1,1,1)));if(node.asset&&floraAsset(node.asset)?.placement?.upright){const position=new T.Vector3(),rotation=new T.Quaternion(),scale=new T.Vector3();frame.decompose(position,rotation,scale);return new T.Matrix4().compose(position,new T.Quaternion(),scale);}return frame;}const socket=parent&&floraSockets(parent.asset).find(s=>s.id===node.socket);if(!socket)throw Error('Invalid plant socket.');
   const control=floraSocketPose(parent,socket);return floraOrganMatrix(f,parent,seen).multiply(new T.Matrix4().compose(v(control.point),floraSocketRotation(parent,socket,control),new T.Vector3(1,1,1)));
  }
- const parentId=node.points?node.parent:node.branch;if(!parentId)return new T.Matrix4();if(node.branchSurface)return floraBranchSurfaceFrame(f,parentId,node.at,node.branchSurface.angle,node.branchSurface.pin,node.branchSurface.followFrame);const parent=f.branches.find(b=>b.id===parentId),curve=floraCurve(f,parentId,seen),point=curve.getPoint(node.at);
- if(parent.anchor)return new T.Matrix4().makeTranslation(...point.toArray());
- const frame=floraAttachmentFrame(f,parent,visit(seen,parentId)),inverse=frame.clone().invert(),localPoint=point.clone().applyMatrix4(inverse),x=node.at*(parent.points.length-1),index=Math.round(x),onJoint=Math.abs(x-index)<1e-7;
+ const parentId=node.points?node.parent:node.branch;if(!parentId)return new T.Matrix4();if(node.branchSurface)return floraBranchSurfaceFrame(f,parentId,node.at,node.branchSurface.angle,node.branchSurface.pin,node.branchSurface.followFrame);const parent=f.branches.find(b=>b.id===parentId),frame=floraAttachmentFrame(f,parent,visit(seen,parentId)),curve=parent.anchor?new T.LineCurve3(v(parent.points[0]),v(parent.points[1])):floraMuscleCurve(parent,floraBranchCaps(f,parent)),localPoint=curve.getPoint(node.at);
+ if(parent.anchor)return frame.multiply(new T.Matrix4().makeTranslation(...localPoint.toArray()));
+ const x=node.at*(parent.points.length-1),index=Math.round(x),onJoint=Math.abs(x-index)<1e-7;
  const rotations=parent.jointRotations||{},earlier=Object.keys(rotations).map(Number).filter(i=>onJoint?i<index:i<=x).sort((a,b)=>b-a)[0],incoming=new T.Quaternion().setFromEuler(new T.Euler(...(rotations[earlier]||parent.childRotation||[0,0,0]))),relative=incoming.clone().invert().multiply(new T.Quaternion().setFromEuler(new T.Euler(...(onJoint&&rotations[index]||rotations[earlier]||parent.childRotation||[0,0,0]))));
- const tangent=onJoint&&index>0?v(parent.points[index]).sub(v(parent.points[index-1])).normalize():curve.getTangent(node.at).transformDirection(inverse),q=alignFloraBoneRotation(incoming,new T.Vector3(0,1,0),tangent).multiply(relative);
+ const tangent=onJoint&&index>0?v(parent.points[index]).sub(v(parent.points[index-1])).normalize():curve.getTangent(node.at),q=alignFloraBoneRotation(incoming,new T.Vector3(0,1,0),tangent).multiply(relative);
  return frame.multiply(new T.Matrix4().compose(localPoint,q,new T.Vector3(1,1,1)));
 }
 export function floraOrganMatrix(f,o,seen=new Set()){const rotation=new T.Quaternion().setFromEuler(new T.Euler(...o.rotation));if(o.mounted&&o.asset){const forward=floraBodyOrgan(o)||floraAsset(o.asset).editorAxis==='z-to-y'?new T.Vector3(0,1,0):new T.Vector3(0,0,1);rotation.multiply(new T.Quaternion().setFromUnitVectors(forward,new T.Vector3(0,1,0)));}return floraAttachmentFrame(f,o,visit(seen,o.id)).multiply(new T.Matrix4().compose(floraSharedJoint(f,o)?new T.Vector3():v(o.offset),rotation,v(o.scale))).multiply(new T.Matrix4().makeTranslation(...floraOrganOrigin(o).negate().toArray()));}
 export function floraCurve(f,branchId,seen=new Set()){
- const b=f.branches.find(b=>b.id===branchId);if(!b)throw Error('Invalid plant branch hierarchy.');const frame=floraAttachmentFrame(f,b,visit(seen,branchId)),local=b.anchor?new T.LineCurve3(v(b.points[0]),v(b.points[1])):floraMuscleCurve(b),curve=new T.Curve();curve.getPoint=(t,target=new T.Vector3())=>local.getPoint(t,target).applyMatrix4(frame);curve.getTangent=(t,target=new T.Vector3())=>local.getTangent(t,target).transformDirection(frame);return curve;
+ const b=f.branches.find(b=>b.id===branchId);if(!b)throw Error('Invalid plant branch hierarchy.');const frame=floraAttachmentFrame(f,b,visit(seen,branchId)),local=b.anchor?new T.LineCurve3(v(b.points[0]),v(b.points[1])):floraMuscleCurve(b,floraBranchCaps(f,b)),curve=new T.Curve();curve.getPoint=(t,target=new T.Vector3())=>local.getPoint(t,target).applyMatrix4(frame);curve.getTangent=(t,target=new T.Vector3())=>local.getTangent(t,target).transformDirection(frame);return curve;
 }
 export function floraBranchScale(f,b){return Math.cbrt(Math.abs(floraAttachmentFrame(f,b).determinant()));}
 export function floraBranchRadius(b,t){return floraRadius(b,t)*floraMuscleRadius(b.profile,t);}
@@ -129,7 +131,7 @@ export function syncFloraSharedJoints(f){
  };for(const node of nodes.values())sync(node);return f;
 }
 function createBranch(f,parent,entry,at){
- if(f.branches.length>=24)throw Error('Maximum 24 branches per plant.');
+ const capacity=floraCapacityError(f,{branches:1});if(capacity)throw Error(capacity);
  const shape=floraMuscleShape(entry.id),b={id:id(),name:entry.name.replaceAll('_',' '),parent,at,profile:entry.id,nativeShape:true,points:[0,1].map(t=>shape.curve.getPoint(t).multiplyScalar(shape.length).toArray()),radii:[0,1].map(()=>shape.length*shape.maxRadius)};
  f.branches.push(b);return b;
 }
@@ -137,7 +139,7 @@ function createBranch(f,parent,entry,at){
 export function floraPinWeights(bary){const weights=bary.toArray().map(x=>T.MathUtils.clamp(x,0,1)),sum=weights.reduce((a,b)=>a+b,0);return weights.map(x=>x/sum);}
 export function floraSurfaceTarget(f,target){if(!target||target.free||target.surface||target.branchSurface)return target;if(!target.organ){const b=f.branches.find(b=>b.id===target.branch);if(!b||b.anchor)return target;const lengths=floraCurve(f,b.id).getLengths(),x=T.MathUtils.clamp(target.at??0,0,1)*(lengths.length-1),i=Math.min(lengths.length-2,Math.floor(x)),at=T.MathUtils.lerp(lengths[i],lengths[i+1],x-i)/lengths.at(-1);return {...target,at,branchSurface:{angle:0}};}const o=f.organs.find(o=>o.id===target.organ);if(!o)return target;const socket=floraSockets(o.asset).find(s=>s.id===target.socket);if(!socket)return target;const point=v(floraSocketPose(o,socket).point);let best=null,distance=Infinity;for(const [mi,mesh] of floraAsset(o.asset).meshes.entries()){const positions=floraDeformPositions(o,mesh.positions);for(let i=0;i<mesh.indices.length;i+=3){if(floraBodyExtraTriangle(o.asset,mi,i/3))continue;const p=mesh.indices.slice(i,i+3).map(x=>new T.Vector3().fromArray(positions,x*3)),triangle=new T.Triangle(...p),closest=triangle.closestPointToPoint(point,new T.Vector3()),d=closest.distanceToSquared(point);if(d<distance){const bary=triangle.getBarycoord(closest,new T.Vector3());if(!bary)continue;distance=d;best={mesh:mi,triangle:i/3,bary:floraPinWeights(bary)};}}}return best?{branch:target.branch,at:target.at,organ:target.organ,surface:best}:target;}
 export function fitFloraBranch(f,b,angle=Math.atan2(b.points.at(-1)[2],b.points.at(-1)[0])){const parent=f.branches.find(p=>p.id===b.parent);let radius=.3,continuation=!b.branchSurface&&b.at>.98;if(b.parentOrgan){const o=f.organs.find(o=>o.id===b.parentOrgan),a=floraAsset(o.asset),bounds=new T.Box3();for(const mesh of a.meshes)for(let i=0;i<mesh.positions.length;i+=3)bounds.expandByPoint(new T.Vector3().fromArray(mesh.positions,i));const span=bounds.getSize(new T.Vector3());radius=T.MathUtils.clamp(Math.min(span.x,span.y,span.z)*.3,.06,.6);const socket=floraSockets(o.asset).find(s=>s.id===b.socket);if(socket)radius=floraBodyJointRadius(o.asset,socket.id)*Math.cbrt(floraSocketPose(o,socket).scale.reduce((a,b)=>a*b,1));continuation=!!b.socket&&!a.skeleton.some(n=>n.parent===b.socket);}else if(!parent.anchor){const t=b.branchSurface?floraCurve(f,parent.id).getUtoTmapping(b.at):b.at;radius=floraBranchRadius(parent,t)*(b.branchSurface?floraBranchScale(f,parent):1)*(continuation?1:.7);}else continuation=true;
- radius=T.MathUtils.clamp(radius,.03,.8);const shape=floraMuscleShape(b.profile),first=parent.anchor&&!b.parentOrgan,length=first?shape.length:T.MathUtils.clamp(radius/shape.radii[0],.3,8),girth=first?length*shape.maxRadius:radius*shape.maxRadius/shape.radii[0],rotation=continuation?new T.Quaternion():new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),new T.Vector3(Math.cos(angle)*.7,1,Math.sin(angle)*.7).normalize());const ats=shape.joints?Array.from({length:shape.joints},(_,i)=>i/(shape.joints-1)):[0,1];b.points=ats.map(t=>shape.curve.getPoint(t).multiplyScalar(length).applyQuaternion(rotation).toArray());b.radii=ats.map(()=>girth);return b;}
+ radius=T.MathUtils.clamp(radius,.03,continuation&&b.profile==='flora-basic-branch'?4:.8);const shape=floraMuscleShape(b.profile),first=parent.anchor&&!b.parentOrgan,length=first?shape.length:T.MathUtils.clamp(radius/shape.radii[0],.3,8),girth=first?length*shape.maxRadius:radius*shape.maxRadius/shape.radii[0],rotation=continuation?new T.Quaternion():new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),new T.Vector3(Math.cos(angle)*.7,1,Math.sin(angle)*.7).normalize());const ats=shape.joints?Array.from({length:shape.joints},(_,i)=>i/(shape.joints-1)):[0,1];b.points=ats.map(t=>shape.curve.getPoint(t).multiplyScalar(length).applyQuaternion(rotation).toArray());b.radii=ats.map(()=>girth);return b;}
 // Only newly placed foliage is fitted; existing plants keep their authored sizing.
 export function fitFloraSurfacePart(f,o){
  const parent=f.branches.find(b=>b.id===o.branch);let radius;
@@ -163,7 +165,7 @@ export function fitFloraSurfacePart(f,o){
  const scale=T.MathUtils.clamp(desired/Math.max(.01,size),.1,10);o.scale=[scale,scale,scale];return o;
 }
 export function deformFloraStemControl(o,previous,socketId,position,rotation,scale,mode){const socket=floraSockets(o.asset).find(s=>s.id===socketId),old=floraSocketPose(previous,socket),rest=floraSocketBasePoint(o,socket);o.controls=structuredClone(previous.controls||{});o.controls[socketId]={offset:v(position).sub(rest).toArray(),rotation:[...rotation],scale:[...scale]};if(mode==='scale')return;const delta=v(position).sub(v(old.point)),q=new T.Quaternion().setFromEuler(new T.Euler(...rotation)).multiply(new T.Quaternion().setFromEuler(new T.Euler(...old.rotation)).invert());const skeleton=floraAsset(o.asset)?.skeleton,descendants=floraSkeletonDescendants(skeleton,socketId);for(const child of floraSockets(o.asset).filter(s=>s.id!==socketId&&descendants.has(s.id))){const prior=floraSocketPose(previous,child),p=v(prior.point),r=new T.Quaternion().setFromEuler(new T.Euler(...prior.rotation));if(mode==='translate')p.add(delta);else{p.sub(v(old.point)).applyQuaternion(q).add(v(old.point));r.premultiply(q);}const e=new T.Euler().setFromQuaternion(r);o.controls[child.id]={offset:p.sub(floraSocketBasePoint(o,child)).toArray(),rotation:[e.x,e.y,e.z],scale:prior.scale};}}
-function createOrgan(f,branch,kind='leaf',at=.8,angle=0){if(f.organs.length>=160)throw Error('Maximum 160 foliage parts per plant.');if(!FLORA_PARTS[kind])throw Error('Unknown foliage part.');const o={id:id(),branch,kind,at,offset:[0,0,0],rotation:[0,angle,-.35],scale:[1,1,1]};f.organs.push(o);return o;}
+function createOrgan(f,branch,kind='leaf',at=.8,angle=0){const capacity=floraCapacityError(f,{parts:1});if(capacity)throw Error(capacity);if(!FLORA_PARTS[kind])throw Error('Unknown foliage part.');const o={id:id(),branch,kind,at,offset:[0,0,0],rotation:[0,angle,-.35],scale:[1,1,1]};f.organs.push(o);return o;}
 // Stable descendants are retained when changing a node's attachment.
 export function floraSubtreeIds(f,partId){const ids=new Set([partId]);let count;do{count=ids.size;for(const n of [...f.branches,...f.organs])if(ids.has(n.parentOrgan||n.parent||n.branch))ids.add(n.id);}while(count!==ids.size);return ids;}
 // Socket children retain a branch owner for selection and serialization. Moving
@@ -205,7 +207,7 @@ export function slideFloraPart(f,partId,target){
 export function duplicateFloraSubtree(f,partId){
  const root=[...f.organs,...f.branches].find(n=>n.id===partId);if(!root||root===f.branches[0])throw Error('Select a branch or part.');
  const ids=floraSubtreeIds(f,partId),branches=f.branches.filter(n=>ids.has(n.id)),organs=f.organs.filter(n=>ids.has(n.id));
- if(f.branches.length+branches.length>24||f.organs.length+organs.length>160)throw Error('This copy exceeds the plant part limit.');
+ const capacity=floraCapacityError(f,{branches:branches.length,parts:organs.length});if(capacity)throw Error(capacity);
  const mapping=new Map([...ids].map(old=>[old,id()])),copy=n=>{const clone=structuredClone(n);clone.id=mapping.get(n.id);for(const key of ['branch','parent','parentOrgan'])if(mapping.has(clone[key]))clone[key]=mapping.get(clone[key]);return clone;};
  f.branches.push(...branches.map(copy));f.organs.push(...organs.map(copy));validateFlora(f);return [...f.branches,...f.organs].find(n=>n.id===mapping.get(partId));
 }
@@ -221,6 +223,25 @@ export function replaceFloraAsset(f,partId,assetId){
 }
 export function removeFloraPart(f,partId){if(partId===f.branches[0].id)return false;const ids=new Set([partId]);let n;do{n=ids.size;for(const b of f.branches)if(ids.has(b.parentOrgan||b.parent))ids.add(b.id);for(const o of f.organs)if(ids.has(o.parentOrgan||o.branch))ids.add(o.id);}while(ids.size!==n);f.branches=f.branches.filter(b=>!ids.has(b.id));f.organs=f.organs.filter(o=>!ids.has(o.id));return true;}
 export function removeFloraBranch(f,branch){return removeFloraPart(f,branch);}
+export function extendFloraBranch(f,branchId){
+ const selected=f.branches.find(b=>b.id===branchId);if(!selected||selected.anchor||selected.profile!=='flora-basic-branch')return null;
+ const branch=neutralPaths(f).byId.get(branchId).chain.last,count=branch.points.length,last=v(branch.points.at(-1)),delta=last.clone().sub(v(branch.points.at(-2)));
+ if(count===8){
+  if(floraCapacityError(f,{branches:1}))return null;const added=addFloraAsset(f,branch.id,'flora-basic-branch',1);added.points=[[0,0,0],[0,Math.min(39,delta.length()),0]];added.radii=[branch.radii.at(-1),branch.radii.at(-1)];syncFloraSharedJoints(f);return added;
+ }
+ let factor=1;for(let i=0;i<3;i++)if(delta.getComponent(i))factor=Math.min(factor,((delta.getComponent(i)>0?40:-40)-last.getComponent(i))/delta.getComponent(i));
+ if(factor*delta.length()<.03){delta.copy(last).negate().setLength(Math.min(1,last.length()*.1));factor=1;}
+ const curve=floraCurve(f,branch.id),children=[...f.branches,...f.organs].filter(n=>!n.parentOrgan&&(n.parent||n.branch)===branch.id),parameters=new Map(children.map(n=>[n.id,n.branchSurface?curve.getUtoTmapping(n.at):n.at]));
+ const pinned=children.filter(n=>n.branchSurface?.pin),oldGeometry=pinned.length?branchGeometry(f,branch):null,anchors=new Map();
+ if(oldGeometry){for(const n of pinned){const pin=n.branchSurface.pin,point=new T.Vector3();for(let i=0;i<3;i++)point.addScaledVector(new T.Vector3().fromBufferAttribute(oldGeometry.attributes.position,oldGeometry.index.getX(pin.triangle*3+i)),pin.bary[i]);anchors.set(n.id,point);}oldGeometry.dispose();}
+ branch.points.push(last.addScaledVector(delta,factor).toArray());branch.radii.push(branch.radii.at(-1));
+ const lengths=floraCurve(f,branch.id).getLengths();
+ for(const n of children){const t=parameters.get(n.id)*(count-1)/count;if(n.branchSurface){const x=t*(lengths.length-1),i=Math.min(lengths.length-2,Math.floor(x));n.at=T.MathUtils.lerp(lengths[i],lengths[i+1],x-i)/lengths.at(-1);}else n.at=t;}
+ if(pinned.length){const geometry=branchGeometry(f,branch),position=geometry.attributes.position,index=geometry.index;
+  for(const n of pinned){const anchor=anchors.get(n.id);let best=null,distance=Infinity;for(let i=0;i<index.count;i+=3){const triangle=new T.Triangle(...[0,1,2].map(j=>new T.Vector3().fromBufferAttribute(position,index.getX(i+j)))),point=triangle.closestPointToPoint(anchor,new T.Vector3()),d=point.distanceToSquared(anchor);if(d<distance){const bary=triangle.getBarycoord(point,new T.Vector3());if(bary){distance=d;best={triangle:i/3,bary:floraPinWeights(bary)};}}}if(best)n.branchSurface.pin=best;}geometry.dispose();
+ }
+ syncFloraSharedJoints(f);validateFlora(f);return branch;
+}
 export function removeFloraJoint(f,branchId,index){
  const b=f.branches.find(b=>b.id===branchId);if(!b||b.anchor||!Number.isInteger(index)||index<=0||index>=b.points.length||b.points.length<=2)return false;
  const snapshot=structuredClone(f),count=b.points.length,curve=floraCurve(f,b.id),children=[...f.branches,...f.organs].filter(n=>!n.parentOrgan&&(n.parent||n.branch)===b.id),parameters=new Map(children.map(n=>[n.id,n.branchSurface?curve.getUtoTmapping(n.at):n.at]));
@@ -237,7 +258,7 @@ export function removeFloraJoint(f,branchId,index){
 }
 export function validateFlora(f){
  const bad=()=>{throw Error('Invalid flora data.');},vec=(a,min,max)=>Array.isArray(a)&&a.length===3&&a.every(x=>Number.isFinite(x)&&x>=min&&x<=max);
- if(!f||!Array.isArray(f.branches)||!f.branches.length||f.branches.length>24||!Array.isArray(f.organs)||f.organs.length>160||!['low','standard','swbf2'].includes(f.detail)||!f.colors||!['bark','leaf'].every(k=>/^#[0-9a-f]{6}$/i.test(f.colors[k])))bad();const ids=new Set();
+ if(!f||!Array.isArray(f.branches)||!f.branches.length||!Array.isArray(f.organs)||floraCapacityError(f)||!['low','standard','swbf2'].includes(f.detail)||!f.colors||!['bark','leaf'].every(k=>/^#[0-9a-f]{6}$/i.test(f.colors[k])))bad();const ids=new Set();
  for(const [i,b] of f.branches.entries()){if(!b||typeof b.id!=='string'||b.id.length>100||ids.has(b.id)||typeof b.name!=='string'||b.name.length>60||!Number.isFinite(b.at)||b.at<0||b.at>1||(i===0?b.parent!==null:!ids.has(b.parent))||!Array.isArray(b.points)||b.points.length<2||b.points.length>8||!b.points.every(a=>vec(a,-40,40))||!Array.isArray(b.radii)||b.radii.length!==b.points.length||!b.radii.every((r,j)=>Number.isFinite(r)&&(j===0&&floraSharedJoint(f,b)?r>=1e-6&&r<=1e4:r>=.015&&r<=4)))bad();if(b.childRotation!==undefined&&!vec(b.childRotation,-Math.PI*8,Math.PI*8))bad();if(b.jointRotations!==undefined){if(!b.jointRotations||typeof b.jointRotations!=='object'||Array.isArray(b.jointRotations))bad();for(const [i,r] of Object.entries(b.jointRotations))if(!/^[0-7]$/.test(i)||+i>=b.points.length||!vec(r,-Math.PI*8,Math.PI*8))bad();}if(b.anchor!==undefined&&(b.anchor!==true||i!==0||b.parent!==null))bad();if(!b.anchor&&(!floraMuscleShape(b.profile)||b.nativeShape!==true))bad();if(i&&b.points[0].some(x=>x!==0))bad();if(b.points.slice(1).some((p,j)=>v(p).distanceTo(v(b.points[j]))<.03))bad();ids.add(b.id);}
  if(f.finishes!==undefined){if(!f.finishes||Array.isArray(f.finishes)||typeof f.finishes!=='object')bad();for(const [k,x] of Object.entries(f.finishes))if(!['bark','leaf'].includes(k)||!x||!SURFACES.some(s=>s.id===x.preset)||!Number.isFinite(x.scale)||x.scale<.1||x.scale>8)bad();}
  for(const o of f.organs){const asset=floraAsset(o?.asset);if(o?.billboard!==undefined){if(!asset?.billboard)bad();validateBillboard(o.billboard);}}
@@ -248,7 +269,7 @@ function branchJointRotation(parent,at){
  const tangent=onJoint&&index>0?v(parent.points[index]).sub(v(parent.points[index-1])).normalize():curve.getTangent(at);
  return alignFloraBoneRotation(incoming,new T.Vector3(0,1,0),tangent).multiply(relative);
 }
-export function floraBranchCaps(f,b){
+function rawBranchCaps(f,b){
  // Authored textured skins include their own continuous crown and root.
  if(floraAsset(b.profile)?.nativeSkin)return {};
 
@@ -259,16 +280,46 @@ export function floraBranchCaps(f,b){
  if(children.length){const incoming=curve.getTangent(1),outgoing=new T.Vector3(),rotation=branchJointRotation(b,1);for(const child of children){if(child.points)outgoing.add(floraMuscleCurve(child).getTangent(0).applyQuaternion(rotation));else{const nodes=floraSockets(child.asset),root=nodes.find(n=>!n.parent),next=nodes.find(n=>n.parent===root.id);if(next)outgoing.add(v(floraSocketPose(child,next).point).sub(v(floraSocketPose(child,root).point)).multiply(v(child.scale)).applyEuler(new T.Euler(...child.rotation)).applyQuaternion(rotation).normalize());}}if(outgoing.lengthSq()>1e-8)caps.endTangent=blend(incoming,outgoing.normalize());}
  return caps;
 }
-export function branchGeometry(f,b){
- if(f.finishes?.bark?.mapping==='branch'&&b.profile==='flora-basic-branch'&&f.branches.length===1)return floraVineGeometry(floraMuscleCurve(b),t=>floraBranchRadius(b,t)).applyMatrix4(floraAttachmentFrame(f,b));
- const geometry=floraMuscleGeometry(b,floraBranchCaps(f,b));
- if(f.finishes?.bark?.mapping==='branch'){
-  const source=floraMuscleShape(b.profile).mesh,curve=floraMuscleCurve(b),lengths=curve.getLengths(256),uv=[];
+function neutralPaths(f){return neutralBranchChains(f,branchJointRotation,floraBodyOrgan);}
+function neutralPath(f,b){
+ const member=neutralPaths(f).byId.get(b.id);if(!member)return null;
+ const chain=member.chain;
+ if(!chain.caps){
+  const first=rawBranchCaps(f,chain.root),last=rawBranchCaps(f,chain.last),lastFrame=chain.members.at(-1).matrix;
+  chain.caps={trimStart:first.trimStart,trimEnd:last.trimEnd,...(first.startTangent?{startTangent:first.startTangent}:{}),...(last.endTangent?{endTangent:new T.Vector3(...last.endTangent).transformDirection(lastFrame).toArray()}:{} )};
+  chain.signature=JSON.stringify([chain.signature,chain.caps]);
+ }
+ if(!member.path)member.path={branch:chain.branch,caps:chain.caps,inverse:member.inverse,offset:member.offset,spans:member.spans,total:chain.spans,internalStart:member!==chain.members[0],internalEnd:member!==chain.members.at(-1),root:chain.root,toJSON:()=>[chain.signature,member.offset,member.spans]};
+ return member.path;
+}
+export function floraBranchCaps(f,b){
+ const caps=rawBranchCaps(f,b),path=neutralPath(f,b);if(!path)return caps;
+ const curve=floraMuscleCurve(b,{path});
+ return {...caps,path,...(caps.trimStart?{startTangent:curve.getTangent(0).toArray()}:{}),...(caps.trimEnd?{endTangent:curve.getTangent(1).toArray()}:{} )};
+}
+function removeContinuationCaps(geometry,caps){
+ const path=caps.path;if(!path||!path.internalStart&&!path.internalEnd)return geometry;
+ const bindings=basicBranchMesh(geometry.userData.floraSampleRings||24,geometry.userData.floraTubeSeam).bindings,index=geometry.index,triangles=[];
+ for(let i=0;i<index.count;i+=3){const ids=[index.getX(i),index.getX(i+1),index.getX(i+2)];if(path.internalStart&&ids.every(id=>bindings[id]===0)||path.internalEnd&&ids.every(id=>bindings[id]===1))continue;triangles.push(...ids);}
+ geometry.setIndex(triangles);return geometry;
+}
+function neutralRings(path){
+ if(!path.rings){const target=Math.max(path.total*4,Math.min(200,Math.max(24,Math.ceil(floraMuscleCurve(path.branch,path.caps).getLength()*3))));path.rings=Math.ceil(target/path.total)*path.total;}
+ return path.rings;
+}
+// Picking retains its stable source triangles; the visible sweep can sample a
+// long vine more densely without invalidating existing foliage surface pins.
+export function branchGeometry(f,b){return makeBranchGeometry(f,b,24);}
+export function branchDisplayGeometry(f,b){const path=neutralPath(f,b);return makeBranchGeometry(f,b,path?neutralRings(path)*path.spans/path.total:24,!!path);}
+function makeBranchGeometry(f,b,rings,seam=false){
+ const caps=floraBranchCaps(f,b),geometry=floraMuscleGeometry(b,caps,rings,seam);
+ if(b.profile==='flora-basic-branch'||f.finishes?.bark?.mapping==='branch'){
+  const source=b.profile==='flora-basic-branch'?basicBranchMesh(rings,seam):floraMuscleShape(b.profile).mesh,path=neutralPath(f,b),local=path?floraMuscleCurve(path.branch,path.caps):null,frame=path?floraAttachmentFrame(f,path.root):null,curve=path?Object.assign(new T.Curve(),{getPoint:(t,out=new T.Vector3())=>local.getPoint(t,out).applyMatrix4(frame)}):floraCurve(f,b.id),divisions=Math.max(256,(path?.total||b.points.length-1)*16),lengths=curve.getLengths(divisions),uv=[],baseUV=[];
   for(const [i,t] of source.bindings.entries()){
-   const x=t*256,j=Math.min(255,Math.floor(x)),distance=T.MathUtils.lerp(lengths[j],lengths[j+1],x-j);
-   uv.push(source.uv[i*2],Math.PI*2*floraBranchRadius(b,t),distance);
+   const sample=path?(path.offset+t*path.spans)/path.total:t,x=sample*divisions,j=Math.min(divisions-1,Math.floor(x)),distance=T.MathUtils.lerp(lengths[j],lengths[j+1],x-j),circumference=Math.PI*2*floraBranchRadius(b,t);
+   uv.push(source.uv[i*2],circumference,distance);baseUV.push(source.uv[i*2]*circumference,distance);
   }
-  geometry.setAttribute('floraBranchUV',new T.Float32BufferAttribute(uv,3));
+  geometry.setAttribute('floraBranchUV',new T.Float32BufferAttribute(uv,3));geometry.setAttribute('uv',new T.Float32BufferAttribute(baseUV,2));
  }
  return geometry.applyMatrix4(floraAttachmentFrame(f,b));
 }
@@ -296,15 +347,21 @@ export function floraWeldKey(f){
  return JSON.stringify([nodes.branches,nodes.organs,f.detail]);
 }
 export function floraNeedsWeld(f){
- // A single closed vine has no joints to fuse. Voxelizing a very long tube
- // erodes its walking surface and introduces ridges between coarse cells.
- if(f.finishes?.bark?.mapping==='branch'&&f.branches.length===1&&f.branches[0].profile==='flora-basic-branch'&&!f.organs.some(floraBodyOrgan))return false;
- return f.branches.filter(b=>!b.anchor&&!floraAsset(b.profile)?.nativeSkin).length+f.organs.filter(floraBodyOrgan).length>(f.detail==='swbf2'?0:1);
+ // One continuous limb has no intersections to weld. Keep its dense smooth
+ // sweep at every detail level, regardless of texture or how many pieces it uses.
+ if(neutralPaths(f).chains.length===1&&!f.branches.some(b=>!b.anchor&&b.profile!=='flora-basic-branch')&&!f.organs.some(floraBodyOrgan))return false;
+ return neutralPaths(f).chains.length+f.branches.filter(b=>!b.anchor&&b.profile!=='flora-basic-branch'&&!floraAsset(b.profile)?.nativeSkin).length+f.organs.filter(floraBodyOrgan).length>(f.detail==='swbf2'?0:1);
 }
 export function floraWeldGeometry(f){
  if(!floraNeedsWeld(f))return null;
  const key=floraWeldKey(f),cached=cachedFloraSkin(key);if(cached)return cached;
- const skin=[];for(const b of f.branches.filter(b=>!b.anchor&&!floraAsset(b.profile)?.nativeSkin)){const geometry=branchGeometry(f,b),solid=skinSolid([geometry],b.id);geometry.dispose();if(solid)skin.push(solid);
+ const skin=[],chains=neutralPaths(f).chains;
+ const wholeChain=chain=>{const path=neutralPath(f,chain.root);return floraMuscleGeometry(chain.branch,path.caps,neutralRings(path)).applyMatrix4(floraAttachmentFrame(f,chain.root));};
+ for(const chain of chains){const geometry=wholeChain(chain),solid=skinSolid([geometry],chain.root.id);geometry.dispose();if(solid){solid.samplingParts=chain.spans;skin.push(solid);}
+  const path=neutralPath(f,chain.root),local=floraMuscleCurve(chain.branch,path.caps),frame=floraAttachmentFrame(f,chain.root),steps=Math.max(12,chain.spans*4),scale=Math.cbrt(Math.abs(frame.determinant()));
+  for(let i=0;i<steps;i++){const t=i/steps,u=(i+1)/steps,bone=skinBone(local.getPoint(t).applyMatrix4(frame),local.getPoint(u).applyMatrix4(frame),floraBranchRadius(chain.branch,t)*scale*.25,floraBranchRadius(chain.branch,u)*scale*.25,chain.root.id);bone.reinforcement=true;skin.push(bone);}
+ }
+ for(const b of f.branches.filter(b=>!b.anchor&&b.profile!=='flora-basic-branch'&&!floraAsset(b.profile)?.nativeSkin)){const geometry=branchGeometry(f,b),solid=skinSolid([geometry],b.id);geometry.dispose();if(solid)skin.push(solid);
  // Preserve thin authored limbs when the shared weld grid is coarser than a
  // tip. These inner samples follow the actual native curve, never a bounding
  // box shortcut, and do not connect or skin decorative surface parts.
@@ -347,7 +404,7 @@ export function buildFlora(group,f,part,{editable=false,live=false}={}){validate
  }
 
  {
-  for(const b of f.branches.filter(b=>!b.anchor&&(!welded||floraAsset(b.profile)?.nativeSkin))){const frame=floraAttachmentFrame(f,b),mesh=add(branchGeometry(f,b).applyMatrix4(frame.clone().invert()),'bark');mesh.matrixAutoUpdate=false;mesh.matrix.copy(frame);mesh.userData.floraBranch=b.id;mesh.userData.floraGeometryKey=floraGeometryKey(b,f);mesh.userData.floraComponent='bark';mesh.userData.floraWeldSource=!floraAsset(b.profile)?.nativeSkin;if(floraAsset(b.profile)?.nativeSkin)mesh.material=floraAssetMaterial(floraAsset(b.profile),'bark',mats,f);}
+  for(const b of f.branches.filter(b=>!b.anchor&&(!welded||floraAsset(b.profile)?.nativeSkin))){const frame=floraAttachmentFrame(f,b),geometry=removeContinuationCaps(branchDisplayGeometry(f,b),floraBranchCaps(f,b)),mesh=add(geometry.applyMatrix4(frame.clone().invert()),'bark');mesh.matrixAutoUpdate=false;mesh.matrix.copy(frame);mesh.userData.floraBranch=b.id;mesh.userData.floraGeometryKey=floraGeometryKey(b,f);mesh.userData.floraComponent='bark';mesh.userData.floraWeldSource=!floraAsset(b.profile)?.nativeSkin;if(floraAsset(b.profile)?.nativeSkin)mesh.material=floraAssetMaterial(floraAsset(b.profile),'bark',mats,f);}
  }
  for(const o of f.organs.filter(o=>o.kind==='bark')){const attachment=new T.Group();attachment.matrixAutoUpdate=false;attachment.matrix.copy(floraOrganMatrix(f,o));attachment.userData.floraOrgan=o.id;attachment.userData.floraGeometryKey=floraGeometryKey(o,f);group.add(attachment);if(floraBodyOrgan(o))for(const geometry of floraBodyExtras(o)){const asset=floraAsset(geometry.userData.floraAsset),component=asset.category==='Leaves'?'leaf':'bark',mesh=new T.Mesh(geometry,floraAssetMaterial(asset,component,mats,f));mesh.userData.floraComponent=component;mesh.castShadow=mesh.receiveShadow=true;attachment.add(mesh);}if(welded&&floraBodyOrgan(o))continue;const volume=floraBodyOrgan(o)&&floraBodyGeometry(o,f.detail,floraBodyCaps(f,o));if(volume){const mesh=new T.Mesh(volume,mats.bark);mesh.userData.floraComponent='bark';mesh.userData.floraWeldSource=true;mesh.castShadow=mesh.receiveShadow=true;attachment.add(mesh);continue;}for(const source of floraAsset(o.asset)?.meshes||[]){const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.Float32BufferAttribute(floraDeformPositions(o,source.positions),3));geometry.userData.floraSource=source.positions;geometry.setAttribute('uv',new T.Float32BufferAttribute(floraMorphUV(o,source.uv),2));geometry.setIndex(source.indices);geometry.computeVertexNormals();geometry.computeBoundingBox();geometry.computeBoundingSphere();const mesh=new T.Mesh(geometry,floraAssetMaterial(floraAsset(o.asset),'bark',mats,f));mesh.userData.floraComponent='bark';mesh.userData.floraWeldSource=floraBodyOrgan(o);mesh.castShadow=true;mesh.receiveShadow=true;attachment.add(mesh);}}
  if(welded)add(welded,'bark').userData.floraComponent='bark';
@@ -361,11 +418,11 @@ export function buildFlora(group,f,part,{editable=false,live=false}={}){validate
 const floraGeometryKey=(n,f)=>JSON.stringify(n.points?[n.profile,n.points,n.radii,n.jointRotations,n.childRotation,f&&floraBranchCaps(f,n)]:[n.asset,n.controls,n.morphs,n.billboard,f&&floraBodyOrgan(n)&&floraBodyCaps(f,n)]);
 // Reuse unaffected geometry; rebuild each changed object group's decorations once.
 export function updateFloraPreview(group,f,changedBranch=null,changedOrgan=null){
- const organs=new Map(f.organs.map(o=>[o.id,o])),branches=new Map(f.branches.map(b=>[b.id,b]));
+ const dirty=new Set(),organs=new Map(f.organs.map(o=>[o.id,o])),branches=new Map(f.branches.map(b=>[b.id,b]));
  for(const child of group.children){
   const organ=organs.get(child.userData.floraOrgan),branch=branches.get(child.userData.floraBranch),node=organ||branch;if(!node)continue;
   const key=floraGeometryKey(node,f),changed=child.userData.floraGeometryKey!==key;child.userData.floraGeometryKey=key;
-  if(organ){child.matrix.copy(floraOrganMatrix(f,organ));child.matrixWorldNeedsUpdate=true;if(!changed)continue;
+  if(organ){const matrix=floraOrganMatrix(f,organ),moved=!child.matrix.equals(matrix);child.matrix.copy(matrix);child.matrixWorldNeedsUpdate=true;if(changed||moved)child.traverse(m=>{if(m.isMesh)dirty.add(m);});if(!changed)continue;
    const extras=child.children.some(m=>m.geometry?.userData.floraBodyExtra!==undefined)?floraBodyExtras(organ):[];
    for(const mesh of child.children){
     if(mesh.userData.floraBillboard){mesh.geometry.dispose();mesh.geometry=billboardGeometry(organ.billboard||floraAsset(organ.asset).billboard);delete mesh.userData.billboardFrame;continue;}
@@ -373,7 +430,7 @@ export function updateFloraPreview(group,f,changedBranch=null,changedOrgan=null)
     if(mesh.geometry?.userData.floraBodyVolume){mesh.geometry.dispose();mesh.geometry=floraBodyGeometry(organ,f.detail,floraBodyCaps(f,organ));continue;}
     const source=mesh.geometry?.userData.floraSource;if(source){const attr=mesh.geometry.getAttribute('position');attr.array.set(floraDeformPositions(organ,source));attr.needsUpdate=true;const uv=mesh.geometry.getAttribute('uv'),sourceUV=mesh.geometry.userData.floraSourceUV;if(sourceUV){uv.array.set(floraMorphUV(organ,sourceUV));uv.needsUpdate=true;}mesh.geometry.computeVertexNormals();mesh.geometry.computeBoundingBox();mesh.geometry.computeBoundingSphere();}
    }
-  }else{const frame=floraAttachmentFrame(f,branch);child.matrix.copy(frame);child.matrixWorldNeedsUpdate=true;if(changed){child.geometry.dispose();child.geometry=branchGeometry(f,branch).applyMatrix4(frame.clone().invert());}}
+  }else{const frame=floraAttachmentFrame(f,branch);if(changed||!child.matrix.equals(frame))dirty.add(child);child.matrix.copy(frame);child.matrixWorldNeedsUpdate=true;if(changed){child.geometry.dispose();child.geometry=removeContinuationCaps(branchDisplayGeometry(f,branch),floraBranchCaps(f,branch)).applyMatrix4(frame.clone().invert());}}
  }
- group.updateMatrixWorld(true);
+ group.updateMatrixWorld(true);return dirty;
 }

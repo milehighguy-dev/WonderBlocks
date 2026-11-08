@@ -42,7 +42,8 @@ export function floraSkinGeometry(shapes,detail='standard',cacheKey,refinement=0
  const primary=shapes.filter(s=>!s.reinforcement),radii=(primary.length?primary:shapes).map(s=>s.radius).sort((a,b)=>a-b),blend=Math.min(.08,radii[radii.length>>1]*.2),box=new T.Box3();for(const s of shapes)box.union(s.box);
  // Large branching crowns need more samples than small joint object groups;
  // retain the smaller editor budget for ordinary plants and single attachments.
- const broadWood=primary.some(s=>s.surfaceBoxes&&s.radius>=.5),span=box.getSize(new T.Vector3()),limit=shapes.some(s=>s.surfaceBoxes)?(samplingDetail==='low'?28000:broadWood&&primary.length>=8?225000:75000)*2**refinement:(samplingDetail==='low'?14000:32000);
+ // A continuous limb can contain several logical spans despite being one solid.
+ const broadWood=primary.some(s=>s.surfaceBoxes&&s.radius>=.5),span=box.getSize(new T.Vector3()),limit=shapes.some(s=>s.surfaceBoxes)?(samplingDetail==='low'?28000:broadWood&&primary.reduce((n,s)=>n+(s.samplingParts||1),0)>=8?225000:75000)*2**refinement:(samplingDetail==='low'?14000:32000);
  let step=Math.max(.015,Math.min(radii[radii.length>>1],...shapes.filter(s=>s.featureRadius).map(s=>s.featureRadius))/(samplingDetail==='low'?1.2:1.8),Math.max(...span.toArray())/(samplingDetail==='low'?100:180)),cells;
  step*=.65**refinement;
  // Sparse cells around occupied bones avoid sampling the empty tree canopy.

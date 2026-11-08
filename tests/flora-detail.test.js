@@ -12,8 +12,8 @@ import {createSWBF2Package} from '../src/swbf2/export-swbf2.js';
 import {FLORA_TREE_PRESETS,instantiateFloraTreePreset} from '../src/flora/flora-tree-presets.js';
 
 function topology(g){
- const p=g.attributes.position,index=g.index,edges=new Map(),adj=new Map();let volume=0;
- for(let i=0;i<index.count;i+=3){const ids=[0,1,2].map(j=>index.getX(i+j)),[a,b,c]=ids.map(i=>new T.Vector3().fromBufferAttribute(p,i));assert.ok(b.clone().sub(a).cross(c.clone().sub(a)).lengthSq()>1e-16);volume+=a.dot(b.clone().cross(c))/6;
+ const p=g.attributes.position,index=g.index,edges=new Map(),adj=new Map(),vertices=new Map(),weld=[];let volume=0;for(let i=0;i<p.count;i++){const key=g.userData.floraTubeSeam?[p.getX(i),p.getY(i),p.getZ(i)].map(x=>Math.round(x*1e6)).join(','):i;if(!vertices.has(key))vertices.set(key,i);weld[i]=vertices.get(key);}
+ for(let i=0;i<index.count;i+=3){const ids=[0,1,2].map(j=>weld[index.getX(i+j)]),[a,b,c]=ids.map(i=>new T.Vector3().fromBufferAttribute(p,i));const area=b.clone().sub(a).cross(c.clone().sub(a)).lengthSq();assert.ok(Number.isFinite(area)&&area>0,'no zero-area triangles');volume+=a.dot(b.clone().cross(c))/6;
   for(let j=0;j<3;j++){const a=ids[j],b=ids[(j+1)%3],key=[Math.min(a,b),Math.max(a,b)].join(':');edges.set(key,(edges.get(key)||0)+1);if(!adj.has(a))adj.set(a,new Set());if(!adj.has(b))adj.set(b,new Set());adj.get(a).add(b);adj.get(b).add(a);}}
  const visited=new Set();let components=0;for(const start of adj.keys())if(!visited.has(start)){components++;const queue=[start];visited.add(start);while(queue.length)for(const next of adj.get(queue.pop()))if(!visited.has(next)){visited.add(next);queue.push(next);}}
  return {components,volume,closed:[...edges.values()].every(n=>n===2)};
@@ -62,9 +62,9 @@ test('SWBF2 detail retains the small terminal limbs on every authored branching 
  }
 });
 
-test('SWBF2 detail works for a single stem and survives project save/load without changing joints',()=>{
+test('SWBF2 preserves the smooth sweep of a single stem through save/load without changing joints',()=>{
  const flora=defaultFlora();addFloraAsset(flora,flora.branches[0].id,'flora-basic-branch');flora.detail='swbf2';const p=makePart('flora',{flora}),project=validateProject(JSON.parse(JSON.stringify({format:'open-building-studio',version:1,name:'Surface detail',parts:[p]}))),g=buildPart(project.parts[0],{collision:false});
- try{assert.equal(project.parts[0].flora.detail,'swbf2');const wood=g.children.find(m=>m.userData.floraComponent==='bark');assert.equal(topology(wood.geometry).closed,true);assert.equal(wood.geometry.userData.floraSurfaceDetail,'swbf2');}finally{disposePart(g);}
+ try{assert.equal(project.parts[0].flora.detail,'swbf2');const wood=g.children.find(m=>m.userData.floraComponent==='bark');assert.equal(topology(wood.geometry).closed,true);assert.ok(wood.geometry.userData.floraSampleRings>=24);assert.equal(wood.geometry.userData.floraSurfaceDetail,undefined,'a single continuous limb does not need voxel welding');}finally{disposePart(g);}
 });
 
 test('other flora presets keep complete closed wood and unchanged attached details in SWBF2 mode',()=>{

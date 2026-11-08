@@ -26,8 +26,38 @@ test('a bent attachment shares one cross-section without a protruding closed end
  const free=branchGeometry(f,child),tip=floraCurve(f,child.id).getPoint(1),direction=floraCurve(f,child.id).getTangent(1);try{let cap=0;for(let i=0;i<free.attributes.position.count;i++)cap=Math.max(cap,new T.Vector3().fromBufferAttribute(free.attributes.position,i).sub(tip).dot(direction));assert.ok(Math.abs(cap-.2)<1e-5,'the free end keeps its rounded closed cap');}finally{free.dispose();}
 });
 
-test('attachment blending leaves the authored middle and free tip unchanged for every native profile',()=>{
- for(const asset of Object.keys(FLORA_PROFILES)){const {f,b}=root('flora-basic-branch'),child=addFloraAsset(f,b.id,asset,1),plain=floraMuscleGeometry(child),joined=floraMuscleGeometry(child,floraBranchCaps(f,child)),bindings=floraMuscleShape(asset).mesh.bindings;try{let checked=0;for(let i=0;i<bindings.length;i++)if(bindings[i]>=.4){assert.ok(new T.Vector3().fromBufferAttribute(plain.attributes.position,i).distanceTo(new T.Vector3().fromBufferAttribute(joined.attributes.position,i))<1e-6,asset+' keeps its distant shape');checked++;}assert.ok(checked>10);}finally{plain.dispose();joined.dispose();}}
+test('attachment blending leaves shaped profiles’ authored middle and free tip unchanged',()=>{
+ for(const asset of Object.keys(FLORA_PROFILES).filter(id=>id!=='flora-basic-branch')){const {f,b}=root('flora-basic-branch'),child=addFloraAsset(f,b.id,asset,1),plain=floraMuscleGeometry(child),joined=floraMuscleGeometry(child,floraBranchCaps(f,child)),bindings=floraMuscleShape(asset).mesh.bindings;try{let checked=0;for(let i=0;i<bindings.length;i++)if(bindings[i]>=.4){assert.ok(new T.Vector3().fromBufferAttribute(plain.attributes.position,i).distanceTo(new T.Vector3().fromBufferAttribute(joined.attributes.position,i))<1e-6,asset+' keeps its distant shape');checked++;}assert.ok(checked>10);}finally{plain.dispose();joined.dispose();}}
+});
+
+test('connected Basic Branch pieces have matching tangents without adding or moving joints',()=>{
+ const {f,b}=root('flora-basic-branch');b.points=[[0,0,0],[0,3,0]];b.radii=[.4,.3];
+ const child=addFloraAsset(f,b.id,'flora-basic-branch',1);child.points=[[0,0,0],[2.5,1,0]];child.radii=[.3,.1];syncFloraSharedJoints(f);
+ const before=JSON.stringify(f),parentCurve=floraCurve(f,b.id),childCurve=floraCurve(f,child.id);
+ assert.ok(parentCurve.getPoint(1).distanceTo(childCurve.getPoint(0))<1e-8);
+ assert.ok(parentCurve.getTangent(1).dot(childCurve.getTangent(0))>1-1e-8,'the bend flows through the shared joint');
+ assert.equal(JSON.stringify(f),before);assert.equal(b.points.length,2);assert.equal(child.points.length,2);
+ const withoutChild=structuredClone(f);withoutChild.branches.pop();assert.ok(floraCurve(withoutChild,b.id).getTangent(1).dot(childCurve.getTangent(0))<.95,'the test contains a real corner');
+});
+
+test('joined Basic Branch mesh follows its curved attachment path and authored taper without neck ridges',()=>{
+ const {f,b}=root('flora-basic-branch');b.points=[[0,0,0],[0,3,0]];b.radii=[.5,.3];
+ const child=addFloraAsset(f,b.id,'flora-basic-branch',1);child.points=[[0,0,0],[3,1,0]];child.radii=[.3,.06];syncFloraSharedJoints(f);
+ const bindings=floraMuscleShape(child.profile).mesh.bindings,geometry=branchGeometry(f,child),curve=floraCurve(f,child.id);
+ try{for(let i=0;i<bindings.length;i++){const t=bindings[i];if(t<=0||t>=1)continue;const offset=new T.Vector3().fromBufferAttribute(geometry.attributes.position,i).sub(curve.getPoint(t));assert.ok(Math.abs(offset.dot(curve.getTangent(t)))<2e-5,'cross-section remains perpendicular to the actual path');const expected=child.radii[0]*(1-t)+child.radii[1]*t;assert.ok(Math.abs(offset.length()-expected)<2e-5,'the join does not inflate the taper into a collar');}}finally{geometry.dispose();}
+});
+
+test('internal caps do not create shading rings on a constant-girth continued limb',()=>{
+ const {f,b}=root('flora-basic-branch');b.points=[[0,0,0],[0,3,0]];b.radii=[.25,.25];
+ const child=addFloraAsset(f,b.id,'flora-basic-branch',1);child.points=[[0,0,0],[3,1,0]];child.radii=[.25,.25];syncFloraSharedJoints(f);
+ for(const branch of [b,child]){
+  const g=branchGeometry(f,branch),curve=floraCurve(f,branch.id),source=floraMuscleShape(branch.profile).mesh;
+  try{for(let i=0;i<source.bindings.length;i++){
+   const t=source.bindings[i],p=new T.Vector3().fromArray(source.positions,i*3);if(Math.abs(p.x*p.x+p.z*p.z-.01)>1e-8||Math.abs(p.y-t)>1e-8)continue;
+   const n=new T.Vector3().fromBufferAttribute(g.attributes.normal,i),tangent=curve.getTangent(t);
+   assert.ok(Math.abs(n.dot(tangent))<2e-4,'side shading follows the tube instead of its internal cap');
+  }}finally{g.dispose();}
+ }
 });
 test('cached native deformation follows successive bends, thickness, twists and undo snapshots',()=>{
  const {f,b}=root('flora-elbow-branch'),before=structuredClone(b);
