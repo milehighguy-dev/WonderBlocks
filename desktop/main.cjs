@@ -29,7 +29,7 @@ async function start(){
  const defaults=app.isPackaged?path.join(process.resourcesPath,'textures'):path.join(__dirname,'../textures');
  const textures=await prepareTextureLibrary(defaults,data);
  const openFolder=async folder=>{const error=await shell.openPath(folder);if(error)throw Error(error);};
- server=createServer({textureRoot:textures,folderRegistry:path.join(data,'world-folders.json'),openTexturesFolder:openFolder,openExportFolder:openFolder,
+ server=createServer({chooseProjectFile:async ({suggestedName,previousPath})=>{const result=await dialog.showSaveDialog(window,{title:'Save project as',defaultPath:previousPath||path.join(app.getPath('documents'),suggestedName),filters:[{name:'Wonderblocks project',extensions:['json']}],properties:['showOverwriteConfirmation','createDirectory']});return result.canceled?null:result.filePath;},textureRoot:textures,folderRegistry:path.join(data,'world-folders.json'),openTexturesFolder:openFolder,openExportFolder:openFolder,
   chooseExportFolder:async initial=>{const result=await dialog.showOpenDialog(window,{title:'Choose the Mod Tools world folder',defaultPath:initial||undefined,properties:['openDirectory']});return result.canceled?null:result.filePaths[0];}});
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(testing?Number(process.env.WONDERBLOCKS_TEST_PORT||0):4179,'127.0.0.1',resolve);});
  origin='http://127.0.0.1:'+server.address().port;

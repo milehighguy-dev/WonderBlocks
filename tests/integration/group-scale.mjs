@@ -1,3 +1,4 @@
+import {useProjectDownloads} from './project-downloads.mjs';
 import assert from 'node:assert/strict';
 import {existsSync} from 'node:fs';
 import {readFile,mkdtemp} from 'node:fs/promises';
@@ -14,7 +15,7 @@ let browser;const errors=[],output=await mkdtemp(path.join(tmpdir(),'wb-group-sc
 function bounds(parts){const box=new T.Box3();for(const part of parts){const root=buildPart(part,{collision:false});box.union(new T.Box3().setFromObject(root,true));disposePart(root);}return box;}
 try{
  browser=await chromium.launch({headless:true,channel:existsSync(chromium.executablePath())?'chromium':'chrome',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
- const page=await browser.newPage({viewport:{width:1440,height:960},acceptDownloads:true});page.setDefaultTimeout(15000);page.on('pageerror',error=>errors.push(error.message));
+ const page=await browser.newPage({viewport:{width:1440,height:960},acceptDownloads:true});await useProjectDownloads(page);page.setDefaultTimeout(15000);page.on('pageerror',error=>errors.push(error.message));
  await page.goto('http://127.0.0.1:'+server.address().port+'/?demo=classical-temple');await page.waitForFunction(()=>!document.querySelector('#scene-loading')?.open,null,{timeout:60000});
  await page.evaluate(async()=>{const {TransformControls}=await import('/src/editor/transform-controls.js'),previous=TransformControls.prototype.pointerHover;TransformControls.prototype.pointerHover=function(pointer){if(this.object&&this.mode==='scale')window.groupScaleControl=this;return previous.call(this,pointer);};});
  const parts=[makePart('block',{name:'Reflected thin part',position:[-4,1,0],rotation:[.2,.7,0],scale:[-3,.08,6],assemblyId:'group',assemblyName:'Scale study'}),makePart('block',{name:'Rotated part',position:[5,2,-3],rotation:[0,-.4,.1],scale:[1,2,4],assemblyId:'group',assemblyName:'Scale study'})];

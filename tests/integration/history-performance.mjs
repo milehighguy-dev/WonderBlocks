@@ -1,3 +1,4 @@
+import {useProjectDownloads} from './project-downloads.mjs';
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import {readFile} from 'node:fs/promises';
@@ -11,7 +12,7 @@ const {createServer}=createRequire(import.meta.url)('../../server.cjs'),server=c
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));let browser;
 try{
  browser=await chromium.launch({channel:'chrome',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
- const page=await browser.newPage({viewport:{width:1500,height:1000},acceptDownloads:true}),errors=[];
+ const page=await browser.newPage({viewport:{width:1500,height:1000},acceptDownloads:true}),errors=[];await useProjectDownloads(page);
  page.setDefaultTimeout(30000);page.on('pageerror',e=>errors.push(e.message));
  await page.goto('http://127.0.0.1:'+server.address().port);await page.waitForFunction(()=>!document.getElementById('scene-loading')?.open);
  await page.evaluate(async()=>{const T=await import('/vendor/three.module.js'),add=T.Object3D.prototype.add;T.Object3D.prototype.add=function(...objects){if(!window.historyAssembly&&this.type==='Group'&&this.parent?.isScene&&objects.some(o=>o.userData.partId))window.historyAssembly=this;return add.apply(this,objects);};});

@@ -11,7 +11,9 @@ import {createWalkCollision} from '../src/walk/walk-collision.js';
 import {moveWalker,groundAt,verticalWalker} from '../src/walk/walk-physics.js';
 
 test('vine passage and its saved example use Mos Eisley rooms and parts beneath the editable vines',()=>{
- assert.deepEqual(levantine(),JSON.parse(fs.readFileSync(new URL('../examples/projects/levantine-vine-passage.building.json',import.meta.url))));
+ // Matrix/quaternion calculations can differ in their last bits across Node versions.
+ const coordinates=p=>JSON.parse(JSON.stringify(p,(_key,value)=>typeof value==='number'?Math.round(value*1e9)/1e9:value));
+ assert.deepEqual(coordinates(levantine()),coordinates(JSON.parse(fs.readFileSync(new URL('../examples/projects/levantine-vine-passage.building.json',import.meta.url)))));
  for(const p of [levantine(),JSON.parse(fs.readFileSync(new URL('../examples/projects/levantine-vine-passage.building.json',import.meta.url)))]){
   validateProject(p);
   assert.equal(p.parts.filter(p=>p.type==='interior').length,8);

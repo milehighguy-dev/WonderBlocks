@@ -1,3 +1,4 @@
+import {useProjectDownloads} from './project-downloads.mjs';
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import {readFile} from 'node:fs/promises';
@@ -11,7 +12,7 @@ await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 let browser;
 try{
  browser=await chromium.launch({channel:'chrome',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
- const page=await browser.newPage({viewport:{width:1440,height:1000},acceptDownloads:true}),errors=[];
+ const page=await browser.newPage({viewport:{width:1440,height:1000},acceptDownloads:true}),errors=[];await useProjectDownloads(page);
  page.on('pageerror',e=>errors.push(e.message));
 
  // Observe the actual editor assembly without exposing app internals or touching

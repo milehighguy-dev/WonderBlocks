@@ -1,3 +1,4 @@
+import {useProjectDownloads} from './project-downloads.mjs';
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import {readFile,mkdtemp} from 'node:fs/promises';
@@ -12,7 +13,7 @@ await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser,page;
 const artifacts=await mkdtemp(path.join(tmpdir(),'wb-vines-'));
 try{
  browser=await chromium.launch({channel:'chrome',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
- page=await browser.newPage({viewport:{width:1500,height:1000},acceptDownloads:true});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ page=await browser.newPage({viewport:{width:1500,height:1000},acceptDownloads:true});await useProjectDownloads(page);const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('http://127.0.0.1:'+server.address().port);await page.waitForFunction(()=>!document.getElementById('scene-loading')?.open);
  await page.evaluate(async()=>{const {TransformControls}=await import('/src/editor/transform-controls.js'),attach=TransformControls.prototype.attach;TransformControls.prototype.attach=function(object){const result=attach.call(this,object);window.shortcutControls=this;return result;};});
  const flora=defaultFlora();addFloraAsset(flora,flora.branches[0].id,'flora-basic-branch');

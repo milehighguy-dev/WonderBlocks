@@ -1,3 +1,4 @@
+import {useProjectDownloads} from './project-downloads.mjs';
 import assert from 'node:assert/strict';
 import {existsSync} from 'node:fs';
 import {mkdtemp,readFile,writeFile} from 'node:fs/promises';
@@ -18,7 +19,7 @@ async function check(label,action){await action();console.log('PASS browser: '+l
 try{
  browser=await chromium.launch({headless:true,channel:process.env.WONDERBLOCKS_BROWSER_CHANNEL||(existsSync(chromium.executablePath())?'chromium':'chrome'),args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
  context=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true});
- page=await context.newPage();page.setDefaultTimeout(15000);
+ page=await context.newPage();await useProjectDownloads(page);page.setDefaultTimeout(15000);
  page.on('pageerror',error=>errors.push(error.message));
  page.on('console',message=>{if(message.type()==='error'&&/WebGLProgram|shader error|VALIDATE_STATUS|WebGL: INVALID/i.test(message.text()))renderErrors.push(message.text());});
  await page.goto(origin);await waitForSceneReady();
@@ -225,7 +226,7 @@ try{
   const collision=dialog.getByRole('checkbox',{name:'Include collision',exact:true}),contents=dialog.getByRole('region',{name:'Files in this download',exact:true});
   const expectedTypes=enabled=>['.lyr','.wld','.ldx','.odf','.msh','.tga','.msh.option','.tga.option',...(enabled?['.pln','.bar','.req']:[])];
   assert.deepEqual(await contents.locator('[data-file-types] code').allTextContents(),expectedTypes(true));
-  await dialog.getByRole('textbox',{name:'Export name',exact:true}).fill('My scene / files');assert.match(await contents.locator('[data-download-name]').textContent(),/^my_scene_files.swbf2.zip/);assert.match(await contents.locator('[data-file-paths]').textContent(),/world1\/my_scene_files_wonderblocks.lyr/);
+  await dialog.getByRole('textbox',{name:'Export name',exact:true}).fill('My scene / files');assert.match(await contents.locator('[data-download-name]').textContent(),/^my_scene_files.swbf2.zip/);assert.match(await contents.locator('[data-file-paths]').textContent(),/world1\/my_scene_files_wb_my_scene_files_[a-f0-9]{16}\.lyr/);
   await dialog.getByRole('textbox',{name:'Export name',exact:true}).fill(before.name);
   assert.equal(await collision.isChecked(),true);
   assert.equal(await toggle.isChecked(),true);

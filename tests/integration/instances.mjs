@@ -1,3 +1,4 @@
+import {useProjectDownloads} from './project-downloads.mjs';
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import {mkdtemp,readFile} from 'node:fs/promises';
@@ -9,7 +10,7 @@ import {makePart} from '../../src/core/model.js';
 const {createServer}=createRequire(import.meta.url)('../../server.cjs'),server=createServer();await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const output=await mkdtemp(path.join(tmpdir(),'wb-instances-')),errors=[];let browser;
 try{
- browser=await chromium.launch({channel:'chrome',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});const page=await browser.newPage({viewport:{width:1520,height:1000}});page.setDefaultTimeout(30000);page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:'+server.address().port+'/?demo=mos-eisley');await page.waitForFunction(()=>!document.querySelector('#scene-loading')?.open);
+ browser=await chromium.launch({channel:'chrome',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});const page=await browser.newPage({viewport:{width:1520,height:1000}});await useProjectDownloads(page);page.setDefaultTimeout(30000);page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:'+server.address().port+'/?demo=mos-eisley');await page.waitForFunction(()=>!document.querySelector('#scene-loading')?.open);
  const project={format:'open-building-studio',version:1,name:'Instance copy check',parts:[makePart('block',{name:'Instance source'})]};await page.locator('#file').setInputFiles({name:'instances.building.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(project))});await page.waitForFunction(()=>document.getElementById('title').value==='Instance copy check'&&!document.querySelector('#scene-loading')?.open);
  await page.getByRole('button',{name:'Instance source',exact:true}).click();assert.equal(await page.locator('#instance-toolbar').count(),0);await page.locator('#duplicate-toolbar').click();await page.locator('.scene-copy-badge').waitFor();assert.equal(await page.locator('.scene-copy-badge').textContent(),'COPY');assert.equal(await page.locator('.scene-copy-badge').count(),1);
  const save=async()=>{const [download]=await Promise.all([page.waitForEvent('download'),page.locator('#save').click()]);return JSON.parse(await readFile(await download.path(),'utf8'));};

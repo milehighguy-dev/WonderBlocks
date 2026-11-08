@@ -57,6 +57,7 @@ try{
   await node(['tests/integration/scene-deletion.mjs'],120000);
   await node(['tests/integration/history-performance.mjs'],120000);
   await node(['tests/integration/flora-vines.mjs'],120000);
+  await node(['tests/integration/project-files.mjs'],120000);
   await node(['tests/integration/worker-startup.mjs'],120000);
   await node(['tests/integration/group-scale.mjs'],120000);
   await node(['tests/integration/texture-palette.mjs'],120000);

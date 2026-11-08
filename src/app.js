@@ -1,3 +1,4 @@
+import {createProjectFiles} from './editor/project-files.js';
 import {sceneRenderKey} from './editor/scene-render-key.js';
 import {reusableSceneParts} from './editor/scene-render-dependencies.js';
 import {createInstanceCopies,detachEditedInstances} from './core/instances.js';
@@ -87,7 +88,7 @@ import {geometryStats} from './core/mesh-budget.js';
 const sceneLoading=createSceneLoading();sceneLoading.start();await sceneLoading.paint();
 await loadCharacter();
 // Capture before modal editors so Ctrl+S never opens the browser's Save Page.
-window.addEventListener('keydown',event=>{if(!(event.ctrlKey||event.metaKey)||event.altKey||event.key.toLowerCase()!=='s')return;event.preventDefault();event.stopImmediatePropagation();if(event.repeat)return;if(sceneShortcutBlocked()&&!interiorWorkshop.active){notify('Close the current dialog before saving the project.');return;}saveProject();},true);
+window.addEventListener('keydown',event=>{if(!(event.ctrlKey||event.metaKey)||event.altKey||event.key.toLowerCase()!=='s')return;event.preventDefault();event.stopImmediatePropagation();if(event.repeat)return;if(sceneShortcutBlocked()&&!interiorWorkshop.active){notify('Close the current dialog before saving the project.');return;}saveProject({saveAs:event.shiftKey});},true);
 const closeEditorPopovers=installEditorPopovers();
 let interiorCutaway=false,entranceTools,connectedInteriorEdit=null,workspaceMode='object',materialWorkspace,floorWorkspace,restoreMaterialPeek=()=>{},restoreWalkView=()=>{};
 let selectedSurface=null,surfaceOverlay=null;
@@ -488,7 +489,7 @@ async function replaceProject(source,remember=true){
   sceneLoading.update(93,'Finishing scene…');await sceneLoading.paint();
   cancelPlace();restoreMaterialPeek();restoreMaterialPeek=()=>{};stopShapeEditing();transform.detach();outline.visible=false;
   for(const m of [...assembly.children]){assembly.remove(m);disposePart(m);}meshes.clear();hiddenParts.clear();project={...next,parts:context};selected=null;selectedIds.clear();
-  for(let i=0;i<staged.length;i++){assembly.add(staged[i]);meshes.set(resolved[i].id,staged[i]);}installed=true;prepareAssemblyCollisions(resolved,staged);attachSelection();collisionOverlay?.refresh();renderedPartsKey=sceneRenderKey(project.parts);
+  for(let i=0;i<staged.length;i++){assembly.add(staged[i]);meshes.set(resolved[i].id,staged[i]);}installed=true;projectFiles.reset();prepareAssemblyCollisions(resolved,staged);attachSelection();collisionOverlay?.refresh();renderedPartsKey=sceneRenderKey(project.parts);
   if(remember){history.push(project);rememberSelection();selectionMemory.retain(history.entries);persist();}refresh();frame();applyExampleView();
   sceneLoading.update(98,'Drawing scene…');await sceneLoading.paint();syncEditingContext();renderer.render(scene,camera);sceneLoading.update(100,'Scene ready');await sceneLoading.paint();
  }catch(error){if(!installed)for(const m of staged)disposePart(m);throw error;}
@@ -513,6 +514,7 @@ for(const [heading,entries] of exampleGroups){
  examplesMenu.append(group);
 }
 function download(data,name,type){const url=URL.createObjectURL(new Blob([data],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);}
+const projectFiles=createProjectFiles({download});
 function basename(){return project.name.replace(/[^a-z0-9_-]/gi,'_')||'building';}
 function currentProjectSnapshot(){
  let draft,placed=true,contextParts,interiorRoute;
@@ -525,12 +527,17 @@ function currentProjectSnapshot(){
  else if(highwayEditor.active){draft=highwayEditor.context.part;placed=highwayEditor.context.placed;}
  return editorDraftSnapshot(project,{draft,placed,contextParts,connected:connectedInteriorEdit,interiorRoute});
 }
-function saveProject(){
- document.activeElement?.blur();
- try{const snapshot=currentProjectSnapshot();download(JSON.stringify(snapshot,null,2),basename()+'.building.json','application/json');notify('Project downloaded'+(floraEditor?.active||metaballEditor?.active||routeSession||interior3D.active||platformEditor.active||highwayEditor.active||interiorWorkshop.active?' with current edits.':'.'));}
+let savingProject=false;
+async function saveProject({saveAs=false}={}){
+ if(savingProject)return;savingProject=true;
+ document.activeElement?.blur();$('save').disabled=$('save-as').disabled=true;
+ try{const snapshot=currentProjectSnapshot(),result=await projectFiles.save(JSON.stringify(snapshot,null,2),basename()+'.building.json',{saveAs});if(result.status==='saved')notify('Saved to '+result.name+'.');else if(result.status==='downloaded')notify('Project downloaded. This browser does not support Save As; use Chrome, Edge or the desktop app to choose a location.');}
  catch(error){notify('Could not save: '+error.message);}
+ finally{savingProject=false;$('save').disabled=$('save-as').disabled=false;}
 }
-$('save').onclick=saveProject;
+$('save').onclick=()=>saveProject();
+$('save-as').onclick=()=>saveProject({saveAs:true});
+
 
 $('export').onclick=()=>{document.activeElement?.blur();const draft=floraEditor?.active?floraEditor.draft:null;if(!floraDraftSnapshot(project,draft).parts.length){notify('Add a part before exporting.');return;}let root=assembly,temporary;if(draft){root=assembly.clone();for(const child of [...root.children])if(child.userData.partId===draft.id)root.remove(child);if(!floraDraftIsEmpty(draft)){temporary=buildRawPart(draft,{collision:false});root.add(temporary);}}try{download(exportOBJ(root,{camera}),basename()+'.obj','text/plain');notify('OBJ geometry exported (without materials).');}finally{if(temporary)disposePart(temporary);}};
 $('open').onclick=()=>$('file').click();$('file').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{await replaceProject(async()=>JSON.parse(await f.text()));notify('Project opened.');}catch(err){notify(err.message);}e.target.value='';};

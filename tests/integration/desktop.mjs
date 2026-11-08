@@ -6,7 +6,7 @@ import net from 'node:net';
 import {fileURLToPath} from 'node:url';
 import {_electron} from 'playwright';
 import JSZip from 'jszip';
-const root=fileURLToPath(new URL('../../',import.meta.url)),argument=process.argv.slice(2).find(a=>a!=='--'),requested=argument?path.resolve(argument):undefined;let executable=requested;
+const root=path.resolve(fileURLToPath(new URL('../../',import.meta.url))),argument=process.argv.slice(2).find(a=>a!=='--'),requested=argument?path.resolve(argument):undefined;let executable=requested;
 // Windows runners may expose TEMP through an 8.3 name; match the folder service's canonical paths.
 const artifacts=await realpath(await mkdtemp(path.join(tmpdir(),'wb-desktop-'))),profile=path.join(artifacts,'profile'),world=path.join(artifacts,'WON'),downloads=path.join(artifacts,'downloads');
 if(requested?.endsWith('.zip')){
@@ -26,6 +26,7 @@ async function launch(){
  await page.waitForFunction(()=>!document.getElementById('scene-loading')?.open&&document.querySelector('#parts button'),null,{timeout:90000});
  await application.evaluate(({dialog,session},{world,downloads})=>{
   dialog.showOpenDialog=async()=>({canceled:false,filePaths:[world]});
+  globalThis.projectSavePaths=[];dialog.showSaveDialog=async (...args)=>{const options=args.at(-1);const file=globalThis.nextProjectSavePath||downloads+'/'+options.defaultPath.replace(/^.*[\\/]/,'');globalThis.projectSavePaths.push(file);return {canceled:false,filePath:file};};
   globalThis.desktopDownloads=[];session.defaultSession.on('will-download',(_event,item)=>{const file=downloads+'/'+item.getFilename().replace(/^.*[\\/]/,'');item.setSavePath(file);item.once('done',(_event,state)=>globalThis.desktopDownloads.push({file,state}));});
  },{world,downloads});
 }
@@ -45,8 +46,13 @@ try{
  const project=await page.evaluate(async()=>{const {makePart}=await import('/src/core/model.js');return {format:'open-building-studio',version:1,name:'Desktop smoke test',parts:[makePart('block',{name:'Packaged block'})]};});
  await page.locator('#file').setInputFiles({name:'desktop.building.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(project))});
  await page.waitForFunction(()=>document.querySelector('#title')?.value==='Desktop smoke test');
- await page.locator('#save').click();let download;for(let i=0;i<100;i++){download=await application.evaluate(()=>globalThis.desktopDownloads[0]);if(download)break;await new Promise(resolve=>setTimeout(resolve,100));}assert.equal(download?.state,'completed','project download must complete through Electron');
- const saved=JSON.parse(await readFile(download.file,'utf8'));assert.equal((saved.project||saved).name,'Desktop smoke test');
+ await page.locator('#save').click();await page.waitForFunction(()=>document.getElementById('toast').textContent.startsWith('Saved to '));const projectPath=await application.evaluate(()=>globalThis.projectSavePaths[0]);
+ const saved=JSON.parse(await readFile(projectPath,'utf8'));assert.equal(saved.name,'Desktop smoke test');
+ await page.locator('#title').fill('Desktop overwrite check');await page.locator('#title').press('Tab');await page.locator('#save').click();
+ for(let i=0;i<100;i++){if(JSON.parse(await readFile(projectPath,'utf8')).name==='Desktop overwrite check')break;await new Promise(r=>setTimeout(r,30));}
+ assert.equal(JSON.parse(await readFile(projectPath,'utf8')).name,'Desktop overwrite check');assert.equal(await application.evaluate(()=>globalThis.projectSavePaths.length),1,'ordinary Save overwrites the chosen file without another dialog');
+ const copyPath=path.join(downloads,'save-as-copy.building.json');await application.evaluate((_electron,file)=>{globalThis.nextProjectSavePath=file;},copyPath);await page.locator('#save-as').click();for(let i=0;i<100;i++){try{await stat(copyPath);break;}catch{await new Promise(r=>setTimeout(r,30));}}
+ assert.equal(JSON.parse(await readFile(copyPath,'utf8')).name,'Desktop overwrite check');assert.equal(await application.evaluate(()=>globalThis.projectSavePaths.length),2,'Save As opens a new native dialog');
  await page.locator('#export-swbf2').click();const exporter=page.getByRole('dialog',{name:'Export to SWBF2',exact:true});await exporter.waitFor({state:'visible'});
  const exportButton=exporter.locator('[data-action=export]');await exportButton.waitFor({state:'visible'});
  await page.waitForFunction(()=>!document.querySelector('.swbf2-export [data-action=export]').disabled);await exportButton.click();
@@ -61,5 +67,5 @@ try{
  await application.close();application=null;
  await launch();assert.equal(await page.evaluate(()=>localStorage.getItem('desktop-relaunch-check')),'retained');
  assert.equal((await api({action:'restore',id:folderId})).data.path,world);assert.equal(await readFile(path.join(world,'world1/WON.wld'),'utf8'),'// existing authored world\n');
- assert.deepEqual(errors,[]);assert.deepEqual(processErrors,[]);console.log('PASS desktop: packaged runtime, textures, folder export, project and SWBF2 downloads, direct scene export, persistent data, and sandbox. Artifacts: '+artifacts);
+ assert.deepEqual(errors,[]);assert.deepEqual(processErrors,[]);console.log('PASS desktop: packaged runtime, textures, folder export, native project Save/Save As, SWBF2 downloads, direct scene export, persistent data, and sandbox. Artifacts: '+artifacts);
 }catch(error){await page?.screenshot({path:path.join(artifacts,'failure.png')}).catch(()=>{});console.error('Desktop test artifacts: '+artifacts);throw error;}finally{await application?.close();}

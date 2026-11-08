@@ -7,8 +7,15 @@ function openFolder(folder){return new Promise((resolve,reject)=>{
  child.once('error',reject);child.once('spawn',()=>{child.unref();resolve();});
 });}
 const types={'.svg':'image/svg+xml','.png':'image/png','.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.md':'text/plain'};
-function createServer({textureRoot,openTexturesFolder=openFolder,chooseExportFolder,openExportFolder=openFolder,folderRegistry=path.join(root,'.world-folders.json')}={}){const folders=require('./src/swbf2/local-world-folders.cjs').createWorldFolders({registryPath:folderRegistry,choose:chooseExportFolder,open:openExportFolder});return http.createServer((req,res)=>{
+function createServer({chooseProjectFile,textureRoot,openTexturesFolder=openFolder,chooseExportFolder,openExportFolder=openFolder,folderRegistry=path.join(root,'.world-folders.json')}={}){const projectFiles=require('./src/editor/project-files.cjs').createProjectFileService({choose:chooseProjectFile});const folders=require('./src/swbf2/local-world-folders.cjs').createWorldFolders({registryPath:folderRegistry,choose:chooseExportFolder,open:openExportFolder});return http.createServer((req,res)=>{
  let name;try{name=decodeURIComponent(new URL(req.url,'http://localhost').pathname);}catch{res.writeHead(400);return res.end();}
+ if(name==='/api/project-file'){
+  if(req.method!=='POST'){res.writeHead(405);return res.end();}
+  const origin=req.headers.origin,host=req.headers.host;
+  if(!/^(?:127\.0\.0\.1|localhost):\d+$/.test(host||'')||origin!=='http://'+host){res.writeHead(403);return res.end();}
+  const chunks=[];let size=0;req.on('data',chunk=>{size+=chunk.length;if(size>64*1024*1024){req.destroy();return;}chunks.push(chunk);});
+  req.on('end',async()=>{try{const result=await projectFiles.handle(JSON.parse(Buffer.concat(chunks).toString('utf8')));res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify(result));}catch(error){res.writeHead(400,{'Content-Type':'application/json'});res.end(JSON.stringify({error:error.message}));}});return;
+ }
  if(name==='/api/world-folder'){
   if(req.method!=='POST'){res.writeHead(405);return res.end();}
   const origin=req.headers.origin,host=req.headers.host;

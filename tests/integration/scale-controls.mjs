@@ -1,3 +1,4 @@
+import {useProjectDownloads} from './project-downloads.mjs';
 import assert from 'node:assert/strict';
 import {readFile,mkdtemp} from 'node:fs/promises';
 import {existsSync} from 'node:fs';
@@ -15,7 +16,7 @@ async function drag(start,dx,dy){await page.mouse.move(start.x,start.y);await pa
 async function save(){const pending=page.waitForEvent('download');await page.locator('#save').click();const download=await pending;return JSON.parse(await readFile(await download.path(),'utf8'));}
 try{
  browser=await chromium.launch({headless:true,channel:process.env.WONDERBLOCKS_BROWSER_CHANNEL||(existsSync(chromium.executablePath())?'chromium':'chrome'),args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
- page=await browser.newPage({viewport:{width:1000,height:800},acceptDownloads:true});page.on('pageerror',e=>errors.push(e.message));
+ page=await browser.newPage({viewport:{width:1000,height:800},acceptDownloads:true});await useProjectDownloads(page);page.on('pageerror',e=>errors.push(e.message));
  await page.goto(origin+'/tests/integration/fixtures/scale-controls.html');await page.waitForFunction(()=>window.scaleFixture);
  const start=[8,.08,12],results=[];
  for(const distance of [15,1500,150000]){

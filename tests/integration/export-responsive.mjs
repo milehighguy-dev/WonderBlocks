@@ -1,3 +1,4 @@
+import {useProjectDownloads} from './project-downloads.mjs';
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import {mkdtemp,readFile,writeFile} from 'node:fs/promises';
@@ -12,7 +13,7 @@ const output=await mkdtemp(path.join(tmpdir(),'wb-export-responsive-')),errors=[
 console.log('Export responsiveness artifacts: '+output);
 try{
  browser=await chromium.launch({channel:process.env.WONDERBLOCKS_BROWSER_CHANNEL||'chrome',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
- const page=await browser.newPage({viewport:{width:1440,height:1000}});page.setDefaultTimeout(240000);page.on('pageerror',e=>errors.push(e.message));
+ const page=await browser.newPage({viewport:{width:1440,height:1000}});await useProjectDownloads(page);page.setDefaultTimeout(240000);page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(()=>{
   window.exportMetrics={ticks:0,tasks:[],workers:0,terminated:0,phases:[]};setInterval(()=>exportMetrics.ticks++,20);
   new PerformanceObserver(list=>{if(window.exportStage)for(const e of list.getEntries())exportMetrics.tasks.push({stage:exportStage,duration:e.duration});}).observe({type:'longtask',buffered:true});

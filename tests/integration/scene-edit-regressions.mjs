@@ -1,3 +1,4 @@
+import {useProjectDownloads} from './project-downloads.mjs';
 import assert from 'node:assert/strict';
 import {readFile,mkdtemp} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
@@ -8,7 +9,7 @@ import {makePart} from '../../src/core/model.js';
 import {defaultHallwayRoute} from '../../src/routes/hallway.js';
 const {createServer}=createRequire(import.meta.url)('../../server.cjs'),server=createServer();await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
 try{
- browser=await chromium.launch({channel:'chrome',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});const page=await browser.newPage({viewport:{width:1500,height:1000},acceptDownloads:true});page.setDefaultTimeout(30000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ browser=await chromium.launch({channel:'chrome',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});const page=await browser.newPage({viewport:{width:1500,height:1000},acceptDownloads:true});await useProjectDownloads(page);page.setDefaultTimeout(30000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('http://127.0.0.1:'+server.address().port);await page.waitForFunction(()=>!document.getElementById('scene-loading')?.open);
  const load=async(parts,name)=>{await page.locator('#file').setInputFiles({name:'regression.building.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({format:'open-building-studio',version:1,name,parts}))});await page.waitForFunction(name=>document.getElementById('title').value===name&&!document.getElementById('scene-loading')?.open,name);};
  const save=async()=>{const pending=page.waitForEvent('download');await page.locator('#save').click();return JSON.parse(await readFile(await(await pending).path(),'utf8'));};

@@ -1,3 +1,4 @@
+import {useProjectDownloads} from './project-downloads.mjs';
 import assert from 'node:assert/strict';
 import {mkdtemp,mkdir,cp,rm,readFile,writeFile} from 'node:fs/promises';
 import path from 'node:path';
@@ -20,7 +21,7 @@ const openedFolders=[],server=createServer({textureRoot,openTexturesFolder:async
 const origin='http://127.0.0.1:'+server.address().port,errors=[];let browser;
 try{
  browser=await chromium.launch({channel:'chrome',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
- const page=await browser.newPage({viewport:{width:1440,height:1000},acceptDownloads:true});page.setDefaultTimeout(30000);page.on('pageerror',e=>errors.push(e.message));
+ const page=await browser.newPage({viewport:{width:1440,height:1000},acceptDownloads:true});await useProjectDownloads(page);page.setDefaultTimeout(30000);page.on('pageerror',e=>errors.push(e.message));
  await page.goto(origin);await page.waitForFunction(()=>!document.getElementById('scene-loading')?.open);
  const project={format:'open-building-studio',version:1,name:'Folder textures',parts:[makePart('block',{color:'#ffffff'})]};
  await page.locator('#file').setInputFiles({name:'test.building.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(project))});

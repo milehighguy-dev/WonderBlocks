@@ -1,3 +1,4 @@
+import {useProjectDownloads} from './project-downloads.mjs';
 import assert from 'node:assert/strict';
 import {existsSync} from 'node:fs';
 import {mkdtemp,readFile} from 'node:fs/promises';
@@ -12,7 +13,7 @@ const origin='http://127.0.0.1:'+server.address().port,artifacts=await mkdtemp(p
 let browser;const errors=[];
 try{
  browser=await chromium.launch({headless:true,channel:existsSync(chromium.executablePath())?'chromium':'chrome',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
- const page=await browser.newPage({viewport:{width:1440,height:1000},acceptDownloads:true});page.setDefaultTimeout(15000);page.on('pageerror',error=>errors.push(error.message));
+ const page=await browser.newPage({viewport:{width:1440,height:1000},acceptDownloads:true});await useProjectDownloads(page);page.setDefaultTimeout(15000);page.on('pageerror',error=>errors.push(error.message));
  await page.goto(origin+'/?demo=classical-temple');await page.waitForFunction(()=>!document.getElementById('scene-loading')?.open,null,{timeout:60000});
  await page.locator('#scene-outline .scene-select').first().click();await page.locator('[data-workspace-mode=material]').click();
  const panel=page.locator('.material-workspace');await panel.locator('.texture-category-grid').waitFor({state:'visible'});
