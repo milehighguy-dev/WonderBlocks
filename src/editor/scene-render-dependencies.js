@@ -5,7 +5,9 @@ import {prepareInteriorCuts} from '../interiors/interior-hull-cuts.js';
 import {roomCutVolumes} from '../interiors/room-cut-volumes.js';
 import {levelsOf} from '../interiors/interior-storeys.js';
 import {entranceFrame,partMatrix} from '../interiors/entrances.js';
-import {platformRailSpans} from '../platforms/platform.js';
+import {platformRailSpans,platformOutline,platformPort} from '../platforms/platform.js';
+import {platformRouteAprons} from '../platforms/platform-route-aprons.js';
+import {KASHYYYK_PLATFORM_STYLES} from '../platforms/kashyyyk-platforms.js';
 
 const boxOf=b=>new T.Box3(new T.Vector3(b[0],b[2],b[4]),new T.Vector3(b[1],b[3],b[5]));
 
@@ -34,7 +36,8 @@ function dependencies(input,roots){
   const neighbours=cuttable?volumes.filter(v=>v.source!==p.id&&(!bounds||v.box.intersectsBox(bounds))).map(v=>v.key):[];
   const ownWindows=(cuts.get(p.id)||[]).map(w=>[w.frame.elements,w.bounds,w.kind,w.levelId]);
   const fittedHosts=(p.route?.segments||[]).flatMap(s=>{const id=s.hallway?.entranceFit?.partId;return id?[byId.get(id)??null]:[];});
-  return [p.id,JSON.stringify([sceneRenderKey([p]),neighbours,ownWindows,p.platform?platformRailSpans(p,parts):null,p.highway?highways:null,sceneRenderKey(fittedHosts.filter(Boolean))])];
+  const aprons=p.platform&&KASHYYYK_PLATFORM_STYLES.includes(p.platform.style)?platformRouteAprons(p,parts,platformOutline(p.platform),ref=>platformPort(p,ref)):null;
+  return [p.id,JSON.stringify([sceneRenderKey([p]),neighbours,ownWindows,p.platform?platformRailSpans(p,parts):null,aprons,p.highway?highways:null,sceneRenderKey(fittedHosts.filter(Boolean))])];
  }));
 }
 

@@ -12,6 +12,7 @@ const material=(texture,color='#ffffff')=>new T.MeshStandardMaterial({color,map:
 export const KOTOR_LIP={height:.1,width:.42};
 const pointKey=p=>p.toArray().map(v=>v.toFixed(4)).join(',');
 const variation=(p,salt)=>{let hash=2166136261;for(const c of pointKey(p)+':'+salt)hash=Math.imul(hash^c.charCodeAt(0),16777619);hash=Math.imul(hash^(hash>>>16),0x85ebca6b);hash=Math.imul(hash^(hash>>>13),0xc2b2ae35);return ((hash^(hash>>>16))>>>0)/4294967295;};
+export const kotorRailNode=point=>({height:.82+.36*variation(point,'height'),rail:.57+.18*variation(point,'rail'),width:.9+.2*variation(point,'width')});
 
 // Sample the whole perimeter rather than planting a post on every circle
 // tessellation edge. Corners and open ends stay anchored; each bay is unequal.
@@ -26,7 +27,7 @@ export function kotorRailLayout(spans,spacing=2.8){
   const at=d=>{let i=distances.findIndex((v,k)=>k>0&&v>=d-1e-7)-1;if(i<0)i=chain.length-1;return chain[i][0].clone().lerp(chain[i][1],T.MathUtils.clamp((d-distances[i])/(distances[i+1]-distances[i]),0,1));};
   const pinned=[0];for(let i=1;i<chain.length;i++)if(chain[i-1][1].clone().sub(chain[i-1][0]).normalize().dot(chain[i][1].clone().sub(chain[i][0]).normalize())<Math.cos(Math.PI/6))pinned.push(distances[i]);pinned.push(total);
   const stations=[0];for(let i=1;i<pinned.length;i++){const lo=pinned[i-1],length=pinned[i]-lo,count=Math.max(1,Math.ceil(length/spacing)),weights=Array.from({length:count},(_,j)=>.65+variation(at(lo),'gap'+j)*.7),sum=weights.reduce((a,b)=>a+b,0);let d=lo;for(const w of weights){d+=length*w/sum;stations.push(d);}}
-  const nodes=stations.map(d=>{const point=at(d);return {point,d,height:.82+.36*variation(point,'height'),rail:.57+.18*variation(point,'rail'),width:.9+.2*variation(point,'width')};});
+  const nodes=stations.map(d=>{const point=at(d);return {point,d,...kotorRailNode(point)};});
   const bays=[];for(let i=1;i<nodes.length;i++){const a=nodes[i-1],b=nodes[i],cuts=[a.d,...distances.filter(d=>d>a.d+1e-6&&d<b.d-1e-6),b.d];for(let j=1;j<cuts.length;j++)bays.push({a:at(cuts[j-1]),b:at(cuts[j]),from:a,to:b,t0:(cuts[j-1]-a.d)/(b.d-a.d),t1:(cuts[j]-a.d)/(b.d-a.d),capStart:i===1&&j===1,capEnd:i===nodes.length-1&&j===cuts.length-1});}
   runs.push({nodes,bays,closed:chain[0][0].distanceTo(chain.at(-1)[1])<1e-5});
  }
@@ -52,7 +53,8 @@ export function buildKotorRails(group,spans,options={}){
   return {positions:points.map(p=>transform(p.clone()).toArray()),triangles};};
  const shell=source.rail[0],average=end=>{const uv=[0,0];let count=0;for(let i=0;i<shell.positions.length;i+=3)if(shell.positions[i+2]===end){uv[0]+=shell.uv[i/3*2];uv[1]+=shell.uv[i/3*2+1];count++;}return uv.map(v=>v/count);},u0=average(0),u1=average(1);
  for(const run of kotorRailLayout(centers,r.spacing)){
-  for(const node of run.nodes){const p=node.point,key=pointKey(p);if(seen.has(key))continue;seen.add(key);const base=(options.groundAt?.(p)??p.y)+lip.height,origin=p.clone().setY(base),height=r.height*node.height+p.y+lip.height-base;const transform=v=>v.set(v.x*r.postWidth*node.width/source.postWidth,v.y*height,v.z*r.postWidth*node.width/source.postWidth).add(origin),solid=volume(source.post,transform);for(const part of source.post){const m=profile(part,transform,'posts');m.userData.kotorPost={base:origin.toArray(),height};m.userData.structuralVolume=solid;}}
+  for(const node of run.nodes){const target=options.terminals?.find(t=>node.point.distanceTo(new T.Vector3(...t.point))<1e-4);if(target)Object.assign(node,{height:(target.postTop-lip.height)/r.height,rail:(target.railTop-lip.height)/r.height,width:target.width/r.postWidth});}
+  for(const node of run.nodes){if(options.terminals?.some(t=>node.point.distanceTo(new T.Vector3(...t.point))<1e-4))continue;const p=node.point,key=pointKey(p);if(seen.has(key))continue;seen.add(key);const base=(options.groundAt?.(p)??p.y)+lip.height,origin=p.clone().setY(base),height=r.height*node.height+p.y+lip.height-base;const transform=v=>v.set(v.x*r.postWidth*node.width/source.postWidth,v.y*height,v.z*r.postWidth*node.width/source.postWidth).add(origin),solid=volume(source.post,transform);for(const part of source.post){const m=profile(part,transform,'posts');m.userData.kotorPost={base:origin.toArray(),height};m.userData.structuralVolume=solid;}}
   // One handrail joins each pair of irregular posts. Each bay follows its
   // neighbours' attachment heights instead of creating two level fence bars.
   for(const bay of run.bays){const a=bay.a.clone(),b=bay.b.clone(),h0=r.height*bay.from.rail,h1=r.height*bay.to.rail;a.y+=lip.height+T.MathUtils.lerp(h0,h1,bay.t0);b.y+=lip.height+T.MathUtils.lerp(h0,h1,bay.t1);const d=b.clone().sub(a),length=Math.hypot(d.x,d.z),normal=new T.Vector3(d.z,0,-d.x).normalize(),repeat=length/source.railLength;

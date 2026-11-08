@@ -5,6 +5,8 @@ import {applySurface} from '../materials/surfaces.js';
 import {offsetPlatformLoop} from '../routes/bespin-platform.js';
 import {platformSupportAnchor} from './platform-supports.js';
 import {platformShadowVolume} from './platform-shadow.js';
+import {cutApronFaces,subtractApron} from './platform-route-aprons.js';
+import {kotorTexture} from '../materials/kotor-kashyyyk-textures.js';
 const strips=new Map();
 function platformStrip(texture,kind){
  const key=texture+':'+kind;if(strips.has(key))return strips.get(key);
@@ -28,7 +30,7 @@ export function platformCircleOffset(platform){return KASHYYYK_PLATFORM_STYLES.i
 // One circular landing retains every visible authored triangle and atlas UV.
 // Other outlines use a single union skin so extending a deck cannot leave
 // overlapping floor faces or internal seams between platform sections.
-export function buildKashyyykPlatform(group,part,loops){
+export function buildKashyyykPlatform(group,part,loops,joins=[]){
  const platform=part.platform,ref=KASHYYYK_PLATFORMS[platform.style];if(!ref)return false;
  const materials=new Map(),source=ref.meshes[0],floor=source.materials.find(m=>m.cutout);
  function material(def,fringe=false,component='native'){
@@ -107,6 +109,20 @@ export function buildKashyyykPlatform(group,part,loops){
   add(trimPositions,trimUvs,floor,'trim');const trim=group.children.at(-1);trim.material.map=platformStrip(floor.texture,'trim');trim.material.alphaTest=0;trim.material.color.set(part.color);trim.material.roughness=.85;
   if(fringePositions.length){add(fringePositions,fringeUvs,floor,'fringe',true);group.children.at(-1).material.map=platformStrip(floor.texture,'fringe');}
   supportAnchors=platform.sections.map(s=>({section:s,point:single?profiles[0].center:{x:s.x,z:s.z}}));
+ }
+ if(joins.length){
+  for(const mesh of group.children.filter(m=>m.geometry?.userData.platformPart==='deck'))cutApronFaces(mesh,joins);
+  for(const [index,join]of joins.entries()){
+   const positions=[],uvs=[],polygon=join.polygon;
+   const uvFrame=new T.Matrix4().fromArray(join.uvMatrix),repeat=join.woven?4:2;
+   const face=(points,up)=>{for(let i=1;i<points.length-1;i++)for(const p of up?[points[0],points[i+1],points[i]]:[points[0],points[i],points[i+1]]){positions.push(p.x,p.y,p.z);const uvPoint=new T.Vector3(p.x,p.y,p.z).applyMatrix4(uvFrame);uvs.push(uvPoint.x/repeat,(uvPoint.z+join.uvOffset)/repeat);}};
+   let tops=[polygon.map(p=>({...p,y:0}))];for(const prior of joins.slice(0,index))tops=subtractApron(tops,prior.polygon);
+   for(const top of tops)face(top,true);
+   face(polygon.map(p=>({...p,y:-join.thickness})),false);
+   for(let i=0;i<polygon.length;i++){const a=polygon[i],b=polygon[(i+1)%polygon.length];face([{...a,y:0},{...b,y:0},{...b,y:-join.thickness},{...a,y:-join.thickness}],false);}
+   const mesh=add(positions,uvs,{...floor,cutout:false},'deck');mesh.geometry.userData.platformApron=true;mesh.material=mesh.material.clone();
+   mesh.material.map=kotorTexture(join.woven?'lka_wall01':'lka_hrdwd02');mesh.material.color.set(join.color);if(join.surface)applySurface(group,mesh.material,{...part,surface:join.surface});shadowMeshes.push(mesh);
+  }
  }
  if(platform.supports){
   const supportSources=ref.meshes.map(item=>({...item,faces:item.triangles.map((ids,i)=>({ids,i})).filter(({ids})=>item.name==='pole'||ids.every(j=>item.positions[j][2]<=-ref.bodyDepth+.001))})).filter(item=>item.faces.length);

@@ -35,8 +35,11 @@ export function resolveRouteLinks(parts){
      if(platformPort&&(!upright(target)||(section.width??p.route.width)*Math.abs(p.scale[0])>platformPort.width))throw Error('The platform must be upright and wide enough for this route.');
      if(end==='start'){if(attachment.root){p.position=port.point.toArray();p.rotation[1]=port.angle;}else section.pathStart={point:port.point.clone().applyMatrix4(matrix(p).invert()).toArray(),heading:Math.sign(p.scale[0])*(port.angle-p.rotation[1])};}
      else{const own=routeLayout(p.route)[index],local=port.point.clone().applyMatrix4(matrix(p).invert()),dx=local.x-own.start[0],dz=local.z-own.start[2],fit=fitCurve(section,dx*Math.cos(own.heading)-dz*Math.sin(own.heading),dx*Math.sin(own.heading)+dz*Math.cos(own.heading)),run=fit.run,across=fit.across,rise=local.y-own.start[1],angle=p.rotation[1]+Math.sign(p.scale[0])*(own.heading+fit.angle)-port.angle-Math.PI;
-      if(Math.abs(across)>(ref.edge!==undefined?1e-4:entrance.width/2-.1)||Math.abs(Math.atan2(Math.sin(angle),Math.cos(angle)))>(ref.edge!==undefined?Math.PI/2-.05:1e-4)||run<.2||run>30||Math.abs(rise)>10)throw Error('Aim the final section at the entrance.');
-      if(section.kind==='landing'&&Math.abs(rise)>1e-4)throw Error('Use stairs or a ramp to reach this entrance.');fitSectionEnd(section,run,rise);
+      // Open platform edges accept an oblique approach, including the named
+      // front/back ports created by Add platform. Doorways still require a
+      // perpendicular approach through the opening.
+      if(Math.abs(across)>(ref.edge!==undefined?1e-4:entrance.width/2-.1)||Math.abs(Math.atan2(Math.sin(angle),Math.cos(angle)))>(platformPort?Math.PI/2-.05:1e-4)||run<.2||run>30||Math.abs(rise)>10)throw Error(platformPort?'This route cannot reach the connected platform edge. Adjust its final section or move the platform closer.':'Aim the final section at the entrance.');
+      if(section.kind==='landing'&&Math.abs(rise)>1e-4)throw Error(platformPort?'Use stairs or a ramp to reach this platform height.':'Use stairs or a ramp to reach this entrance.');fitSectionEnd(section,run,rise);
      }continue;
     }
     if(!target?.route||target.id===p.id||!Number.isInteger(ref.segment)||!junctionSides.includes(ref.side))throw Error('Choose a landing on another route.');resolve(target);

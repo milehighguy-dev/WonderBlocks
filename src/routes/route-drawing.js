@@ -30,14 +30,27 @@ export function drawRouteSection(route,anchor,dx,dz,kind='landing',snap=true){
 
 export function snapDirection(angle,enabled=true){const step=Math.PI/4;return enabled?Math.round(angle/step)*step:angle;}
 
+export function fitCurvedEndpoint(across,along,snap=true){
+ const angle=Math.max(-Math.PI*1.5,Math.min(Math.PI*1.5,snapDirection(2*Math.atan2(across,along),snap))),chord=Math.hypot(across,along);
+ return {angle,run:Math.abs(angle)<1e-5?chord:chord*angle/(2*Math.sin(angle/2))};
+}
+
+// Edit from the captured route, so moving sideways can reshape the bend without
+// drifting its start, inserting sections, or accumulating changes each frame.
+export function dragCurvedEndpoint(route,index,delta,{snap=true,lockAngle=true,referenceAngle}={}){
+ const entry=routeLayout(route)[index],s=entry.segment,target=entry.end.map((v,i)=>v+delta[i]),dx=target[0]-entry.start[0],dz=target[2]-entry.start[2];
+ const {angle,run}=fitCurvedEndpoint(dx*Math.cos(entry.heading)-dz*Math.sin(entry.heading),dx*Math.sin(entry.heading)+dz*Math.cos(entry.heading),snap),candidate=structuredClone(route);
+ Object.assign(candidate.segments[index],{curveAngle:angle,turn:'straight'});delete candidate.segments[index].turnAngle;delete candidate.segments[index].joinTo;
+ return {...dragDimensions(candidate,index,run,s.rise+delta[1],referenceAngle??Math.atan2(s.rise,s.run),lockAngle),curveAngle:angle,turn:'straight',turnAngle:undefined};
+}
+
 function drawCurvedSection(route,anchor,dx,dz,kind,snap){
  let next=structuredClone(route),index,heading;
  if(anchor.type==='start'){index=0;heading=0;next.segments[0].kind=kind;}
  else if(anchor.type==='branch'){next=branchRoute(next,anchor.index,anchor.side,kind);index=next.segments.length-1;heading=routeLayout(next)[index].heading;}
  else{const result=continueSelectedPath(next,anchor.index,kind,kind);next=result.route;index=result.index;heading=routeLayout(next)[index].heading;}
  const s=next.segments[index],across=dx*Math.cos(heading)-dz*Math.sin(heading),along=dx*Math.sin(heading)+dz*Math.cos(heading);
- let angle=snapDirection(2*Math.atan2(across,along),snap);angle=Math.max(-Math.PI*1.5,Math.min(Math.PI*1.5,angle));
- const chord=Math.hypot(across,along),run=Math.abs(angle)<1e-5?chord:chord*angle/(2*Math.sin(angle/2)),reference=[...route.segments].reverse().find(q=>q.kind===kind&&q.rise)||{rise:kind==='stairs'?1.5:0,run:3};
+ const {angle,run}=fitCurvedEndpoint(across,along,snap),reference=[...route.segments].reverse().find(q=>q.kind===kind&&q.rise)||{rise:kind==='stairs'?1.5:0,run:3};
  delete s.turnAngle;delete s.joinTo;s.turn='straight';s.curveAngle=angle;if(kind==='landing')s.rise=0;
  Object.assign(s,dragDimensions(next,index,Math.max(curveMinimum(segmentWidth(next,s),angle),run),kind==='landing'?0:run*reference.rise/reference.run,Math.atan2(reference.rise,reference.run),false));
  return {route:next,index,heading:0};
