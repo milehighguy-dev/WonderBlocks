@@ -19,7 +19,7 @@ export function buildPlatformGroundSupports(group,material,part){
  for(const s of part.platform.sections){
   const a=platformSupportAnchor(group,part,{x:s.x,z:s.z});if(!a)continue;
   const radius=Math.min(1,Math.min(s.width*Math.abs(part.scale[0]),s.depth*Math.abs(part.scale[2]))*.055),height=a.top.y;
-  const g=new T.CylinderGeometry(radius,radius,height,12);g.translate(a.top.x,height/2,a.top.z);g.applyMatrix4(a.inverse);
+  const g=new T.CylinderGeometry(radius,radius,height,group.userData.lowDetail?8:12);g.translate(a.top.x,height/2,a.top.z);g.applyMatrix4(a.inverse);
   g.userData.platformPart='supports';const m=new T.Mesh(g,material);m.castShadow=m.receiveShadow=true;group.add(m);
  }
 }

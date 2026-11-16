@@ -10,7 +10,7 @@ export function validateMetaballs(data){
 function sphereInfo(b){const radii=(b.scale||[1,1,1]).map(v=>v*b.radius),matrix=new T.Matrix4().makeRotationFromEuler(new T.Euler(...(b.rotation||[0,0,0]))),r=matrix.elements;return {b,radii,r,spherical:radii[0]===radii[1]&&radii[1]===radii[2],extent:[0,1,2].map(i=>Math.hypot(r[i]*radii[0],r[i+4]*radii[1],r[i+8]*radii[2]))};}
 function prepareField(data){const spheres=data.blobs.map(sphereInfo);return (x,y,z)=>{let min=Infinity;const distances=spheres.map(({b,radii,r,spherical})=>{const dx=x-b.position[0],dy=y-b.position[1],dz=z-b.position[2];if(spherical){const d=Math.hypot(dx,dy,dz)-radii[0];min=Math.min(min,d);return d;}const p=[r[0]*dx+r[1]*dy+r[2]*dz,r[4]*dx+r[5]*dy+r[6]*dz,r[8]*dx+r[9]*dy+r[10]*dz],k0=Math.hypot(...p.map((v,i)=>v/radii[i])),k1=Math.hypot(...p.map((v,i)=>v/(radii[i]*radii[i]))),d=k1?k0*(k0-1)/k1:-Math.min(...radii);min=Math.min(min,d);return d;});if(!data.blend||spheres.length===1)return min;return min-data.blend*Math.log(distances.reduce((sum,d)=>sum+Math.exp((min-d)/data.blend),0));};}
 export function metaballField(data,x,y,z){return prepareField(data)(x,y,z);}
-export function metaballGeometry(data){
+export function metaballGeometry(data,{lowDetail=false}={}){
  validateMetaballs(data);const field=prepareField(data);
  const low=[Infinity,Infinity,Infinity],high=[-Infinity,-Infinity,-Infinity];
  for(const b of data.blobs){const {extent}=sphereInfo(b);for(let k=0;k<3;k++){low[k]=Math.min(low[k],b.position[k]-extent[k]);high[k]=Math.max(high[k],b.position[k]+extent[k]);}}
@@ -19,8 +19,13 @@ export function metaballGeometry(data){
  // Preserve small isolated blobs: sample each connected region separately so a
  // distant blob cannot reduce its neighbor to less than a grid cell.
  const components=[];for(const b of data.blobs){let matching=components.filter(c=>c.some(q=>Math.hypot(...b.position.map((v,k)=>v-q.position[k]))<b.radius*Math.max(...(b.scale||[1,1,1]))+q.radius*Math.max(...(q.scale||[1,1,1]))+2*padding));if(!matching.length)components.push([b]);else{const combined=[b,...matching.flat()];for(const c of matching)components.splice(components.indexOf(c),1);components.push(combined);}}
- if(components.length>1){const pieces=components.map(blobs=>metaballGeometry({...data,blobs}));const positions=[],normals=[],indices=[];for(const g of pieces){const offset=positions.length/3;positions.push(...g.attributes.position.array);normals.push(...g.attributes.normal.array);for(const i of g.index.array)indices.push(i+offset);g.dispose();}return finish(positions,normals,indices);}
- const span=high.map((v,k)=>v-low[k]),step=Math.max(...span)/METABALL_DETAILS[data.detail],size=span.map(v=>Math.ceil(v/step)+1),[nx,ny,nz]=size,total=nx*ny*nz,values=new Float32Array(total),points=new Array(total);
+ if(components.length>1){const pieces=components.map(blobs=>metaballGeometry({...data,blobs},{lowDetail}));const positions=[],normals=[],indices=[];for(const g of pieces){const offset=positions.length/3;positions.push(...g.attributes.position.array);normals.push(...g.attributes.normal.array);for(const i of g.index.array)indices.push(i+offset);g.dispose();}return finish(positions,normals,indices);}
+ const span=high.map((v,k)=>v-low[k]),fullResolution=METABALL_DETAILS[data.detail];
+ // Keep enough samples for the smallest authored lobe. A lower grid may not
+ // erase a fine offshoot merely because it shares bounds with a larger mass.
+ const feature=Math.min(...data.blobs.map(b=>b.radius*Math.min(...(b.scale||[1,1,1]))));
+ const resolution=lowDetail?Math.min(fullResolution,Math.max({low:10,standard:12,high:18}[data.detail],Math.ceil(Math.max(...span)/(feature*1.25)))):fullResolution;
+ const step=Math.max(...span)/resolution,size=span.map(v=>Math.ceil(v/step)+1),[nx,ny,nz]=size,total=nx*ny*nz,values=new Float32Array(total),points=new Array(total);
  const id=(x,y,z)=>(z*ny+y)*nx+x;
  for(let z=0;z<nz;z++)for(let y=0;y<ny;y++)for(let x=0;x<nx;x++){const i=id(x,y,z),p=[low[0]+x*step,low[1]+y*step,low[2]+z*step];points[i]=p;values[i]=field(...p);}
  const positions=[],normals=[],indices=[],edges=new Map(),epsilon=Math.max(1e-5,step*.01);

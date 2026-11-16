@@ -2,13 +2,13 @@ import * as T from '../../vendor/three.module.js';
 
 // Closed, faceted strata with a level cap. Ring noise changes the silhouette;
 // no displacement shader or external mesh is required by saving or export.
-export function rockGeometry({roughness=.16,seed=1,taper=.4}={}){
- const sides=13,levels=5,positions=[],indices=[];
+export function rockGeometry({roughness=.16,seed=1,taper=.4}={},{lowDetail=false}={}){
+ const stations=lowDetail?[0,2,3,5]:[0,1,2,3,4,5],sectors=lowDetail?[0,1,3,4,6,7,9,10,12]:Array.from({length:13},(_,i)=>i),sides=sectors.length,levels=stations.length-1,positions=[],indices=[];
  const noise=(a,b)=>{const n=Math.sin(a*127.1+b*311.7+seed*74.7)*43758.5453;return n-Math.floor(n);};
  for(let j=0;j<=levels;j++)for(let i=0;i<sides;i++){
-  const t=j/levels,angle=i/sides*Math.PI*2+(noise(i,7)-.5)*.12;
-  const radius=.5*(1-taper*t)*(1+(noise(i,0)-.5)*roughness*2+(noise(i,j+1)-.5)*roughness*.65);
-  const y=j===0?0:j===levels?1:t+(noise(i,j+18)-.5)*.09;
+  const sourceI=sectors[i],sourceJ=stations[j],t=sourceJ/5,angle=sourceI/13*Math.PI*2+(noise(sourceI,7)-.5)*.12;
+  const radius=.5*(1-taper*t)*(1+(noise(sourceI,0)-.5)*roughness*2+(noise(sourceI,sourceJ+1)-.5)*roughness*.65);
+  const y=j===0?0:j===levels?1:t+(noise(sourceI,sourceJ+18)-.5)*.09;
   positions.push(Math.cos(angle)*radius,y,Math.sin(angle)*radius);
  }
  for(let j=0;j<levels;j++)for(let i=0;i<sides;i++){

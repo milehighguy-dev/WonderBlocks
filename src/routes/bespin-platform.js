@@ -10,7 +10,7 @@ export function buildBespinPlatform(group,material,part,loops){
  const area=l=>l.reduce((s,p,i)=>s+p.x*l[(i+1)%l.length].z-l[(i+1)%l.length].x*p.z,0)/2;
  const cap=(rings,y,up)=>{const outer=rings.filter(l=>area(l)>0),holes=rings.filter(l=>area(l)<0);for(const loop of outer){const box=new T.Box2().setFromPoints(loop.map(p=>new T.Vector2(p.x,p.z))),hs=holes.filter(h=>box.containsPoint(new T.Vector2(h[0].x,h[0].z))),all=[loop,...hs].flat(),faces=T.ShapeUtils.triangulateShape(loop.map(p=>new T.Vector2(p.x,p.z)),hs.map(h=>h.map(p=>new T.Vector2(p.x,p.z))));for(const f of faces){const vs=f.map(i=>[all[i].x,y,all[i].z]);if(up)vs.reverse();tri(...vs);}}};
  cap(loops,0,true);
- for(const loop of loops){let prev=loop,py=0;for(const [d,y] of BESPIN_PLATFORM_PROFILE.slice(1)){const next=offsetPlatformLoop(loop,d*k);bridge(prev,next,py,y*k);prev=next;py=y*k;}}
+ for(const loop of loops){let prev=loop,py=0;for(const [d,y] of (group.userData.lowDetail?BESPIN_PLATFORM_PROFILE.slice(2):BESPIN_PLATFORM_PROFILE.slice(1))){const next=offsetPlatformLoop(loop,d*k);bridge(prev,next,py,y*k);prev=next;py=y*k;}}
  const s=part.platform.sections[0],circular=part.platform.sections.length===1&&s.kind==='circle';
  if(circular){const loop=loops[0],scale=(r)=>loop.map(p=>({x:s.x+(p.x-s.x)*r/24.948,z:s.z+(p.z-s.z)*r/24.948}));let prev=offsetPlatformLoop(loop,-2.523*k),py=-7.9838*k;
  // The circular reference has a recessed underside and a short central boss.

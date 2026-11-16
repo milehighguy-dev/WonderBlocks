@@ -2,7 +2,7 @@ import * as THREE from '../../vendor/three.module.js';
 
 // A cylindrical shell, with hard edges between its walls and flat annular rims.
 export function buildRingBody(group, material, parameters={}, shape={}) {
- const outer=.5, inner=outer-(parameters.wallThickness??15)/100, segments=parameters.sides??24, heightSegments=Object.values(shape).some(Boolean)?3:1;
+ const outer=.5, inner=outer-(parameters.wallThickness??15)/100, segments=Math.min(parameters.sides??24,group.userData.lowDetail?12:Infinity), heightSegments=Object.values(shape).some(Boolean)?3:1;
  const add=(geometry,y=0,rotation=0)=>{
   const mesh=new THREE.Mesh(geometry,material);
   mesh.position.y=y;mesh.rotation.x=rotation;

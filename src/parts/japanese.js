@@ -22,6 +22,7 @@ export const JAPANESE_PARTS=[
 
 // Original stylized castle kit. Unit story: 2 × 1.2 × 2, open inside.
 export function buildJapanese(type,group,material,part={}){
+ const low=!!group.userData.lowDetail;
  const dark=new THREE.MeshStandardMaterial({color:wood,roughness:.8}),trim=new THREE.MeshStandardMaterial({color:gold,roughness:.5,metalness:.45});
  const white=new THREE.MeshStandardMaterial({color:plaster,roughness:.85});
  const detailKind=({'jp-window':'window','jp-swept-gable':'gable','jp-story':'story','jp-entry-story':'story','jp-dark-story':'story','jp-wall':'wall','jp-timber-wall':'wall'})[type];
@@ -39,14 +40,14 @@ export function buildJapanese(type,group,material,part={}){
 
  const curve=japaneseRoofCurve;
  function sweptGable(half=false,depth=2,mat=material,segments=8){
-  const steps=half?4:segments,points=[];for(let i=0;i<=steps;i++){const x=half?i/steps:-1+2*i/steps;points.push([x,curve(Math.abs(x))]);}for(let i=steps;i>=0;i--){const x=half?i/steps:-1+2*i/steps;points.push([x,curve(Math.abs(x))-.06]);}extrude(points,depth,mat);
+  const steps=half?(low?2:4):Math.min(segments,low?4:Infinity),points=[];for(let i=0;i<=steps;i++){const x=half?i/steps:-1+2*i/steps;points.push([x,curve(Math.abs(x))]);}for(let i=steps;i>=0;i--){const x=half?i/steps:-1+2*i/steps;points.push([x,curve(Math.abs(x))-.06]);}extrude(points,depth,mat);
  }
  function halfPanel(){
   const inner=part.parameters?.roofInnerSpan??1;
   if(inner===1){sweptGable(true);return;}
   const pt=(t,side,lower=false)=>[t,curve(t)-(lower?.06:0),side*(inner+(1-inner)*t)];
-  for(let i=0;i<4;i++){
-   const a=i/4,b=(i+1)/4;
+  for(let i=0,n=low?2:4;i<n;i++){
+   const a=i/n,b=(i+1)/n;
    quad(pt(a,-1),pt(a,1),pt(b,1),pt(b,-1));
    quad(pt(a,-1,true),pt(b,-1,true),pt(b,1,true),pt(a,1,true));
    for(const side of [-1,1]){const points=[pt(a,side,true),pt(a,side),pt(b,side),pt(b,side,true)];if(side<0)points.reverse();quad(...points,dark);}
@@ -55,18 +56,18 @@ export function buildJapanese(type,group,material,part={}){
  }
  function hip(open=false){
   // Closed shell surrounding an optional square opening; shared rings prevent corner overlap.
-  const rings=Array.from({length:7},(_,i)=>{const r=(open?.5:0)+(1-(open?.5:0))*i/6;return {r,y:curve(r)};});
+  const panels=low?3:6,rings=Array.from({length:panels+1},(_,i)=>{const r=(open?.5:0)+(1-(open?.5:0))*i/panels;return {r,y:curve(r)};});
   for(let side=0;side<4;side++){
    const pt=(r,y,end)=>new THREE.Vector3(end?r:-r,y,r).applyAxisAngle(new THREE.Vector3(0,1,0),side*Math.PI/2).toArray();
    for(let i=0;i<rings.length-1;i++){const a=rings[i],b=rings[i+1];quad(pt(a.r,a.y,false),pt(b.r,b.y,false),pt(b.r,b.y,true),pt(a.r,a.y,true));quad(pt(a.r,a.y-.06,true),pt(b.r,b.y-.06,true),pt(b.r,b.y-.06,false),pt(a.r,a.y-.06,false));}
    for(const [r,y] of [[1,curve(1)],...(open?[[.5,curve(.5)]]:[])]){const pts=[pt(r,y-.06,false),pt(r,y-.06,true),pt(r,y,true),pt(r,y,false)];if(r<1)pts.reverse();quad(...pts);}
    line(pt(1,curve(1),false),pt(1,curve(1),true),.025,dark);
-   for(let i=0;i<6;i++){const a=rings[i],b=rings[i+1];line(pt(a.r,a.y,false),pt(b.r,b.y,false),.012);}
+   for(let i=0;i<panels;i++){const a=rings[i],b=rings[i+1];line(pt(a.r,a.y,false),pt(b.r,b.y,false),.012);}
   }
  }
  function railing(width=2,z=0){box(width,.07,.1,0,.48,z);box(width,.05,.08,0,.12,z);for(let i=0;i<=4;i++)box(.045,.48,.045,-width/2+width*i/4,.24,z);}
  function gable(curved=false){
-  const upper=[];for(let i=0;i<=8;i++){const x=-1+i/4,y=curved?.16+.58*Math.exp(-5*x*x)+.10*Math.abs(x)**8:.68*(1-Math.abs(x));upper.push([x,y]);}
+  const upper=[];for(let i=0,n=low?4:8;i<=n;i++){const x=-1+2*i/n,y=curved?.16+.58*Math.exp(-5*x*x)+.10*Math.abs(x)**8:.68*(1-Math.abs(x));upper.push([x,y]);}
   extrude([[-1,0],...upper,[1,0]],.22);
   for(let i=0;i<upper.length-1;i++){const [x,y]=upper[i],[xx,yy]=upper[i+1];line([x,y+.025,.14],[xx,yy+.025,.14],.036,dark);line([x,y+.065,.15],[xx,yy+.065,.15],.012,trim);}
   box(2,.07,.3,0,.035,0,dark);for(const x of [-.32,0,.32])box(.035,curved?.4:.25,.04,x,.17,.14,dark);
@@ -100,10 +101,10 @@ export function buildJapanese(type,group,material,part={}){
  case 'jp-tier-roof':hip(true);break;
  case 'jp-gable-roof':sweptGable();break;
  case 'jp-half-roof':halfPanel();break;
- case 'jp-irimoya':hip(true);{const before=group.children.length;sweptGable(false,2);for(const z of [-1, .97]){const points=[[-1,curve(1)-.06],[1,curve(1)-.06]];for(let i=8;i>=0;i--){const x=-1+i/4;points.push([x,curve(Math.abs(x))-.06]);}extrude(points,.03,white,z);}for(const m of group.children.slice(before)){m.scale.multiplyScalar(.52);m.position.multiplyScalar(.52);m.position.y+=curve(.5)-.52*curve(1);}}break;
+ case 'jp-irimoya':hip(true);{const before=group.children.length;sweptGable(false,2);for(const z of [-1, .97]){const points=[[-1,curve(1)-.06],[1,curve(1)-.06]];for(let i=low?4:8,n=low?4:8;i>=0;i--){const x=-1+2*i/n;points.push([x,curve(Math.abs(x))-.06]);}extrude(points,.03,white,z);}for(const m of group.children.slice(before)){m.scale.multiplyScalar(.52);m.position.multiplyScalar(.52);m.position.y+=curve(.5)-.52*curve(1);}}break;
  case 'jp-chidori':gable();break;
  case 'jp-swept-gable':{
-  const points=[[-1,.12],[1,.12]];for(let i=8;i>=0;i--){const x=-1+i/4;points.push([x,curve(Math.abs(x))-.06]);}
+  const points=[[-1,.12],[1,.12]];for(let i=low?4:8,n=low?4:8;i>=0;i--){const x=-1+2*i/n;points.push([x,curve(Math.abs(x))-.06]);}
   const m=extrude(points,.08),a=m.geometry.attributes.position,uv=m.geometry.attributes.uv;
   for(let i=0;i<a.count;i++)uv.setXY(i,(a.getX(i)+1)/2,(a.getY(i)-.12)/.48);
   break;
@@ -113,7 +114,7 @@ export function buildJapanese(type,group,material,part={}){
  case 'jp-wall-cap':sweptGable(false,.4,material,4);break;
  case 'jp-ridge':box(2.08,.17,.2);break;
  case 'jp-window':box(1.08,.86,.08,0,.4,.025);break;
- case 'jp-katomado':{const s=new THREE.Shape();s.moveTo(-.45,0);s.lineTo(.45,0);s.lineTo(.45,.6);s.bezierCurveTo(.45,.82,.15,.76,0,1);s.bezierCurveTo(-.15,.76,-.45,.82,-.45,.6);s.closePath();mesh(new THREE.ExtrudeGeometry(s,{depth:.06,curveSegments:4,bevelEnabled:false}));const pts=s.getPoints(10);for(let i=0;i<pts.length-1;i++)line([pts[i].x,pts[i].y,.08],[pts[i+1].x,pts[i+1].y,.08],.026,trim);for(const x of [-.24,0,.24])box(.025,.62,.035,x,.33,.085,trim);break;}
+ case 'jp-katomado':{const s=new THREE.Shape();s.moveTo(-.45,0);s.lineTo(.45,0);s.lineTo(.45,.6);s.bezierCurveTo(.45,.82,.15,.76,0,1);s.bezierCurveTo(-.15,.76,-.45,.82,-.45,.6);s.closePath();mesh(new THREE.ExtrudeGeometry(s,{depth:.06,curveSegments:low?2:4,bevelEnabled:false}));const pts=s.getPoints(low?4:10);for(let i=0;i<pts.length-1;i++)line([pts[i].x,pts[i].y,.08],[pts[i+1].x,pts[i+1].y,.08],.026,trim);for(const x of [-.24,0,.24])box(.025,.62,.035,x,.33,.085,trim);break;}
  case 'jp-arrow':box(.7,1,.12);extrude([[-.11,.3],[.11,.3],[0,.65]],.02,dark,.065);break;
  case 'jp-torii':{
   const cap=new THREE.MeshStandardMaterial({color:'#242723',roughness:.8});
@@ -126,8 +127,8 @@ export function buildJapanese(type,group,material,part={}){
   }
   const lintel=(height,thickness,depth,mat)=>{
    const profile=[];
-   for(let i=0;i<=8;i++){const x=-1.65+3.3*i/8;profile.push([x,height+.13*(x/1.65)**2]);}
-   for(let i=8;i>=0;i--){const x=-1.65+3.3*i/8;profile.push([x,height+.13*(x/1.65)**2-thickness]);}
+   for(let i=0,n=low?4:8;i<=n;i++){const x=-1.65+3.3*i/n;profile.push([x,height+.13*(x/1.65)**2]);}
+   for(let i=low?4:8,n=low?4:8;i>=0;i--){const x=-1.65+3.3*i/n;profile.push([x,height+.13*(x/1.65)**2-thickness]);}
    extrude(profile,depth,mat);
   };
   lintel(2.66,.16,.29,material);lintel(2.74,.08,.36,cap);
@@ -138,12 +139,12 @@ export function buildJapanese(type,group,material,part={}){
   break;
  }
  case 'jp-gate':for(const x of [-.8,.8]){box(.22,1.6,.4,x);box(.32,.15,.5,x,.075,0,white);}box(1.9,.24,.4,0,1.52);box(2.15,.12,.5,0,1.7);break;
- case 'jp-gate-doors':for(const x of [-.4,.4]){box(.78,1.5,.12,x);for(const y of [.25,.75,1.25]){box(.75,.06,.04,x,y,.08,dark);for(const dx of [-.25,0,.25])mesh(new THREE.SphereGeometry(.025,4,3),[x+dx,y,.11],trim);}}break;
+ case 'jp-gate-doors':for(const x of [-.4,.4]){box(.78,1.5,.12,x);for(const y of [.25,.75,1.25]){box(.75,.06,.04,x,y,.08,dark);for(const dx of [-.25,0,.25])mesh(new THREE.SphereGeometry(.025,4,low?2:3),[x+dx,y,.11],trim);}}break;
  case 'jp-balcony':for(const x of [-1.08,1.08])box(.25,.1,2.4,x);for(const z of [-1.08,1.08])box(1.91,.1,.25,0,.05,z);for(let side=0;side<4;side++){const before=group.children.length;railing(2.35,1.17);for(const m of group.children.slice(before)){m.position.applyAxisAngle(new THREE.Vector3(0,1,0),side*Math.PI/2);m.rotation.y=side*Math.PI/2;}}break;
  case 'jp-railing':railing();break;
  case 'jp-bracket':box(.14,.45,.18);box(.5,.12,.22,0,.36,.07);box(.72,.1,.32,0,.47,.12);break;
- case 'jp-shachi':extrude([[-.14,0],[.15,0],[.24,.18],[.12,.32],[.09,.52],[.28,.87],[.05,.8],[-.16,1],[-.1,.62],[-.22,.36],[-.36,.23],[-.4,.11],[-.2,.1]],.12);mesh(new THREE.SphereGeometry(.025,4,3),[-.29,.21,.071],dark);box(.45,.08,.28);break;
- case 'jp-crest':for(let i=0;i<8;i++){const a=i*Math.PI/4,m=mesh(new THREE.SphereGeometry(.11,6,4),[Math.sin(a)*.19,.32+Math.cos(a)*.19,0]);m.scale.set(1,1,.35);}mesh(new THREE.CylinderGeometry(.13,.13,.08,24),[0,.32,0]).rotation.x=Math.PI/2;break;
+ case 'jp-shachi':extrude([[-.14,0],[.15,0],[.24,.18],[.12,.32],[.09,.52],[.28,.87],[.05,.8],[-.16,1],[-.1,.62],[-.22,.36],[-.36,.23],[-.4,.11],[-.2,.1]],.12);mesh(new THREE.SphereGeometry(.025,4,low?2:3),[-.29,.21,.071],dark);box(.45,.08,.28);break;
+ case 'jp-crest':for(let i=0;i<8;i++){const a=i*Math.PI/4,m=mesh(new THREE.SphereGeometry(.11,6,low?3:4),[Math.sin(a)*.19,.32+Math.cos(a)*.19,0]);m.scale.set(1,1,.35);}mesh(new THREE.CylinderGeometry(.13,.13,.08,low?12:24),[0,.32,0]).rotation.x=Math.PI/2;break;
  case 'jp-tiger':{extrude([[-.7,0],[-.38,0],[-.32,.14],[.25,.14],[.4,.02],[.7,.02],[.6,.16],[.46,.23],[.66,.36],[.59,.52],[.4,.57],[.25,.41],[-.05,.44],[-.4,.36],[-.55,.18]],.065);break;}
  }
  for(const mat of [dark,trim,white])if(!used.has(mat))mat.dispose();

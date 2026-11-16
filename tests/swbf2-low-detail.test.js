@@ -52,7 +52,7 @@ test('rounded primitives use their own lower tessellation and unrelated architec
   const part=makePart(type),full=buildPart(part,{collision:false}),low=buildPart(part,{collision:false,lowDetail:true});
   try{assert.ok(count(low)<count(full),type);}finally{disposePart(full);disposePart(low);}
  }
- const p=makePart('archbody'),plan=planSWBF2(project([p]),settings),asset=plan.assets[0];assert.deepEqual(asset.lowDetailSegments,asset.segments);
+ const p=makePart('buttress'),plan=planSWBF2(project([p]),settings),asset=plan.assets[0];assert.deepEqual(asset.lowDetailSegments,asset.segments);
 });
 
 test('scene and single-object exports both report construction-driven distant models',()=>{

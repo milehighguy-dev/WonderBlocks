@@ -7,6 +7,7 @@ export const NEW_YORK_PARTS=[
  ['ny-crosswalk','Zebra crossing','#e7e3cb'],['ny-lamp','Street lamp','#48575b'],['ny-taxi','Yellow taxi','#e2b63f']
 ].map(([id,name,color])=>({id,name,color,category:'New York',icon:'◇'}));
 export function buildNewYork(type,group,material){
+ const low=!!group.userData.lowDetail;
  const dark=new THREE.MeshStandardMaterial({color:'#354249',roughness:.85}),glass=new THREE.MeshStandardMaterial({color:'#527783',roughness:.4,metalness:.2});
  const used=new Set();
  const mesh=(g,x=0,y=0,z=0,mat=material)=>{const m=new THREE.Mesh(g,mat);m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;group.add(m);used.add(mat);return m;};
@@ -20,7 +21,7 @@ export function buildNewYork(type,group,material){
  case 'ny-terrace-crown':for(let i=0;i<3;i++){const w=2-i*.45;box(w,.22,w,0,i*.3+.11);rim(w,w,i*.3+.26,.08,.06);}break;
  case 'ny-cupola':cyl(.62,.62,.65,.325);cyl(.62,.7,.08,.69);cyl(.18,.7,.5,.98);cyl(0,.18,.3,1.38);break;
  case 'ny-lantern':box(1.5,.12,1.5);for(const x of [-.57,.57])for(const z of [-.57,.57])box(.1,.8,.1,x,.52,z);frustum(1.6,.3,.5,.92);break;
- case 'ny-barrel':{const shape=new THREE.Shape();shape.moveTo(-1,0);for(let i=0;i<=8;i++){const a=Math.PI-i*Math.PI/8;shape.lineTo(Math.cos(a),Math.sin(a)*.65);}shape.lineTo(1,0);shape.closePath();const g=new THREE.ExtrudeGeometry(shape,{depth:2,bevelEnabled:false,steps:1});g.translate(0,0,-1);mesh(g);break;}
+ case 'ny-barrel':{const shape=new THREE.Shape();shape.moveTo(-1,0);for(let i=0,n=low?4:8;i<=n;i++){const a=Math.PI-i*Math.PI/n;shape.lineTo(Math.cos(a),Math.sin(a)*.65);}shape.lineTo(1,0);shape.closePath();const g=new THREE.ExtrudeGeometry(shape,{depth:2,bevelEnabled:false,steps:1});g.translate(0,0,-1);mesh(g);break;}
  case 'ny-sawtooth':{const s=new THREE.Shape();s.moveTo(-1,0);for(let i=0;i<3;i++){const x=-1+i*2/3;s.lineTo(x,.12);s.lineTo(x+.55,.65);s.lineTo(x+2/3,.12);}s.lineTo(1,0);s.closePath();const g=new THREE.ExtrudeGeometry(s,{depth:2,steps:1,bevelEnabled:false});g.translate(0,0,-1);mesh(g);break;}
  case 'ny-pinnacles':rim(2,2,.12,.24);for(const x of [-.9,.9])for(const z of [-.9,.9]){box(.24,.5,.24,x,.25,z);const m=frustum(.35,0,.55,.5);m.position.x=x;m.position.z=z;}break;
  case 'ny-cornice':box(2,.09,2);box(2.08,.08,2.08,0,.13);break;

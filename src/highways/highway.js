@@ -13,14 +13,14 @@ export function validateHighway(h){
 }
 export function highwayCurve(a,b){const p=new T.Vector3(...a.point),q=new T.Vector3(...b.point);const c=new T.CubicBezierCurve3(p,p.clone().add(new T.Vector3(...a.tangent)),q.clone().sub(new T.Vector3(...b.tangent)),q);c.getTangent=(t,target=new T.Vector3())=>target.copy(c.v1).sub(c.v0).multiplyScalar(3*(1-t)**2).addScaledVector(c.v2.clone().sub(c.v1),6*(1-t)*t).addScaledVector(c.v3.clone().sub(c.v2),3*t*t).normalize();return c;}
 // Subdivide by actual edge curvature, not length. A straight road needs one span.
-export function highwaySamples(h,{pointAt}={}){validateHighway(h);const out=[];let distance=0,previous;
+export function highwaySamples(h,{pointAt,lowDetail=false}={}){validateHighway(h);const out=[];let distance=0,previous;
  for(let i=1;i<h.nodes.length;i++){
   const curve=highwayCurve(h.nodes[i-1],h.nodes[i]),cache=new Map();
   const sample=t=>{if(cache.has(t))return cache.get(t);const point=curve.getPoint(t),direction=curve.getTangent(t);if(Math.hypot(direction.x,direction.z)<1e-5)throw Error('A highway cannot turn vertically or double back at a point.');if(pointAt)pointAt(point,i-1);const value={point,side:new T.Vector3(direction.z,0,-direction.x).normalize(),direction,segment:i-1,t};cache.set(t,value);return value;};
   const append=s=>{if(previous)distance+=s.point.distanceTo(previous);out.push({...s,distance});previous=s.point;};
   const subdivide=(a,b,depth)=>{let split=false;
-   for(const fraction of [.25,.5,.75]){const s=sample(a.t+(b.t-a.t)*fraction);if(s.direction.angleTo(a.direction)>Math.PI/24||s.direction.angleTo(b.direction)>Math.PI/24)split=true;
-    for(const sign of [-1,1]){const p=a.point.clone().addScaledVector(a.side,sign*h.width/2),q=b.point.clone().addScaledVector(b.side,sign*h.width/2),edge=s.point.clone().addScaledVector(s.side,sign*h.width/2),closest=new T.Line3(p,q).closestPointToPoint(edge,true,new T.Vector3());if(edge.distanceToSquared(closest)>.08**2)split=true;}
+   for(const fraction of [.25,.5,.75]){const s=sample(a.t+(b.t-a.t)*fraction);if(s.direction.angleTo(a.direction)>(lowDetail?Math.PI/12:Math.PI/24)||s.direction.angleTo(b.direction)>(lowDetail?Math.PI/12:Math.PI/24))split=true;
+    for(const sign of [-1,1]){const p=a.point.clone().addScaledVector(a.side,sign*h.width/2),q=b.point.clone().addScaledVector(b.side,sign*h.width/2),edge=s.point.clone().addScaledVector(s.side,sign*h.width/2),closest=new T.Line3(p,q).closestPointToPoint(edge,true,new T.Vector3());if(edge.distanceToSquared(closest)>(lowDetail?.18:.08)**2)split=true;}
    }
    if(split&&depth<7){const mid=sample((a.t+b.t)/2);subdivide(a,mid,depth+1);subdivide(mid,b,depth+1);}else append(b);
   };
@@ -42,10 +42,10 @@ export function branchHighway(h,ref,end,width=Math.min(6,h.width),id=crypto.rand
 export function removeHighwayBranch(h,id){const next=structuredClone(h),removed=new Set([id]);for(const b of next.branches||[])if(removed.has(b.start.path)||removed.has(b.end?.path))removed.add(b.id);next.branches=(next.branches||[]).filter(b=>!removed.has(b.id));return next;}
 
 // Keep a ramp level with its parent until its full width clears the shared carriageway.
-export function highwayNetworkSamples(h){const result=new Map(),paths=highwayPaths(h);for(const path of paths){
+export function highwayNetworkSamples(h,{lowDetail=false}={}){const result=new Map(),paths=highwayPaths(h);for(const path of paths){
  const pointAt=(point,segment)=>{for(const key of ['start','end']){const ref=path[key];if(!ref||segment!==(key==='start'?0:path.nodes.length-2))continue;const parent=result.get(ref.path),parentWidth=paths.find(p=>p.id===ref.path).width;let nearest,distance=Infinity;
   for(let i=1;i<parent.length;i++){const a=parent[i-1].point,b=parent[i].point,delta=b.clone().sub(a).setY(0),t=Math.max(0,Math.min(1,point.clone().sub(a).setY(0).dot(delta)/Math.max(1e-9,delta.lengthSq()))),q=a.clone().lerp(b,t),d=Math.hypot(q.x-point.x,q.z-point.z);if(d<distance){nearest=q;distance=d;}}
   const clear=(parentWidth+path.width)/2,t=Math.max(0,Math.min(1,(distance-clear)/3)),blend=1-t*t*(3-2*t);point.y+=(nearest.y-point.y)*blend;
  }};
- result.set(path.id,highwaySamples(path,{pointAt}));
+ result.set(path.id,highwaySamples(path,{pointAt,lowDetail}));
 }return result;}

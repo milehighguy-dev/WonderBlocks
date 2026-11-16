@@ -16,7 +16,7 @@ import {writeMSH,writeTGA,zipFiles,crc32,closedShadow} from './swbf2-binary.js';
 import {exportMaterial,exportUV,nativeLeafTexture,textureFilename} from './swbf2-textures.js';
 import {meshSegments,mergeSegments,weldSurface,surfaceSegment,boxSurface,shadowFromPrimitives,structuralSegments,collisionCarrier,needsCollisionCarrier,modelToSWBF,insetShadow} from './swbf2-geometry.js';
 import {simplifySurface} from '../parts/surface-simplify.js';
-import {LOW_DETAIL_RULES} from '../core/detail-level.js';
+import {lowDetailRule} from '../core/detail-level.js';
 import {cleanCollisionSurface} from '../collision/collision-geometry.js';
 import {generateSWBF2Navigation,navigationInput,navigationFromInput,planningFile,barrierFile} from './swbf2-navigation.js';
 import {SWBF2_AI_MERGE_SCRIPT} from './swbf2-navigation-install.js';
@@ -122,7 +122,7 @@ export function planSWBF2(project,settings={},collisionSource=null,{deferNavigat
    // with an explicit rule change tessellation or representation; other parts
    // retain their existing low-poly geometry rather than guessing a silhouette.
    if(options.lowDetail){
-    const rule=part.route?'route-ramps':part.platform?'preserve-deck-and-joins':part.interior?'rooms-and-ramps':LOW_DETAIL_RULES[part.type];
+    const rule=lowDetailRule(part);
     if(rule){
      onProgress({kind:'progress',phase:'Building distant shapes',label:part.name,completed:surfacing,total:parts.length});
      const lowRoot=buildPart(part,{parts,openingCuts,exportRouteSections:options.routeSections,collision:false,lowDetail:true});
