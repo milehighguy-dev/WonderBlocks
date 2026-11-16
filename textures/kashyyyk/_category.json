@@ -1,0 +1,10 @@
+{
+  "name": "Kashyyyk",
+  "order": 5.5,
+  "preview": [
+    "kotor-kashyyyk-woven-walkway",
+    "bf2-kashyyyk-suspension-deck",
+    "bf2-kashyyyk-timber-platform",
+    "bf2-kashyyyk-thatched-platform"
+  ]
+}

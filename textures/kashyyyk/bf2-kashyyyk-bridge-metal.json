@@ -1,0 +1,14 @@
+{
+  "name": "Kashyyyk · bridge metal (atlas)",
+  "game": "SWBF2",
+  "roughness": 0.65,
+  "metalness": 0.2,
+  "order": 206,
+  "themes": [
+    "Kashyyyk",
+    "Routes",
+    "Platforms"
+  ],
+  "sourceTexture": "kas2_metals",
+  "layout": "atlas"
+}

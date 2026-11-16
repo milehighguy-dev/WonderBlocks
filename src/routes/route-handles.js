@@ -1,4 +1,16 @@
 import * as T from '../../vendor/three.module.js';
+import {routeLayout} from './stair-route.js';
+
+export function routeEditEndpoints(route,index){
+ const entry=routeLayout(route)[index],s=entry.segment;
+ const point=s.turnAngle!==undefined||s.curveAngle?[...entry.end]:[entry.start[0]+Math.sin(entry.heading)*s.run,entry.start[1]+(s.kind==='landing'?0:s.rise),entry.start[2]+Math.cos(entry.heading)*s.run];
+ const endpoints=[{end:'end',point,heading:entry.endHeading}];
+ // Deleting a section leaves an anchored, disconnected path. Its exposed
+ // beginning must remain editable without dragging the downstream sections.
+ if(s.pathStart&&!s.branchFrom&&!s.joinTo&&!s.wallJoinTo&&s.turn==='straight'&&!(index===0&&route.links?.start)&&!route.attachments?.some(a=>a.index===index&&a.end==='start'))endpoints.push({end:'start',point:[...entry.start],heading:entry.heading});
+ return endpoints;
+}
+
 export function routeHandleGeometry(kind){
  if(kind==='join')return new T.RingGeometry(.59,.91,20).rotateX(-Math.PI/2);
  if(kind==='edit')return new T.BoxGeometry(1.25,1.25,1.25);

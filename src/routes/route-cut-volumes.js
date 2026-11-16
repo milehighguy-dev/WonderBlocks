@@ -20,12 +20,16 @@ export function routeCutVolumes(part){
  const matrix=partMatrix(part),volumes=[];
  for(const l of routeLayout(part.route)){
   const s=l.segment;if(!s.hallway&&!(s.cutThroughSolids??part.route.cutThroughSolids))continue;
+  const first=volumes.length;
   const world=([x,z],parameter=z)=>{const y=isFlatSegment(s)?0:s.rise*parameter/s.run;return new T.Vector3(l.start[0]+Math.cos(l.heading)*x+Math.sin(l.heading)*z,l.start[1]+y,l.start[2]-Math.sin(l.heading)*x+Math.cos(l.heading)*z).applyMatrix4(matrix);};
   const step=s.kind==='stairs'?Math.abs(s.rise/s.steps*part.scale[1]):0;
   const bottom=segmentThickness(part.route,s)*Math.abs(part.scale[1])+step+.03,top=(s.hallway?.height??s.cutHeight??part.route.cutHeight??DEFAULT_HALLWAY_HEIGHT)+(s.hallway?.thickness??0)+step+.03;
   if(s.curveAngle){const n=curvePanelCount(s);for(let i=0;i<n;i++){const z0=i*s.run/n,z1=(i+1)*s.run/n;const p=[[-l.width/2,z0],[l.width/2,z0],[l.width/2,z1],[-l.width/2,z1]].map(([x,z])=>{const q=curveMeshPoint(x,0,z,s.run,s.curveAngle);return world([q[0],q[2]],z);});volumes.push(prism([p[0],p[1],p[2]],bottom,top),prism([p[0],p[2],p[3]],bottom,top));}}
   else if(angledTurn(s)){const points=angledLanding(l).points,triangles=T.ShapeUtils.triangulateShape(points.map(p=>new T.Vector2(...p)),[]);for(const ids of triangles)volumes.push(prism(ids.map(i=>world(points[i])),bottom,top));}
   else{const returning=s.turn.startsWith('return-'),width=returning?l.width+l.nextWidth+l.gap:l.width,shift=returning?(s.turn==='return-right'?-1:1)*(l.nextWidth+l.gap)/2:0;volumes.push(prism([[shift-width/2,0],[shift+width/2,0],[shift+width/2,s.run],[shift-width/2,s.run]].map(p=>world(p)),bottom,top));}
+  // A level passage may meet a separate deck at its own walking height.
+  // Keep that deck's supporting floor while still clearing its guard rails.
+  if(isFlatSegment(s)&&Math.abs(matrix.elements[1])+Math.abs(matrix.elements[9])<1e-8)for(const volume of volumes.slice(first))if(volume)volume.floorY=world([0,0]).y;
  }
  return volumes.filter(Boolean);
 }

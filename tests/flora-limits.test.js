@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as T from '../vendor/three.module.js';
 import {FLORA_LIMITS,floraCapacityError} from '../src/flora/flora-limits.js';
-import {defaultFlora,addFloraAsset,duplicateFloraSubtree,extendFloraBranch,floraCurve,validateFlora,floraNeedsWeld} from '../src/flora/flora.js';
+import {defaultFlora,addFloraAsset,duplicateFloraSubtree,extendFloraBranch,floraCurve,validateFlora,floraNeedsWeld,floraSockets} from '../src/flora/flora.js';
 import {makePart,validateProject} from '../src/core/model.js';
 import {buildPart,disposePart} from '../src/core/geometry.js';
 import {createSWBF2Package} from '../src/swbf2/export-swbf2.js';
@@ -35,4 +35,14 @@ test('one shared authoring budget permits the exact limits and rejects only over
  assert.equal(floraCapacityError(f),null);validateFlora(f);assert.match(floraCapacityError(f,{branches:1}),/256/);assert.match(floraCapacityError(f,{parts:1}),/2048/);
  assert.throws(()=>addFloraAsset(f,'branch-0','flora-basic-branch'),/Branch limit/);assert.throws(()=>addFloraAsset(f,'branch-0','flora-ginkgo-leaf'),/Leaf\/body part limit/);assert.throws(()=>duplicateFloraSubtree(f,'branch-1'),/Branch limit/);
  f.organs.push({...structuredClone(leaf),id:'overflow',branch:'branch-0'});assert.throws(()=>validateFlora(f));
+});
+
+test('large flora parts, editable joints and branch thickness survive rendering and save/load',()=>{
+ const flora=defaultFlora(),branch=addFloraAsset(flora,flora.branches[0].id,'flora-basic-branch'),leaf=addFloraAsset(flora,branch.id,'flora-ginkgo-leaf',.5),trunk=addFloraAsset(flora,flora.branches[0].id,'temp-base-stem');
+ branch.radii=branch.radii.map(()=>8);leaf.scale=[25,40,25];trunk.scale=[30,30,30];
+ const joint=floraSockets(trunk.asset).find(s=>s.parent);assert.ok(joint);trunk.controls={[joint.id]:{offset:[0,0,0],rotation:[0,0,0],scale:[20,20,20]}};
+ const project=validateProject(JSON.parse(JSON.stringify({format:'open-building-studio',version:1,name:'Giant flora',parts:[makePart('flora',{flora})]})));
+ assert.deepEqual(project.parts[0].flora,flora);const root=buildPart(project.parts[0],{floraEditing:true,floraLive:true,collision:false});
+ try{root.updateMatrixWorld(true);assert.ok(new T.Box3().setFromObject(root).getSize(new T.Vector3()).length()>50);root.traverse(m=>{if(m.isMesh)assert.ok(m.geometry.attributes.position.array.every(Number.isFinite));});}finally{disposePart(root);}
+ for(const value of [Infinity,NaN,-1]){const invalid=structuredClone(flora);invalid.organs[0].scale[0]=value;assert.throws(()=>validateFlora(invalid));}
 });

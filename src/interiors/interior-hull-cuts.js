@@ -12,7 +12,16 @@ export function prepareInteriorCuts(parts){const cache=new Map(parts.filter(p=>p
 export function cutNeighborInteriors(group,target,parts,openingCuts){
  if(target.interiorProp||target.route||target.highway||target.type==='character-reference'||target.interior&&!target.interior.shell)return;
  const targetMatrix=partMatrix(target),cut=(frame,bounds,planes)=>{const relative=frame.clone().invert().multiply(targetMatrix);for(const mesh of group.children){if(!mesh.isMesh||target.interior&&!mesh.userData.interiorHull)continue;mesh.updateMatrix();const matrix=relative.clone().multiply(mesh.matrix);if(bounds){if(!mesh.geometry.boundingBox)mesh.geometry.computeBoundingBox();const box=mesh.geometry.boundingBox.clone().applyMatrix4(matrix),volume=new T.Box3(new T.Vector3(bounds[0],bounds[2],bounds[4]),new T.Vector3(bounds[1],bounds[3],bounds[5]));if(!box.intersectsBox(volume))continue;}const geometry=planes?subtractConvexVolume(mesh.geometry,matrix,planes):subtractEntranceVolume(mesh.geometry,matrix,bounds);invalidateStructuralVolume(mesh,matrix,{bounds,planes});mesh.geometry.dispose();mesh.geometry=geometry;}};
- for(const source of parts){if(source.id===target.id)continue;for(const volume of (openingCuts?.routeVolumes?.get(source.id)??routeCutVolumes(source)))cut(new T.Matrix4(),volume.bounds,volume.planes);const spaces=[...(source.interior?[{frame:partMatrix(source),plan:source.interior}]:[]),...(source.entranceInteriors||[]).map(s=>({frame:entranceFrame(source,s),plan:s.plan}))];
+ for(const source of parts){if(source.id===target.id)continue;for(const volume of (openingCuts?.routeVolumes?.get(source.id)??routeCutVolumes(source))){
+  let {bounds,planes}=volume;
+  // The hallway slab can be cropped back to its host facade. Its clearance
+  // must not leave a missing strip in the independent balcony beyond it.
+  if(target.platform&&Number.isFinite(volume.floorY)&&Math.abs(targetMatrix.elements[1])+Math.abs(targetMatrix.elements[9])<1e-8&&Math.abs(targetMatrix.elements[13]-volume.floorY)<.05){
+   const bottom=Math.max(targetMatrix.elements[13],volume.floorY)+1e-5;
+   bounds=[...bounds];bounds[2]=Math.max(bounds[2],bottom);planes=[...planes,[0,1,0,-bottom]];
+  }
+  cut(new T.Matrix4(),bounds,planes);
+ }const spaces=[...(source.interior?[{frame:partMatrix(source),plan:source.interior}]:[]),...(source.entranceInteriors||[]).map(s=>({frame:entranceFrame(source,s),plan:s.plan}))];
  for(const {frame,plan} of spaces)for(const level of levelsOf(plan))for(const room of level.plan.rooms)for(const volume of roomCutVolumes(room,level.plan,level.elevation))cut(frame,volume.bounds,volume.planes);
 
  for(const window of (openingCuts?.get(source.id)??connectedOpeningCuts(source,parts)))cut(window.frame,window.bounds);

@@ -26,9 +26,10 @@ try{
  const rotationHandle=await page.evaluate(async()=>{const T=await import('/vendor/three.module.js'),c=window.shortcutControls;c.getHelper().updateMatrixWorld(true);const rect=c.domElement.getBoundingClientRect();for(const mesh of c._gizmo.picker.rotate.children){const p=mesh.geometry.attributes.position;for(let i=0;i<p.count;i+=Math.max(1,Math.floor(p.count/30))){const point=new T.Vector3().fromBufferAttribute(p,i).applyMatrix4(mesh.matrixWorld).project(c.camera);if(Math.abs(point.x)>.95||Math.abs(point.y)>.95)continue;c.pointerHover({x:point.x,y:point.y,button:0});if(c.axis)return {x:rect.left+(point.x+1)*rect.width/2,y:rect.top+(1-point.y)*rect.height/2};}}throw Error('No visible rotation handle');});
  await page.mouse.move(rotationHandle.x,rotationHandle.y);assert.ok(await page.evaluate(()=>window.shortcutControls.axis));await page.keyboard.press('r');
  assert.equal(await page.evaluate(()=>window.shortcutControls.mode),'scale');assert.equal(await page.evaluate(()=>window.shortcutControls.axis),null,'R clears the hovered rotation handle');
+ await page.locator('.flora-selection-settings').evaluate(el=>el.open=true);await page.getByRole('spinbutton',{name:'Joint thickness',exact:true}).fill('3.9');await page.getByRole('spinbutton',{name:'Joint thickness',exact:true}).press('Tab');
  const joint=await page.evaluate(async()=>{const T=await import('/vendor/three.module.js'),c=window.shortcutControls;c.object.updateWorldMatrix(true,false);const point=c.object.getWorldPosition(new T.Vector3()).project(c.camera),rect=c.domElement.getBoundingClientRect();return {x:rect.left+(point.x+1)*rect.width/2,y:rect.top+(1-point.y)*rect.height/2};});
  await page.mouse.move(joint.x,joint.y);await page.mouse.down();await page.mouse.move(joint.x,joint.y-40,{steps:5});await page.mouse.up();
- const scaleDownload=page.waitForEvent('download');await page.keyboard.press('Control+s');const scaled=JSON.parse(await readFile(await(await scaleDownload).path(),'utf8'));assert.ok(scaled.parts[0].flora.branches[0].radii[1]>flora.branches[0].radii[1],'R enables a real pointer scale gesture');await page.keyboard.press('Control+z');
+ const scaleDownload=page.waitForEvent('download');await page.keyboard.press('Control+s');const scaled=JSON.parse(await readFile(await(await scaleDownload).path(),'utf8'));assert.ok(scaled.parts[0].flora.branches[0].radii[1]>4,'R scales past the old branch-thickness cap');await page.keyboard.press('Control+z');
 
  for(let i=0;i<6;i++)await extend.click();
  assert.equal(await page.getByRole('combobox',{name:'Selected plant part'}).locator('option').count(),8);
@@ -39,6 +40,13 @@ try{
  await page.keyboard.press('Control+Shift+z');assert.deepEqual(await download(),continued);
  await page.locator('[data-context-action=done]').click();assert.deepEqual(await download(),continued);
  assert.equal(await page.locator('[data-workspace-mode=flora]').getAttribute('aria-pressed'),'true');assert.deepEqual(errors,[]);
+ const leaves=defaultFlora(),leaf=addFloraAsset(leaves,leaves.branches[0].id,'flora-ginkgo-leaf');leaf.scale=[9.9,9.9,9.9];
+ await page.locator('#file').setInputFiles({name:'large-leaf.building.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({format:'open-building-studio',version:1,name:'Large leaf',parts:[makePart('flora',{flora:leaves})]}))});
+ await page.waitForFunction(()=>document.getElementById('title').value==='Large leaf'&&!document.getElementById('scene-loading').open);
+ await page.locator('#scene-outline .scene-select').first().click();await page.locator('[data-flora-edit]').click();await page.getByRole('combobox',{name:'Selected plant part',exact:true}).selectOption(leaf.id);await page.keyboard.press('r');
+ const leafHandle=await page.evaluate(async()=>{const T=await import('/vendor/three.module.js'),c=window.shortcutControls;c.object.updateWorldMatrix(true,false);const point=c.object.getWorldPosition(new T.Vector3()).project(c.camera),rect=c.domElement.getBoundingClientRect();return {x:rect.left+(point.x+1)*rect.width/2,y:rect.top+(1-point.y)*rect.height/2};});
+ await page.mouse.move(leafHandle.x,leafHandle.y);await page.mouse.down();await page.mouse.move(leafHandle.x,leafHandle.y-40,{steps:5});await page.mouse.up();
+ const giantLeaf=await download();assert.ok(giantLeaf.parts[0].flora.organs[0].scale.every(s=>s>10),'whole foliage parts grow beyond the old 10x cap');await page.keyboard.press('Control+z');assert.deepEqual((await download()).parts[0].flora.organs[0].scale,[9.9,9.9,9.9]);await page.keyboard.press('Control+Shift+z');await page.locator('[data-context-action=done]').click();assert.deepEqual(await download(),giantLeaf);assert.deepEqual(errors,[]);
  console.log('PASS browser: R activates scaling after rotation hover; Extend branch, Undo/Redo and Done preserve the vine.');
 }catch(error){await page?.screenshot({path:path.join(artifacts,'failure.png')}).catch(()=>{});console.error('Vine browser artifacts: '+artifacts);throw error;}
 finally{await browser?.close();await new Promise(r=>server.close(r));}

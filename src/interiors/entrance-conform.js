@@ -29,9 +29,9 @@ function conformGeometry(mesh,frame,inverse,run,end,depth){
  const geometry=new T.BufferGeometry();for(const name of names)geometry.setAttribute(name,new T.Float32BufferAttribute(values[name],source.attributes[name].itemSize));geometry.userData={...mesh.geometry.userData};geometry.computeVertexNormals();source.dispose();return geometry;
 }
 
-// This is a shape modifier used before object collision is prepared. The floor
-// stays connected to the outdoor landing; only the enclosure's mouth follows
-// the original host surface. Host cuts then reveal that curved intersection.
+// Fit the complete mouth, including the floor, before preparing collision.
+// The route endpoint remains its editing reference; the visible threshold
+// follows the original host surface rather than projecting onto the deck.
 export function conformRouteEntrances(group,part,parts,build){
  if(!part.route)return;
  for(const layout of routeLayout(part.route)){
@@ -42,7 +42,7 @@ export function conformRouteEntrances(group,part,parts,build){
    if(hit){const z=hit.point.clone().applyMatrix4(worldInverse).z;value=end==='start'?T.MathUtils.clamp(z-.03/scaleZ,0,run-.2):T.MathUtils.clamp(z+.03/scaleZ,.2,run);hits++;}else misses++;samples.set(key,value);return value;};
   // No intersection means the host was moved away. Keep the original hallway.
   depth(0,layout.segment.hallway.height/scaleY/2);if(!hits){(group.userData.entranceFits??=[]).push({segment:layout.index,partId:host.id,status:'no-intersection'});continue;}
-  const replacements=[];for(const mesh of group.children){if(!mesh.isMesh||!mesh.userData.hallway||mesh.userData.routeSegment!==layout.index)continue;replacements.push({mesh,geometry:conformGeometry(mesh,{scaleX,scaleY},inverse,run,end,depth)});}
+  const replacements=[];for(const mesh of group.children){if(!mesh.isMesh||!(mesh.userData.hallway||mesh.userData.routeFloor)||mesh.userData.routeSegment!==layout.index)continue;replacements.push({mesh,geometry:conformGeometry(mesh,{scaleX,scaleY},inverse,run,end,depth)});}
   if(misses){replacements.forEach(r=>r.geometry.dispose());(group.userData.entranceFits??=[]).push({segment:layout.index,partId:host.id,status:'incomplete-surface',surfaceSamples:samples.size,hits});continue;}
   for(const {mesh,geometry} of replacements){mesh.geometry.dispose();mesh.geometry=geometry;delete mesh.userData.structuralVolume;delete mesh.userData.shadowVolume;mesh.userData.conformedEntrance=true;}
   (group.userData.entranceFits??=[]).push({segment:layout.index,partId:host.id,status:'fitted',surfaceSamples:samples.size,hits});

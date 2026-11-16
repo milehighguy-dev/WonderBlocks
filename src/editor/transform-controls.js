@@ -3,12 +3,13 @@ import {Vector2,Vector3} from '../../vendor/three.module.js';
 import {dragScale,limitScaleTravel} from './scale-drag.js';
 
 const diagonal=new Vector2(1,-1).normalize();
+const FINE_CONTROL=.2;
 
-// Keep the stock move/rotate tools and scale handles, with a pixel-based scale
+// Keep the stock move/rotate geometry and scale handles, with a pixel-based scale
 // gesture that does not divide by the distance from the mouse to the pivot.
 export class TransformControls extends ThreeTransformControls{
  constructor(camera,element){
-  super(camera,element);this._requestedSize=this.size;this._scaleDrag=null;this.uniformScale=false;this.scaleFactorLimits=null;
+  super(camera,element);this._requestedSize=this.size;this._scaleDrag=null;this._rotationDrag=null;this.uniformScale=false;this.scaleFactorLimits=null;
   const getPointer=this._getPointer;this._getPointer=event=>({...getPointer(event),shiftKey:event.shiftKey,altKey:event.altKey});
   const helper=this.getHelper(),update=helper.updateMatrixWorld.bind(helper);
   helper.updateMatrixWorld=force=>{this._syncSize();const result=update(force);if(this.mode==='scale'&&this.uniformScale)for(const handle of this._gizmo.gizmo.scale.children)if(handle.name!=='XYZ')handle.visible=false;return result;};
@@ -34,7 +35,11 @@ export class TransformControls extends ThreeTransformControls{
   super.pointerHover(pointer);
  }
  pointerDown(pointer){
-  if(this.mode!=='scale')return super.pointerDown(pointer);
+  if(this.mode!=='scale'){
+   const alreadyDragging=this.dragging,result=super.pointerDown(pointer);
+   if(this.mode==='rotate'&&this.dragging&&!alreadyDragging)this._rotationDrag={object:this.object,lastRaw:0,angle:0};
+   return result;
+  }
   if(!this.object||this.dragging||!this.axis||!pointer||pointer.button!==0)return;
   const object=this.object,origin=this._origin(),start=this._pixel(pointer);
   this._positionStart.copy(object.position);this._quaternionStart.copy(object.quaternion);this._scaleStart.copy(object.scale);
@@ -55,18 +60,28 @@ export class TransformControls extends ThreeTransformControls{
   this._scaleDrag={object,axes:this.axis,start:object.scale.toArray(),last:start,pixels:0,direction};
   this.dragging=true;this.dispatchEvent({type:'mouseDown',mode:'scale'});
  }
+ rotationDragAngle(raw,pointer,circular=false){
+  const drag=this._rotationDrag??={object:this.object,lastRaw:0,angle:0};
+  let delta=raw-drag.lastRaw;drag.lastRaw=raw;
+  if(circular)delta=Math.atan2(Math.sin(delta),Math.cos(delta));
+  // Weight each new movement, so pressing/releasing Shift during a gesture
+  // changes sensitivity without rescaling the rotation already performed.
+  drag.angle+=delta*(pointer?.shiftKey?FINE_CONTROL:1);
+  const snap=pointer?.altKey||pointer?.shiftKey?null:this.rotationSnap;
+  return snap?Math.round(drag.angle/snap)*snap:drag.angle;
+ }
  pointerMove(pointer){
   if(this.mode!=='scale')return super.pointerMove(pointer);
   const drag=this._scaleDrag;
   if(!drag||!this.dragging||this.object!==drag.object||!pointer||pointer.button!==-1)return;
   const point=this._pixel(pointer),delta=point.clone().sub(drag.last);drag.last.copy(point);
-  drag.pixels+=delta.dot(drag.direction)*(pointer.shiftKey?.2:1);
+  drag.pixels+=delta.dot(drag.direction)*(pointer.shiftKey?FINE_CONTROL:1);
   const snap=pointer.altKey||pointer.shiftKey?null:this.scaleSnap;
   drag.pixels=limitScaleTravel(drag.start,drag.axes,drag.pixels,snap,this.scaleFactorLimits);
   this.object.scale.fromArray(dragScale(drag.start,drag.axes,drag.pixels,snap,this.scaleFactorLimits));
   this.dispatchEvent({type:'change'});this.dispatchEvent({type:'objectChange'});
  }
- pointerUp(pointer){super.pointerUp(pointer);if(!this.dragging)this._scaleDrag=null;}
- reset(){super.reset();if(this._scaleDrag){this._scaleDrag.start=this.object.scale.toArray();this._scaleDrag.pixels=0;}}
- detach(){this._scaleDrag=null;return super.detach();}
+ pointerUp(pointer){super.pointerUp(pointer);if(!this.dragging){this._scaleDrag=null;this._rotationDrag=null;}}
+ reset(){super.reset();if(this._scaleDrag){this._scaleDrag.start=this.object.scale.toArray();this._scaleDrag.pixels=0;}if(this._rotationDrag){this._rotationDrag.lastRaw=0;this._rotationDrag.angle=0;}}
+ detach(){this._scaleDrag=null;this._rotationDrag=null;return super.detach();}
 }

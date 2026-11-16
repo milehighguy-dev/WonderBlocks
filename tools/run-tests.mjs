@@ -58,7 +58,10 @@ try{
   await node(['tests/integration/history-performance.mjs'],120000);
   await node(['tests/integration/flora-vines.mjs'],120000);
   await node(['tests/integration/project-files.mjs'],120000);
+  await node(['tests/integration/recent-projects.mjs'],120000);
+  await node(['tests/integration/recent-browser-handles.mjs'],120000);
   await node(['tests/integration/curved-endpoint-drag.mjs'],120000);
+  await node(['tests/integration/route-destinations.mjs'],120000);
   await node(['tests/integration/worker-startup.mjs'],120000);
   await node(['tests/integration/group-scale.mjs'],120000);
   await node(['tests/integration/texture-palette.mjs'],120000);

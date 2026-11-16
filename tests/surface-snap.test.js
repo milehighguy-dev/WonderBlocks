@@ -5,7 +5,7 @@ import {makePart as makeFixturePart} from '../src/core/model.js';import {buildPa
 function target(x=0,y=0,z=3,w=2,h=2,d=2){const g=buildPart(makePart('block',{name:'Platform',position:[x,y,z],scale:[w,h,d]}));g.updateMatrixWorld(true);return g;}
 function values(p,run=3,rise=1.85){return dragDimensions(p.route,0,run,rise,0,false);}
 test('surface snap reaches actual platform height without stretching tread depth',()=>{
- const p=makePart('stair-route'),g=target();const snap=snapRouteToSurface(p,0,values(p),[g]);assert.equal(snap.rise,2);assert.equal(snap.run,3);assert.equal(snap.run/snap.steps,.375);assert.equal(snap.surfaceSnap,'Platform');assert.equal(snap.locked,false);disposePart(g);
+ for(const height of [2,25]){const p=makePart('stair-route'),g=target(0,0,3,2,height,2);const snap=snapRouteToSurface(p,0,values(p,3,height-.15),[g]);assert.equal(snap.rise,height);assert.equal(snap.run,3);assert.equal(snap.run/snap.steps,.375);assert.equal(snap.surfaceSnap,'Platform');assert.equal(snap.locked,false);disposePart(g);}
 });
 test('surface snap may add a whole tread to reach the edge but never snaps across empty space',()=>{
  const p=makePart('stair-route'),g=target(0,0,3.6,2,2,.6); // starts at z=3.3
@@ -23,8 +23,8 @@ test('surface heights convert correctly for scaled rotated routes; landings stay
 });
 
 test('descending flights snap down to a lower platform',()=>{
- const p=makePart('stair-route',{position:[0,4,0]}),g=target();
- const snap=snapRouteToSurface(p,0,values(p,3,-1.85),[g]);assert.ok(snap);assert.equal(snap.rise,-2);assert.equal(snap.surfacePoint[1],2);disposePart(g);
+ for(const height of [4,27]){const p=makePart('stair-route',{position:[0,height,0]}),g=target();
+ const snap=snapRouteToSurface(p,0,values(p,3,2-height+.15),[g]);assert.ok(snap);assert.equal(snap.rise,2-height);assert.equal(snap.surfacePoint[1],2);disposePart(g);}
 });
 
 

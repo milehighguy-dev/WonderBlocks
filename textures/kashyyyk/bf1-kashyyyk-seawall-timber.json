@@ -1,0 +1,14 @@
+{
+  "name": "Kashyyyk · seawall timber (atlas)",
+  "game": "SWBF1",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 210,
+  "themes": [
+    "Kashyyyk",
+    "Routes",
+    "Platforms"
+  ],
+  "sourceTexture": "kashyyyk-timber-kas1_wookie_seawall02",
+  "layout": "atlas"
+}

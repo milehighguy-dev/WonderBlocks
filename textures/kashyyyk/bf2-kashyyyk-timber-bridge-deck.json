@@ -1,0 +1,14 @@
+{
+  "name": "Kashyyyk · timber bridge deck (atlas)",
+  "game": "SWBF2",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 205,
+  "themes": [
+    "Kashyyyk",
+    "Routes",
+    "Platforms"
+  ],
+  "sourceTexture": "kas2_bldg_platform_edge",
+  "layout": "atlas"
+}

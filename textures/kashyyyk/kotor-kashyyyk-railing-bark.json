@@ -1,0 +1,14 @@
+{
+  "name": "Kashyyyk · railing end grain (atlas)",
+  "game": "KOTOR",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 201,
+  "themes": [
+    "Kashyyyk",
+    "Routes",
+    "Platforms"
+  ],
+  "sourceTexture": "lka_bark04",
+  "layout": "atlas"
+}

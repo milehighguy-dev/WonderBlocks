@@ -41,6 +41,40 @@ try{
  assert.ok(delegated.moved>0);assert.ok(Math.abs(delegated.rotation)>.01);assert.deepEqual(delegated.scale,[4,2,8]);
  console.log('PASS scale: center targeting, proportional snap, rotated axes, reflected objects, fine control and distance-independent sensitivity');
 
+ const rotationModifiers=await page.evaluate(()=>{
+  const f=window.scaleFixture,c=f.controls,tests=[];
+  const rotate=(axis,modifiers,space='world')=>{
+   f.configure({scale:[2,3,4],distance:40,rotation:space==='local'?[.2,.4,-.1]:[0,0,0]});c.setMode('rotate');c.setSpace(space);c.setRotationSnap(Math.PI/12);c.axis=axis;c.getHelper().updateMatrixWorld(true);
+   c.pointerDown({x:.12,y:.1,button:0});c.pointerMove({x:.35,y:.23,button:-1,...modifiers});const angle=c.rotationAngle;c.pointerUp({button:0});return angle;
+  };
+  for(const space of ['world','local'])for(const axis of ['X','Y','Z','E','XYZE'])tests.push({space,axis,normal:rotate(axis,{} ,space),free:rotate(axis,{altKey:true},space),fine:rotate(axis,{shiftKey:true},space),both:rotate(axis,{shiftKey:true,altKey:true},space)});
+  f.configure({scale:[2,3,4],distance:40});c.setMode('rotate');c.setSpace('world');c.setRotationSnap(Math.PI/12);c.axis='Z';c.getHelper().updateMatrixWorld(true);c.pointerDown({x:.12,y:.1,button:0});
+  c.pointerMove({x:.2,y:.15,button:-1,altKey:true});const first=c.rotationAngle,raw=c._rotationDrag.lastRaw;
+  c.pointerMove({x:.2,y:.15,button:-1,shiftKey:true,altKey:true});const unchanged=c.rotationAngle;
+  c.pointerMove({x:.3,y:.2,button:-1,shiftKey:true,altKey:true});const second=c.rotationAngle,expected=first+(c._rotationDrag.lastRaw-raw)*.2;
+  c.pointerMove({x:.3,y:.2,button:-1,altKey:true});const released=c.rotationAngle;c.reset();const reset=c.object.quaternion.angleTo(c._quaternionStart);c.pointerUp({button:0});const cleared=c._rotationDrag===null;
+  return {tests,first,unchanged,second,expected,released,reset,cleared};
+ });
+ for(const sample of rotationModifiers.tests){assert.ok(Math.abs(sample.free)>.001,sample.axis+' produces a rotation');close(sample.fine,sample.free*.2);close(sample.both,sample.fine);close(sample.normal/(Math.PI/12),Math.round(sample.normal/(Math.PI/12)));assert.ok(Math.abs(sample.free-sample.normal)>1e-5,'Alt bypasses snapping on '+sample.axis);}
+ close(rotationModifiers.unchanged,rotationModifiers.first);close(rotationModifiers.second,rotationModifiers.expected);close(rotationModifiers.released,rotationModifiers.second);close(rotationModifiers.reset,0);assert.equal(rotationModifiers.cleared,true);
+ console.log('PASS rotation: Shift fine control, Alt snap bypass, combined modifiers, all axes/world/local, mid-drag switching and reset.');
+
+ const mouseAngles=[];
+ for(const modifiers of [[],['Alt'],['Shift'],['Shift','Alt']]){
+  const grip=await page.evaluate(async()=>{
+   const T=await import('/vendor/three.module.js'),f=window.scaleFixture,c=f.controls;f.configure({scale:[2,3,4],distance:40});c.setMode('rotate');c.setRotationSnap(Math.PI/12);c.getHelper().updateMatrixWorld(true);
+   const mesh=c._gizmo.picker.rotate.children.find(m=>m.name==='E'),rect=c.domElement.getBoundingClientRect();
+   for(let i=0;i<48;i++){const theta=i*Math.PI/24,p=new T.Vector3(.75*Math.cos(theta),.75*Math.sin(theta),0).applyMatrix4(mesh.matrixWorld).project(c.camera);c.pointerHover({x:p.x,y:p.y,button:-1});if(c.axis==='E')return {x:rect.left+(p.x+1)*rect.width/2,y:rect.top+(1-p.y)*rect.height/2};}
+   throw Error('No visible free-rotation handle');
+  });
+  for(const key of modifiers)await page.keyboard.down(key);try{await drag(grip,37,-23);}finally{for(const key of modifiers.reverse())await page.keyboard.up(key);}
+  mouseAngles.push(await page.evaluate(()=>window.scaleFixture.controls.rotationAngle));
+ }
+ close(mouseAngles[2],mouseAngles[1]*.2);close(mouseAngles[3],mouseAngles[2]);assert.ok(Math.abs(mouseAngles[0]-mouseAngles[1])>1e-5,'actual Alt drag bypasses rotation snapping');
+ console.log('PASS rotation: real mouse drags receive Shift and Alt through the shared controls.');
+
+
+
  await page.goto(origin+'/index.html');await page.waitForFunction(()=>!document.getElementById('scene-loading')?.open,null,{timeout:90000});
  await page.evaluate(async()=>{const {TransformControls}=await import('/src/editor/transform-controls.js'),hover=TransformControls.prototype.pointerHover;TransformControls.prototype.pointerHover=function(pointer){if(this.object&&this.mode==='scale')window.scaleControl=this;return hover.call(this,pointer);};});
  for(const initial of [[8,.08,12],[800,.08,500]]){

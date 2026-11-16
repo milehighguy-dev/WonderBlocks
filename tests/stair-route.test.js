@@ -5,6 +5,18 @@ import {buildPart,disposePart} from '../src/core/geometry.js';
 import {Box3,Raycaster,Vector3} from '../vendor/three.module.js';
 import {captureAssembly,instantiateAssembly} from '../src/core/library.js';
 const flight=()=>({kind:'stairs',run:3,rise:2.5,steps:12,turn:'straight'});
+
+test('large climbs and descents work through dragging, slope snapping, geometry and saved projects',()=>{
+ for(const kind of ['stairs','ramp'])for(const rise of [-25,25]){
+  const route=defaultRoute();Object.assign(route.segments[0],{kind,run:12,rise,steps:32});
+  Object.assign(route.segments[0],dragDimensions(route,0,12,rise,Math.atan2(rise,12),false));assert.equal(route.segments[0].rise,rise);
+  const snapped=dragDimensions(route,0,12,rise*.99,Math.atan2(rise,12),true);assert.ok(snapped.locked);assert.ok(Math.abs(snapped.rise-rise)<1e-8);
+  const part=makePart('stair-route',{route}),project={format:'open-building-studio',version:1,name:'Tall stairs',parts:[part]},saved=validateProject(JSON.parse(JSON.stringify(project))),history=new History(saved);
+  assert.equal(routeLayout(saved.parts[0].route)[0].end[1],rise);saved.parts[0].route.segments[0].rise=rise*2;history.push(saved);assert.equal(history.undo().parts[0].route.segments[0].rise,rise);assert.equal(history.redo().parts[0].route.segments[0].rise,rise*2);
+  const mesh=buildPart(part,{collision:false});try{const bounds=new Box3().setFromObject(mesh);assert.ok(bounds.getSize(new Vector3()).y>=Math.abs(rise));mesh.traverse(m=>{if(m.isMesh)assert.ok(m.geometry.attributes.position.array.every(Number.isFinite));});}finally{disposePart(mesh);}
+  for(const invalid of [NaN,Infinity,-Infinity]){const broken=structuredClone(route);broken.segments[0].rise=invalid;assert.throws(()=>validateRoute(broken));}
+ }
+});
 test('straight landings can be shallow independently of width; turns keep connection space',()=>{
  const r=turnRoute('straight');r.segments[1].run=.4;validateRoute(r);
  assert.equal(dragDimensions(r,1,.4,0,0).run,.4);

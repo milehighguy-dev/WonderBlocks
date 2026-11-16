@@ -9,6 +9,7 @@ import {instantiateFloraTreePreset} from '../src/flora/flora-tree-presets.js';
 import {COLLISION_MASK} from '../src/collision/object-collision.js';
 import {createObjectCollision} from '../src/collision/object-collision.js';
 import {createWalkCollision} from '../src/walk/walk-collision.js';
+import {curveMeshPoint} from '../src/routes/curved-route.js';
 
 function built(part,options={},check){const root=buildPart(part,options);try{return check(root.userData.collision,root);}finally{disposePart(root);}}
 test('new blocks own exact primitive collision shared across applicable categories',()=>{
@@ -22,6 +23,27 @@ test('render batching and material colour do not change object collision',()=>{
 test('stair objects create movement ramps and retain projectile tread profiles',()=>{
  const route=defaultRoute();route.segments=[{kind:'stairs',run:8,rise:3,steps:16,turn:'straight',railing:{style:'none'}}];
  built(makePart('stair-route',{route}),{},collision=>{assert.ok(collision.bodies.some(b=>b.source==='stair ramp'&&b.mask===COLLISION_MASK.movement));assert.ok(collision.bodies.some(b=>b.source==='stair treads'&&b.mask===COLLISION_MASK.ordnance));const movement=collision.bodies.filter(b=>b.mask&COLLISION_MASK.soldier);assert.ok(movement.every(b=>b.kind!=='mesh'||b.surface.triangles.length<20));});
+});
+
+test('KOTOR material splits retain smooth stair movement ramps in both directions and on curves',()=>{
+ for(const rise of [3,-3])for(const angle of [0,Math.PI/2,-Math.PI/2]){
+  const route=defaultRoute();route.width=5;route.segments=[{kind:'stairs',run:12,rise,steps:16,turn:'straight',curveAngle:angle,railing:{style:'kotor-kashyyyk'}}];
+  const part=makePart('stair-route',{route,position:[17,20,-12],rotation:[0,.63,0],scale:[1.5,1.2,1.5]});
+  const plain=structuredClone(part);plain.id+='-plain';plain.route.segments[0].railing={style:'none'};const baseline=buildPart(plain);
+  try{
+  built(part,{},(collision,root)=>{
+   assert.ok(collision.bodies.some(b=>b.source==='stair ramp'&&b.mask===COLLISION_MASK.movement));
+   const movement=createWalkCollision([root]),shots=createWalkCollision([root],{mask:COLLISION_MASK.ordnance}),reference=createWalkCollision([baseline]);
+   for(let i=0;i<16;i++)for(const fraction of [.2,.7]){
+    const t=(i+fraction)/16,point=new T.Vector3(...curveMeshPoint(0,rise*t,12*t,12,angle)).applyMatrix4(root.matrixWorld),ray=new T.Raycaster(point.clone().add(new T.Vector3(0,5,0)),new T.Vector3(0,-1,0),0,10),hit=movement.firstHit(ray),bullet=shots.firstHit(ray);
+    const expected=reference.firstHit(ray);
+    assert.ok(hit&&expected&&Math.abs(hit.point.y-expected.point.y)<1e-4,`smooth movement floor at rise ${rise}, curve ${angle}, step ${i}+${fraction}: ${hit?.point.y} vs ${expected?.point.y}`);
+    const treadHeight=20+(i+(rise<0?0:1))*rise/16*1.2;
+    assert.ok(bullet&&Math.abs(bullet.point.y-treadHeight)<1e-4,'projectiles still hit the visible step');
+   }
+  });
+  }finally{disposePart(baseline);}
+ }
 });
 test('interior doors are not replaced with enclosing primitive boxes',()=>{
  const interior=defaultInterior();interior.doors=[{axis:'x',line:0,offset:3,width:1.2,height:2.2}];

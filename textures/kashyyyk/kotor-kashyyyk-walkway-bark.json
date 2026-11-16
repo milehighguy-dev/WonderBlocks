@@ -1,0 +1,13 @@
+{
+  "name": "Kashyyyk · walkway bark",
+  "game": "KOTOR",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 200,
+  "themes": [
+    "Kashyyyk",
+    "Routes",
+    "Platforms"
+  ],
+  "sourceTexture": "lka_bark01"
+}

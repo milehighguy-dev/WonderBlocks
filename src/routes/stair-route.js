@@ -21,13 +21,13 @@ export const stepThickness=(r,s)=>s.treadThickness??Math.min(.08,segmentThicknes
 export function dragDimensions(route,index,run,rise,referenceAngle,snap=true){
  const s=route.segments[index],minRun=minimumRun(route,index);
  let steps=s.steps;const treadDepth=stepDepth(s);if(s.kind==='stairs'){const minimumSteps=Math.max(1,Math.ceil(minRun/treadDepth)),maximumSteps=Math.min(64,Math.floor(30/treadDepth));if(minimumSteps>maximumSteps)throw Error('This curve needs more room than 64 steps allow. Reduce its width or bend, or increase tread depth.');steps=Math.max(minimumSteps,Math.min(maximumSteps,Math.round(run/treadDepth)));run=steps*treadDepth;}
- run=Math.max(minRun,Math.min(30,run));rise=Math.max(-10,Math.min(10,rise));if(Math.abs(rise)<.015)rise=0;let locked=false;
- if(s.kind!=='landing'&&rise!==0&&snap&&Math.abs(Math.atan2(rise,run)-referenceAngle)<Math.PI/60){const target=run*Math.tan(referenceAngle);if(target>=-10&&target<=10){rise=target;locked=true;}}
+ run=Math.max(minRun,Math.min(30,run));if(Math.abs(rise)<.015)rise=0;let locked=false;
+ if(s.kind!=='landing'&&rise!==0&&snap&&Math.abs(Math.atan2(rise,run)-referenceAngle)<Math.PI/60){const target=run*Math.tan(referenceAngle);if(Number.isFinite(target)){rise=target;locked=true;}}
  return {steps,...(s.kind==='stairs'?{treadDepth,treadThickness:stepThickness(route,s)}:{}),run,rise:s.kind==='landing'?s.rise:rise,locked};
 }
 export function validateRoute(r){
  if(!r||!Number.isFinite(r.width)||r.width<.5||r.width>10||!Number.isFinite(r.thickness)||r.thickness<.05||r.thickness>1||!Number.isFinite(r.gap)||r.gap<0||r.gap>5||!Array.isArray(r.segments)||!r.segments.length||r.segments.length>256)throw Error('Invalid stair route.');
- for(const s of r.segments)if(!['stairs','ramp','landing'].includes(s.kind)||!Number.isFinite(s.run)||s.run<minimumRun(r,r.segments.indexOf(s))||s.run>30||!Number.isFinite(s.rise)||s.rise<-10||s.rise>10||!Number.isInteger(s.steps)||s.steps<1||s.steps>64||!['straight','left','right','return-left','return-right'].includes(s.turn)||s.kind!=='landing'&&s.turn!=='straight')throw Error('Invalid route segment.');
+ for(const s of r.segments)if(!['stairs','ramp','landing'].includes(s.kind)||!Number.isFinite(s.run)||s.run<minimumRun(r,r.segments.indexOf(s))||s.run>30||!Number.isFinite(s.rise)||!Number.isInteger(s.steps)||s.steps<1||s.steps>64||!['straight','left','right','return-left','return-right'].includes(s.turn)||s.kind!=='landing'&&s.turn!=='straight')throw Error('Invalid route segment.');
  for(const s of r.segments){if(s.treadDepth!==undefined&&(!Number.isFinite(s.treadDepth)||s.treadDepth<.05||s.treadDepth>3)||s.treadThickness!==undefined&&(!Number.isFinite(s.treadThickness)||s.treadThickness<.02||s.treadThickness>1))throw Error('Invalid individual step dimensions.');if(s.width!==undefined&&(!Number.isFinite(s.width)||s.width<.5||s.width>10)||s.thickness!==undefined&&(!Number.isFinite(s.thickness)||s.thickness<.05||s.thickness>1))throw Error('Invalid segment width or thickness.');}
  for(const s of r.segments)if(s.turnAngle!==undefined&&(!Number.isFinite(s.turnAngle)||s.kind!=='landing'||Math.abs(s.turnAngle)<.001||Math.abs(s.turnAngle)>Math.PI*175/180||s.turn!==(s.turnAngle>0?'left':'right')))throw Error('Turn angle must be between 0.06° and 175°.');
  for(const s of r.segments)if(s.curveAngle!==undefined&&(!Number.isFinite(s.curveAngle)||Math.abs(s.curveAngle)>Math.PI*1.5||s.turn!=='straight'||s.turnAngle!==undefined||s.joinTo))throw Error('Curved sections need a straight exit setting and a bend between -270° and 270°.');
@@ -49,7 +49,7 @@ export function routeLayout(route,validated=false){
   if(s.branchFrom){const port=junctionPort(built,s.branchFrom);[x,y,z]=port.point;angle=port.angle;}
   if(s.wallJoinTo){const target=built[s.wallJoinTo.segment],point=wallPointAt(target,s.wallJoinTo.t),dx=point[0]-x,dz=point[2]-z,run=Math.hypot(dx,dz);if(run<.2||run>30||Math.abs(point[1]-y)>.05)throw Error('Keep welded walls level and within 30 metres.');angle=Math.atan2(dx,dz);s={...s,run,turn:'straight'};}
   if(s.joinTo){const port=junctionPort(built,s.joinTo),target=port.point,dx=target[0]-x,dz=target[2]-z,run=Math.hypot(dx,dz),rise=target[1]-y;
-   if(run<.2||run>30||Math.abs(rise)>10)throw Error('The join must be between 0.2 and 30 metres long, with at most 10 metres height change.');
+   if(run<.2||run>30||!Number.isFinite(rise))throw Error('The join must be between 0.2 and 30 metres long.');
    if(s.kind==='landing'&&Math.abs(rise)>1e-5)throw Error('Use a ramp or stairs to join different heights.');
    const aim=Math.atan2(dx,dz),difference=a=>Math.abs(Math.atan2(Math.sin(a),Math.cos(a)));
    if(difference(aim-angle)>1e-5||difference(aim-port.angle-Math.PI)>1e-5)throw Error('Aim this section straight at the chosen landing side. Add a turn or adjust the preceding section first.');

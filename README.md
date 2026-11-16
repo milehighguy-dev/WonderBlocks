@@ -33,7 +33,7 @@ npm start
 
 Open [http://127.0.0.1:4178](http://127.0.0.1:4178) in a browser with WebGL enabled. After installing dependencies, Windows users can also double-click `Start.cmd` to launch it. Stop `npm start` with **Ctrl+C**; use `Stop.ps1` for a server launched by `Start.cmd`.
 
-Both versions work offline after setup and use the same `.building.json` project files. **Save project / Ctrl+S** updates your chosen file; **Save as / Ctrl+Shift+S** chooses a new name and location.
+Both versions work offline after setup and use the same `.building.json` project files. **Save / Ctrl+S** opens a name and location dialog each time, so you can overwrite the existing file or save another copy.
 
 ## SWBF2 export
 

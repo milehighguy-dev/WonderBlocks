@@ -219,6 +219,17 @@ aside,.library,.inspector,.material-workspace,.flora-workspace,.sculpt-workspace
 .examples-menu button {background:transparent;border-color:transparent;border-radius:2px;color:var(--ui-text)}
 .examples-menu button:hover {background:var(--ui-hover);border-color:#5a5d65}
 .examples-menu>summary {color:#bfc2ca}
+.recent-dropdown {position:relative}
+.recent-projects-menu {position:absolute;top:calc(100% + 7px);right:0;width:330px;max-width:85vw;max-height:65vh;overflow:auto;padding:6px;background:var(--ui-panel);border:1px solid #52545c;border-radius:3px;box-shadow:0 8px 24px #0005;z-index:2200}
+.recent-projects-menu[hidden] {display:none}
+.recent-projects-menu>p {padding:8px;margin:0}
+.recent-project-row {display:flex;align-items:stretch;min-width:0}
+body>header .actions .recent-project-open {flex:1;min-width:0;width:auto;text-align:left;display:block;padding:8px;background:transparent;border-color:transparent;white-space:normal}
+.recent-project-open strong,.recent-project-open small {display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:400}
+.recent-project-open small {font-size:10px;color:var(--ui-muted);margin-top:3px}
+body>header .actions .recent-project-remove {flex:none;width:auto;background:transparent;border-color:transparent;padding:5px 9px}
+body>header .actions .recent-project-open:hover,body>header .actions .recent-project-remove:hover {background:var(--ui-hover)}
+body>header .actions .recent-project-clear {margin-top:5px;width:100%;text-align:left;border:0;border-top:1px solid #52545c;background:transparent;color:var(--ui-muted)}
 .examples-dropdown>.examples-menu,.viewport-view-options[open] .viewport-view-menu {animation:tool-menu-in 110ms ease-out}
 .scene-loading {background:var(--ui-panel);color:var(--ui-text);border-color:var(--ui-line);border-radius:5px;font:13px Bahnschrift,'Segoe UI',sans-serif}
 .scene-loading::backdrop {background:#111215c9;backdrop-filter:none}

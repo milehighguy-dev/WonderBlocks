@@ -1,0 +1,14 @@
+{
+  "name": "Kashyyyk · thatched platform rim (atlas)",
+  "game": "SWBF2",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 213,
+  "themes": [
+    "Kashyyyk",
+    "Routes",
+    "Platforms"
+  ],
+  "sourceTexture": "kashyyyk-thatched-kas2_bldg_platform_2",
+  "layout": "atlas"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Kashyyyk · thatched platform supports (atlas)",
+  "game": "SWBF2",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 211,
+  "themes": [
+    "Kashyyyk",
+    "Routes",
+    "Platforms"
+  ],
+  "sourceTexture": "kashyyyk-thatched-kas2_platform_pole",
+  "layout": "atlas"
+}

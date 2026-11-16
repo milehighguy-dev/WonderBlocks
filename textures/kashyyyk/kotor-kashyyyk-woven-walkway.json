@@ -1,0 +1,13 @@
+{
+  "name": "Kashyyyk · woven walkway",
+  "game": "KOTOR",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 203,
+  "themes": [
+    "Kashyyyk",
+    "Routes",
+    "Platforms"
+  ],
+  "sourceTexture": "lka_wall01"
+}

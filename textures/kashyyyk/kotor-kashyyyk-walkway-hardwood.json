@@ -1,0 +1,13 @@
+{
+  "name": "Kashyyyk · walkway hardwood",
+  "game": "KOTOR",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 202,
+  "themes": [
+    "Kashyyyk",
+    "Routes",
+    "Platforms"
+  ],
+  "sourceTexture": "lka_hrdwd02"
+}

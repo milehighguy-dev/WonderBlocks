@@ -21,7 +21,7 @@ export function snapRouteToSurface(part,index,values,targets,{tolerance=.35}={})
    if(!hit.face||hit.object.material?.userData?.railing)continue;
    let root=hit.object,visible=true;for(let m=root;m;m=m.parent)if(!m.visible)visible=false;if(!visible)continue;
    const normal=hit.face.normal.clone().applyNormalMatrix(normalMatrix.getNormalMatrix(hit.object.matrixWorld));if(normal.y<.9)continue;
-   const rise=(hit.point.y-endpoint(run,0).y)/matrix.elements[5];if(rise<-10||rise>10||s.kind==='landing'&&Math.abs(rise)>1e-5)continue;
+   const rise=(hit.point.y-endpoint(run,0).y)/matrix.elements[5];if(!Number.isFinite(rise)||s.kind==='landing'&&Math.abs(rise)>1e-5)continue;
    const score=Math.abs(hit.point.y-desired.y)+horizontal;if(best&&score>=best.score)continue;
    while(root.parent&&!targets.includes(root))root=root.parent;
    if(!supportedArrival(hit.point,entry,matrix,targets))continue;

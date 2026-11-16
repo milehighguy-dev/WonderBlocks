@@ -8,6 +8,7 @@ test('new route starts on an existing landing, follows transforms and opens its 
 });
 test('route end joins another object and fits height; cycles, missing landings and bad approaches are rejected',()=>{
  const a=target(),b=target();a.position=[0,3,10];b.route.segments[0].kind='ramp';b.route.links={end:{partId:a.id,segment:0,side:'back'}};let parts=resolveRouteLinks([a,b]);assert.equal(parts[1].route.segments[0].run,10);assert.equal(parts[1].route.segments[0].rise,3);
+ for(const rise of [-25,25]){a.position[1]=rise;assert.equal(resolveRouteLinks([a,b])[1].route.segments[0].rise,rise);}a.position[1]=3;
  a.position[2]=12;assert.equal(resolveRouteLinks([a,b])[1].route.segments[0].run,12);
  a.position[0]=3;assert.throws(()=>resolveRouteLinks([a,b]),/Aim/);a.position[0]=0;
  a.route.links={start:{partId:b.id,segment:0,side:'back'}};assert.throws(()=>resolveRouteLinks([a,b]),/cycle/);delete a.route.links;

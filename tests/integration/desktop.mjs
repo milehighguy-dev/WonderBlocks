@@ -50,9 +50,9 @@ try{
  const saved=JSON.parse(await readFile(projectPath,'utf8'));assert.equal(saved.name,'Desktop smoke test');
  await page.locator('#title').fill('Desktop overwrite check');await page.locator('#title').press('Tab');await page.locator('#save').click();
  for(let i=0;i<100;i++){if(JSON.parse(await readFile(projectPath,'utf8')).name==='Desktop overwrite check')break;await new Promise(r=>setTimeout(r,30));}
- assert.equal(JSON.parse(await readFile(projectPath,'utf8')).name,'Desktop overwrite check');assert.equal(await application.evaluate(()=>globalThis.projectSavePaths.length),1,'ordinary Save overwrites the chosen file without another dialog');
- const copyPath=path.join(downloads,'save-as-copy.building.json');await application.evaluate((_electron,file)=>{globalThis.nextProjectSavePath=file;},copyPath);await page.locator('#save-as').click();for(let i=0;i<100;i++){try{await stat(copyPath);break;}catch{await new Promise(r=>setTimeout(r,30));}}
- assert.equal(JSON.parse(await readFile(copyPath,'utf8')).name,'Desktop overwrite check');assert.equal(await application.evaluate(()=>globalThis.projectSavePaths.length),2,'Save As opens a new native dialog');
+ assert.equal(JSON.parse(await readFile(projectPath,'utf8')).name,'Desktop overwrite check');assert.equal(await application.evaluate(()=>globalThis.projectSavePaths.length),2,'Save reopens the native dialog for an overwrite');
+ const copyPath=path.join(downloads,'save-as-copy.building.json');await application.evaluate((_electron,file)=>{globalThis.nextProjectSavePath=file;},copyPath);await page.keyboard.press('Control+Shift+s');for(let i=0;i<100;i++){try{await stat(copyPath);break;}catch{await new Promise(r=>setTimeout(r,30));}}
+ assert.equal(JSON.parse(await readFile(copyPath,'utf8')).name,'Desktop overwrite check');assert.equal(await application.evaluate(()=>globalThis.projectSavePaths.length),3,'saving a copy also uses the native dialog');
  await page.locator('#export-swbf2').click();const exporter=page.getByRole('dialog',{name:'Export to SWBF2',exact:true});await exporter.waitFor({state:'visible'});
  const exportButton=exporter.locator('[data-action=export]');await exportButton.waitFor({state:'visible'});
  await page.waitForFunction(()=>!document.querySelector('.swbf2-export [data-action=export]').disabled);await exportButton.click();

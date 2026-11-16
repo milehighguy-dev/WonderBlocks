@@ -699,7 +699,17 @@ class TransformControls extends Controls {
 
 			// Apply rotation snap
 
-			if ( this.rotationSnap ) this.rotationAngle = Math.round( this.rotationAngle / this.rotationSnap ) * this.rotationSnap;
+			// Let the editor apply precision modifiers after the stock axis math,
+			// before either the object or its listeners see the new rotation.
+			if ( this.rotationDragAngle ) {
+
+				this.rotationAngle = this.rotationDragAngle( this.rotationAngle, pointer, axis === 'E' || _inPlaneRotation );
+
+			} else if ( this.rotationSnap ) {
+
+				this.rotationAngle = Math.round( this.rotationAngle / this.rotationSnap ) * this.rotationSnap;
+
+			}
 
 			// Apply rotate
 			if ( space === 'local' && axis !== 'E' && axis !== 'XYZE' ) {

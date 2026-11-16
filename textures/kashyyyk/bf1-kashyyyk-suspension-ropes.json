@@ -1,0 +1,14 @@
+{
+  "name": "Kashyyyk · suspension bridge details (atlas)",
+  "game": "SWBF1",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 208,
+  "themes": [
+    "Kashyyyk",
+    "Routes",
+    "Platforms"
+  ],
+  "sourceTexture": "kas2-suspension-details",
+  "layout": "atlas"
+}

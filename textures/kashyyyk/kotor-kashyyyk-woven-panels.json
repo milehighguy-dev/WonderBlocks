@@ -1,0 +1,13 @@
+{
+  "name": "Kashyyyk · platform wood panels",
+  "game": "KOTOR",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 204,
+  "themes": [
+    "Kashyyyk",
+    "Routes",
+    "Platforms"
+  ],
+  "sourceTexture": "lka_wall06"
+}

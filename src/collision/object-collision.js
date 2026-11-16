@@ -7,7 +7,7 @@ import {weldSurface,cleanCollisionSurface,surfaceSegment,fitBox,fitSphere,fitDet
 import {prepareCollisionSurface,groupCollisionMeshes} from './collision-surface.js';
 import {optimizeCollisionBodies} from './collision-optimize.js';
 
-export const COLLISION_RULE_VERSION=16;
+export const COLLISION_RULE_VERSION=17;
 // File category bits from the BFII naming convention, not runtime object types.
 export const COLLISION_MASK={soldier:1,vehicle:2,building:4,terrain:8,ordnance:16,movement:7,solid:23};
 export const COLLISION_RULES=Object.freeze({treeError:.05,solidError:.015,detailError:.1,guardError:.005,meshTarget:1200});
@@ -65,7 +65,10 @@ export function createObjectCollision(part,group,{parts=[],simplify=true}={}){
    let movementMesh=mesh;
    if(mesh.userData.routeFloor&&part.route?.segments[mesh.userData.routeSegment]?.kind==='stairs'&&rampMap.has(mesh.userData.routeSegment))movementMesh=rampMap.get(mesh.userData.routeSegment);
    if(mesh.userData.interiorStair&&mesh.userData.routeCollision){const profile=mesh.userData.routeCollision;if(!embeddedRamps.has(profile.route)){const r={...part,route:profile.route,scale:profile.scale},temporary=rampsFor(r);embeddedRamps.set(profile.route,temporary);}const temporary=embeddedRamps.get(profile.route),original=temporary?.children.find(m=>m.userData.routeSegment===profile.index);if(original){movementMesh=new T.Mesh(original.geometry,mesh.material);movementMesh.matrixWorld.copy(mesh.matrixWorld);}}
-   const volume=structuralSegments(mesh,inverse),volumeKey=volume&&surfaceKey(volume[0]);if(volumeKey&&seenVolumes.has(volumeKey))return;if(volumeKey)seenVolumes.add(volumeKey);
+   // A material's shared construction shell can contain the visible steps.
+   // Movement must use the generated ramp instead; each painted tread shell
+   // still contributes its own projectile faces below.
+   const volume=movementMesh===mesh?structuralSegments(mesh,inverse):null,volumeKey=volume&&surfaceKey(volume[0]);if(volumeKey&&seenVolumes.has(volumeKey))return;if(volumeKey)seenVolumes.add(volumeKey);
    const movement=volume?weldSurface(volume):movementMesh===mesh?surface:physicalSurface(movementMesh,inverse),detail=!!(mesh.userData.railing||mesh.userData.highwayRailing||mesh.userData.routePost);
    // Painted top/underside meshes still share one movement ramp. Retaining a
    // second identical shell wastes contacts and makes its shadow nonmanifold.

@@ -1,0 +1,14 @@
+{
+  "name": "Kashyyyk · timber platform (atlas)",
+  "game": "SWBF2",
+  "roughness": 0.9,
+  "metalness": 0,
+  "order": 209,
+  "themes": [
+    "Kashyyyk",
+    "Routes",
+    "Platforms"
+  ],
+  "sourceTexture": "kashyyyk-timber-kas2_bldg_platform_0",
+  "layout": "atlas"
+}

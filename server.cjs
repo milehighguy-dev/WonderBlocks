@@ -7,7 +7,7 @@ function openFolder(folder){return new Promise((resolve,reject)=>{
  child.once('error',reject);child.once('spawn',()=>{child.unref();resolve();});
 });}
 const types={'.svg':'image/svg+xml','.png':'image/png','.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.md':'text/plain'};
-function createServer({chooseProjectFile,textureRoot,openTexturesFolder=openFolder,chooseExportFolder,openExportFolder=openFolder,folderRegistry=path.join(root,'.world-folders.json')}={}){const projectFiles=require('./src/editor/project-files.cjs').createProjectFileService({choose:chooseProjectFile});const folders=require('./src/swbf2/local-world-folders.cjs').createWorldFolders({registryPath:folderRegistry,choose:chooseExportFolder,open:openExportFolder});return http.createServer((req,res)=>{
+function createServer({chooseProjectFile,openProjectFile,projectRegistry,textureRoot,openTexturesFolder=openFolder,chooseExportFolder,openExportFolder=openFolder,folderRegistry=path.join(root,'.world-folders.json')}={}){const projectFiles=require('./src/editor/project-files.cjs').createProjectFileService({choose:chooseProjectFile,open:openProjectFile,registryPath:projectRegistry});const folders=require('./src/swbf2/local-world-folders.cjs').createWorldFolders({registryPath:folderRegistry,choose:chooseExportFolder,open:openExportFolder});return http.createServer((req,res)=>{
  let name;try{name=decodeURIComponent(new URL(req.url,'http://localhost').pathname);}catch{res.writeHead(400);return res.end();}
  if(name==='/api/project-file'){
   if(req.method!=='POST'){res.writeHead(405);return res.end();}

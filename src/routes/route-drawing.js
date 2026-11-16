@@ -44,6 +44,20 @@ export function dragCurvedEndpoint(route,index,delta,{snap=true,lockAngle=true,r
  return {...dragDimensions(candidate,index,run,s.rise+delta[1],referenceAngle??Math.atan2(s.rise,s.run),lockAngle),curveAngle:angle,turn:'straight',turnAngle:undefined};
 }
 
+// Fit the exposed beginning in reverse, then restore the section's direction.
+// This fixes the far endpoint and tangent, so the surviving path stays put.
+export function dragRouteStart(route,index,delta,{reshapeCurve=true,snap=true,lockAngle=true,referenceAngle}={}){
+ const entry=routeLayout(route)[index],s=entry.segment,reverse=structuredClone(route),section=structuredClone(s);
+ delete section.branchFrom;delete section.joinTo;delete section.wallJoinTo;delete section.turnAngle;
+ Object.assign(section,{turn:'straight',rise:-s.rise,pathStart:{point:[...entry.end],heading:entry.endHeading+Math.PI}});
+ if(s.curveAngle!==undefined)section.curveAngle=-s.curveAngle;
+ reverse.segments=[section];delete reverse.links;delete reverse.attachments;
+ const angle=referenceAngle??Math.atan2(-s.rise,s.run),mid=section.pathStart.heading+(section.curveAngle??0)/2,factor=s.curveAngle?s.curveAngle/(2*Math.sin(s.curveAngle/2)):1;
+ const values=reshapeCurve&&s.curveAngle!==undefined?dragCurvedEndpoint(reverse,0,delta,{snap,lockAngle,referenceAngle:angle}):dragDimensions(reverse,0,s.run+(delta[0]*Math.sin(mid)+delta[2]*Math.cos(mid))*factor,-s.rise+delta[1],angle,lockAngle);
+ Object.assign(section,values);const fitted=routeLayout(reverse)[0],heading=fitted.endHeading+Math.PI;
+ return {...values,endpoint:'start',rise:-values.rise,...(s.curveAngle!==undefined?{curveAngle:-section.curveAngle}:{}),pathStart:{point:[...fitted.end],heading:Math.atan2(Math.sin(heading),Math.cos(heading))}};
+}
+
 function drawCurvedSection(route,anchor,dx,dz,kind,snap){
  let next=structuredClone(route),index,heading;
  if(anchor.type==='start'){index=0;heading=0;next.segments[0].kind=kind;}

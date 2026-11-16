@@ -14,3 +14,6 @@ assets/character/
 
 # Built desktop releases and local packaging caches.
 dist/
+
+# Private local scene handoffs.
+.local/
