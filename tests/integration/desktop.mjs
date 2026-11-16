@@ -31,6 +31,13 @@ async function launch(){
  },{world,downloads});
 }
 async function api(body){return page.evaluate(async body=>{const response=await fetch('/api/world-folder',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});return {status:response.status,data:await response.json()};},body);}
+async function saveProject(action){
+ const written=page.waitForResponse(response=>response.url().endsWith('/api/project-file')&&response.request().postDataJSON()?.action==='write');
+ await action();assert.equal((await written).status(),200);
+ // The file write is followed by recent-file updates. Wait for the whole
+ // operation before sending another click or keyboard shortcut.
+ await page.waitForFunction(()=>!document.getElementById('save').disabled&&document.getElementById('toast').textContent.startsWith('Saved to '));
+}
 try{
  await launch();
  const info=await application.evaluate(({app,BrowserWindow})=>({packaged:app.isPackaged,path:app.getAppPath(),data:app.getPath('userData'),node:process.versions.node,preferences:BrowserWindow.getAllWindows()[0].webContents.getLastWebPreferences()}));
@@ -45,13 +52,12 @@ try{
  assert.equal((await api({action:'write',id:folderId,path:'world1/WON.wld',base64:''})).status,400);
  const project=await page.evaluate(async()=>{const {makePart}=await import('/src/core/model.js');return {format:'open-building-studio',version:1,name:'Desktop smoke test',parts:[makePart('block',{name:'Packaged block'})]};});
  await page.locator('#file').setInputFiles({name:'desktop.building.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(project))});
- await page.waitForFunction(()=>document.querySelector('#title')?.value==='Desktop smoke test');
- await page.locator('#save').click();await page.waitForFunction(()=>document.getElementById('toast').textContent.startsWith('Saved to '));const projectPath=await application.evaluate(()=>globalThis.projectSavePaths[0]);
+ await page.waitForFunction(()=>document.querySelector('#title')?.value==='Desktop smoke test'&&!document.getElementById('scene-loading')?.open);
+ await saveProject(()=>page.locator('#save').click());const projectPath=await application.evaluate(()=>globalThis.projectSavePaths[0]);
  const saved=JSON.parse(await readFile(projectPath,'utf8'));assert.equal(saved.name,'Desktop smoke test');
- await page.locator('#title').fill('Desktop overwrite check');await page.locator('#title').press('Tab');await page.locator('#save').click();
- for(let i=0;i<100;i++){if(JSON.parse(await readFile(projectPath,'utf8')).name==='Desktop overwrite check')break;await new Promise(r=>setTimeout(r,30));}
+ await page.locator('#title').fill('Desktop overwrite check');await page.locator('#title').press('Tab');await saveProject(()=>page.locator('#save').click());
  assert.equal(JSON.parse(await readFile(projectPath,'utf8')).name,'Desktop overwrite check');assert.equal(await application.evaluate(()=>globalThis.projectSavePaths.length),2,'Save reopens the native dialog for an overwrite');
- const copyPath=path.join(downloads,'save-as-copy.building.json');await application.evaluate((_electron,file)=>{globalThis.nextProjectSavePath=file;},copyPath);await page.keyboard.press('Control+Shift+s');for(let i=0;i<100;i++){try{await stat(copyPath);break;}catch{await new Promise(r=>setTimeout(r,30));}}
+ const copyPath=path.join(downloads,'save-as-copy.building.json');await application.evaluate((_electron,file)=>{globalThis.nextProjectSavePath=file;},copyPath);await saveProject(()=>page.keyboard.press('Control+Shift+s'));
  assert.equal(JSON.parse(await readFile(copyPath,'utf8')).name,'Desktop overwrite check');assert.equal(await application.evaluate(()=>globalThis.projectSavePaths.length),3,'saving a copy also uses the native dialog');
  await page.locator('#export-swbf2').click();const exporter=page.getByRole('dialog',{name:'Export to SWBF2',exact:true});await exporter.waitFor({state:'visible'});
  const exportButton=exporter.locator('[data-action=export]');await exportButton.waitFor({state:'visible'});

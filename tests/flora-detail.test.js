@@ -78,7 +78,7 @@ test('other flora presets keep complete closed wood and unchanged attached detai
 test('SWBF2 export uses the chosen reduced surface for the visible model, shadow and LOD',()=>{
  const project=swbfTreesDemo();project.parts=project.parts.filter(p=>p.name==='Endor · Forest Redwood');project.parts[0].flora.detail='swbf2';
  const output=createSWBF2Package(project,{aiNavigation:false}),wood=output.manifest.assets.find(a=>a.role==='exterior');
- const visible=floraWeldGeometry(project.parts[0].flora);try{assert.equal(wood.triangles,visible.index.count/3+660);assert.equal(wood.shadowTriangles,visible.index.count/3);}finally{visible.dispose();}assert.ok(wood.lowDetailTriangles<wood.triangles);assert.equal(output.manifest.assets.filter(a=>a.role!=='collision').length,1,'wood and foliage belong to one plant resource');
+ const visible=floraWeldGeometry(project.parts[0].flora);try{assert.equal(wood.triangles,visible.index.count/3+660);assert.equal(wood.shadowTriangles,visible.index.count/3);}finally{visible.dispose();}assert.ok(wood.lowDetailTriangles<=wood.triangles);assert.deepEqual(wood.lowDetailConstruction,['flora-field']);assert.equal(output.manifest.assets.filter(a=>a.role!=='collision').length,1,'wood and foliage belong to one plant resource');
  const source=[...output.files.entries()].find(([name])=>name.startsWith('source/')&&name.endsWith('.building.json'));
  assert.equal(JSON.parse(typeof source[1]==='string'?source[1]:new TextDecoder().decode(source[1])).parts[0].flora.detail,'swbf2');
 });

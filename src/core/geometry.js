@@ -37,9 +37,11 @@ import {buildClassical,CLASSICAL_PARTS} from '../parts/classical.js';
 import {attachObjectCollision} from '../collision/collision-service.js';
 import {rememberAssemblyHull} from '../collision/assembly-collision.js';
 import {conformRouteEntrances} from '../interiors/entrance-conform.js';
-export function buildPart(p,{batch=false,parts=[],openingCuts,floraEditing=false,floraLive=false,exportRouteSections=0,collision=true}={}){
+import {lowerDetailDefinition} from './detail-level.js';
+export function buildPart(p,{batch=false,parts=[],openingCuts,floraEditing=false,floraLive=false,exportRouteSections=0,collision=true,lowDetail=false}={}){
+ if(lowDetail)p=lowerDetailDefinition(p);
  if(p.type==='character-reference'){const group=buildCharacter();group.name=p.name;group.userData.partId=p.id;group.position.fromArray(p.position);group.rotation.set(...p.rotation);group.scale.fromArray(p.scale.map(v=>Math.sign(v)||1));return group;}
- const group=new THREE.Group();group.name=p.name;group.userData.partId=p.id;
+ const group=new THREE.Group();group.name=p.name;group.userData.partId=p.id;group.userData.lowDetail=lowDetail;
  const material=new THREE.MeshStandardMaterial({color:p.color,roughness:.72,metalness:.05});
  if(p.type==='highway')buildHighway(group,material,p.highway,p,parts,{routeSections:exportRouteSections});
  function mesh(geo,pos=[0,0,0],mat=material){const m=new THREE.Mesh(geo,mat);m.position.fromArray(pos);m.castShadow=true;m.receiveShadow=true;group.add(m);return m;}
@@ -58,7 +60,7 @@ export function buildPart(p,{batch=false,parts=[],openingCuts,floraEditing=false
  if(p.type==='interior')buildInterior(group,p);
  if(p.type==='stair-route')buildRoute(group,material,p.route,p.scale);
  switch(p.type){
- case 'flora':buildFlora(group,p.flora,p,{editable:floraEditing,live:floraLive});material.dispose();break;
+ case 'flora':buildFlora(group,p.flora,p,{editable:floraEditing,live:floraLive,lowDetail});material.dispose();break;
  case 'metaballs':mesh(metaballGeometry(p.metaballs));break;
  case 'block':if(p.parameters?.baseSlopeHeight&&p.parameters?.baseSlopeProjection)mesh(buildingBaseGeometry({scale:p.scale},{height:p.parameters.baseSlopeHeight,projection:p.parameters.baseSlopeProjection}));else box(1,1,1);if(p.parameters?.parapetHeight)buildRoofParapet(group,material,{scale:p.scale},{height:p.parameters.parapetHeight,thickness:p.parameters.parapetThickness??.3});break;
  case 'waterfall':mesh(new THREE.PlaneGeometry(1,1),[0,.5,0]);break;
@@ -66,15 +68,15 @@ export function buildPart(p,{batch=false,parts=[],openingCuts,floraEditing=false
  case 'hex':mesh(new THREE.CylinderGeometry(.5,.5,1,6,1),[0,.5,0]);break;
  case 'rock':mesh(rockGeometry(p.parameters));break;
  case 'ring-body':buildRingBody(group,material,p.parameters,p.shape);break;
- case 'round':mesh(new THREE.CylinderGeometry(.5,.5,1,p.parameters?.sides??24,3),[0,.5,0]);break;
+ case 'round':mesh(new THREE.CylinderGeometry(.5,.5,1,Math.min(p.parameters?.sides??24,lowDetail?12:Infinity),3),[0,.5,0]);break;
  case 'taper':mesh(new THREE.CylinderGeometry(.3,.5,1,6,3),[0,.5,0]);break;
- case 'dome':mesh(new THREE.SphereGeometry(.5,12,6,0,Math.PI*2,0,Math.PI/2));break;
- case 'cone':mesh(new THREE.ConeGeometry(.5,1,12),[0,.5,0]);break;
+ case 'dome':mesh(new THREE.SphereGeometry(.5,lowDetail?8:12,lowDetail?4:6,0,Math.PI*2,0,Math.PI/2));break;
+ case 'cone':mesh(new THREE.ConeGeometry(.5,1,lowDetail?8:12),[0,.5,0]);break;
  case 'roof':{const roof=mesh(new THREE.ConeGeometry(Math.SQRT1_2,.6,4),[0,.3,0]);roof.rotation.y=Math.PI/4;break;}
- case 'pillar':mesh(new THREE.CylinderGeometry(.35,.4,1,24),[0,.5,0]);box(1,.12,1,0,.06);box(1,.12,1,0,.94);break;
+ case 'pillar':mesh(new THREE.CylinderGeometry(.35,.4,1,lowDetail?12:24),[0,.5,0]);box(1,.12,1,0,.06);box(1,.12,1,0,.94);break;
  case 'ring':{const ring=mesh(new THREE.TorusGeometry(.46,.04,6,16));ring.rotation.x=Math.PI/2;break;}
- case 'capsule':mesh(new THREE.CapsuleGeometry(.4,.5,8,24),[0,.65,0]);break;
- case 'orb':mesh(new THREE.SphereGeometry(.6,12,8),[0,.6,0]);break;
+ case 'capsule':mesh(new THREE.CapsuleGeometry(.4,.5,lowDetail?4:8,lowDetail?12:24),[0,.65,0]);break;
+ case 'orb':mesh(new THREE.SphereGeometry(.6,lowDetail?8:12,lowDetail?6:8),[0,.6,0]);break;
  case 'bell':lathe([[0,0],[.5,0],[.5,.1],[.38,.25],[.28,.6],[.22,1],[0,1]]);break;
  case 'waist':lathe([[0,0],[.5,0],[.45,.15],[.28,.4],[.26,.5],[.28,.6],[.45,.85],[.5,1],[0,1]]);break;
  case 'archbody':{const s=new THREE.Shape();s.moveTo(-.65,0);s.lineTo(-.65,.65);s.absarc(0,.65,.65,Math.PI,0,true);s.lineTo(.65,0);s.lineTo(.4,0);s.lineTo(.4,.65);s.absarc(0,.65,.4,0,Math.PI,false);s.lineTo(-.4,0);s.closePath();mesh(new THREE.ExtrudeGeometry(s,{depth:.4,bevelEnabled:false,curveSegments:8}));break;}

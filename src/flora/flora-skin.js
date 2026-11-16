@@ -29,22 +29,25 @@ export function skinSolid(geometries,owner){
  function leaves(n){if(n.items)surfaceBoxes.push(n.box);else{leaves(n.left);leaves(n.right);}}leaves(root);
  const edgeLengths=triangles.map(({triangle:t})=>Math.max(t.a.distanceTo(t.b),t.b.distanceTo(t.c),t.c.distanceTo(t.a))).sort((a,b)=>a-b);
  const radius=Math.max(.015,Math.min(...root.box.getSize(new T.Vector3()).toArray())*.25);
- return {owner,box:root.box,radius,surfaceBoxes,featureRadius:Math.min(radius,edgeLengths[Math.floor(edgeLengths.length*.2)]*.35),distance(p){let best=Infinity;function near(n){if(n.box.distanceToPoint(p)>=best)return;if(n.items){for(const t of n.items){t.triangle.closestPointToPoint(p,closest);best=Math.min(best,p.distanceTo(closest));}}else{const a=n.left.box.distanceToPoint(p),b=n.right.box.distanceToPoint(p);if(a<b){near(n.left);near(n.right);}else{near(n.right);near(n.left);}}}near(root);ray.set(p,direction);const crossings=[];function cross(n){if(!ray.intersectsBox(n.box))return;if(n.items){for(const {triangle:t} of n.items)if(ray.intersectTriangle(t.a,t.b,t.c,false,hit))crossings.push({distance:hit.distanceTo(p),sign:Math.sign(t.getNormal(closest).dot(direction))});}else{cross(n.left);cross(n.right);}}cross(root);crossings.sort((a,b)=>a.distance-b.distance);let winding=0,last=-Infinity,sign=0;for(const x of crossings){if(x.distance-last>1e-6){winding+=Math.sign(sign);sign=x.sign;last=x.distance;}else sign+=x.sign;}winding+=Math.sign(sign);return winding!==0?-best:best;}};
+ function nearest(p){let best=Infinity;function near(n){if(n.box.distanceToPoint(p)>=best)return;if(n.items){for(const t of n.items){t.triangle.closestPointToPoint(p,closest);best=Math.min(best,p.distanceTo(closest));}}else{const a=n.left.box.distanceToPoint(p),b=n.right.box.distanceToPoint(p);if(a<b){near(n.left);near(n.right);}else{near(n.right);near(n.left);}}}near(root);return best;}
+ return {owner,box:root.box,radius,surfaceBoxes,featureRadius:Math.min(radius,edgeLengths[Math.floor(edgeLengths.length*.2)]*.35),nearest,distance(p){const best=nearest(p);ray.set(p,direction);const crossings=[];function cross(n){if(!ray.intersectsBox(n.box))return;if(n.items){for(const {triangle:t} of n.items)if(ray.intersectTriangle(t.a,t.b,t.c,false,hit))crossings.push({distance:hit.distanceTo(p),sign:Math.sign(t.getNormal(closest).dot(direction))});}else{cross(n.left);cross(n.right);}}cross(root);crossings.sort((a,b)=>a.distance-b.distance);let winding=0,last=-Infinity,sign=0;for(const x of crossings){if(x.distance-last>1e-6){winding+=Math.sign(sign);sign=x.sign;last=x.distance;}else sign+=x.sign;}winding+=Math.sign(sign);return winding!==0?-best:best;}};
 }
 
-export function floraSkinGeometry(shapes,detail='standard',cacheKey,refinement=0){
+export function floraSkinGeometry(shapes,detail='standard',cacheKey,refinement=0,{cellBudget=10000}={}){
  if(cacheKey&&cache.has(cacheKey)){const g=cache.get(cacheKey);cache.delete(cacheKey);cache.set(cacheKey,g);return g.clone();}
  if(!shapes.length)return new T.BufferGeometry();
  // Authored branching fields need the complete surface before face reduction:
  // coarse sampling can erase a thin limb that edge collapse cannot recover.
  // Imported solid branches retain their existing reinforced sampling budget.
- const samplingDetail=detail==='swbf2'?(shapes.some(s=>s.bodyField)?'standard':'low'):detail;
+ const samplingDetail=detail==='distant'?'low':detail==='swbf2'?(shapes.some(s=>s.bodyField)?'standard':'low'):detail;
  const primary=shapes.filter(s=>!s.reinforcement),radii=(primary.length?primary:shapes).map(s=>s.radius).sort((a,b)=>a-b),blend=Math.min(.08,radii[radii.length>>1]*.2),box=new T.Box3();for(const s of shapes)box.union(s.box);
  // Large branching crowns need more samples than small joint object groups;
  // retain the smaller editor budget for ordinary plants and single attachments.
  // A continuous limb can contain several logical spans despite being one solid.
- const broadWood=primary.some(s=>s.surfaceBoxes&&s.radius>=.5),span=box.getSize(new T.Vector3()),limit=shapes.some(s=>s.surfaceBoxes)?(samplingDetail==='low'?28000:broadWood&&primary.reduce((n,s)=>n+(s.samplingParts||1),0)>=8?225000:75000)*2**refinement:(samplingDetail==='low'?14000:32000);
+ const broadWood=primary.some(s=>s.surfaceBoxes&&s.radius>=.5),span=box.getSize(new T.Vector3()),limit=detail==='distant'?cellBudget:shapes.some(s=>s.surfaceBoxes)?(samplingDetail==='low'?28000:broadWood&&primary.reduce((n,s)=>n+(s.samplingParts||1),0)>=8?225000:75000)*2**refinement:(samplingDetail==='low'?14000:32000);
  let step=Math.max(.015,Math.min(radii[radii.length>>1],...shapes.filter(s=>s.featureRadius).map(s=>s.featureRadius))/(samplingDetail==='low'?1.2:1.8),Math.max(...span.toArray())/(samplingDetail==='low'?100:180)),cells;
+ // Distant wood is sampled from the same branch/body fields, not decimated.
+ if(detail==='distant')step*=1.25;
  step*=.65**refinement;
  // Sparse cells around occupied bones avoid sampling the empty tree canopy.
  // Coarsen uniformly to cap editor work; this never changes the saved skeleton.
@@ -62,7 +65,7 @@ export function floraSkinGeometry(shapes,detail='standard',cacheKey,refinement=0
  // than the old global triangle cutoff.
  const ownerBest=new Map(),componentOwners=new Map();for(const [root,vertices] of components){const box=new T.Box3();for(const i of vertices)box.expandByPoint(new T.Vector3(positions[i*3],positions[i*3+1],positions[i*3+2]));const owners=new Set(shapes.filter(shape=>shape.box.intersectsBox(box)).map(shape=>shape.owner));componentOwners.set(root,owners);for(const owner of owners)if(!ownerBest.has(owner)||counts.get(root)>counts.get(ownerBest.get(owner)))ownerBest.set(owner,root);}
  for(let i=0;i<indices.length;i+=3){const root=find(indices[i]),count=counts.get(root);if(count===largest||count>=384||[...componentOwners.get(root)].some(owner=>ownerBest.get(owner)===root))filtered.push(indices[i],indices[i+1],indices[i+2]);}
- const keptRoots=new Set(filtered.map(find));if(refinement<2&&keptRoots.size>1&&shapes.some(s=>s.surfaceBoxes&&[...keptRoots].filter(root=>componentOwners.get(root).has(s.owner)).length>1))return floraSkinGeometry(shapes,detail,cacheKey,refinement+1);
+ const keptRoots=new Set(filtered.map(find));if(refinement<2&&keptRoots.size>1&&shapes.some(s=>s.surfaceBoxes&&[...keptRoots].filter(root=>componentOwners.get(root).has(s.owner)).length>1))return floraSkinGeometry(shapes,detail,cacheKey,refinement+1,{cellBudget:cellBudget*2});
  const used=new Map(),compact=[],remapped=filtered.map(i=>{if(!used.has(i)){used.set(i,compact.length/3);compact.push(positions[i*3],positions[i*3+1],positions[i*3+2]);}return used.get(i);});
  // Ambiguous marching-cube faces can leave small planar boundary loops. Close
  // those loops with the opposite edge winding instead of exporting cracks.

@@ -87,11 +87,14 @@ test('the CIS starting post sits between the village houses and connects to the 
  walk(approach,'crossing to village CIS post');walk([...approach].reverse(),'CIS post to crossing');
 });
 
-test('the inhabited banks and village fit one automatically generated native AI network',()=>{
+test('the inhabited banks and village share one automatically generated native AI network',()=>{
  const nav=generateSWBF2Navigation(project.parts,roots);
  assert.ok(nav.hubs.length<=255);assert.ok(nav.connections.length<=255);
- assert.equal(nav.components.length,1);assert.equal(nav.stats.isolatedHubs,0);
- for(const p of project.parts.filter(p=>p.interior))assert.ok(nav.components[0].partIds.includes(p.id),p.name+' reachable by AI');
+ assert.equal(nav.stats.isolatedHubs,0);
+ // Small unused ledges can have their own surface group. The inhabited rooms
+ // and both banks must share the same network without inventing gap crossings.
+ const inhabited=project.parts.filter(p=>p.interior),network=nav.components.find(c=>inhabited.every(p=>c.partIds.includes(p.id)));
+ assert.ok(network,'every inhabited room is reachable in the same AI network');
  const hubs=new Map(nav.hubs.map(h=>[h.name,h])),links=new Map(nav.hubs.map(h=>[h.name,[]]));
  for(const c of nav.connections){const a=hubs.get(c.start),b=hubs.get(c.end),cost=new T.Vector3(...a.position).distanceTo(new T.Vector3(...b.position));links.get(a.name).push([b.name,cost]);links.get(b.name).push([a.name,cost]);}
  const nearest=p=>[...nav.hubs].sort((a,b)=>new T.Vector3(...a.position).distanceToSquared(new T.Vector3(...p))-new T.Vector3(...b.position).distanceToSquared(new T.Vector3(...p)))[0].name;

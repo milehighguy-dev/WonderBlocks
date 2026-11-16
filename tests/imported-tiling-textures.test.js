@@ -16,8 +16,8 @@ test('curated architectural and flora tiles appear in their source themes and sa
  assert.equal(manifest.filter(s=>s.group!=='Flora').length,28);assert.equal(manifest.filter(s=>s.group==='Flora').length,12);assert.ok(manifest.every(item=>IMPORTED_TILING_TEXTURES.some(s=>s.id===item.id)),'original imports remain available alongside directory-added textures');
  assert.equal(manifest.filter(s=>s.game==='KOTOR'&&s.group==='Flora').length,4);assert.equal(manifest.filter(s=>s.game==='KOTOR'&&s.group!=='Flora').length,8);
  for(const theme of ['SWBF1','SWBF2','Jedi Academy','KOTOR']){
-  const surfaces=surfacesForTheme(theme);assert.equal(surfaces.length,IMPORTED_TILING_TEXTURES.filter(s=>s.game===theme).length+1);assert.ok(surfaces.some(s=>s.id==='plain'));
-  assert.ok(surfaces.every(s=>s.id==='plain'||s.game===theme));
+  const surfaces=surfacesForTheme(theme);assert.deepEqual(surfaces.map(s=>s.id).sort(),['plain',...IMPORTED_TILING_TEXTURES.filter(s=>s.themes?.includes(theme)).map(s=>s.id)].sort());assert.ok(surfaces.some(s=>s.id==='plain'));
+  assert.ok(surfaces.every(s=>s.id==='plain'||s.themes.includes(theme)));
  }
  for(const item of manifest){
   assert.equal(SURFACES.filter(s=>s.id===item.id).length,1);assert.match(item.sourceSha256,/^[a-f0-9]{64}$/);
@@ -27,12 +27,13 @@ test('curated architectural and flora tiles appear in their source themes and sa
  }
 });
 
-test('imported tiles repeat in both directions without a conspicuous boundary discontinuity',()=>{
- for(const surface of IMPORTED_TILING_TEXTURES){
+test('imported tiling materials repeat without a seam; atlas charts are not treated as tiles',()=>{
+ assert.ok(IMPORTED_TILING_TEXTURES.some(s=>s.layout==='atlas'),'route atlas materials remain available');
+ for(const surface of IMPORTED_TILING_TEXTURES.filter(s=>s.layout!=='atlas')){
   const size=128,data=surfacePixels(surface.id,size),delta=(a,b)=>[0,1,2].reduce((s,c)=>s+Math.abs(data[a*4+c]-data[b*4+c]),0)/3;
   let edgeX=0,edgeY=0,insideX=0,insideY=0;
   for(let y=0;y<size;y++)for(let x=0;x<size;x++){
-   const i=y*size+x;assert.equal(data[i*4+3],255);
+   const i=y*size+x;if(surface.alphaMode==='opaque')assert.equal(data[i*4+3],255);
    if(x===0)edgeX+=delta(i,i+size-1);else insideX+=delta(i,i-1);
    if(y===0)edgeY+=delta(i,i+size*(size-1));else insideY+=delta(i,i-size);
   }
