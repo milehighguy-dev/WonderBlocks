@@ -1,0 +1,21 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {tmpdir} from 'node:os';
+import {createSWBF2Package} from '../../src/swbf2/export-swbf2.js';
+import {runProcess} from '../../tools/test-process.mjs';
+
+const root=process.argv[2]?path.resolve(process.argv[2]):await fs.mkdtemp(path.join(tmpdir(),'wb-canopy-'));
+await fs.mkdir(root,{recursive:true});
+const bake=path.join(root,'bake'),output=path.join(root,'package');
+await runProcess(process.execPath,['tools/bake-tree-canopy.mjs','biome-oak',bake,'--zones=4'],{timeout:120000});
+await runProcess(process.execPath,['tools/export-tree-canopy-prototype.mjs',bake,output],{timeout:120000});
+const project=JSON.parse(await fs.readFile(path.join(bake,'source.building.json'),'utf8')),after=JSON.parse(await fs.readFile(path.join(output,'export-report.json'),'utf8'));
+const before=createSWBF2Package(project,{output:'object',shadows:false,aiNavigation:false,maxTextureSize:256,compactTrees:false},{packZip:false});
+assert.equal(after.renderCost.total.leafObjects,4);assert.ok(before.manifest.renderCost.total.leafObjects>4);
+assert.equal(after.renderCost.runtimeVerified,false);assert.equal(after.assets[0].foliageLOD.followsModelLOD,false);
+for(const asset of before.manifest.assets.filter(a=>a.role==='collision'))assert.deepEqual(new Uint8Array(await fs.readFile(path.join(output,'msh',asset.name+'.msh'))),before.files.get('msh/'+asset.name+'.msh'));
+await runProcess('powershell.exe',['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',path.join(output,'validate-swbf2.ps1'),'-ToolsPath',process.env.SWBF2_TOOLS_PATH||'C:/SWBF2_ModTools/BF2_ModTools/ToolsFL/bin'],{cwd:output,timeout:180000});
+const runs=await fs.readdir(path.join(output,'_validation')),native=JSON.parse((await fs.readFile(path.join(output,'_validation',runs.sort().at(-1),'render-cost-checks.json'),'utf8')).replace(/^\uFEFF/,''));
+assert.equal(native.SourceCost.total.leafObjects,4);assert.equal(native.CompiledResourcesChecked,true);assert.equal(native.RuntimePerformanceVerified,false);
+console.log('PASS whole-canopy bake, source collision preservation and native compilation. No map installed or game launched. '+root);

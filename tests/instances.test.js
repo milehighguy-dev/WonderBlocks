@@ -23,5 +23,5 @@ test('trees in one editor group export independently; identical trees share reso
 });
 test('attachment limits include the root and overflow retains every leaf patch without geometry loss',()=>{
  const models=[{name:'root'},...Array.from({length:63},(_,i)=>({name:'hp_'+i,parent:'root'}))];assert.ok(writeMSH({name:'boundary',models}));assert.throws(()=>writeMSH({name:'overflow',models:[...models,{name:'hp_64',parent:'root'}]}),/64 bones/);
- const asset={key:'tree',label:'Tree',leaves:Array.from({length:130},(_,i)=>({i})),segments:[{test:true}],bodies:[],primitives:[]},split=splitLeafAttachments([asset]);assert.deepEqual(split.map(a=>a.leaves.length),[63,63,4]);assert.equal(split[0].segments,asset.segments);assert.equal(split.flatMap(a=>a.leaves).length,130);assert.equal(asset.leaves.length,130);
+ const asset={key:'tree',label:'Tree',leaves:Array.from({length:130},(_,i)=>({i})),segments:[{test:true}],bodies:[],primitives:[]},split=splitLeafAttachments([asset]);assert.ok(split.every(a=>a.leaves.length<=15),'reserve one of the native 16 prop attachments for a child carrier');assert.equal(split[0].segments,asset.segments);assert.deepEqual(split.flatMap(a=>a.leaves),asset.leaves);assert.equal(asset.leaves.length,130);
 });

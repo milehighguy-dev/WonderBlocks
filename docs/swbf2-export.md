@@ -38,3 +38,23 @@ Choose the ZIP destination, download and extract it. Copy `msh/` and `odf/` into
 If export is disabled, read the message above the export button. It identifies the missing setting or failed check. Direct exports keep replaced originals under `_wonderblocks/backups/` in the destination world.
 
 Implementation details and past compiler investigations are in the [technical reference](reference/swbf2-export.md), intended for contributors and coding agents.
+
+## Trees and foliage cost
+
+The export summary now shows leaf objects as well as mesh triangles. A tree
+can have few triangles but create many separate leaf objects and collision
+helpers. Check `source/render-cost.json` or the export report before placing
+large forests. The report includes attachments and repeated scene placements;
+an assets-only update describes the source scene, not hand-edited WorldEdit
+placements.
+
+Foliage grouping works independently of the collision and LOD checkboxes. It
+keeps disconnected crowns, hanging foliage and fixed baked cards separate
+when combining them would expand their shape too much. Collision stays with
+the original tree.
+
+Trunk LOD and attached foliage have separate rendering paths. The report
+identifies this explicitly: compilation, source object counts and a requested
+leaf distance do not prove good frame rate or a correct foliage transition.
+
+Contributor details and the optional canopy-baking workflow are in [Native foliage performance](native-foliage-performance.md).

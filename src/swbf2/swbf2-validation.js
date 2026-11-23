@@ -382,6 +382,7 @@ try {
     }
     $nativePrimitiveTotal = 0
     $nativeCollisionMeshTotal = 0
+    $nativeRenderModelTotal = 0
     foreach ($source in Get-PackageSources 'msh' '*.msh') {
         $compiled = Join-Path $outputRoot ($source.BaseName + '.model')
         $sourceShadows = @(Get-SourceShadowChecks ([IO.File]::ReadAllBytes($source.FullName)))
@@ -390,6 +391,7 @@ try {
         $masks = @(Get-CollisionMasks $compiledData $details)
         $nativePrimitiveTotal += $details.PrimitiveShapes.Count
         $nativeCollisionMeshTotal += @($masks | Where-Object {$_.Type -eq 'coll'}).Count
+        $nativeRenderModelTotal += $details.RenderModels
         $compiledShadows = @(Get-CompiledShadowChecks $compiledData)
         if (!$details.RenderModels) { throw ('Model cannot load as world geometry; missing native render model: ' + $source.Name) }
         if ($masks.Count -gt 64) { throw ('Compiled model exceeds the total collision-object limit: ' + $source.Name) }
@@ -420,9 +422,14 @@ try {
     }
     if ($nativePrimitiveTotal -gt 768) { throw ('Compiled scene exceeds the global collision primitive budget: ' + $nativePrimitiveTotal + ' (768 available; 256 reserved for mission/side assets).') }
     if ($nativeCollisionMeshTotal -gt 768) { throw ('Compiled scene exceeds the global collision mesh budget: ' + $nativeCollisionMeshTotal) }
+    if ($nativeRenderModelTotal -gt 768) { throw ('Compiled scene exceeds the global render model budget: ' + $nativeRenderModelTotal + ' (768 available; 256 reserved for mission/side assets).') }
     if ($report.PSObject.Properties['primitiveBudget'] -and $nativePrimitiveTotal -ne $report.primitiveBudget.native) { throw 'Compiled global primitive count differs from the export report.' }
-    [pscustomobject]@{NativePrimitives=$nativePrimitiveTotal;Budget=768;Reserved=256;RuntimeCapacity=1024} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $outputRoot 'primitive-budget-checks.json') -Encoding UTF8
+    [pscustomobject]@{NativePrimitives=$nativePrimitiveTotal;NativeRenderModels=$nativeRenderModelTotal;Budget=768;Reserved=256;RuntimeCapacity=1024} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $outputRoot 'primitive-budget-checks.json') -Encoding UTF8
     $checks | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath (Join-Path $outputRoot 'collision-checks.json') -Encoding UTF8
+    if ($report.PSObject.Properties['renderCost']) {
+        [pscustomobject]@{SourceCost=$report.renderCost;CompiledResourcesChecked=$true;RuntimePerformanceVerified=$false;FoliageDistanceCullingVerified=$false} | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath (Join-Path $outputRoot 'render-cost-checks.json') -Encoding UTF8
+        if ($report.renderCost.total.leafObjects -gt 0) { Write-Host ('Source layout leaf objects: ' + $report.renderCost.total.leafObjects + '. Attachment counts are not per-frame visibility or a performance pass.') }
+    }
     Write-Host ('Validated ' + $checks.Count + ' models. Compiler logs and collision checks: ' + $outputRoot)
     Write-Host 'The game was not launched. Source navigation was checked; in-game AI behavior still needs a playtest.'
 } finally { Pop-Location }

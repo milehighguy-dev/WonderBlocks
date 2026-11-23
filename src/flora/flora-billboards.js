@@ -1,10 +1,12 @@
 import * as T from '../../vendor/three.module.js';
 import {SWBF_FOLIAGE_SOURCE} from './data/swbf-foliage-source.js';
+import {BIOME_FOLIAGE_SOURCE} from './data/biome-textures-data.js';
+const foliageSources={...SWBF_FOLIAGE_SOURCE,...BIOME_FOLIAGE_SOURCE};
 
 const textures=new Map();
 export function billboardTexture(id,alpha=false){
  const key=id+(alpha?'-alpha':'');if(textures.has(key))return textures.get(key);
- const source=SWBF_FOLIAGE_SOURCE[id],data=Uint8Array.from(atob(source.rgba),c=>c.charCodeAt(0));
+ const source=foliageSources[id],data=Uint8Array.from(atob(source.rgba),c=>c.charCodeAt(0));
  for(let i=0;i<data.length;i+=4){if(alpha)data[i]=data[i+1]=data[i+2]=data[i+3];data[i+3]=255;}
  const texture=new T.DataTexture(data,source.width,source.height,T.RGBAFormat);
  if(!alpha)texture.colorSpace=T.SRGBColorSpace;
@@ -28,19 +30,36 @@ export function validateBillboard(settings){
  if(!settings||Array.isArray(settings)||typeof settings!=='object')throw Error('Invalid foliage billboard settings.');
  for(const [key,[min,max]] of Object.entries(BILLBOARD_LIMITS)){const x=settings[key];if(!Number.isFinite(x)||x<min||x>max||(['count','seed','atlas'].includes(key)&&!Number.isInteger(x)))throw Error('Invalid foliage billboard '+key+'.');}
  if(settings.minSize>settings.maxSize||settings.darknessMin>settings.darknessMax||!['camera','upright'].includes(settings.facing)||!['center','top','bottom'].includes(settings.anchor))throw Error('Invalid foliage billboard range.');
+ if(settings.lowDetailCount!==undefined&&(!Number.isInteger(settings.lowDetailCount)||settings.lowDetailCount<1||settings.lowDetailCount>settings.count))throw Error('Invalid foliage low-detail count.');
  return settings;
 }
 // Stable distribution: camera changes and rebuilding a plant never shuffle its leaves.
-export function billboardCards(settings){
+export function billboardCards(settings,{lowDetail=false}={}){
  validateBillboard(settings);let state=settings.seed>>>0;
  const random=()=>{state=(Math.imul(state,1664525)+1013904223)>>>0;return state/4294967296;};
- return Array.from({length:settings.count},()=>{const angle=random()*Math.PI*2,r=Math.sqrt(random())*settings.radius,width=T.MathUtils.lerp(settings.minSize,settings.maxSize,random()),height=width*settings.heightScale;return {center:[Math.cos(angle)*r,(random()-.5)*settings.height+(settings.anchor==='top'?-height/2:settings.anchor==='bottom'?height/2:0),Math.sin(angle)*r],width,height,shade:T.MathUtils.lerp(settings.darknessMin,settings.darknessMax,random()),tile:Math.floor(random()*settings.atlas**2)};});
+ const cards=Array.from({length:settings.count},(_,ordinal)=>{const angle=random()*Math.PI*2,r=Math.sqrt(random())*settings.radius,width=T.MathUtils.lerp(settings.minSize,settings.maxSize,random()),height=width*settings.heightScale;return {ordinal,center:[Math.cos(angle)*r,(random()-.5)*settings.height+(settings.anchor==='top'?-height/2:settings.anchor==='bottom'?height/2:0),Math.sin(angle)*r],width,height,shade:T.MathUtils.lerp(settings.darknessMin,settings.darknessMax,random()),tile:Math.floor(random()*settings.atlas**2)};});
+ if(!lowDetail||settings.lowDetailCount===undefined||settings.lowDetailCount>=cards.length)return cards;
+ // Retain actual cards around the patch's outline. Taking the first seeded
+ // cards alone can collapse a broad grass tuft into one small corner at distance.
+ const bounds=cards.map(c=>{const r=Math.hypot(c.width,c.height)/2;return new T.Box3(new T.Vector3(...c.center).addScalar(-r),new T.Vector3(...c.center).addScalar(r));}),full=new T.Box3();bounds.forEach(b=>full.union(b));
+ const extent=full.getSize(new T.Vector3()),center=full.getCenter(new T.Vector3()),selected=[],chosen=new Set(),box=new T.Box3();
+ while(selected.length<settings.lowDetailCount){
+  let best=-1,score=-Infinity;
+  for(let i=0;i<cards.length;i++)if(!chosen.has(i)){
+   const candidate=box.clone().union(bounds[i]),size=candidate.getSize(new T.Vector3()),ratios=['x','y','z'].map(k=>size[k]/Math.max(extent[k],1e-9)),shift=candidate.getCenter(new T.Vector3()).sub(center).divide(extent.clone().max(new T.Vector3(1e-9,1e-9,1e-9))).length();
+   const value=Math.min(...ratios)*2+ratios.reduce((a,b)=>a+b,0)/3-shift*.1;
+   if(value>score){score=value;best=i;}
+  }
+  chosen.add(best);selected.push(best);box.union(bounds[best]);
+ }
+ return selected.sort((a,b)=>a-b).map(i=>cards[i]);
 }
-export function billboardGeometry(settings){
- const cards=billboardCards(settings),geometry=new T.BufferGeometry(),position=[],normal=[],uv=[],color=[],indices=[],centers=[],corners=[];
+export function billboardGeometry(settings,options){
+ const cards=billboardCards(settings,options),geometry=new T.BufferGeometry(),position=[],normal=[],uv=[],color=[],indices=[],centers=[],corners=[];
  for(const [i,c] of cards.entries())for(const [x,y,u,v] of [[-1,-1,0,0],[1,-1,1,0],[1,1,1,1],[-1,1,0,1]]){position.push(c.center[0]+x*c.width/2,c.center[1]+y*c.height/2,c.center[2]);centers.push(...c.center);corners.push(x*c.width/2,y*c.height/2);normal.push(0,0,1);uv.push((c.tile%settings.atlas+u)/settings.atlas,(Math.floor(c.tile/settings.atlas)+v)/settings.atlas);color.push(c.shade,c.shade,c.shade);if(x===-1&&y===-1)indices.push(i*4,i*4+1,i*4+2,i*4,i*4+2,i*4+3);}
  for(const [name,values,size] of [['position',position,3],['normal',normal,3],['uv',uv,2],['color',color,3]])geometry.setAttribute(name,new T.Float32BufferAttribute(values,size));
  geometry.setAttribute('billboardCenter',new T.Float32BufferAttribute(centers,3));geometry.setAttribute('billboardCorner',new T.Float32BufferAttribute(corners,2));
+ geometry.setAttribute('billboardOrdinal',new T.Float32BufferAttribute(cards.flatMap(c=>[c.ordinal,c.ordinal,c.ordinal,c.ordinal]),1));
  geometry.setIndex(indices);geometry.userData.billboard={cards,settings:structuredClone(settings)};
  // A conservative orientation-independent bound includes every card corner.
  const box=new T.Box3();for(const c of cards){const r=Math.hypot(c.width,c.height)/2;box.expandByPoint(new T.Vector3(...c.center).addScalar(r));box.expandByPoint(new T.Vector3(...c.center).addScalar(-r));}
@@ -60,13 +79,13 @@ export function updateBillboardFacing(mesh,camera){
  positions.needsUpdate=normals.needsUpdate=true;
  mesh.geometry.computeBoundingBox();
 }
-export function buildBillboardMesh(settings,material){
+export function buildBillboardMesh(settings,material,options){
  // Each patch supplies a different model inverse and scale to the shader.
  // Keep its uniform state private even when the asset material is cached.
  // Programs and texture objects still share their normal renderer caches.
  material=material.clone();
  material.vertexColors=true;material.userData.walkCollision=false;
- const mesh=new T.Mesh(billboardGeometry(settings),material);mesh.userData.floraBillboard=true;
+ const mesh=new T.Mesh(billboardGeometry(settings,options),material);mesh.userData.floraBillboard=true;
  // Foliage is a cutout decoration, not a collision surface or a solid shadow slab.
  mesh.castShadow=false;mesh.receiveShadow=true;
  // GPU facing updates in the same draw, including the editor's on-demand renders.

@@ -1,6 +1,8 @@
 import {activeExportProfile,exportLayerName} from '../core/export-profiles.js';
 import {collisionHelperLayout,primaryCollisionGroup,summarizeCollisionHelpers} from './swbf2-collision-helpers.js';
 import {staticFoliageMesh} from './swbf2-static-foliage.js';
+import {compactLeafPatches,treeSpriteSegments,nativeLeafClusterKey,applyTreeCanopy} from './swbf2-tree-performance.js';
+import {addFoliageCostReport} from './swbf2-foliage-cost.js';
 import * as T from '../../vendor/three.module.js';
 import {buildPart,disposePart} from '../core/geometry.js';
 import {validateProject} from '../core/model.js';
@@ -17,6 +19,7 @@ import {exportMaterial,exportUV,nativeLeafTexture,textureFilename} from './swbf2
 import {meshSegments,mergeSegments,weldSurface,surfaceSegment,boxSurface,shadowFromPrimitives,structuralSegments,collisionCarrier,needsCollisionCarrier,modelToSWBF,insetShadow} from './swbf2-geometry.js';
 import {simplifySurface} from '../parts/surface-simplify.js';
 import {lowDetailRule} from '../core/detail-level.js';
+import {floraCurve} from '../flora/flora.js';
 import {cleanCollisionSurface} from '../collision/collision-geometry.js';
 import {generateSWBF2Navigation,navigationInput,navigationFromInput,planningFile,barrierFile} from './swbf2-navigation.js';
 import {SWBF2_AI_MERGE_SCRIPT} from './swbf2-navigation-install.js';
@@ -26,7 +29,7 @@ import {shareInstanceAssets,splitLeafAttachments} from './swbf2-instances.js';
 import {runSWBF2Worker} from './swbf2-worker-client.js';
 import {recommendSceneryClass,sceneryDimensions} from './swbf2-class-label.js';
 
-export const SWBF2_EXPORT_DEFAULTS={output:'scene',assetsOnly:false,classLabel:'auto',uniqueAssetNames:false,routeSections:6,maxTextureSize:512,includeCollision:true,separateCollisionHelpers:true,projectileCollision:true,shadows:true,preserveCollision:false,foliage:'native',lowDetail:true,collisionTriangles:1200,aiNavigation:true};
+export const SWBF2_EXPORT_DEFAULTS={output:'scene',assetsOnly:false,classLabel:'auto',uniqueAssetNames:false,routeSections:6,maxTextureSize:512,includeCollision:true,separateCollisionHelpers:true,projectileCollision:true,shadows:true,preserveCollision:false,foliage:'native',lowDetail:true,compactTrees:true,collisionTriangles:1200,aiNavigation:true};
 export const routeSectionError=value=>!Number.isInteger(value)||value<1||value>24?'Split routes after 1–24 sections.':null;
 const normalizedName=value=>String(value).normalize('NFKD').replace(/[^a-zA-Z0-9_]/g,'_').replace(/_+/g,'_').replace(/^_|_$/g,'').toLowerCase()||'scene';
 export const swbfName=value=>normalizedName(value).slice(0,40);
@@ -63,7 +66,9 @@ function worldFile(name,objects,{layer=true,bounds}={}){
 const collisionSuffix=mask=>Object.entries({s:1,v:2,b:4,t:8,o:16}).filter(([,bit])=>mask&bit).map(([name])=>name).join('');
 function primitiveModels(primitives,parent='root'){return primitives.map((p,i)=>({name:`p_-${collisionSuffix(p.mask??23)}-${i+1}`,parent,hidden:true,collisionMask:p.mask??23,primitive:p,position:p.position,rotation:p.rotation,segments:[surfaceSegment(boxSurface({...p,position:[0,0,0],rotation:[0,0,0,1]}))]}));}
 function leafDefinition(mesh,frameInverse,material){const settings=mesh.geometry.userData.billboard.settings,matrix=frameInverse.clone().multiply(mesh.matrixWorld),position=new T.Vector3(),rotation=new T.Quaternion(),scale=new T.Vector3();matrix.decompose(position,rotation,scale);const horizontal=(Math.abs(scale.x)+Math.abs(scale.z))/2,width=Math.abs(scale.x),height=Math.abs(scale.y),offset=settings.anchor==='top'?-settings.maxSize*settings.heightScale*height/2:settings.anchor==='bottom'?settings.maxSize*settings.heightScale*height/2:0;
- const fields={texture:material.texture.replace(/\.tga$/,''),count:settings.count,radius:settings.radius*horizontal,height:settings.height*height,minSize:settings.minSize*width,maxSize:settings.maxSize*width,heightScale:settings.heightScale*height/Math.max(1e-8,width),darknessMin:settings.darknessMin,darknessMax:settings.darknessMax,offset,atlas:settings.atlas};return {fields,position:position.toArray(),rotation:rotation.toArray()};
+ // The native leaf initializer divides Height by Radius. Single-card sprays
+ // authored with zero spread need a 1 mm domain to keep their bounds finite.
+ const fields={texture:material.texture.replace(/\.tga$/,''),count:settings.count,radius:Math.max(.001,settings.radius*horizontal),height:settings.height*height,minSize:settings.minSize*width,maxSize:settings.maxSize*width,heightScale:settings.heightScale*height/Math.max(1e-8,width),darknessMin:settings.darknessMin,darknessMax:settings.darknessMax,offset,atlas:settings.atlas,facing:settings.facing,anchor:settings.anchor};return {fields,position:position.toArray(),rotation:rotation.toArray()};
 }
 function leafBounds(leaf){const d=leaf.fields,corner=d.maxSize*Math.hypot(1,d.heightScale)/2,matrix=new T.Matrix4().compose(new T.Vector3(...leaf.position),new T.Quaternion(...leaf.rotation),new T.Vector3(1,1,1)),points=[];for(const x of [-1,1])for(const y of [-1,1])for(const z of [-1,1])points.push(new T.Vector3(x*(d.radius+corner),d.offset+y*(d.height/2+corner),z*(d.radius+corner)).applyMatrix4(matrix).toArray());return points;}
 // Preview recommendations consume the prepared object collision without building
@@ -93,9 +98,11 @@ export async function recommendCollisionHelpersAsync(project,settings={}, {colli
  if(signal?.aborted)throw new DOMException('Export canceled.','AbortError');return recommendCollisionHelpers(project,settings,collisionSource);
 }
 export function planSWBF2(project,settings={},collisionSource=null,{deferNavigation=false,onProgress=()=>{}}={}){
- const options={...SWBF2_EXPORT_DEFAULTS,...settings};if(routeSectionError(options.routeSections))throw Error(routeSectionError(options.routeSections));if(![64,128,256,512,1024].includes(options.maxTextureSize))throw Error('Choose a power-of-two texture size.');if(options.foliage!=='native')throw Error('Unsupported foliage export mode.');if(!Number.isInteger(options.collisionTriangles)||options.collisionTriangles<12||options.collisionTriangles>10000)throw Error('Collision mesh budget must be 12–10,000 triangles.');for(const key of ['assetsOnly','uniqueAssetNames','includeCollision','separateCollisionHelpers','projectileCollision','shadows','preserveCollision','lowDetail','aiNavigation'])if(typeof options[key]!=='boolean')throw Error('Invalid export option: '+key);
+ const options={...SWBF2_EXPORT_DEFAULTS,...settings};if(routeSectionError(options.routeSections))throw Error(routeSectionError(options.routeSections));if(![64,128,256,512,1024].includes(options.maxTextureSize))throw Error('Choose a power-of-two texture size.');if(!['native','static'].includes(options.foliage))throw Error('Unsupported foliage export mode.');if(!Number.isInteger(options.collisionTriangles)||options.collisionTriangles<12||options.collisionTriangles>10000)throw Error('Collision mesh budget must be 12–10,000 triangles.');for(const key of ['assetsOnly','uniqueAssetNames','includeCollision','separateCollisionHelpers','projectileCollision','shadows','preserveCollision','lowDetail','aiNavigation','compactTrees'])if(typeof options[key]!=='boolean')throw Error('Invalid export option: '+key);
  if(!['scene','object','mesh'].includes(options.output))throw Error('Choose scene, MSH + ODF, or MSH only.');if(!['auto','prop','building'].includes(options.classLabel))throw Error('Choose Prop or Building for the ODF class label.');if(options.output!=='object')options.classLabel='auto';if(options.output!=='scene')options.aiNavigation=false;
- const singleAsset=options.output!=='scene';
+ const singleAsset=options.output!=='scene',nativeFoliage=options.foliage==='native'&&options.output!=='mesh';
+ if(options.collisionFamily!==undefined&&!/^[a-z][a-z0-9_]{0,30}$/.test(options.collisionFamily))throw Error('Collision family must be a short lowercase asset name.');
+ if(options.nativeLeafDistance!==undefined&&(!Number.isFinite(options.nativeLeafDistance)||options.nativeLeafDistance<40||options.nativeLeafDistance>2000))throw Error('Native leaf distance must be 40–2,000 metres.');
  if(options.assetsOnly){if(options.output!=='scene')throw Error('Assets only is a scene export option.');options.aiNavigation=false;}
  const clean=validateProject(structuredClone(project)),parts=resolveRouteLinks(clean.parts),openingCuts=prepareInteriorCuts(parts),assets=new Map(),materials=[],materialMap=new Map(),textures=new Map(),built=[],warnings=new Set(),uvBounds=new WeakMap(),uvRanges=new WeakMap(),leafMaterials=new WeakSet(),solidMaterials=new WeakSet();
  const materialIndex=mat=>{if(materialMap.has(mat))return materialMap.get(mat);const exported=exportMaterial(mat,{...options,uvBounds:uvBounds.get(mat),bakeUV:leafMaterials.has(mat),opaqueSolid:solidMaterials.has(mat)});uvRanges.set(mat,exported.uvRange);const index=materials.findIndex(m=>m.name===exported.name),at=index<0?materials.push(exported)-1:index;materialMap.set(mat,at);textures.set(exported.texture,exported.bytes);if(mat.bumpMap||mat.normalMap)warnings.add('Bump and normal maps are represented by their diffuse texture; the static exporter does not create SWBF2 bump-map materials.');return at;};
@@ -105,12 +112,25 @@ export function planSWBF2(project,settings={},collisionSource=null,{deferNavigat
   const rootsById=new Map(built.map(root=>[root.userData.partId,root]));
   const assetBounds=new T.Box3();if(singleAsset)for(const root of built){root.updateMatrixWorld(true);root.traverse(mesh=>{if(!mesh.isMesh||ignored(mesh))return;const baked=mesh.userData.floraBillboard?staticFoliageMesh(mesh):null,source=baked??mesh,position=source.geometry.attributes.position,point=new T.Vector3();for(let i=0;i<position.count;i++)assetBounds.expandByPoint(point.fromBufferAttribute(position,i).applyMatrix4(source.matrixWorld));baked?.geometry.dispose();});}
   const assetOrigin=assetBounds.isEmpty()?new T.Vector3():assetBounds.getCenter(new T.Vector3()).setY(assetBounds.min.y);
+  // A plant is placed at its root, not at the center of an asymmetric crown.
+  // Keep rounded root caps below that base rather than balancing them on soil.
+  const exportedParts=parts.filter(p=>p.type!=='character-reference'),singlePlant=singleAsset&&exportedParts.length===1&&exportedParts[0].type==='flora';
+  if(singlePlant){const p=exportedParts[0],root=rootsById.get(p.id);assetOrigin.copy(floraCurve(p.flora,p.flora.branches[0].id).getPoint(0).applyMatrix4(root.matrixWorld));}
   let surfacing=0;for(const part of parts){if(part.type==='character-reference')continue;onProgress({kind:'progress',phase:'Preparing surfaces and textures',label:part.name,completed:surfacing++,total:parts.length});const group=rootsById.get(part.id);if(collisionSource){group.userData.collision=collisionSource.get(part.id);if(!group.userData.collision||group.userData.collision.status!=='ready'||group.userData.collision.version!==COLLISION_RULE_VERSION||group.userData.collision.definition!==collisionDefinition(part))throw Error('Scene object collision is not ready: '+part.name);}group.updateMatrixWorld(true);group.traverse(mesh=>{if(!mesh.isMesh||ignored(mesh))return;const materials=Array.isArray(mesh.material)?mesh.material:[mesh.material],uv=mesh.geometry.attributes.uv;for(const mat of materials){if(mesh.userData.floraComponent==='bark')solidMaterials.add(mat);if(mesh.userData.floraBillboard){leafMaterials.add(mat);uvBounds.set(mat,[0,0,1,1]);continue;}if(!uv)continue;const bounds=uvBounds.get(mat)??[Infinity,Infinity,-Infinity,-Infinity];for(let i=0;i<uv.count;i++){bounds[0]=Math.min(bounds[0],uv.getX(i));bounds[1]=Math.min(bounds[1],uv.getY(i));bounds[2]=Math.max(bounds[2],uv.getX(i));bounds[3]=Math.max(bounds[3],uv.getY(i));}uvBounds.set(mat,bounds);}});
    const logical=singleAsset?'standalone':part.type==='flora'||part.route||part.highway?part.id:part.assemblyId??part.id,pivotPart=parts.find(p=>p.id===logical||p.assemblyId===logical)??part,pivot=singleAsset?assetOrigin.clone():new T.Vector3(...pivotPart.position),rotation=singleAsset?new T.Quaternion():new T.Quaternion().setFromEuler(new T.Euler(...pivotPart.rotation)),frame=new T.Matrix4().compose(pivot,rotation,new T.Vector3(1,1,1)),inverse=frame.clone().invert(),bodyMatrix=inverse.clone().multiply(collisionPose(part)),ramps=new Map();for(const body of group.userData.collision?.bodies??[])if(body.source==='stair ramp'){const placed=transformCollisionBody(body,bodyMatrix);ramps.set(body.routeSegment,placed.surface??boxSurface(placed.primitive));}
    group.traverse(mesh=>{if(!mesh.isMesh||ignored(mesh))return;const segment=mesh.userData.routeSegment,routeOwner=singleAsset?null:mesh.userData.highwayPath?logical+'|road:'+mesh.userData.highwayPath:part.route?logical:mesh.userData.interiorStair?logical+'|stair:'+mesh.userData.interiorStair:null,section=routeOwner&&Number.isInteger(segment)?Math.floor(segment/options.routeSections):null,componentRole=part.type==='flora'?(part.interiorProp?'details':'exterior'):component(part,mesh),role=singleAsset?'exterior':mesh.userData.interiorStair&&componentRole!=='details'?'interior':componentRole,assetKey=(routeOwner??logical)+'|'+role+'|'+(section??''),label=singleAsset?clean.name:part.type==='flora'?part.name:part.assemblyName||part.name;
     if(!assets.has(assetKey))assets.set(assetKey,{key:assetKey,label,role,section,pivot:pivot.toArray(),rotation:rotation.toArray(),frame,inverse,segments:[],lowDetailSegments:[],lowDetailRules:[],bodies:[],primitives:[],fallback:[],structural:[],shadowShells:[],guardKeys:new Set(),volumeKeys:new Set(),leaves:[],partIds:new Set(),routeIndices:new Set()});const asset=assets.get(assetKey);asset.partIds.add(part.id);if(mesh.userData.highwaySections)mesh.userData.highwaySections.forEach(i=>asset.routeIndices.add(i));else if(Number.isInteger(segment))asset.routeIndices.add(segment);
-    if(mesh.userData.floraBillboard&&!singleAsset){const m=materials[materialIndex(mesh.material)],atlas=mesh.geometry.userData.billboard.settings.atlas,native=nativeLeafTexture(m,atlas,options.maxTextureSize);textures.set(native.texture,native.bytes);asset.leaves.push(leafDefinition(mesh,inverse,{...m,texture:native.texture}));return;}
-    const readMesh=m=>meshSegments(m,inverse,materialIndex,{uvTransform:(mat,u,v)=>exportUV(mat,u,v,uvRanges.get(mat))}),staticLeaves=singleAsset&&mesh.userData.floraBillboard?staticFoliageMesh(mesh):null,segments=readMesh(staticLeaves??mesh);staticLeaves?.geometry.dispose();asset.segments.push(...segments);
+    if(mesh.userData.floraBillboard&&nativeFoliage){
+     const m=materials[materialIndex(mesh.material)],atlas=mesh.geometry.userData.billboard.settings.atlas,native=nativeLeafTexture(m,atlas,options.maxTextureSize),cluster=options.nativeLeafClusters?.[nativeLeafClusterKey(mesh,native.bytes)];
+     let leaf=leafDefinition(mesh,inverse,{...m,texture:native.texture});asset.originalLeafParticles=(asset.originalLeafParticles??0)+leaf.fields.count;
+     if(cluster){
+      if(!(cluster.bytes instanceof Uint8Array)||!Number.isFinite(cluster.width)||!Number.isFinite(cluster.height)||cluster.width<=0||cluster.height<=0||cluster.center?.length!==3||!cluster.center.every(Number.isFinite))throw Error('Invalid native leaf cluster.');
+      const texture=textureFilename(cluster.bytes,'leaf_cloud'),matrix=inverse.clone().multiply(mesh.matrixWorld),position=new T.Vector3(...cluster.center).applyMatrix4(matrix),rotation=new T.Quaternion(),scale=new T.Vector3();matrix.decompose(new T.Vector3(),rotation,scale);const width=cluster.width*Math.abs(scale.x);
+      leaf={position:position.toArray(),rotation:rotation.toArray(),fields:{...leaf.fields,texture:texture.replace(/\.tga$/,''),count:1,radius:.001,height:0,offset:0,minSize:width,maxSize:width,heightScale:cluster.height*Math.abs(scale.y)/Math.max(1e-8,width),darknessMin:1,darknessMax:1,atlas:2}};textures.set(texture,cluster.bytes);
+     }else textures.set(native.texture,native.bytes);
+     asset.leaves.push(leaf);return;
+    }
+    const readMesh=m=>meshSegments(m,inverse,materialIndex,{uvTransform:(mat,u,v)=>exportUV(mat,u,v,uvRanges.get(mat))}),staticLeaves=!nativeFoliage&&mesh.userData.floraBillboard?staticFoliageMesh(mesh):null,segments=readMesh(staticLeaves??mesh);staticLeaves?.geometry.dispose();asset.segments.push(...segments);
     const stairRamp=mesh.userData.routeFloor&&part.route?.segments[segment]?.kind==='stairs'&&ramps.has(segment),volume=structuralSegments(mesh,inverse),volumeKey=volume?JSON.stringify(volume[0].positions):null;
     if(volumeKey&&!asset.volumeKeys.has(volumeKey)){asset.volumeKeys.add(volumeKey);asset.structural.push(volume[0]);}
     // Material splits share one construction shell. Include that shell alongside
@@ -128,13 +148,13 @@ export function planSWBF2(project,settings={},collisionSource=null,{deferNavigat
      const lowRoot=buildPart(part,{parts,openingCuts,exportRouteSections:options.routeSections,collision:false,lowDetail:true});
      try{
       lowRoot.updateMatrixWorld(true);
-      lowRoot.traverse(mesh=>{if(!mesh.isMesh||ignored(mesh))return;const mats=Array.isArray(mesh.material)?mesh.material:[mesh.material],uv=mesh.geometry.attributes.uv;
+      lowRoot.traverse(mesh=>{if(!mesh.isMesh||ignored(mesh)||(nativeFoliage&&mesh.userData.floraBillboard))return;const mats=Array.isArray(mesh.material)?mesh.material:[mesh.material],uv=mesh.geometry.attributes.uv;
        for(const mat of mats){if(mesh.userData.floraComponent==='bark')solidMaterials.add(mat);if(mesh.userData.floraBillboard){leafMaterials.add(mat);uvBounds.set(mat,[0,0,1,1]);continue;}if(!uv)continue;const b=uvBounds.get(mat)??[Infinity,Infinity,-Infinity,-Infinity];for(let i=0;i<uv.count;i++){b[0]=Math.min(b[0],uv.getX(i));b[1]=Math.min(b[1],uv.getY(i));b[2]=Math.max(b[2],uv.getX(i));b[3]=Math.max(b[3],uv.getY(i));}uvBounds.set(mat,b);}
       });
-      lowRoot.traverse(mesh=>{if(!mesh.isMesh||ignored(mesh)||mesh.userData.floraBillboard&&!singleAsset)return;
+      lowRoot.traverse(mesh=>{if(!mesh.isMesh||ignored(mesh)||(nativeFoliage&&mesh.userData.floraBillboard))return;
        const segment=mesh.userData.routeSegment,owner=singleAsset?null:mesh.userData.highwayPath?logical+'|road:'+mesh.userData.highwayPath:part.route?logical:mesh.userData.interiorStair?logical+'|stair:'+mesh.userData.interiorStair:null,section=owner&&Number.isInteger(segment)?Math.floor(segment/options.routeSections):null,baseRole=part.type==='flora'?(part.interiorProp?'details':'exterior'):component(part,mesh),role=singleAsset?'exterior':mesh.userData.interiorStair&&baseRole!=='details'?'interior':baseRole,key=(owner??logical)+'|'+role+'|'+(section??''),asset=assets.get(key);
        if(!asset)throw Error('Distant shape has no full-detail owner: '+part.name+' / '+role);
-       const baked=singleAsset&&mesh.userData.floraBillboard?staticFoliageMesh(mesh):null;
+       const baked=mesh.userData.floraBillboard?staticFoliageMesh(mesh):null;
        asset.lowDetailSegments.push(...meshSegments(baked??mesh,inverse,materialIndex,{uvTransform:(mat,u,v)=>exportUV(mat,u,v,uvRanges.get(mat))}));baked?.geometry.dispose();
        if(!asset.lowDetailRules.includes(rule))asset.lowDetailRules.push(rule);
       });
@@ -157,7 +177,23 @@ export function planSWBF2(project,settings={},collisionSource=null,{deferNavigat
    }
 
   }
-  const unshared=splitLeafAttachments([...assets.values()].filter(a=>a.segments.length||a.leaves.length).map(a=>({...a,segments:mergeSegments(a.segments),lowDetailSegments:mergeSegments(a.lowDetailSegments),partIds:[...a.partIds],routeIndices:[...a.routeIndices].sort((a,b)=>a-b)})));
+  const prepared=[...assets.values()].filter(a=>a.segments.length||a.leaves.length);
+  for(const a of prepared)a.originalLeafPatches=a.leaves.length;
+  if(options.nativeTreeCanopy){
+   if(!singlePlant||options.output==='mesh'||options.nativeLeafClusters)throw Error('A canopy bake needs one standalone native-foliage plant and cannot be combined with individual cloud bakes.');
+   const crown=prepared.filter(a=>a.leaves.length);
+   if(crown.length!==1)throw Error('A canopy bake needs one crown owner.');
+   crown[0].leaves=applyTreeCanopy(crown[0].leaves,options.nativeTreeCanopy,bytes=>{const name=textureFilename(bytes,'canopy_zone');textures.set(name,bytes);return name.replace(/\.tga$/,'');});
+   crown[0].canopyZones=crown[0].leaves.length;
+  }else if(options.compactTrees)for(const a of prepared)if(a.leaves.length)a.leaves=compactLeafPatches(a.leaves);
+  const unshared=splitLeafAttachments(prepared.map(a=>({...a,segments:mergeSegments(a.segments),lowDetailSegments:mergeSegments(a.lowDetailSegments),partIds:[...a.partIds],routeIndices:[...a.routeIndices].sort((a,b)=>a-b)})));
+  if(options.nativeTreeSprite){
+   if(!singlePlant||options.output==='mesh')throw Error('A native tree sprite needs one standalone plant.');
+   const s=options.nativeTreeSprite,bytes=s.bytes;
+   if(!(bytes instanceof Uint8Array)||bytes.length<18||s.bounds?.min?.length!==3||s.bounds?.max?.length!==3||!s.bounds.min.every(Number.isFinite)||!s.bounds.max.every((v,i)=>Number.isFinite(v)&&v>s.bounds.min[i]))throw Error('Invalid native tree sprite.');
+   const texture=textureFilename(bytes,'tree_sprite'),material=materials.length;textures.set(texture,bytes);materials.push({name:'tree_sprite',texture,flags:25});
+   unshared[0].lowDetailSegments=treeSpriteSegments(s.bounds,material,s);unshared[0].lowDetailRules=['whole-tree-cutout-sprite'];
+  }
   const partById=new Map(parts.map(p=>[p.id,p]));
   for(const asset of unshared){
    asset.classRecommendation=recommendSceneryClass(asset.partIds.map(id=>partById.get(id)),sceneryDimensions([...asset.segments.map(s=>s.positions),...asset.leaves.map(leafBounds)]));
@@ -166,7 +202,7 @@ export function planSWBF2(project,settings={},collisionSource=null,{deferNavigat
   const output=assignAssetNames(singleAsset?unshared:shareInstanceAssets(unshared,parts),clean.name,options);
   const prefix='w'+crc32(new TextEncoder().encode(activeExportProfile(clean)?.id??clean.name)).toString(16).padStart(8,'0'),navigation=options.aiNavigation&&!deferNavigation?generateSWBF2Navigation(parts,built,{prefix}):null,input=options.aiNavigation&&deferNavigation?navigationInput(parts,built,prefix):null;
   for(const warning of navigation?.warnings??[])warnings.add(warning);
-  return {project:clean,options,assets:output,materials,textures,navigation,navigationInput:input,warnings:[...warnings]};
+  return {project:clean,options,assets:output,materials,textures,navigation,navigationInput:input,warnings:[...warnings],objectOriginKind:singlePlant?'plant-base':'bottom-center'};
  }finally{built.forEach(disposePart);}
 }
 function* packageSteps(project,settings={},collisionSource=null,navigationMerge=null,onProgress=()=>{},packZip=true){
@@ -176,12 +212,12 @@ function* packageSteps(project,settings={},collisionSource=null,navigationMerge=
  if(plan.navigation&&navigationMerge)yield {kind:'progress',phase:'Merging existing world planning',completed:0,total:0};
  const mergeResult=plan.navigation&&navigationMerge?mergeNavigation(plan.navigation,navigationMerge):null;
  if(mergeResult){plan.navigation=mergeResult.navigation;plan.warnings.push(...mergeResult.diagnostics.warnings);}
- const emitted=new Map(),files=new Map(),objects=[],manifest={format:'wonderblocks-swbf2',version:1,project:plan.project.name,units:'metres',upAxis:'Y',collisionPipeline:'object-owned',collisionRuleVersion:COLLISION_RULE_VERSION,modelAxes:'X reflected from world source coordinates',settings:plan.options,assets:[],warnings:[...plan.warnings]},sceneName=swbfName(plan.project.name),worldBounds=new T.Box3();
+ const emitted=new Map(),files=new Map(),objects=[],manifest={format:'wonderblocks-swbf2',version:1,project:plan.project.name,units:'metres',upAxis:'Y',collisionPipeline:'object-owned',collisionRuleVersion:COLLISION_RULE_VERSION,modelAxes:'X reflected from world source coordinates',settings:{...plan.options,...(plan.options.nativeLeafClusters?{nativeLeafClusters:{entries:Object.keys(plan.options.nativeLeafClusters).length}}:{}),...(plan.options.nativeTreeSprite?{nativeTreeSprite:{bounds:plan.options.nativeTreeSprite.bounds}}:{}),...(plan.options.nativeTreeCanopy?{nativeTreeCanopy:{sourceSignature:plan.options.nativeTreeCanopy.sourceSignature,zones:plan.options.nativeTreeCanopy.zones.length}}:{})},assets:[],warnings:[...plan.warnings]},sceneName=swbfName(plan.project.name),worldBounds=new T.Box3();
  const ownership=activeExportProfile(plan.project);if(ownership)manifest.exportIdentity={id:ownership.id,kind:plan.options.output==='scene'?'scene':'asset'};
  if(!plan.assets.length)throw Error('Add a scene object before exporting.');for(const [name,bytes] of plan.textures){files.set('msh/'+name,bytes);const header=new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength);if(header.getUint16(12,true)<4||header.getUint16(14,true)<4)files.set('msh/'+name+'.option','-maps 1 -format a8r8g8b8\n');}
  let carrierMaterial=null,currentClassLabel='prop';const allocateInstance=assetNameAllocator();const allocateName=assetNameAllocator(plan.assets.map(a=>a.name));
  const invisibleTexture=()=>{const bytes=writeTGA(16,16,new Uint8Array(16*16*4)),name=textureFilename(bytes);files.set('msh/'+name,bytes);files.set('msh/'+name+'.option','-maps 1 -format a8r8g8b8\n');return name;};
- const emit=(name,models,properties='',placement,record,boundsPoints=[])=>{if(needsCollisionCarrier(models)){if(carrierMaterial===null){carrierMaterial=plan.materials.length;plan.materials.push({name:'invisible_collision_carrier',flags:24,texture:invisibleTexture()});}models=[models[0],collisionCarrier(models,carrierMaterial),...models.slice(1)];if(record)record={...record,carrierTriangles:2};}const used=[...new Set(models.flatMap(m=>(m.segments??[]).map(s=>s.material)))],localMaterials=used.map(i=>plan.materials[i]??{name:'collision',flags:0}),remap=new Map(used.map((v,i)=>[v,i])),localModels=models.map(m=>({...m,...(m.segments?{segments:m.segments.map(s=>({...s,material:remap.get(s.material)??0}))}:{})}));emitted.set(name,{materials:localMaterials,models:localModels,boundsPoints});files.set('msh/'+name+'.msh',writeMSH({name,materials:localMaterials,models:localModels.map(modelToSWBF),boundsPoints:boundsPoints.map(p=>[-p[0],p[1],p[2]])}));files.set('odf/'+name+'.odf',`[GameObjectClass]\nClassLabel = "${currentClassLabel}"\nGeometryName = "${name}.msh"\n\n[Properties]\nGeometryName = "${name}"\n${properties}`);const hasMesh=models.some(m=>m.name.startsWith('collision')&&m.segments?.length),hasCollision=hasMesh||models.some(m=>m.primitive),options=[];if(models.some(m=>m.segments?.some(s=>s.colors)))options.push('-vertexlighting');if(!hasCollision)options.push('-nocollision');if(hasMesh&&(plan.options.preserveCollision||models.some(m=>m.preserveCollision)))options.push('-donotmergecollision');if(options.length)files.set('msh/'+name+'.msh.option',options.join('\n')+'\n');if(placement&&!(plan.options.output==='scene'&&record?.role==='collision')){const poses=placement.instances||[placement];for(const [i,pose] of poses.entries())objects.push({instance:allocateInstance(poses.length>1?name+'_instance_'+(i+1):name),odf:name,position:pose.position,rotation:pose.rotation});}if(record)manifest.assets.push({...record,...(placement?.instances?.length>1?{instanceCount:placement.instances.length,instances:placement.instances}:{}),classLabel:currentClassLabel,collisionBodies:models.filter(m=>m.primitive||m.name.startsWith('collision')).map(m=>({type:m.primitive?'prim':'coll',mask:m.collisionMask})),collisionFacesPreserved:hasMesh&&(plan.options.preserveCollision||models.some(m=>m.preserveCollision))});};
+ const emit=(name,models,properties='',placement,record,boundsPoints=[])=>{if(needsCollisionCarrier(models)){if(carrierMaterial===null){carrierMaterial=plan.materials.length;plan.materials.push({name:'invisible_collision_carrier',flags:24,texture:invisibleTexture()});}models=[models[0],collisionCarrier(models,carrierMaterial),...models.slice(1)];if(record)record={...record,carrierTriangles:2};}if(record?.role==='collision'&&record.treeSurfaceCollision){const bounds=new T.Box3();for(const model of models)for(const segment of model.segments??[])for(const point of segment.positions)bounds.expandByPoint(new T.Vector3(...point));if(!bounds.isEmpty()){const offset=bounds.getCenter(new T.Vector3()).toArray();record={...record,helperOffset:offset};models=models.map(model=>model.parent==='root'?{...model,position:(model.position??[0,0,0]).map((v,i)=>v-offset[i])}:model);boundsPoints=boundsPoints.map(p=>p.map((v,i)=>v-offset[i]));}}const used=[...new Set(models.flatMap(m=>(m.segments??[]).map(s=>s.material)))],localMaterials=used.map(i=>plan.materials[i]??{name:'collision',flags:0}),remap=new Map(used.map((v,i)=>[v,i])),localModels=models.map(m=>({...m,...(m.segments?{segments:m.segments.map(s=>({...s,material:remap.get(s.material)??0}))}:{})}));emitted.set(name,{materials:localMaterials,models:localModels,boundsPoints});files.set('msh/'+name+'.msh',writeMSH({name,materials:localMaterials,models:localModels.map(modelToSWBF),boundsPoints:boundsPoints.map(p=>[-p[0],p[1],p[2]])}));files.set('odf/'+name+'.odf',`[GameObjectClass]\nClassLabel = "${currentClassLabel}"\nGeometryName = "${name}.msh"\n\n[Properties]\nGeometryName = "${name}"\n${properties}`);const hasMesh=models.some(m=>m.name.startsWith('collision')&&m.segments?.length),hasCollision=hasMesh||models.some(m=>m.primitive),options=[];if(models.some(m=>m.segments?.some(s=>s.colors)))options.push('-vertexlighting');if(!hasCollision)options.push('-nocollision');if(hasMesh&&(plan.options.preserveCollision||models.some(m=>m.preserveCollision)))options.push('-donotmergecollision');if(options.length)files.set('msh/'+name+'.msh.option',options.join('\n')+'\n');if(placement&&!(plan.options.output==='scene'&&record?.role==='collision')){const poses=placement.instances||[placement];for(const [i,pose] of poses.entries())objects.push({instance:allocateInstance(poses.length>1?name+'_instance_'+(i+1):name),odf:name,position:pose.position,rotation:pose.rotation});}if(record)manifest.assets.push({...record,...(placement?.instances?.length>1?{instanceCount:placement.instances.length,instances:placement.instances}:{}),classLabel:currentClassLabel,collisionBodies:models.filter(m=>m.primitive||m.name.startsWith('collision')).map(m=>({type:m.primitive?'prim':'coll',mask:m.collisionMask})),collisionFacesPreserved:hasMesh&&(plan.options.preserveCollision||models.some(m=>m.preserveCollision))});};
  // Keep prepared shapes available for shadow silhouettes and AI queries even
  // when physical collision is excluded from the serialized package.
  const primitiveBudget=allocatePrimitiveBudget(plan.options.includeCollision?plan.assets:[]);
@@ -207,11 +243,11 @@ function* packageSteps(project,settings={},collisionSource=null,navigationMerge=
   const collisionRecord=(mask,bodies)=>({collisionMask:collisionSuffix(mask),collisionTriangles:bodies.reduce((n,b)=>n+b.surface.triangles.length,0),...(bodies.some(b=>b.source==='tree skin')?{treeSurfaceCollision:true,maximumSimplificationError:COLLISION_RULES.treeError}:{}),...(bodies.some(b=>b.source==='railing barrier')?{continuousRailingCollision:true}:{}),...(bodies.some(b=>b.contactPartition)?{contactPartition:true,maximumContactTriangles:Math.max(...bodies.map(b=>b.maximumContactTriangles??0)),contactEnvelopeHalfSizes:[1.25,6],...(bodies.every(b=>b.contactPartitionTriangles===COLLISION_CONTACT_TRIANGLES)?{contactPartitionTriangles:COLLISION_CONTACT_TRIANGLES}:{})}:{}),maximumSampledCollisionErrorMetres:Math.max(0,...bodies.map(b=>b.sampledErrorMetres??0)),sourceCollisionBodies:bodies.flatMap(b=>b.sourceBodyIds??[b.id])});
   let lowDetailTriangles=0;if(plan.options.lowDetail&&asset.segments.length){const low=asset.lowDetailSegments.length?asset.lowDetailSegments:asset.segments;lowDetailTriangles=low.reduce((n,s)=>n+s.triangles.length,0);if(lowDetailTriangles)models.push({name:'visible_lowrez',parent:'root',segments:low});}
   for(const [i,leaf] of asset.leaves.entries()){
-   const name=plan.options.uniqueAssetNames?'wb_leaf_'+crc32(new TextEncoder().encode(JSON.stringify(leaf.fields))).toString(16):allocateName(asset.name+'_leaves_'+(i+1)),hp='hp_leaf_'+i;models.push({name:hp,parent:'root',position:leaf.position,rotation:leaf.rotation});properties.push(`AttachOdf = "${name}"\nAttachToHardPoint = "${hp}"`);const d=leaf.fields;files.set('odf/'+name+'.odf',`[GameObjectClass]\nClassLabel = "leafpatch"\nGeometryName = "wb_leaf_anchor.msh"\n\n[Properties]\nOffset = "0 ${f(d.offset)} 0"\nHeightScale = "${f(d.heightScale)}"\nMinSize = "${f(d.minSize)}"\nMaxSize = "${f(d.maxSize)}"\nAlpha = "1"\nNumParticles = "${d.count}"\nMaxDistance = "1000"\nTexture = "${d.texture}"\nRadius = "${f(d.radius)}"\nHeight = "${f(d.height)}"\nMaxFallingLeaves = "0"\nMaxScatterBirds = "0"\nDarknessMin = "${f(d.darknessMin)}"\nDarknessMax = "${f(d.darknessMax)}"\n`);leafAnchor=true;
+   const name=plan.options.uniqueAssetNames?'wb_leaf_'+crc32(new TextEncoder().encode(JSON.stringify(leaf.fields))).toString(16):allocateName(asset.name+'_leaves_'+(i+1)),hp='hp_leaf_'+i;models.push({name:hp,parent:'root',position:leaf.position,rotation:leaf.rotation});properties.push(`AttachOdf = "${name}"\nAttachToHardPoint = "${hp}"`);const d=leaf.fields;files.set('odf/'+name+'.odf',`[GameObjectClass]\nClassLabel = "leafpatch"\nGeometryName = "wb_leaf_anchor.msh"\n\n[Properties]\nOffset = "0 ${f(d.offset)} 0"\nHeightScale = "${f(d.heightScale)}"\nMinSize = "${f(d.minSize)}"\nMaxSize = "${f(d.maxSize)}"\nAlpha = "1"\nNumParticles = "${d.count}"\nMaxDistance = "${f(plan.options.nativeLeafDistance??1000)}"\nTexture = "${d.texture}"\nRadius = "${f(d.radius)}"\nHeight = "${f(d.height)}"\nMaxFallingLeaves = "0"\nMaxScatterBirds = "0"\nDarknessMin = "${f(d.darknessMin)}"\nDarknessMax = "${f(d.darknessMax)}"\n`);leafAnchor=true;
    if(d.atlas>2)manifest.warnings.push(`${asset.label}: the native 2×2 leafpatch atlas uses four tiles from the ${d.atlas}×${d.atlas} source sheet.`);
   }
-  let collisionIndex=0;const collisionName=suffix=>allocateName(plan.options.uniqueAssetNames?asset.name+suffix:asset.name+'_collision_'+(++collisionIndex));
-  const placement={position:asset.pivot,rotation:asset.rotation,...(asset.instances?{instances:asset.instances}:{})},record={name:asset.name,label:asset.label,role:asset.role,classRecommendation:asset.classRecommendation,sourcePartIds:asset.partIds,routeSections:asset.routeIndices.map(i=>i+1),triangles:asset.segments.reduce((n,s)=>n+s.triangles.length,0),lowDetailTriangles,...(plan.options.lowDetail?{lowDetailConstruction:asset.lowDetailRules}:{}),primitiveCollision:primitives.length,...(primaryBodies.length?collisionRecord(primaryMask,primaryBodies):{}),...(!plan.options.separateCollisionHelpers&&primaryBodies.length?{collisionHelpersDisabled:true,maximumContactTriangles:layout.recommendation.maximumContactTriangles}:{}),ordnanceCollision:ordnanceTriangles>0,ordnanceTriangles,shadowTriangles,nativeLeafPatches:asset.leaves.length,nativeLeafTriangles:asset.leaves.reduce((n,l)=>n+l.fields.count*2,0)};if(layout.embeddedBoxes)record.meshSerializedBoxes=layout.embeddedBoxes;emit(asset.name,models,properties.join('\n')+'\n',placement,record,asset.leaves.flatMap(leafBounds));
+  let collisionIndex=0;const collisionName=suffix=>allocateName(plan.options.uniqueAssetNames?asset.name+suffix:(plan.options.collisionFamily||asset.name)+'_collision_'+(++collisionIndex));
+  const placement={position:asset.pivot,rotation:asset.rotation,...(asset.instances?{instances:asset.instances}:{})},record={name:asset.name,label:asset.label,role:asset.role,classRecommendation:asset.classRecommendation,sourcePartIds:asset.partIds,routeSections:asset.routeIndices.map(i=>i+1),triangles:asset.segments.reduce((n,s)=>n+s.triangles.length,0),lowDetailTriangles,...(plan.options.lowDetail?{lowDetailConstruction:asset.lowDetailRules}:{}),primitiveCollision:primitives.length,...(primaryBodies.length?collisionRecord(primaryMask,primaryBodies):{}),...(!plan.options.separateCollisionHelpers&&primaryBodies.length?{collisionHelpersDisabled:true,maximumContactTriangles:layout.recommendation.maximumContactTriangles}:{}),ordnanceCollision:ordnanceTriangles>0,ordnanceTriangles,shadowTriangles,originalLeafPatches:asset.originalLeafPatches,...(asset.leaves.length?{foliageLOD:{followsModelLOD:false,requestedMaxDistance:plan.options.nativeLeafDistance??1000,distanceCullingVerified:false},canopyZones:asset.canopyZones??0}:{}),originalLeafParticles:asset.originalLeafParticles,nativeLeafPatches:asset.leaves.length,nativeLeafTriangles:asset.leaves.reduce((n,l)=>n+l.fields.count*2,0)};if(layout.embeddedBoxes)record.meshSerializedBoxes=layout.embeddedBoxes;emit(asset.name,models,properties.join('\n')+'\n',placement,record,asset.leaves.flatMap(leafBounds));
   // Extra collision assets keep each model below the engine's 64-object limit.
   for(let i=primitiveLimit;i<nativePrimitives.length;i+=64){const name=collisionName('_p'+Math.floor(i/64+1));emit(name,[{name:'root'},...primitiveModels(nativePrimitives.slice(i,i+64))],'',placement,{name,label:asset.label,role:'collision',sourcePartIds:asset.partIds,primitiveCollision:Math.min(64,nativePrimitives.length-i),triangles:0});}
   // This changes file representation only, never the prepared object collision.
@@ -222,7 +258,7 @@ function* packageSteps(project,settings={},collisionSource=null,navigationMerge=
   for(const [key,{mask,bodies}] of meshGroups){if(key===primaryKey)continue;const suffix=collisionSuffix(mask)+'_'+crc32(new TextEncoder().encode(key)).toString(16).padStart(8,'0'),name=collisionName('_'+suffix);emit(name,[{name:'root'},collisionModel(mask,bodies)],'',placement,{name,label:asset.label,role:'collision',sourcePartIds:[...new Set(bodies.map(b=>b.partId))],primitiveCollision:0,triangles:bodies.reduce((n,b)=>n+b.surface.triangles.length,0),...collisionRecord(mask,bodies)});}
   if(plan.options.output==='scene'){
    const owner=manifest.assets[firstAssetRecord],helpers=manifest.assets.slice(firstAssetRecord+1);
-   attachCollisionHelpers(files,owner,helpers);
+   attachCollisionHelpers(files,owner,helpers,emitted,false,manifest);
   }
   for(const instanceFrame of asset.instances?asset.instances.map(p=>new T.Matrix4().compose(new T.Vector3(...p.position),new T.Quaternion(...p.rotation),new T.Vector3(1,1,1))):[asset.frame]){
   for(const p of asset.leaves.flatMap(leafBounds))worldBounds.expandByPoint(new T.Vector3(...p).applyMatrix4(instanceFrame));
@@ -254,10 +290,11 @@ function* packageSteps(project,settings={},collisionSource=null,navigationMerge=
    files.set('world1/'+sceneName+'.req',`ucft\n{\n\tREQN\n\t{\n\t\t"congraph"\n\t\t${qstr(sceneName)}\n\t}\n\tREQN\n\t{\n\t\t"world"\n\t\t${qstr(sceneName)}\n\t}\n}\n`);
   }
  }
- const nativeMeshCount=manifest.assets.reduce((n,a)=>n+a.collisionBodies.filter(b=>b.type==='coll').length,0);
+ const nativeMeshCount=manifest.assets.reduce((n,a)=>n+[...a.collisionBodies,...(a.referencedCollisionBodies??[])].filter(b=>b.type==='coll').length,0);
  if(nativeMeshCount>768)throw Error('This scene exceeds the game collision mesh resource budget. Split it into separate maps.');
  manifest.primitiveBudget.nativeCollisionMeshes=nativeMeshCount;
  if(plan.options.assetsOnly){for(const path of [...files.keys()])if(path.startsWith('world1/'))files.delete(path);delete manifest.layerFile;delete manifest.layerName;manifest.assetsOnly=true;}
+ addFoliageCostReport(files,manifest,objects);
  manifest.objects=plan.options.assetsOnly?0:objects.length;manifest.worldBounds=bounds;if(manifest.navigation)manifest.navigation.minimumWorldExtent=Math.ceil(Math.max(...[bounds.min[0],bounds.max[0],bounds.min[2],bounds.max[2]].map(Math.abs))+1);const protectedAssets=manifest.assets.filter(a=>a.collisionFacesPreserved).length;if(protectedAssets&&!plan.options.preserveCollision)manifest.warnings.push(`${protectedAssets} assets preserve collision openings or concave faces by disabling compiler collision merging. This trades collision optimization for accuracy.`);manifest.warnings=[...new Set(manifest.warnings)];manifest.files=[...files.keys(),'export-report.json','README.txt'];files.set('export-report.json',JSON.stringify(manifest,null,2)+'\n');files.set('README.txt',exportNotes(sceneName,manifest));return {files,manifest,zip:packZip?zipFiles(files):null,filename:sceneName+'.swbf2.zip'};
 }
 // Every source asset has a companion, including assets using native defaults.
@@ -271,37 +308,59 @@ function completeCompilerOptions(files){
   }
  }
 }
-// EntityPropClass::SetProperty accepts 16 attached props per parent. All helper
-// geometry shares its owner's local frame, so descendants use identity roots.
-// Scene roots also avoid adding bones to trees already at the 64-bone limit.
+// EntityPropClass::SetProperty accepts 16 attached props per parent. Tree skin
+// helpers use geometry-centered origins and parent-relative hardpoints, keeping
+// their physical surfaces fixed. Identity helpers can reuse the root bone.
 const MAX_ATTACHED_COLLISION_PROPS=16;
-function attachCollisionHelpers(files,owner,helpers,standalone=false){
- if(!helpers.length)return;
- owner.collisionHelpers=helpers.map(helper=>helper.name);
- const parents=[owner,...helpers];
- for(const [i,helper] of helpers.entries()){
-  const parent=parents[Math.floor(i/MAX_ATTACHED_COLLISION_PROPS)],hardpoint=standalone&&parent===owner?'hp_collision_'+i:'root',odf='odf/'+parent.name+'.odf';
+function attachCollisionHelpers(files,owner,helpers,emitted,standalone=false,manifest=null){
+ if(!helpers.length)return helpers;
+ // Keep each physical contact partition on its own native prop. The engine
+ // loads repeated GeometryName bodies but this packaging regressed live
+ // soldier contact. Leaf grouping must never change collision ownership.
+ owner.collisionHelpers=helpers.filter(helper=>helper.role==='collision').map(helper=>helper.name);
+ let rootSlot=0;
+ const attached=parent=>(files.get('odf/'+parent.name+'.odf').match(/^AttachToHardPoint\s*=/gm)||[]).length;
+ const groups=owner.treeSurfaceCollision?[helpers.filter(a=>a.role==='collision'),helpers.filter(a=>a.role!=='collision')]:[helpers];
+ for(const group of groups){
+ const parents=[owner,...group],rootLimit=owner.treeSurfaceCollision?Math.min(16,attached(owner)+1):16;let at=0;
+ for(const helper of group){
+  while(at<parents.length&&attached(parents[at])>=(at===0?rootLimit:MAX_ATTACHED_COLLISION_PROPS))at++;
+  const parent=parents[at];if(!parent||parent===helper)throw Error('No available native attachment parent.');
+  let hardpoint=standalone&&parent===owner?'hp_collision_'+rootSlot++:'root';const odf='odf/'+parent.name+'.odf';
+  const delta=(helper.helperOffset??[0,0,0]).map((v,i)=>v-(parent.helperOffset?.[i]??0));
+  if(delta.some(v=>Math.abs(v)>1e-9)){
+   const data=emitted.get(parent.name);if(!data)throw Error('Missing attachment parent mesh.');
+   if(hardpoint==='root')hardpoint='hp_helper_'+attached(parent);
+   const existing=data.models.find(m=>m.name===hardpoint);
+   if(existing)existing.position=delta;
+   else {if(data.models.length>=64)throw Error('Tree collision helper needs a free native hardpoint.');data.models.push({name:hardpoint,parent:'root',position:delta});}
+   files.set('msh/'+parent.name+'.msh',writeMSH({name:parent.name,materials:data.materials,models:data.models.map(modelToSWBF),boundsPoints:data.boundsPoints.map(p=>[-p[0],p[1],p[2]])}));
+  }
   files.set(odf,files.get(odf)+`AttachOdf = "${helper.name}"\nAttachToHardPoint = "${hardpoint}"\n`);
   helper.attachedTo=parent.name;helper.attachmentHardpoint=hardpoint;
  }
+ }
+ return helpers;
 }
 function standalonePackage(files,manifest,plan,emitted,packZip){
- const main=manifest.assets.find(a=>a.role!=='collision'),helpers=manifest.assets.filter(a=>a.role==='collision'),meshOnly=plan.options.output==='mesh';
+ const main=manifest.assets.find(a=>!['collision','foliage'].includes(a.role));let helpers=manifest.assets.filter(a=>a!==main).sort((a,b)=>Number(a.role==='collision')-Number(b.role==='collision'));const meshOnly=plan.options.output==='mesh';
  if(meshOnly&&helpers.length)throw Error('This selection needs separate collision resources. Choose MSH + ODF to include them, or uncheck Include collision for one MSH.');
  const data=emitted.get(main.name);
  if(helpers.length){
   const models=[...data.models,...helpers.slice(0,MAX_ATTACHED_COLLISION_PROPS).map((a,i)=>({name:'hp_collision_'+i,parent:'root'}))];
+  data.models=models;
   files.set('msh/'+main.name+'.msh',writeMSH({name:main.name,materials:data.materials,models:models.map(modelToSWBF),boundsPoints:data.boundsPoints.map(p=>[-p[0],p[1],p[2]])}));
-  attachCollisionHelpers(files,main,helpers,true);
+  helpers=attachCollisionHelpers(files,main,helpers,emitted,true,manifest);
  }
  if(meshOnly)for(const name of [...files.keys()])if(name.startsWith('odf/'))files.delete(name);
- const nativeMeshes=manifest.assets.reduce((n,a)=>n+a.collisionBodies.filter(b=>b.type==='coll').length,0);
+ const nativeMeshes=manifest.assets.reduce((n,a)=>n+[...a.collisionBodies,...(a.referencedCollisionBodies??[])].filter(b=>b.type==='coll').length,0);
  if(nativeMeshes>768)throw Error('This asset exceeds the game collision mesh resource budget. Export a smaller selection.');
  manifest.primitiveBudget.nativeCollisionMeshes=nativeMeshes;manifest.objects=1;
- manifest.asset={classLabel:main.classLabel,classRecommendation:main.classRecommendation,mesh:'msh/'+main.name+'.msh',...(meshOnly?{}:{odf:'odf/'+main.name+'.odf'}),origin:plan.assets[0].pivot,collisionHelpers:helpers.map(a=>a.name),foliage:'static-cards'};
+ manifest.asset={classLabel:main.classLabel,classRecommendation:main.classRecommendation,mesh:'msh/'+main.name+'.msh',...(meshOnly?{}:{odf:'odf/'+main.name+'.odf'}),origin:plan.assets[0].pivot,originKind:plan.objectOriginKind,collisionHelpers:helpers.filter(a=>a.role==='collision').map(a=>a.name),foliageHelpers:helpers.filter(a=>a.role==='foliage').map(a=>a.name),foliage:plan.options.foliage==='native'&&!meshOnly?'camera-facing-leafpatches':'static-cards'};
  files.set('source/'+swbfName(plan.project.name)+'.building.json',JSON.stringify(plan.project,null,2)+'\n');manifest.sourceProject='source/'+swbfName(plan.project.name)+'.building.json';
  const ownership=activeExportProfile(plan.project);if(ownership)manifest.exportIdentity={id:ownership.id,kind:'asset'};
- files.set('README.txt',`Wonderblocks → Battlefront II (2005) standalone asset\n\n${plan.project.name}\n\nMain mesh: ${manifest.asset.mesh}\n${meshOnly?'No ODF is included.':'Place the object using '+manifest.asset.odf+'.'}\nOrigin: bottom center of the exported geometry. Original scene coordinates: ${manifest.asset.origin.join(', ')} metres.\n\nCopy msh/ into the Mod Tools world msh folder.${meshOnly?'':' Copy odf/ into its odf folder.'} Keep the textures and .option files with their meshes. ${helpers.length?'The main ODF attaches collision helper objects; retain those dependencies. ':''}The export contains no world placements or AI navigation. Foliage uses static textured cards so it remains part of the mesh without leafpatch ODFs.\n\n${plan.options.includeCollision?'Prepared collision is included; separate collision helpers are '+(plan.options.separateCollisionHelpers?'on':'off')+'.':'Physical collision is excluded; all meshes use -nocollision.'} The source/ snapshot retains your editable selected objects.\n${manifest.warnings.length?'\nExport notes:\n'+manifest.warnings.map(w=>'• '+w).join('\n')+'\n':''}`);
+ addFoliageCostReport(files,manifest,[{odf:main.name}],{meshOnly});
+ files.set('README.txt',`Wonderblocks → Battlefront II (2005) standalone asset\n\n${plan.project.name}\n\nMain mesh: ${manifest.asset.mesh}\n${meshOnly?'No ODF is included.':'Place the object using '+manifest.asset.odf+'.'}\nOrigin: ${manifest.asset.originKind==='plant-base'?'plant base':'bottom center of the exported geometry'}. Original scene coordinates: ${manifest.asset.origin.join(', ')} metres.\n\nCopy msh/ into the Mod Tools world msh folder.${meshOnly?'':' Copy odf/ into its odf folder.'} Keep the textures and .option files with their meshes. ${helpers.length?'The main ODF attaches helper objects; retain those dependencies. ':''}The export contains no world placements or AI navigation. ${manifest.asset.foliage==='camera-facing-leafpatches'?'Foliage uses native camera-facing leafpatch ODFs. Keep the attached foliage dependencies with the plant.':'Foliage uses static textured cards in the mesh.'}\n\n${plan.options.includeCollision?'Prepared collision is included; separate collision helpers are '+(plan.options.separateCollisionHelpers?'on':'off')+'.':'Physical collision is excluded; all meshes use -nocollision.'} The source/ snapshot retains your editable selected objects.\n${manifest.warnings.length?'\nExport notes:\n'+manifest.warnings.map(w=>'• '+w).join('\n')+'\n':''}`);
  manifest.files=[...files.keys(),'export-report.json'];files.set('export-report.json',JSON.stringify(manifest,null,2)+'\n');
  return {files,manifest,zip:packZip?zipFiles(files):null,filename:swbfName(plan.project.name)+(meshOnly?'.msh.zip':'.object.zip')};
 }

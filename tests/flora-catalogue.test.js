@@ -51,7 +51,7 @@ test('flora cards provide drag payloads and report drag lifecycle without adding
 test('left palette groups all parts, searches across groups, and selects the exact named part',()=>{
  class El{constructor(tag){this.tag=tag;this.children=[];this.attrs={};}append(...els){this.children.push(...els);}replaceChildren(...els){this.children=els;}setAttribute(k,v){this.attrs[k]=v;}}
  const old=globalThis.document;globalThis.document={createElement:tag=>new El(tag)};try{
-  let chosen;const p=createFloraPalette(id=>chosen=id),all=e=>[e,...e.children.flatMap(all)],cards=()=>all(p).filter(e=>e.attrs['data-flora-part']),categories=['Bases','Flora','Branches','Leaves','Coral','Details','Tree presets'];
+  let chosen;const p=createFloraPalette(id=>chosen=id),all=e=>[e,...e.children.flatMap(all)],cards=()=>all(p).filter(e=>e.attrs['data-flora-part']),categories=['Bases','Flora','Branches','Leaves','Coral','Details','Tree presets','Biomes'];
   assert.deepEqual(all(p).filter(e=>e.tag==='button'&&!e.attrs['data-flora-part']).map(e=>e.textContent),categories);assert.equal(cards().length,8);
   const seen=new Set();for(const category of categories){all(p).find(e=>e.tag==='button'&&e.textContent===category).onclick();const expected=FLORA_PALETTE_ASSETS.filter(a=>floraPaletteCategory(a)===category);assert.equal(cards().length,expected.length);for(const card of cards()){assert.equal(card.attrs['data-flora-category'],category);assert.ok(!seen.has(card.attrs['data-flora-part']));seen.add(card.attrs['data-flora-part']);}}
   assert.equal(seen.size,FLORA_PALETTE_ASSETS.length);assert.equal(PROCEDURAL_FLORA.filter(a=>floraPaletteCategory(a)==='Branches').length,17);assert.equal(PROCEDURAL_FLORA.filter(a=>floraPaletteCategory(a)==='Flora').length,0);

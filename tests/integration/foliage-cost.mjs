@@ -1,0 +1,42 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {tmpdir} from 'node:os';
+import {createRequire} from 'node:module';
+import JSZip from 'jszip';
+import {chromium} from 'playwright';
+const folder=fs.mkdtempSync(path.join(tmpdir(),'wb-foliage-cost-')),world=path.join(folder,'WON');
+for(const dir of ['msh','odf','world1'])fs.mkdirSync(path.join(world,dir),{recursive:true});
+fs.writeFileSync(path.join(world,'world1/WON.wld'),'Version(3);\nNextSequence(1);\n');
+fs.writeFileSync(path.join(world,'world1/WON.req'),'ucft { REQN { "world" "WON" } }');
+fs.writeFileSync(path.join(world,'world1/WON.ldx'),'Version(1);\nNextID(1);\nLayer("[Base]",0,0)\n{\nDescription("");\n}\nGameMode("Common")\n{\nLayer(0);\n}\n');
+const {createServer}=createRequire(import.meta.url)('../../server.cjs'),server=createServer({folderRegistry:path.join(folder,'folders.json'),chooseExportFolder:async()=>world});
+await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
+try{
+ browser=await chromium.launch({headless:true,channel:fs.existsSync(chromium.executablePath())?'chromium':'chrome',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+ const page=await browser.newPage({viewport:{width:1400,height:1000}});page.setDefaultTimeout(60000);
+ await page.route('**/__foliage_cost',r=>r.fulfill({contentType:'text/html',body:'<!doctype html><link rel="stylesheet" href="/styles/style.css"><link rel="stylesheet" href="/styles/workbench.css"><script type="importmap">{"imports":{"three":"/vendor/three.module.js"}}</script>'}));
+ await page.goto('http://127.0.0.1:'+server.address().port+'/__foliage_cost');
+ await page.evaluate(async()=>{
+  const {createSWBF2ExportUI}=await import('/src/swbf2/swbf2-export-ui.js'),{makePart}=await import('/src/core/model.js'),{instantiateFloraTreePreset}=await import('/src/flora/flora-tree-presets.js');
+  const a=makePart('flora',instantiateFloraTreePreset('endor-woodland-tree')),b=structuredClone(a);b.id=crypto.randomUUID();b.position=[20,0,0];
+  window.project={format:'open-building-studio',version:1,name:'Foliage cost',parts:[a,b]};window.downloads=[];
+  window.ui=createSWBF2ExportUI({snapshot:()=>structuredClone(project),download:(bytes,name)=>downloads.push({bytes:Array.from(bytes),name}),notify:()=>{},previewRoots:()=>new Map()});ui.open();
+ });
+ const dialog=page.locator('.swbf2-export');
+ await dialog.locator('[name="ai-navigation"]').uncheck();await dialog.locator('[name="shadows"]').uncheck();await dialog.locator('[name="collision"]').uncheck();await dialog.locator('[name="low-detail"]').uncheck();
+ await page.waitForFunction(()=>document.querySelector('.swbf2-export').dataset.checkingCollision==='false'&&!document.querySelector('.swbf2-export').dataset.busy);
+ await dialog.locator('[data-action="export"]').click();await page.waitForFunction(()=>downloads.length===1);
+ const download=await page.evaluate(()=>downloads[0]),zip=await JSZip.loadAsync(Uint8Array.from(download.bytes)),report=JSON.parse(await zip.file('export-report.json').async('string'));
+ const cost=report.renderCost;assert.equal(cost.total.rootPlacements,2);assert.ok(cost.total.leafObjects>0);assert.equal(cost.total.collisionHelpers,0);
+ assert.equal(cost.runtimeVerified,false);assert.equal(cost.foliageDistanceCullingVerified,false);
+ await dialog.locator('.swbf2-export-status').filter({hasText:cost.total.leafObjects.toLocaleString()+' leaf objects across these placements'}).waitFor();
+ assert.deepEqual(JSON.parse(await zip.file('source/render-cost.json').async('string')),cost);
+ assert.ok(report.warnings.some(w=>w.includes('Trunk LOD')));
+ await dialog.locator('[name="destination"]').selectOption('folder');await dialog.locator('[data-choose-world-folder]').click();
+ await dialog.locator('[data-world-folder-status]').filter({hasText:'WON'}).waitFor();await dialog.locator('[data-action="export"]').click();
+ await page.waitForFunction(()=>!document.querySelector('.swbf2-export').dataset.busy);
+ const savedStatus=await dialog.locator('.swbf2-export-status').textContent();
+ assert.ok(savedStatus.includes('Saved to WON'),savedStatus);assert.ok(savedStatus.includes(cost.total.leafObjects.toLocaleString()+' leaf objects'),savedStatus);
+ console.log('PASS leaf-object costs, repeated placements and independent LOD notes in ZIP and direct-folder export.');
+}finally{await browser?.close();await new Promise(r=>server.close(r));}

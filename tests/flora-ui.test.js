@@ -440,6 +440,10 @@ test('completed fern sliders support keyboard Undo and Redo while text entry sta
  }finally{s.cleanup();}
 });
 
+test('lowering foliage density also keeps its distant card count valid',()=>{
+ const s=setup();try{const f=defaultFlora(),o=addFloraAsset(f,f.branches[0].id,'biome-sprite-fescue');o.billboard.count=10;o.billboard.lowDetailCount=4;const e=s.editor;e.open(makePart('flora',{flora:f}));e.select({organ:o.id,branch:o.branch});const input=s.field('Leaf cards');input.value='2';input.onchange();assert.equal(e.draft.flora.organs[0].billboard.count,2);assert.equal(e.draft.flora.organs[0].billboard.lowDetailCount,2);validateFlora(e.draft.flora);e.undo();assert.equal(e.draft.flora.organs[0].billboard.count,10);assert.equal(e.draft.flora.organs[0].billboard.lowDetailCount,4);e.undo(true);assert.equal(e.draft.flora.organs[0].billboard.count,2);e.finish();validateFlora(s.saved.flora);}finally{s.cleanup();}
+});
+
 test('browser command chords cannot change Flora transform mode or delete a selected part',()=>{
  const s=setup();try{const e=s.editor;e.open(s.part);e.setMode('translate');const before=JSON.stringify(e.draft),mode=e.controls.mode;
  for(const key of ['r','e','w','f','Delete'])for(const modifier of ['ctrlKey','metaKey','altKey'])for(const fn of window.listeners.keydown)fn({key,[modifier]:true,target:{},preventDefault(){throw Error('A browser chord was intercepted.');},stopImmediatePropagation(){throw Error('A browser chord was intercepted.');}});

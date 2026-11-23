@@ -9,6 +9,8 @@ import {makePart} from '../src/core/model.js';
 import {updateBillboardFacing} from '../src/flora/flora-billboards.js';
 import {BARK_BRANCH_PARTS} from '../src/flora/bark-branches.js';
 import {MODELED_LEAF_PARTS} from '../src/flora/modeled-leaves.js';
+import {BIOME_MODELED_PARTS} from '../src/flora/biome-flora-parts.js';
+import {BIOME_PRESETS} from '../src/flora/data/biome-presets-data.js';
 const output=new URL('../assets/procedural-flora/',import.meta.url);
 fs.mkdirSync(output,{recursive:true});
 const dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],sub=(a,b)=>a.map((x,i)=>x-b[i]),unit=a=>{const n=Math.hypot(...a);return a.map(x=>x/n);};
@@ -24,15 +26,16 @@ const wetland=process.argv.includes('--wetlands');
 const branches=process.argv.includes('--branches');
 const leaves=process.argv.includes('--leaves');
 const temp=process.argv.includes('--temp');
+const biomes=process.argv.includes('--biomes');
 const requested=process.argv.find(arg=>arg.startsWith('--part='))?.slice(7);
 const requestedTree=process.argv.find(arg=>arg.startsWith('--tree='))?.slice(7);
 if(requested&&requestedTree)throw Error('Choose either --part or --tree.');
-const specimens=requestedTree?[]:requested?FLORA_ASSETS.filter(p=>p.id===requested):temp?FLORA_ASSETS.filter(p=>p.paletteCategory==='temp'):branches?BARK_BRANCH_PARTS:leaves?MODELED_LEAF_PARTS:wetland?FLORA_ASSETS.filter(p=>p.id.startsWith('coral-')||p.id==='willow-hanging-spray'):PROCEDURAL_FLORA;
+const specimens=requestedTree?[]:requested?FLORA_ASSETS.filter(p=>p.id===requested):biomes?BIOME_MODELED_PARTS:temp?FLORA_ASSETS.filter(p=>p.paletteCategory==='temp'):branches?BARK_BRANCH_PARTS:leaves?MODELED_LEAF_PARTS:wetland?FLORA_ASSETS.filter(p=>p.id.startsWith('coral-')||p.id==='willow-hanging-spray'):PROCEDURAL_FLORA;
 if(requested&&!specimens.length)throw Error('Unknown flora part: '+requested);
 const entries=specimens.filter(part=>!part.floraPreset).map(part=>({part,output:part.id.startsWith('temp-base-')?new URL('../assets/temp-bases/',import.meta.url):wetland?new URL('../assets/reef-flora/',import.meta.url):output}));
 // Whole plants use the same material-aware baking path as the wetland presets.
 // --part also accepts a tree ID so every selectable asset has one safe entry.
-const treeIds=[...specimens.filter(part=>part.floraPreset).map(part=>part.id),...(requestedTree?[requestedTree]:[]),...(wetland?['weeping-willow','red-mangrove']:[])];
+const treeIds=[...specimens.filter(part=>part.floraPreset).map(part=>part.id),...(requestedTree?[requestedTree]:[]),...(wetland?['weeping-willow','red-mangrove']:[]),...(biomes?BIOME_PRESETS.map(p=>p.id):[])];
 for(const id of new Set(treeIds)){
  if(!FLORA_ASSETS.some(part=>part.id===id&&part.floraPreset))throw Error('Unknown flora tree preset: '+id);
  const group=buildPart(makePart('flora',instantiateFloraTreePreset(id)),{collision:false}),center=new T.Box3().setFromObject(group).getCenter(new T.Vector3()),camera=new T.PerspectiveCamera(35,1,.01,1000);camera.position.copy(center).add(new T.Vector3(...eye).multiplyScalar(30));camera.lookAt(center);camera.updateMatrixWorld(true);group.updateMatrixWorld(true);

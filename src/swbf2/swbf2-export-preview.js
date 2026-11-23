@@ -24,7 +24,7 @@ export function createExportPreview(container,{roots=()=>new Map()}={}){
   for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z]){const p=new T.Vector3(x,y,z).sub(center),depth=p.dot(axis);distance=Math.max(distance,depth+Math.abs(p.dot(right))/tanH,depth+Math.abs(p.dot(up))/tanV);}
   orbit.target.copy(center);camera.position.copy(center).addScaledVector(axis,distance*1.12);camera.lookAt(center);suppressDraw=true;orbit.update();suppressDraw=false;draw();
  }
- function set(project,{output='scene'}={}){
+ function set(project,{output='scene',foliage='native'}={}){
   clear();const parts=resolveRouteLinks(project.parts),ids=new Set(parts.map(p=>p.id)),available=roots(),materials=new Map();let cuts=null,reused=0,built=0;
   const material=(original,selected,billboard)=>{
    const cacheKey=original.uuid+'|'+selected+'|'+billboard;if(materials.has(cacheKey))return materials.get(cacheKey);
@@ -35,7 +35,7 @@ export function createExportPreview(container,{roots=()=>new Map()}={}){
    root.updateWorldMatrix(true,true);root.traverse(source=>{
     if(!source.isMesh||source.userData.materialGhost||source.userData.referenceOnly)return;
     for(let p=source;p&&p!==root;p=p.parent)if(!p.visible)return;
-    const baked=source.userData.floraBillboard&&(!selected||output!=='scene')?staticFoliageMesh(source,{renderMaterial:true}):null,geometry=baked?.geometry??source.geometry,original=baked?.material??source.material;
+    const baked=source.userData.floraBillboard&&(!selected||output==='mesh'||foliage==='static')?staticFoliageMesh(source,{renderMaterial:true}):null,geometry=baked?.geometry??source.geometry,original=baked?.material??source.material;
     const mesh=new T.Mesh(geometry,Array.isArray(original)?original.map(m=>material(m,selected,false)):material(original,selected,!!source.userData.floraBillboard&&!baked));mesh.matrixAutoUpdate=false;mesh.matrix.copy(baked?.matrixWorld??source.matrixWorld);
     if(source.userData.floraBillboard&&!baked)mesh.onBeforeRender=(...args)=>source.onBeforeRender(...args);
     target.add(mesh);if(baked){ownedGeometry.push(geometry);baked.material.dispose();}

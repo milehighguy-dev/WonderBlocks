@@ -24,8 +24,11 @@ test('more than 160 foliage parts export while native models retain their attach
  const f=defaultFlora(),root=addFloraAsset(f,f.branches[0].id,'flora-basic-branch');
  for(let i=0;i<200;i++)addFloraAsset(f,root.id,'endor-leaves',.2+.6*(i/200),i*.4);
  assert.equal(f.organs.length,200);validateFlora(f);
- const part=makePart('flora',{flora:f}),output=createSWBF2Package({format:'open-building-studio',version:1,name:'Large foliage',parts:[part]},{aiNavigation:false,includeCollision:false,shadows:false,lowDetail:false});
+ // Exercise the ungrouped worst case explicitly; collision and LOD switches
+ // no longer disable compaction as a side effect.
+ const part=makePart('flora',{flora:f}),output=createSWBF2Package({format:'open-building-studio',version:1,name:'Large foliage',parts:[part]},{aiNavigation:false,includeCollision:false,shadows:false,lowDetail:false,compactTrees:false});
  const foliage=output.manifest.assets.filter(a=>a.nativeLeafPatches);assert.ok(foliage.length>=4);assert.equal(foliage.reduce((n,a)=>n+a.nativeLeafPatches,0),200);assert.ok(foliage.every(a=>a.nativeLeafPatches<=63));
+ assert.equal(output.manifest.renderCost.total.leafObjects,200);
 });
 
 test('one shared authoring budget permits the exact limits and rejects only overflow',()=>{

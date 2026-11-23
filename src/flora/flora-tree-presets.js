@@ -4,6 +4,7 @@ import {KAPOK_PRESETS} from './data/kapok-presets-data.js';
 import {ASPEN_PRESETS} from './data/aspen-presets-data.js';
 import {WETLAND_PRESETS} from './data/wetland-presets-data.js';
 import {PALM_PRESETS} from './data/palm-presets-data.js';
+import {BIOME_PRESETS} from './data/biome-presets-data.js';
 const savedTrees=[
  {
   "id": "yavin-temple-broadleaf",
@@ -2588,7 +2589,7 @@ const savedTrees=[
   }
  }
 ];
-export const FLORA_TREE_PRESETS=[...savedTrees,...FELUCIA_PRESETS,...KAPOK_PRESETS,...ASPEN_PRESETS,...WETLAND_PRESETS,...PALM_PRESETS].map(p=>({...p,floraPreset:{...p.floraPreset,detail:'swbf2'},iconUrl:new URL('../../assets/flora-tree-presets/'+p.id+'.png',import.meta.url).href}));
+export const FLORA_TREE_PRESETS=[...savedTrees,...FELUCIA_PRESETS,...KAPOK_PRESETS,...ASPEN_PRESETS,...WETLAND_PRESETS,...PALM_PRESETS,...BIOME_PRESETS].map(p=>({...p,floraPreset:{...p.floraPreset,detail:'swbf2'},iconUrl:new URL('../../assets/flora-tree-presets/'+p.id+'.png',import.meta.url).href}));
 export function instantiateFloraTreePreset(id){
  const preset=FLORA_TREE_PRESETS.find(p=>p.id===id);if(!preset)throw Error('Unknown tree preset.');
  const flora=structuredClone(preset.floraPreset),nodes=[...flora.branches,...flora.organs],ids=new Map(nodes.map(n=>[n.id,crypto.randomUUID()]));

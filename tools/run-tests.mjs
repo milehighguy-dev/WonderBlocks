@@ -28,6 +28,7 @@ async function integrations(native=false){
  await ps('tests/swbf2-navigation-merge.ps1',['-PackagePath',fixture,...(native?['-NativeToolsPath',tools]:[])]);
  if(native){
   await node(['tests/integration/native-rainwell-flora.mjs',path.join(parent,'rainwell-flora')],240000);
+  await node(['tests/integration/native-tree-canopy.mjs',path.join(parent,'tree-canopy')],300000);
   await node(['tests/integration/native-layer-registration.mjs',path.join(parent,'layer-registration')],180000);
   await node(['tests/integration/native-export-workflows.mjs'],180000);
   await node(['tests/integration/native-navigation-merge.mjs',path.join(parent,'navigation-merge')],180000);
@@ -52,6 +53,7 @@ try{
   await node(['tests/integration/export-readiness.mjs'],120000);
   await node(['tests/integration/world-folder.mjs'],120000);
   await node(['tests/integration/export-workflows.mjs'],120000);
+  await node(['tests/integration/foliage-cost.mjs'],180000);
   await node(['tests/integration/instances.mjs'],120000);
   await node(['tests/integration/scene-edit-regressions.mjs'],120000);
   await node(['tests/integration/scene-deletion.mjs'],120000);

@@ -666,7 +666,7 @@ function syncEditingContext(){
  let kind,editor,detail,part;
  if(walkMode.active){kind='walk';context={mode:'walk',label:'Walk view',name:'Exploring the scene',detail:'WASD to move · Mouse to look · Esc to return'};}
  else if(interiorWorkshop.active){kind='plan';editor=interiorWorkshop;}
- else if(floraEditor.placingAsset&&floraAsset(floraEditor.placingAsset)?.floraPreset){kind='flora-placement';part={name:floraAsset(floraEditor.placingAsset).name};detail='Click the ground to place a tree · Esc cancels';}
+ else if(floraEditor.placingAsset&&floraAsset(floraEditor.placingAsset)?.floraPreset){kind='flora-placement';part={name:floraAsset(floraEditor.placingAsset).name};detail='Click the ground to place this plant · Esc cancels';}
  else if(floraEditor.active){
   kind='flora';editor=floraEditor;part=editor.draft;const selection=editor.selection||{},organ=part.flora.organs.find(o=>o.id===selection.organ),branch=part.flora.branches.find(b=>b.id===selection.branch);
   detail=organ?(floraAsset(organ.asset)?.name||'Plant part')+' '+(part.flora.organs.indexOf(organ)+1)+(selection.morph?' · Shape control':selection.socket?' · Joint':' · Whole part'):branch&&!branch.anchor?(branch.name||'Branch')+' · Joint '+((selection.index??0)+1):'No plant part selected · click a part or joint';

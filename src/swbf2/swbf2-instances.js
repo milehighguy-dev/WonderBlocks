@@ -2,11 +2,14 @@ import {instanceDefinition} from '../core/instances.js';
 import {SWBF2_MAX_STATIC_BONES} from './swbf2-binary.js';
 const canonical=value=>JSON.stringify(value,(_,item)=>typeof item==='number'?Math.round(item*1e6)/1e6:item);
 export function splitLeafAttachments(assets){
- const max=SWBF2_MAX_STATIC_BONES-1;
+ // Reserve one native prop attachment for a child carrier/collision chain.
  return assets.flatMap(asset=>{
+  // Tree contact helpers and foliage carriers have separate attachment trees.
+  // Reserve a root slot for each so leaf changes cannot reparent collision.
+  const max=Math.min(SWBF2_MAX_STATIC_BONES-1,asset.preciseTreeCollision?14:15);
   if(asset.leaves.length<=max)return [asset];
   const result=[{...asset,leaves:asset.leaves.slice(0,max)}];
-  for(let at=max;at<asset.leaves.length;at+=max)result.push({...asset,key:asset.key+'|foliage:'+at,label:asset.label+' foliage '+Math.floor(at/max),role:'foliage',segments:[],lowDetailSegments:[],bodies:[],primitives:[],fallback:[],structural:[],shadowShells:[],leaves:asset.leaves.slice(at,at+max)});
+  for(let at=max;at<asset.leaves.length;at+=max)result.push({...asset,key:asset.key+'|foliage:'+at,label:asset.label+' foliage '+Math.floor(at/max),role:'foliage',segments:[],lowDetailSegments:[],bodies:[],primitives:[],fallback:[],structural:[],shadowShells:[],originalLeafParticles:0,originalLeafPatches:0,leaves:asset.leaves.slice(at,at+max)});
   return result;
  });
 }

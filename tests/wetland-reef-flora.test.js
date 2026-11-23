@@ -66,5 +66,5 @@ test('wetland presets and all four coral colonies save and export directly from 
  const parts=['weeping-willow','red-mangrove'].map(id=>makePart('flora',instantiateFloraTreePreset(id)));
  for(const kind of CORAL_FIXTURES)parts.push(makePart('flora',{name:kind+' coral',flora:coralAttachmentFixture(kind)}));
  const project={format:'open-building-studio',version:1,name:'Flora export fixture',parts};validateProject(JSON.parse(JSON.stringify(project)));
- const out=createSWBF2Package(project,{aiNavigation:false});for(const ext of ['.msh','.odf','.tga'])assert.ok([...out.files.keys()].some(name=>name.endsWith(ext)));assert.ok(out.manifest.assets.every(a=>a.triangles>0));
+ const out=createSWBF2Package(project,{aiNavigation:false});for(const ext of ['.msh','.odf','.tga'])assert.ok([...out.files.keys()].some(name=>name.endsWith(ext)));assert.ok(out.manifest.assets.every(a=>a.triangles+(a.carrierTriangles||0)>0));assert.ok(out.manifest.assets.some(a=>a.nativeLeafPatches>0),'wetland crowns retain native camera-facing leaves');
 });

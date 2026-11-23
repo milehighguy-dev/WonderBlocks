@@ -1,0 +1,358 @@
+[
+  {
+    "id": "biome-sprite-grass-green",
+    "source": "BF2/assets/worlds/YAV/msh/yav_grass_tall.tga",
+    "sourceSize": [
+      256,
+      256
+    ],
+    "atlasCrop": null,
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "BF2 Yavin grass",
+    "sha256": "9974e7f9c6bca10addde5dd5c93c052051a7ffc6c546c7d54acddc6ed11fa70e"
+  },
+  {
+    "id": "biome-sprite-grass-seeded",
+    "source": "BF2/assets/worlds/NAB/msh/nab2_prop_flowers.tga",
+    "sourceSize": [
+      256,
+      256
+    ],
+    "atlasCrop": [
+      0,
+      0,
+      128,
+      128
+    ],
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "BF2 Naboo seed-headed meadow tuft",
+    "sha256": "72936703ac5bf65e6c2d7dadb5b76569f68226012e1a8759f5227da42957eb81"
+  },
+  {
+    "id": "biome-sprite-grass-dry",
+    "source": "BF2/assets/worlds/KAS/msh/kas_prop_grass_tall.tga",
+    "sourceSize": [
+      256,
+      256
+    ],
+    "atlasCrop": [
+      0,
+      0,
+      128,
+      128
+    ],
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "BF2 Kashyyyk dry grass",
+    "sha256": "4c390f71dcdfda592a1dbac0b11e40253fa8306850ad19a42dcba5010c37390a"
+  },
+  {
+    "id": "biome-sprite-broadleaf-scrub",
+    "source": "BF2/assets/worlds/YAV/msh/yav_grass.tga",
+    "sourceSize": [
+      256,
+      256
+    ],
+    "atlasCrop": [
+      0,
+      0,
+      128,
+      128
+    ],
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "BF2 Yavin broadleaf shrub",
+    "sha256": "a1ecf8e1d1624c77a3ad0f05a21f50e84ce9cca45477eeea784ba37a2a619d45"
+  },
+  {
+    "id": "biome-sprite-dry-twig",
+    "source": "BF2/assets/worlds/END/msh/PC/end_grass.tga",
+    "sourceSize": [
+      512,
+      512
+    ],
+    "atlasCrop": [
+      128,
+      128,
+      256,
+      256
+    ],
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "BF2 Endor dry shrub",
+    "sha256": "4c0524d85fc4ba87ac173b3d5735cae25a3ffe63312e59839ed69ea274f8932f"
+  },
+  {
+    "id": "biome-sprite-meadow-flowers",
+    "source": "BF2/assets/worlds/NAB/msh/nab2_prop_flowers.tga",
+    "sourceSize": [
+      256,
+      256
+    ],
+    "atlasCrop": [
+      128,
+      128,
+      256,
+      256
+    ],
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "BF2 Naboo mixed purple wildflowers",
+    "sha256": "ba207ed2790f889b54dfa1ef6a3dbbfb77f90c23e6415470c144a7ba08725b73"
+  },
+  {
+    "id": "biome-sprite-yellow-flowers",
+    "source": "BF2/assets/worlds/NAB/msh/nab2_prop_flowers.tga",
+    "sourceSize": [
+      256,
+      256
+    ],
+    "atlasCrop": [
+      128,
+      0,
+      256,
+      128
+    ],
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "BF2 Naboo yellow wildflowers",
+    "sha256": "bcdd8f4bbd7ec24d43ea1cec59c49e55d2fd900cb02425bb9833e1c67d3788d2"
+  },
+  {
+    "id": "biome-sprite-sword-fern",
+    "source": "BF2/assets/worlds/YAV/msh/yav_prop_fern1.tga",
+    "sourceSize": [
+      256,
+      256
+    ],
+    "atlasCrop": null,
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "BF2 Yavin fern",
+    "sha256": "77a239a6d153d55280e57060c54c335b5b029ed82099606344ca1cc473442b15"
+  },
+  {
+    "id": "biome-sprite-cold-leaves",
+    "source": "BF2/assets/worlds/END/msh/PC/end_leaf2.tga",
+    "sourceSize": [
+      256,
+      256
+    ],
+    "atlasCrop": [
+      128,
+      0,
+      256,
+      128
+    ],
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "BF2 Endor small leafy sprig",
+    "sha256": "a5f1687b76cd7847e51cbe72e3224ac7966f7c551cbd459b150fbf9d51886df6"
+  },
+  {
+    "id": "biome-sprite-reed",
+    "source": "BF1/Assets/Shipped Worlds/Kashyyyk/MSH/Kas1_prop_foilage_1.tga",
+    "sourceSize": [
+      256,
+      256
+    ],
+    "atlasCrop": null,
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "BF1 Kashyyyk reed foliage",
+    "sha256": "66cdb872a1aff594198f6ff0b43894cf3f41ae25b34e1cda54e517a37a351027"
+  },
+  {
+    "id": "biome-sprite-bf1-meadow",
+    "source": "BF1/Assets/Shipped Worlds/Naboo/world1/nab1_grass_tall.tga",
+    "sourceSize": [
+      512,
+      512
+    ],
+    "atlasCrop": [
+      0,
+      0,
+      128,
+      128
+    ],
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "BF1 Naboo meadow grass",
+    "sha256": "396da58091b587a1cfc03fd9dc94db6b724751090a8fb810529518d12d0c22ce"
+  },
+  {
+    "id": "biome-sprite-heather",
+    "source": "Generated for WonderBlocks \u00b7 biome-sprite-heather",
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "atlasCrop": null,
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "New generated alpine heather cutout",
+    "sha256": "645d3a18cd6799eec7bfea39dfb6bdeac79f780c7f4e3f98d054793abf97a4ca"
+  },
+  {
+    "id": "biome-sprite-sagebrush",
+    "source": "Generated for WonderBlocks \u00b7 biome-sprite-sagebrush",
+    "sourceSize": [
+      1536,
+      1024
+    ],
+    "atlasCrop": null,
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "New generated desert sagebrush cutout",
+    "sha256": "f6998dc9f9064e285b61f822f2f8964dd2a43c209898fbdf9000566f1dc1404d"
+  },
+  {
+    "id": "biome-sprite-fescue",
+    "source": "Generated for WonderBlocks \u00b7 biome-sprite-fescue",
+    "sourceSize": [
+      1536,
+      1024
+    ],
+    "atlasCrop": null,
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "New generated fine fescue tuft",
+    "sha256": "634b35b612415afc38652a52c0f407c94cdc429b2a9001713f7500538d23005d"
+  },
+  {
+    "id": "biome-sprite-bluestem",
+    "source": "Generated for WonderBlocks \u00b7 biome-sprite-bluestem",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "atlasCrop": null,
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "New generated bluestem seed-head tuft",
+    "sha256": "87124dab941c143650c35f293652a8cd53bbd2b18b43b5a5b484bb15e7c3b402"
+  },
+  {
+    "id": "biome-sprite-sea-oats",
+    "source": "Generated for WonderBlocks \u00b7 biome-sprite-sea-oats",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "atlasCrop": null,
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "New generated sea-oats tuft",
+    "sha256": "18e01caf662eb8be803217090e87ed8e73150fef1d21611e9fb0bb118b84ced1"
+  },
+  {
+    "id": "biome-sprite-sedge",
+    "source": "Generated for WonderBlocks \u00b7 biome-sprite-sedge",
+    "sourceSize": [
+      1536,
+      1024
+    ],
+    "atlasCrop": null,
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "New generated low tundra sedge tussock",
+    "sha256": "d9514632f585b15e7e16db1387a8e61ae5329e1d5de67e29b6fbf1b377afd3b6"
+  },
+  {
+    "id": "biome-sprite-hanging-moss",
+    "source": "BF2/assets/worlds/DAG/msh/dag1_prop_moss_1.tga",
+    "sourceSize": [
+      256,
+      256
+    ],
+    "atlasCrop": null,
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "BF2 Dagobah hanging moss",
+    "sha256": "d0422d4fa603ebb53367bec7f10ec85b1958966c378e0e1a82a7f00df9d7ae7f"
+  },
+  {
+    "id": "biome-sprite-root-curtain",
+    "source": "BF2/assets/worlds/DAG/msh/dag1_prop_moss_3.tga",
+    "sourceSize": [
+      256,
+      256
+    ],
+    "atlasCrop": null,
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "BF2 Dagobah root/vine curtain",
+    "sha256": "02a30ecee5b3c7fd0fa897dd722d73383ef7f1995a1114a535c040c6fbdcebd5"
+  },
+  {
+    "id": "biome-sprite-spanish-moss",
+    "source": "generated/exec-fd5049a2-cfda-4b27-835a-fc439342107b.png",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "atlasCrop": null,
+    "workingSize": [
+      256,
+      256
+    ],
+    "sourceDescription": "Generated silver-gray Spanish moss, reduced to stock foliage resolution",
+    "sha256": "051658ac5a4e7386a10e8017c18218486598da7a605b529d63c7e1c15789254f"
+  },
+  {
+    "id": "biome-sprite-lily-bed",
+    "source": "generated/exec-7c6c6897-438c-4f56-86ce-253e13b31677.png",
+    "generated": true,
+    "workingSize": [
+      256,
+      256
+    ],
+    "purpose": "Horizontal alpha-cut waterlily sheets, two triangles per layer",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "sourceDescription": "Generated top-down transparent lily cluster, reduced to stock foliage resolution",
+    "sha256": "fbaeefd35d3c1e1c694cc32cdf6b0f606174be621e130de5702845836edba3a0"
+  }
+]

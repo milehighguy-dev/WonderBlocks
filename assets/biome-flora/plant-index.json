@@ -1,0 +1,2128 @@
+[
+  {
+    "id": "biome-oak",
+    "name": "Spreading Oak",
+    "biomes": [
+      "woodland",
+      "woodland-edge"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 13,
+      "r": 0.5,
+      "spread": 5,
+      "branches": 8
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Spreading Oak A · editable crown variant · woodland · woodland-edge",
+    "family": "oak",
+    "crownVariant": "A",
+    "branches": 9,
+    "organs": 17
+  },
+  {
+    "id": "biome-oak-b",
+    "name": "Spreading Oak B",
+    "biomes": [
+      "woodland",
+      "woodland-edge"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 13,
+      "r": 0.5,
+      "spread": 5,
+      "branches": 8
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Spreading Oak B · editable crown variant · woodland · woodland-edge",
+    "family": "oak",
+    "crownVariant": "B",
+    "branches": 9,
+    "organs": 17
+  },
+  {
+    "id": "biome-oak-c",
+    "name": "Spreading Oak C",
+    "biomes": [
+      "woodland",
+      "woodland-edge"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 13,
+      "r": 0.5,
+      "spread": 5,
+      "branches": 8
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Spreading Oak C · editable crown variant · woodland · woodland-edge",
+    "family": "oak",
+    "crownVariant": "C",
+    "branches": 9,
+    "organs": 17
+  },
+  {
+    "id": "biome-birch",
+    "name": "Silver Birch",
+    "biomes": [
+      "woodland",
+      "riparian"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 14,
+      "r": 0.23,
+      "spread": 2.7,
+      "branches": 7,
+      "shape": "birch",
+      "leafAsset": "yavin-fine-leaves"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Silver Birch A · editable crown variant · woodland · riparian",
+    "family": "birch",
+    "crownVariant": "A",
+    "branches": 8,
+    "organs": 15
+  },
+  {
+    "id": "biome-birch-b",
+    "name": "Silver Birch B",
+    "biomes": [
+      "woodland",
+      "riparian"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 14,
+      "r": 0.23,
+      "spread": 2.7,
+      "branches": 7,
+      "shape": "birch",
+      "leafAsset": "yavin-fine-leaves"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Silver Birch B · editable crown variant · woodland · riparian",
+    "family": "birch",
+    "crownVariant": "B",
+    "branches": 8,
+    "organs": 15
+  },
+  {
+    "id": "biome-birch-c",
+    "name": "Silver Birch C",
+    "biomes": [
+      "woodland",
+      "riparian"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 14,
+      "r": 0.23,
+      "spread": 2.7,
+      "branches": 7,
+      "shape": "birch",
+      "leafAsset": "yavin-fine-leaves"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Silver Birch C · editable crown variant · woodland · riparian",
+    "family": "birch",
+    "crownVariant": "C",
+    "branches": 8,
+    "organs": 15
+  },
+  {
+    "id": "biome-hazel",
+    "name": "Hazel Thicket",
+    "biomes": [
+      "woodland",
+      "woodland-edge"
+    ],
+    "form": "scrub",
+    "params": {
+      "h": 2.7,
+      "spread": 1.7,
+      "stems": 6
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Hazel Thicket · woodland · woodland-edge · editable biome flora",
+    "branches": 7,
+    "organs": 6
+  },
+  {
+    "id": "biome-wood-fern",
+    "name": "Woodland Sword Fern",
+    "biomes": [
+      "woodland",
+      "foothill"
+    ],
+    "form": "blades",
+    "params": {
+      "h": 0.9,
+      "width": 1,
+      "count": 7,
+      "asset": "flora-fern-frond"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Woodland Sword Fern · woodland · foothill · editable biome flora",
+    "branches": 1,
+    "organs": 7
+  },
+  {
+    "id": "biome-pine",
+    "name": "Scots Pine",
+    "biomes": [
+      "foothill",
+      "woodland"
+    ],
+    "form": "conifer",
+    "params": {
+      "h": 16,
+      "r": 0.32,
+      "spread": 3.8,
+      "tiers": 5,
+      "form": "pine"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Scots Pine A · editable crown variant · foothill · woodland",
+    "family": "pine",
+    "crownVariant": "A",
+    "branches": 21,
+    "organs": 41
+  },
+  {
+    "id": "biome-pine-b",
+    "name": "Scots Pine B",
+    "biomes": [
+      "foothill",
+      "woodland"
+    ],
+    "form": "conifer",
+    "params": {
+      "h": 16,
+      "r": 0.32,
+      "spread": 3.8,
+      "tiers": 5,
+      "form": "pine"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Scots Pine B · editable crown variant · foothill · woodland",
+    "family": "pine",
+    "crownVariant": "B",
+    "branches": 21,
+    "organs": 41
+  },
+  {
+    "id": "biome-pine-c",
+    "name": "Scots Pine C",
+    "biomes": [
+      "foothill",
+      "woodland"
+    ],
+    "form": "conifer",
+    "params": {
+      "h": 16,
+      "r": 0.32,
+      "spread": 3.8,
+      "tiers": 5,
+      "form": "pine"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Scots Pine C · editable crown variant · foothill · woodland",
+    "family": "pine",
+    "crownVariant": "C",
+    "branches": 21,
+    "organs": 41
+  },
+  {
+    "id": "biome-spruce",
+    "name": "Mountain Spruce",
+    "biomes": [
+      "foothill"
+    ],
+    "form": "conifer",
+    "params": {
+      "h": 14,
+      "r": 0.29,
+      "spread": 3,
+      "tiers": 6
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Mountain Spruce A · editable crown variant · foothill",
+    "family": "spruce",
+    "crownVariant": "A",
+    "branches": 25,
+    "organs": 48
+  },
+  {
+    "id": "biome-spruce-b",
+    "name": "Mountain Spruce B",
+    "biomes": [
+      "foothill"
+    ],
+    "form": "conifer",
+    "params": {
+      "h": 14,
+      "r": 0.29,
+      "spread": 3,
+      "tiers": 6
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Mountain Spruce B · editable crown variant · foothill",
+    "family": "spruce",
+    "crownVariant": "B",
+    "branches": 25,
+    "organs": 48
+  },
+  {
+    "id": "biome-spruce-c",
+    "name": "Mountain Spruce C",
+    "biomes": [
+      "foothill"
+    ],
+    "form": "conifer",
+    "params": {
+      "h": 14,
+      "r": 0.29,
+      "spread": 3,
+      "tiers": 6
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Mountain Spruce C · editable crown variant · foothill",
+    "family": "spruce",
+    "crownVariant": "C",
+    "branches": 25,
+    "organs": 48
+  },
+  {
+    "id": "biome-rowan",
+    "name": "Mountain Rowan",
+    "biomes": [
+      "foothill",
+      "woodland-edge"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 8,
+      "r": 0.2,
+      "spread": 2.7,
+      "branches": 6,
+      "leafAsset": "yavin-fine-leaves"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Mountain Rowan A · editable crown variant · foothill · woodland-edge",
+    "family": "rowan",
+    "crownVariant": "A",
+    "branches": 7,
+    "organs": 13
+  },
+  {
+    "id": "biome-rowan-b",
+    "name": "Mountain Rowan B",
+    "biomes": [
+      "foothill",
+      "woodland-edge"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 8,
+      "r": 0.2,
+      "spread": 2.7,
+      "branches": 6,
+      "leafAsset": "yavin-fine-leaves"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Mountain Rowan B · editable crown variant · foothill · woodland-edge",
+    "family": "rowan",
+    "crownVariant": "B",
+    "branches": 7,
+    "organs": 13
+  },
+  {
+    "id": "biome-rowan-c",
+    "name": "Mountain Rowan C",
+    "biomes": [
+      "foothill",
+      "woodland-edge"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 8,
+      "r": 0.2,
+      "spread": 2.7,
+      "branches": 6,
+      "leafAsset": "yavin-fine-leaves"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Mountain Rowan C · editable crown variant · foothill · woodland-edge",
+    "family": "rowan",
+    "crownVariant": "C",
+    "branches": 7,
+    "organs": 13
+  },
+  {
+    "id": "biome-juniper",
+    "name": "Low Juniper",
+    "biomes": [
+      "foothill",
+      "alpine"
+    ],
+    "form": "scrub",
+    "params": {
+      "h": 1.1,
+      "spread": 1.2,
+      "asset": "endor-redwood-needles",
+      "stems": 5
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Low Juniper · foothill · alpine · editable biome flora",
+    "branches": 6,
+    "organs": 5
+  },
+  {
+    "id": "biome-dwarf-willow",
+    "name": "Dwarf Willow",
+    "biomes": [
+      "tundra",
+      "alpine"
+    ],
+    "form": "scrub",
+    "params": {
+      "h": 0.32,
+      "spread": 0.38,
+      "asset": "biome-sprite-cold-leaves",
+      "stems": 4
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Dwarf Willow · tundra · alpine · editable biome flora",
+    "branches": 5,
+    "organs": 4
+  },
+  {
+    "id": "biome-dwarf-birch",
+    "name": "Dwarf Birch",
+    "biomes": [
+      "tundra"
+    ],
+    "form": "scrub",
+    "params": {
+      "h": 0.55,
+      "spread": 0.48,
+      "asset": "biome-sprite-cold-leaves",
+      "stems": 5
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Dwarf Birch · tundra · editable biome flora",
+    "branches": 6,
+    "organs": 5
+  },
+  {
+    "id": "biome-heather",
+    "name": "Alpine Heather",
+    "biomes": [
+      "tundra",
+      "alpine"
+    ],
+    "form": "patch",
+    "params": {
+      "asset": "biome-sprite-heather",
+      "height": 0.8,
+      "count": 3,
+      "radius": 0.18
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Alpine Heather · tundra · alpine · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-cotton-sedge",
+    "name": "Cotton Sedge",
+    "biomes": [
+      "tundra",
+      "marsh"
+    ],
+    "form": "reed",
+    "params": {
+      "h": 0.48,
+      "head": "biome-cotton-head",
+      "count": 5,
+      "headScale": [
+        0.45,
+        0.45,
+        0.45
+      ]
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Cotton Sedge · tundra · marsh · editable biome flora",
+    "branches": 1,
+    "organs": 20
+  },
+  {
+    "id": "biome-tussock",
+    "name": "Tussock Sedge",
+    "biomes": [
+      "tundra",
+      "marsh"
+    ],
+    "form": "patch",
+    "params": {
+      "asset": "biome-sprite-sedge",
+      "height": 0.42,
+      "count": 5,
+      "radius": 0.3
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Tussock Sedge · tundra · marsh · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-saxifrage",
+    "name": "Alpine Cushion Flowers",
+    "biomes": [
+      "alpine",
+      "tundra"
+    ],
+    "form": "patch",
+    "params": {
+      "asset": "biome-sprite-meadow-flowers",
+      "height": 0.16,
+      "count": 5,
+      "radius": 0.24
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Alpine Cushion Flowers · alpine · tundra · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-alpine-grass",
+    "name": "Alpine Bunchgrass",
+    "biomes": [
+      "alpine",
+      "tundra"
+    ],
+    "form": "patch",
+    "params": {
+      "asset": "biome-sprite-sedge",
+      "height": 0.23,
+      "count": 4,
+      "radius": 0.15
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Alpine Bunchgrass · alpine · tundra · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-lichen",
+    "name": "Pioneer Lichen Cushion",
+    "biomes": [
+      "alpine",
+      "volcanic-margin"
+    ],
+    "form": "moss",
+    "params": {
+      "lichen": true
+    },
+    "notes": "Lichen is a symbiotic groundcover, placed only on stable exposed substrate.",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Pioneer Lichen Cushion · alpine · volcanic-margin · editable biome flora",
+    "branches": 1,
+    "organs": 9
+  },
+  {
+    "id": "biome-fescue",
+    "name": "Prairie Fescue",
+    "biomes": [
+      "prairie",
+      "woodland-edge"
+    ],
+    "form": "patch",
+    "params": {
+      "asset": "biome-sprite-fescue",
+      "height": 0.5,
+      "count": 7,
+      "radius": 0.5
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Prairie Fescue · prairie · woodland-edge · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-bluestem",
+    "name": "Tall Bluestem Grass",
+    "biomes": [
+      "prairie"
+    ],
+    "form": "patch",
+    "params": {
+      "asset": "biome-sprite-bluestem",
+      "height": 1.25,
+      "count": 5,
+      "radius": 0.4
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Tall Bluestem Grass · prairie · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-meadow-flowers",
+    "name": "Meadow Wildflowers",
+    "biomes": [
+      "prairie",
+      "woodland-edge"
+    ],
+    "form": "patch",
+    "params": {
+      "asset": "biome-sprite-meadow-flowers",
+      "height": 0.55,
+      "count": 8,
+      "radius": 0.65
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Meadow Wildflowers · prairie · woodland-edge · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-broom",
+    "name": "Meadow Broom Shrub",
+    "biomes": [
+      "prairie",
+      "woodland-edge"
+    ],
+    "form": "scrub",
+    "params": {
+      "h": 1.1,
+      "spread": 0.75,
+      "asset": "biome-sprite-broadleaf-scrub",
+      "stems": 5
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Meadow Broom Shrub · prairie · woodland-edge · editable biome flora",
+    "branches": 6,
+    "organs": 5
+  },
+  {
+    "id": "biome-kapok",
+    "name": "Rainforest Kapok",
+    "biomes": [
+      "rainforest"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "kapok-mature",
+      "scale": 0.85
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Rainforest Kapok A · editable crown variant · rainforest",
+    "family": "kapok",
+    "crownVariant": "A",
+    "branches": 17,
+    "organs": 20
+  },
+  {
+    "id": "biome-kapok-b",
+    "name": "Rainforest Kapok B",
+    "biomes": [
+      "rainforest"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "kapok-mature",
+      "scale": 0.85
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Rainforest Kapok B · editable crown variant · rainforest",
+    "family": "kapok",
+    "crownVariant": "B",
+    "branches": 17,
+    "organs": 20
+  },
+  {
+    "id": "biome-kapok-c",
+    "name": "Rainforest Kapok C",
+    "biomes": [
+      "rainforest"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "kapok-mature",
+      "scale": 0.85
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Rainforest Kapok C · editable crown variant · rainforest",
+    "family": "kapok",
+    "crownVariant": "C",
+    "branches": 17,
+    "organs": 20
+  },
+  {
+    "id": "biome-fig",
+    "name": "Spreading Tropical Fig",
+    "biomes": [
+      "rainforest"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 18,
+      "r": 0.7,
+      "spread": 6,
+      "branches": 9,
+      "leafAsset": "yavin-leaves",
+      "trunks": 3
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Spreading Tropical Fig A · editable crown variant · rainforest",
+    "family": "fig",
+    "crownVariant": "A",
+    "branches": 12,
+    "organs": 19
+  },
+  {
+    "id": "biome-fig-b",
+    "name": "Spreading Tropical Fig B",
+    "biomes": [
+      "rainforest"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 18,
+      "r": 0.7,
+      "spread": 6,
+      "branches": 9,
+      "leafAsset": "yavin-leaves",
+      "trunks": 3
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Spreading Tropical Fig B · editable crown variant · rainforest",
+    "family": "fig",
+    "crownVariant": "B",
+    "branches": 12,
+    "organs": 19
+  },
+  {
+    "id": "biome-fig-c",
+    "name": "Spreading Tropical Fig C",
+    "biomes": [
+      "rainforest"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 18,
+      "r": 0.7,
+      "spread": 6,
+      "branches": 9,
+      "leafAsset": "yavin-leaves",
+      "trunks": 3
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Spreading Tropical Fig C · editable crown variant · rainforest",
+    "family": "fig",
+    "crownVariant": "C",
+    "branches": 12,
+    "organs": 19
+  },
+  {
+    "id": "biome-understory-palm",
+    "name": "Understory Palm",
+    "biomes": [
+      "rainforest",
+      "swamp"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "palm-tree",
+      "scale": 0.5
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Understory Palm A · editable crown variant · rainforest · swamp",
+    "family": "understory-palm",
+    "crownVariant": "A",
+    "branches": 1,
+    "organs": 2
+  },
+  {
+    "id": "biome-understory-palm-b",
+    "name": "Understory Palm B",
+    "biomes": [
+      "rainforest",
+      "swamp"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "palm-tree",
+      "scale": 0.5
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Understory Palm B · editable crown variant · rainforest · swamp",
+    "family": "understory-palm",
+    "crownVariant": "B",
+    "branches": 1,
+    "organs": 2
+  },
+  {
+    "id": "biome-understory-palm-c",
+    "name": "Understory Palm C",
+    "biomes": [
+      "rainforest",
+      "swamp"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "palm-tree",
+      "scale": 0.5
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Understory Palm C · editable crown variant · rainforest · swamp",
+    "family": "understory-palm",
+    "crownVariant": "C",
+    "branches": 1,
+    "organs": 2
+  },
+  {
+    "id": "biome-banana",
+    "name": "Broadleaf Banana",
+    "biomes": [
+      "rainforest"
+    ],
+    "form": "blades",
+    "params": {
+      "h": 2.3,
+      "width": 2.2,
+      "count": 7,
+      "asset": "biome-banana-leaf",
+      "stem": 1.2
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Broadleaf Banana · rainforest · editable biome flora",
+    "branches": 1,
+    "organs": 7
+  },
+  {
+    "id": "biome-giant-fern",
+    "name": "Giant Rainforest Fern",
+    "biomes": [
+      "rainforest",
+      "swamp"
+    ],
+    "form": "blades",
+    "params": {
+      "h": 1.6,
+      "width": 1.6,
+      "count": 9,
+      "asset": "flora-fern-frond"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Giant Rainforest Fern · rainforest · swamp · editable biome flora",
+    "branches": 1,
+    "organs": 9
+  },
+  {
+    "id": "biome-vined-fig",
+    "name": "Tropical Fig with Lianas",
+    "biomes": [
+      "rainforest"
+    ],
+    "form": "vined-fig",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Tropical Fig with Lianas A · editable crown variant · rainforest",
+    "family": "vined-fig",
+    "crownVariant": "A",
+    "branches": 13,
+    "organs": 20
+  },
+  {
+    "id": "biome-vined-fig-b",
+    "name": "Tropical Fig with Lianas B",
+    "biomes": [
+      "rainforest"
+    ],
+    "form": "vined-fig",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Tropical Fig with Lianas B · editable crown variant · rainforest",
+    "family": "vined-fig",
+    "crownVariant": "B",
+    "branches": 13,
+    "organs": 20
+  },
+  {
+    "id": "biome-vined-fig-c",
+    "name": "Tropical Fig with Lianas C",
+    "biomes": [
+      "rainforest"
+    ],
+    "form": "vined-fig",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Tropical Fig with Lianas C · editable crown variant · rainforest",
+    "family": "vined-fig",
+    "crownVariant": "C",
+    "branches": 13,
+    "organs": 20
+  },
+  {
+    "id": "biome-mangrove",
+    "name": "Red Mangrove",
+    "biomes": [
+      "swamp",
+      "tropical-coast"
+    ],
+    "form": "mangrove",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Red Mangrove A · editable crown variant · swamp · tropical-coast",
+    "family": "mangrove",
+    "crownVariant": "A",
+    "branches": 26,
+    "organs": 19
+  },
+  {
+    "id": "biome-mangrove-b",
+    "name": "Red Mangrove B",
+    "biomes": [
+      "swamp",
+      "tropical-coast"
+    ],
+    "form": "mangrove",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Red Mangrove B · editable crown variant · swamp · tropical-coast",
+    "family": "mangrove",
+    "crownVariant": "B",
+    "branches": 26,
+    "organs": 19
+  },
+  {
+    "id": "biome-mangrove-c",
+    "name": "Red Mangrove C",
+    "biomes": [
+      "swamp",
+      "tropical-coast"
+    ],
+    "form": "mangrove",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Red Mangrove C · editable crown variant · swamp · tropical-coast",
+    "family": "mangrove",
+    "crownVariant": "C",
+    "branches": 26,
+    "organs": 19
+  },
+  {
+    "id": "biome-vined-mangrove",
+    "name": "Mangrove with Tangled Vines",
+    "biomes": [
+      "swamp"
+    ],
+    "form": "vined-mangrove",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Mangrove with Tangled Vines A · editable crown variant · swamp",
+    "family": "vined-mangrove",
+    "crownVariant": "A",
+    "branches": 30,
+    "organs": 22
+  },
+  {
+    "id": "biome-vined-mangrove-b",
+    "name": "Mangrove with Tangled Vines B",
+    "biomes": [
+      "swamp"
+    ],
+    "form": "vined-mangrove",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Mangrove with Tangled Vines B · editable crown variant · swamp",
+    "family": "vined-mangrove",
+    "crownVariant": "B",
+    "branches": 30,
+    "organs": 22
+  },
+  {
+    "id": "biome-vined-mangrove-c",
+    "name": "Mangrove with Tangled Vines C",
+    "biomes": [
+      "swamp"
+    ],
+    "form": "vined-mangrove",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Mangrove with Tangled Vines C · editable crown variant · swamp",
+    "family": "vined-mangrove",
+    "crownVariant": "C",
+    "branches": 30,
+    "organs": 22
+  },
+  {
+    "id": "biome-cypress",
+    "name": "Swamp Cypress",
+    "biomes": [
+      "swamp",
+      "riparian"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 18,
+      "r": 0.36,
+      "spread": 3,
+      "branches": 8,
+      "shape": "cypress",
+      "leafAsset": "endor-redwood-needles"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Swamp Cypress A · editable crown variant · swamp · riparian",
+    "family": "cypress",
+    "crownVariant": "A",
+    "branches": 15,
+    "organs": 33
+  },
+  {
+    "id": "biome-cypress-b",
+    "name": "Swamp Cypress B",
+    "biomes": [
+      "swamp",
+      "riparian"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 18,
+      "r": 0.36,
+      "spread": 3,
+      "branches": 8,
+      "shape": "cypress",
+      "leafAsset": "endor-redwood-needles"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Swamp Cypress B · editable crown variant · swamp · riparian",
+    "family": "cypress",
+    "crownVariant": "B",
+    "branches": 15,
+    "organs": 33
+  },
+  {
+    "id": "biome-cypress-c",
+    "name": "Swamp Cypress C",
+    "biomes": [
+      "swamp",
+      "riparian"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 18,
+      "r": 0.36,
+      "spread": 3,
+      "branches": 8,
+      "shape": "cypress",
+      "leafAsset": "endor-redwood-needles"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Swamp Cypress C · editable crown variant · swamp · riparian",
+    "family": "cypress",
+    "crownVariant": "C",
+    "branches": 15,
+    "organs": 33
+  },
+  {
+    "id": "biome-pandanus",
+    "name": "Stilt-root Pandanus",
+    "biomes": [
+      "swamp",
+      "tropical-coast"
+    ],
+    "form": "pandanus",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Stilt-root Pandanus A · editable crown variant · swamp · tropical-coast",
+    "family": "pandanus",
+    "crownVariant": "A",
+    "branches": 7,
+    "organs": 22
+  },
+  {
+    "id": "biome-pandanus-b",
+    "name": "Stilt-root Pandanus B",
+    "biomes": [
+      "swamp",
+      "tropical-coast"
+    ],
+    "form": "pandanus",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Stilt-root Pandanus B · editable crown variant · swamp · tropical-coast",
+    "family": "pandanus",
+    "crownVariant": "B",
+    "branches": 7,
+    "organs": 22
+  },
+  {
+    "id": "biome-pandanus-c",
+    "name": "Stilt-root Pandanus C",
+    "biomes": [
+      "swamp",
+      "tropical-coast"
+    ],
+    "form": "pandanus",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Stilt-root Pandanus C · editable crown variant · swamp · tropical-coast",
+    "family": "pandanus",
+    "crownVariant": "C",
+    "branches": 7,
+    "organs": 22
+  },
+  {
+    "id": "biome-cattail",
+    "name": "Cattail Clump",
+    "biomes": [
+      "marsh",
+      "riparian"
+    ],
+    "form": "reed",
+    "params": {
+      "h": 1.65,
+      "count": 6
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Cattail Clump · marsh · riparian · editable biome flora",
+    "branches": 1,
+    "organs": 22
+  },
+  {
+    "id": "biome-bulrush",
+    "name": "Bulrush Clump",
+    "biomes": [
+      "marsh",
+      "riparian"
+    ],
+    "form": "reed",
+    "params": {
+      "h": 1.15,
+      "head": "biome-reed-head",
+      "count": 5,
+      "headScale": [
+        0.7,
+        0.3,
+        0.7
+      ]
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Bulrush Clump · marsh · riparian · editable biome flora",
+    "branches": 1,
+    "organs": 20
+  },
+  {
+    "id": "biome-reed",
+    "name": "Kashyyyk Reed Bed",
+    "biomes": [
+      "marsh",
+      "riparian"
+    ],
+    "form": "patch",
+    "params": {
+      "asset": "biome-sprite-reed",
+      "height": 1.4,
+      "count": 5,
+      "radius": 0.5
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Kashyyyk Reed Bed · marsh · riparian · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-glasswort",
+    "name": "Saltmarsh Glasswort",
+    "biomes": [
+      "marsh",
+      "tropical-coast"
+    ],
+    "form": "glasswort",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Saltmarsh Glasswort · marsh · tropical-coast · editable biome flora",
+    "branches": 8,
+    "organs": 0
+  },
+  {
+    "id": "biome-willow",
+    "name": "Riverbank Weeping Willow",
+    "biomes": [
+      "riparian"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "weeping-willow",
+      "scale": 1
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Riverbank Weeping Willow A · editable crown variant · riparian",
+    "family": "willow",
+    "crownVariant": "A",
+    "branches": 7,
+    "organs": 52
+  },
+  {
+    "id": "biome-willow-b",
+    "name": "Riverbank Weeping Willow B",
+    "biomes": [
+      "riparian"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "weeping-willow",
+      "scale": 1
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Riverbank Weeping Willow B · editable crown variant · riparian",
+    "family": "willow",
+    "crownVariant": "B",
+    "branches": 7,
+    "organs": 52
+  },
+  {
+    "id": "biome-willow-c",
+    "name": "Riverbank Weeping Willow C",
+    "biomes": [
+      "riparian"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "weeping-willow",
+      "scale": 1
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Riverbank Weeping Willow C · editable crown variant · riparian",
+    "family": "willow",
+    "crownVariant": "C",
+    "branches": 7,
+    "organs": 52
+  },
+  {
+    "id": "biome-alder",
+    "name": "River Alder",
+    "biomes": [
+      "riparian",
+      "glacier-margin"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 8,
+      "r": 0.24,
+      "spread": 2.8,
+      "branches": 6,
+      "trunks": 2
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "River Alder A · editable crown variant · riparian · glacier-margin",
+    "family": "alder",
+    "crownVariant": "A",
+    "branches": 8,
+    "organs": 13
+  },
+  {
+    "id": "biome-alder-b",
+    "name": "River Alder B",
+    "biomes": [
+      "riparian",
+      "glacier-margin"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 8,
+      "r": 0.24,
+      "spread": 2.8,
+      "branches": 6,
+      "trunks": 2
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "River Alder B · editable crown variant · riparian · glacier-margin",
+    "family": "alder",
+    "crownVariant": "B",
+    "branches": 8,
+    "organs": 13
+  },
+  {
+    "id": "biome-alder-c",
+    "name": "River Alder C",
+    "biomes": [
+      "riparian",
+      "glacier-margin"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 8,
+      "r": 0.24,
+      "spread": 2.8,
+      "branches": 6,
+      "trunks": 2
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "River Alder C · editable crown variant · riparian · glacier-margin",
+    "family": "alder",
+    "crownVariant": "C",
+    "branches": 8,
+    "organs": 13
+  },
+  {
+    "id": "biome-poplar",
+    "name": "Tall River Poplar",
+    "biomes": [
+      "riparian"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 15,
+      "r": 0.25,
+      "spread": 2.3,
+      "branches": 9,
+      "shape": "upright",
+      "leafAsset": "yavin-fine-leaves"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Tall River Poplar A · editable crown variant · riparian",
+    "family": "poplar",
+    "crownVariant": "A",
+    "branches": 10,
+    "organs": 19
+  },
+  {
+    "id": "biome-poplar-b",
+    "name": "Tall River Poplar B",
+    "biomes": [
+      "riparian"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 15,
+      "r": 0.25,
+      "spread": 2.3,
+      "branches": 9,
+      "shape": "upright",
+      "leafAsset": "yavin-fine-leaves"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Tall River Poplar B · editable crown variant · riparian",
+    "family": "poplar",
+    "crownVariant": "B",
+    "branches": 10,
+    "organs": 19
+  },
+  {
+    "id": "biome-poplar-c",
+    "name": "Tall River Poplar C",
+    "biomes": [
+      "riparian"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 15,
+      "r": 0.25,
+      "spread": 2.3,
+      "branches": 9,
+      "shape": "upright",
+      "leafAsset": "yavin-fine-leaves"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Tall River Poplar C · editable crown variant · riparian",
+    "family": "poplar",
+    "crownVariant": "C",
+    "branches": 10,
+    "organs": 19
+  },
+  {
+    "id": "biome-horsetail",
+    "name": "Horsetail Colony",
+    "biomes": [
+      "riparian",
+      "marsh"
+    ],
+    "form": "horsetail",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Horsetail Colony · riparian · marsh · editable biome flora",
+    "branches": 17,
+    "organs": 0
+  },
+  {
+    "id": "biome-waterlily",
+    "name": "Floating Waterlily Pads",
+    "biomes": [
+      "freshwater"
+    ],
+    "form": "lily",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Floating Waterlily Pads · freshwater · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-swamp-lily-bed",
+    "name": "Dense Swamp Lily Bed",
+    "biomes": [
+      "freshwater",
+      "swamp"
+    ],
+    "form": "swamp-lily",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Dense Swamp Lily Bed · freshwater · swamp · editable biome flora",
+    "branches": 1,
+    "organs": 3
+  },
+  {
+    "id": "biome-creosote",
+    "name": "Desert Creosote Bush",
+    "biomes": [
+      "desert"
+    ],
+    "form": "scrub",
+    "params": {
+      "h": 1.2,
+      "spread": 0.95,
+      "asset": "biome-sprite-cold-leaves",
+      "stems": 6
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Desert Creosote Bush · desert · editable biome flora",
+    "branches": 7,
+    "organs": 6
+  },
+  {
+    "id": "biome-sagebrush",
+    "name": "Silver Desert Sagebrush",
+    "biomes": [
+      "desert"
+    ],
+    "form": "patch",
+    "params": {
+      "asset": "biome-sprite-sagebrush",
+      "height": 1.3,
+      "count": 3,
+      "radius": 0.22
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Silver Desert Sagebrush · desert · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-yucca",
+    "name": "Desert Yucca",
+    "biomes": [
+      "desert"
+    ],
+    "form": "blades",
+    "params": {
+      "h": 1.25,
+      "width": 0.8,
+      "count": 16,
+      "asset": "biome-yucca-leaf"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Desert Yucca · desert · editable biome flora",
+    "branches": 1,
+    "organs": 16
+  },
+  {
+    "id": "biome-barrel-cactus",
+    "name": "Ribbed Barrel Cactus",
+    "biomes": [
+      "desert"
+    ],
+    "form": "cactus",
+    "params": {
+      "kind": "barrel"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Ribbed Barrel Cactus · desert · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-prickly-pear",
+    "name": "Prickly Pear Cactus",
+    "biomes": [
+      "desert",
+      "coastal-dune"
+    ],
+    "form": "cactus",
+    "params": {
+      "kind": "pear"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Prickly Pear Cactus · desert · coastal-dune · editable biome flora",
+    "branches": 1,
+    "organs": 7
+  },
+  {
+    "id": "biome-column-cactus",
+    "name": "Columnar Desert Cactus",
+    "biomes": [
+      "desert"
+    ],
+    "form": "cactus",
+    "params": {
+      "kind": "column"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Columnar Desert Cactus · desert · editable biome flora",
+    "branches": 3,
+    "organs": 0
+  },
+  {
+    "id": "biome-date-palm",
+    "name": "Oasis Date Palm",
+    "biomes": [
+      "oasis"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "palm-tree",
+      "scale": 1.05
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Oasis Date Palm A · editable crown variant · oasis",
+    "family": "date-palm",
+    "crownVariant": "A",
+    "branches": 1,
+    "organs": 2
+  },
+  {
+    "id": "biome-date-palm-b",
+    "name": "Oasis Date Palm B",
+    "biomes": [
+      "oasis"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "palm-tree",
+      "scale": 1.05
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Oasis Date Palm B · editable crown variant · oasis",
+    "family": "date-palm",
+    "crownVariant": "B",
+    "branches": 1,
+    "organs": 2
+  },
+  {
+    "id": "biome-date-palm-c",
+    "name": "Oasis Date Palm C",
+    "biomes": [
+      "oasis"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "palm-tree",
+      "scale": 1.05
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Oasis Date Palm C · editable crown variant · oasis",
+    "family": "date-palm",
+    "crownVariant": "C",
+    "branches": 1,
+    "organs": 2
+  },
+  {
+    "id": "biome-tamarisk",
+    "name": "Oasis Tamarisk",
+    "biomes": [
+      "oasis",
+      "riparian-desert"
+    ],
+    "form": "scrub",
+    "params": {
+      "h": 2.7,
+      "spread": 1.8,
+      "asset": "yavin-fine-leaves",
+      "stems": 6
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Oasis Tamarisk A · editable crown variant · oasis · riparian-desert",
+    "family": "tamarisk",
+    "crownVariant": "A",
+    "branches": 7,
+    "organs": 6
+  },
+  {
+    "id": "biome-tamarisk-b",
+    "name": "Oasis Tamarisk B",
+    "biomes": [
+      "oasis",
+      "riparian-desert"
+    ],
+    "form": "scrub",
+    "params": {
+      "h": 2.7,
+      "spread": 1.8,
+      "asset": "yavin-fine-leaves",
+      "stems": 6
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Oasis Tamarisk B · editable crown variant · oasis · riparian-desert",
+    "family": "tamarisk",
+    "crownVariant": "B",
+    "branches": 7,
+    "organs": 6
+  },
+  {
+    "id": "biome-tamarisk-c",
+    "name": "Oasis Tamarisk C",
+    "biomes": [
+      "oasis",
+      "riparian-desert"
+    ],
+    "form": "scrub",
+    "params": {
+      "h": 2.7,
+      "spread": 1.8,
+      "asset": "yavin-fine-leaves",
+      "stems": 6
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Oasis Tamarisk C · editable crown variant · oasis · riparian-desert",
+    "family": "tamarisk",
+    "crownVariant": "C",
+    "branches": 7,
+    "organs": 6
+  },
+  {
+    "id": "biome-sea-oats",
+    "name": "Coastal Sea Oats",
+    "biomes": [
+      "coastal-dune"
+    ],
+    "form": "patch",
+    "params": {
+      "asset": "biome-sprite-sea-oats",
+      "height": 1.3,
+      "count": 4,
+      "radius": 0.4
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Coastal Sea Oats · coastal-dune · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-dune-grass",
+    "name": "Dune Bunchgrass",
+    "biomes": [
+      "coastal-dune"
+    ],
+    "form": "patch",
+    "params": {
+      "asset": "biome-sprite-fescue",
+      "height": 0.85,
+      "count": 6,
+      "radius": 0.45
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Dune Bunchgrass · coastal-dune · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-beach-creeper",
+    "name": "Creeping Beach Groundcover",
+    "biomes": [
+      "coastal-dune",
+      "tropical-coast"
+    ],
+    "form": "patch",
+    "params": {
+      "asset": "biome-sprite-cold-leaves",
+      "height": 0.22,
+      "count": 12,
+      "radius": 0.7
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Creeping Beach Groundcover · coastal-dune · tropical-coast · editable biome flora",
+    "branches": 1,
+    "organs": 1
+  },
+  {
+    "id": "biome-sea-grape",
+    "name": "Coastal Sea Grape",
+    "biomes": [
+      "tropical-coast"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 3.5,
+      "r": 0.14,
+      "spread": 2.1,
+      "branches": 6,
+      "leafAsset": "yavin-leaves"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Coastal Sea Grape A · editable crown variant · tropical-coast",
+    "family": "sea-grape",
+    "crownVariant": "A",
+    "branches": 7,
+    "organs": 13
+  },
+  {
+    "id": "biome-sea-grape-b",
+    "name": "Coastal Sea Grape B",
+    "biomes": [
+      "tropical-coast"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 3.5,
+      "r": 0.14,
+      "spread": 2.1,
+      "branches": 6,
+      "leafAsset": "yavin-leaves"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Coastal Sea Grape B · editable crown variant · tropical-coast",
+    "family": "sea-grape",
+    "crownVariant": "B",
+    "branches": 7,
+    "organs": 13
+  },
+  {
+    "id": "biome-sea-grape-c",
+    "name": "Coastal Sea Grape C",
+    "biomes": [
+      "tropical-coast"
+    ],
+    "form": "broadleaf",
+    "params": {
+      "h": 3.5,
+      "r": 0.14,
+      "spread": 2.1,
+      "branches": 6,
+      "leafAsset": "yavin-leaves"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Coastal Sea Grape C · editable crown variant · tropical-coast",
+    "family": "sea-grape",
+    "crownVariant": "C",
+    "branches": 7,
+    "organs": 13
+  },
+  {
+    "id": "biome-coconut-palm",
+    "name": "Island Coconut Palm",
+    "biomes": [
+      "tropical-coast"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "palm-tree",
+      "scale": 1.3
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Island Coconut Palm A · editable crown variant · tropical-coast",
+    "family": "coconut-palm",
+    "crownVariant": "A",
+    "branches": 1,
+    "organs": 2
+  },
+  {
+    "id": "biome-coconut-palm-b",
+    "name": "Island Coconut Palm B",
+    "biomes": [
+      "tropical-coast"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "palm-tree",
+      "scale": 1.3
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Island Coconut Palm B · editable crown variant · tropical-coast",
+    "family": "coconut-palm",
+    "crownVariant": "B",
+    "branches": 1,
+    "organs": 2
+  },
+  {
+    "id": "biome-coconut-palm-c",
+    "name": "Island Coconut Palm C",
+    "biomes": [
+      "tropical-coast"
+    ],
+    "form": "clone",
+    "params": {
+      "preset": "palm-tree",
+      "scale": 1.3
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Island Coconut Palm C · editable crown variant · tropical-coast",
+    "family": "coconut-palm",
+    "crownVariant": "C",
+    "branches": 1,
+    "organs": 2
+  },
+  {
+    "id": "biome-eelgrass",
+    "name": "Sheltered Eelgrass",
+    "biomes": [
+      "marine"
+    ],
+    "form": "blades",
+    "params": {
+      "h": 0.55,
+      "width": 0.3,
+      "count": 9,
+      "asset": "biome-ribbon-leaf"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Sheltered Eelgrass · marine · editable biome flora",
+    "branches": 1,
+    "organs": 9
+  },
+  {
+    "id": "biome-ribbon-seagrass",
+    "name": "Ribbon Seagrass",
+    "biomes": [
+      "marine"
+    ],
+    "form": "blades",
+    "params": {
+      "h": 0.95,
+      "width": 0.45,
+      "count": 7,
+      "asset": "biome-ribbon-leaf"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Ribbon Seagrass · marine · editable biome flora",
+    "branches": 1,
+    "organs": 7
+  },
+  {
+    "id": "biome-pioneer-fern",
+    "name": "Pioneer Fern",
+    "biomes": [
+      "volcanic-margin",
+      "thermal-margin"
+    ],
+    "form": "blades",
+    "params": {
+      "h": 0.45,
+      "width": 0.65,
+      "count": 5,
+      "asset": "flora-fern-frond"
+    },
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Pioneer Fern · volcanic-margin · thermal-margin · editable biome flora",
+    "branches": 1,
+    "organs": 5
+  },
+  {
+    "id": "biome-moss",
+    "name": "Cool-margin Moss",
+    "biomes": [
+      "thermal-margin",
+      "riparian"
+    ],
+    "form": "moss",
+    "params": {},
+    "notes": "",
+    "planet": "Earth",
+    "category": "Tree presets",
+    "paletteCategory": "Biomes",
+    "sourceName": "Cool-margin Moss · thermal-margin · riparian · editable biome flora",
+    "branches": 1,
+    "organs": 9
+  }
+]
