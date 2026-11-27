@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {BIOME_PRESETS} from '../src/flora/data/biome-presets-data.js';
+import {BIOME_TREE_FAMILIES} from '../src/flora/biome-variations.js';
 import {instantiateFloraTreePreset} from '../src/flora/flora-tree-presets.js';
 import {makePart} from '../src/core/model.js';
 import {createSWBF2Package} from '../src/swbf2/export-swbf2.js';
@@ -13,7 +14,7 @@ const root=path.resolve(destination);
 if(fs.existsSync(root))throw Error('Output folder already exists: '+root);
 fs.mkdirSync(root,{recursive:true});
 const native=path.join(root,'native');fs.mkdirSync(native);
-const colliding=new Set(['oak','birch','pine','spruce','rowan','kapok','fig','vined-fig','mangrove','vined-mangrove','cypress','pandanus','willow','alder','poplar','column-cactus','date-palm','tamarisk','sea-grape','coconut-palm','understory-palm']);
+const colliding=new Set([...BIOME_TREE_FAMILIES,'column-cactus']);
 const seen=new Map(),records=[],parts=[];
 const only=process.argv.find(a=>a.startsWith('--only='))?.slice(7).split(',');
 const spriteFolder=process.argv.find(a=>a.startsWith('--sprites='))?.slice(10);
@@ -31,7 +32,7 @@ for(const [i,spec] of BIOME_PRESETS.entries()){
  const canopyPath=canopyFolder&&path.join(canopyFolder,short,'canopy.json'),canopy=solid&&canopyPath&&fs.existsSync(canopyPath)?JSON.parse(fs.readFileSync(canopyPath)):null;
  if(canopy)for(const zone of canopy.zones){if(path.basename(zone.texture)!==zone.texture)throw Error('Invalid canopy image path.');zone.bytes=new Uint8Array(fs.readFileSync(path.join(path.dirname(canopyPath),zone.texture)));}
  const nativeLeafClusters=solid&&clusterIndex?Object.fromEntries((clusterIndex.plants[spec.id]??[]).map(key=>[key,{...clusterIndex.clusters[key],bytes:new Uint8Array(fs.readFileSync(path.join(clusterFolder,(clusterIndex.clusters[key].textureKey??key)+'.tga')))}])):null;
- const result=createSWBF2Package(project,{output:'object',classLabel:'prop',aiNavigation:false,lowDetail:true,maxTextureSize:256,shadows:false,includeCollision:solid,foliage:solid?'native':'static',collisionFamily:'af_'+family.replaceAll('-','_'),...(sprite?{nativeTreeSprite:sprite,nativeLeafDistance:180}:{}),...(canopy?{nativeTreeCanopy:canopy}:nativeLeafClusters?{nativeLeafClusters}:{})},{packZip:false});
+ const result=createSWBF2Package(project,{output:'object',classLabel:'prop',aiNavigation:false,lowDetail:true,maxTextureSize:256,shadows:false,includeCollision:solid,foliage:solid?'native':'static',collisionFamily:'af_'+short.replaceAll('-','_'),...(sprite?{nativeTreeSprite:sprite,nativeLeafDistance:180}:{}),...(canopy?{nativeTreeCanopy:canopy}:nativeLeafClusters?{nativeLeafClusters}:{})},{packZip:false});
  const folder=path.join(root,'plants',short);fs.mkdirSync(folder,{recursive:true});
  for(const [file,contents] of result.files){
   const data=typeof contents==='string'?Buffer.from(contents):Buffer.from(contents);

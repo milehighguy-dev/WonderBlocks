@@ -25,9 +25,9 @@ test('standalone trees retain native camera-facing leaves through bounded attach
  assert.ok(leaves.every(t=>/MaxDistance = "1000"/.test(t)&&/MaxFallingLeaves = "0"/.test(t)));
 });
 
-test('crown variants differ while retaining the same physical tree scaffold',()=>{
+test('tree variants differ in editable wood as well as their crowns',()=>{
  const spec=BIOME_PRESETS.find(p=>p.id==='biome-oak'),a=biomeCrownVariant(spec,0),b=biomeCrownVariant(spec,1),c=biomeCrownVariant(spec,2);
- assert.deepEqual(a.floraPreset.branches,b.floraPreset.branches);assert.deepEqual(a.floraPreset.branches,c.floraPreset.branches);
+ assert.notDeepEqual(a.floraPreset.branches,b.floraPreset.branches);assert.notDeepEqual(a.floraPreset.branches,c.floraPreset.branches);
  assert.notDeepEqual(a.floraPreset.organs,b.floraPreset.organs);assert.notDeepEqual(b.floraPreset.organs,c.floraPreset.organs);
  assert.ok([a,b,c].every(p=>p.floraPreset.organs.filter(o=>o.billboard).every(o=>o.billboard.facing==='camera')));
 });
@@ -38,8 +38,10 @@ test('shared collision families cannot escape the native asset namespace',()=>{
 });
 
 test('every leafy crown family uses camera-facing patches while palm fronds stay modeled',()=>{
- const modeled=new Set(['date-palm','coconut-palm','understory-palm','pandanus']);
+ const modeled=new Set(['date-palm','coconut-palm','understory-palm','pandanus','fan-palm']);
+ const deadwood=new Set(['standing-snag','broken-tree','fallen-tree']);
  for(const spec of BIOME_PRESETS.filter(p=>p.family)){
+  if(deadwood.has(spec.family)){assert.equal(spec.floraPreset.organs.length,0);continue;}
   const leaves=spec.floraPreset.organs.filter(o=>o.kind==='leaf');assert.ok(leaves.length,spec.id);
   if(modeled.has(spec.family))assert.ok(leaves.every(o=>!o.billboard),spec.id+' retains modeled fronds or strap leaves');
   else assert.ok(leaves.every(o=>o.billboard?.facing==='camera'),spec.id+' has no fixed crown leaves');

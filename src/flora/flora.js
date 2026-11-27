@@ -259,6 +259,7 @@ export function removeFloraJoint(f,branchId,index){
 export function validateFlora(f){
  const bad=()=>{throw Error('Invalid flora data.');},vec=(a,min,max)=>Array.isArray(a)&&a.length===3&&a.every(x=>Number.isFinite(x)&&x>=min&&x<=max);
  if(!f||!Array.isArray(f.branches)||!f.branches.length||!Array.isArray(f.organs)||floraCapacityError(f)||!['low','standard','swbf2'].includes(f.detail)||!f.colors||!['bark','leaf'].every(k=>/^#[0-9a-f]{6}$/i.test(f.colors[k])))bad();const ids=new Set();
+ if(f.woodConstruction!==undefined&&!['welded','swept'].includes(f.woodConstruction))bad();
  for(const [i,b] of f.branches.entries()){if(!b||typeof b.id!=='string'||b.id.length>100||ids.has(b.id)||typeof b.name!=='string'||b.name.length>60||!Number.isFinite(b.at)||b.at<0||b.at>1||(i===0?b.parent!==null:!ids.has(b.parent))||!Array.isArray(b.points)||b.points.length<2||b.points.length>8||!b.points.every(a=>vec(a,-40,40))||!Array.isArray(b.radii)||b.radii.length!==b.points.length||!b.radii.every((r,j)=>Number.isFinite(r)&&(j===0&&floraSharedJoint(f,b)?r>=1e-6:r>=.015)))bad();if(b.childRotation!==undefined&&!vec(b.childRotation,-Math.PI*8,Math.PI*8))bad();if(b.jointRotations!==undefined){if(!b.jointRotations||typeof b.jointRotations!=='object'||Array.isArray(b.jointRotations))bad();for(const [i,r] of Object.entries(b.jointRotations))if(!/^[0-7]$/.test(i)||+i>=b.points.length||!vec(r,-Math.PI*8,Math.PI*8))bad();}if(b.anchor!==undefined&&(b.anchor!==true||i!==0||b.parent!==null))bad();if(!b.anchor&&(!floraMuscleShape(b.profile)||b.nativeShape!==true))bad();if(i&&b.points[0].some(x=>x!==0))bad();if(b.points.slice(1).some((p,j)=>v(p).distanceTo(v(b.points[j]))<.03))bad();ids.add(b.id);}
  if(f.finishes!==undefined){if(!f.finishes||Array.isArray(f.finishes)||typeof f.finishes!=='object')bad();for(const [k,x] of Object.entries(f.finishes))if(!['bark','leaf'].includes(k)||!x||!SURFACES.some(s=>s.id===x.preset)||!Number.isFinite(x.scale)||x.scale<.1||x.scale>8)bad();}
  for(const o of f.organs){const asset=floraAsset(o?.asset);if(o?.billboard!==undefined){if(!asset?.billboard)bad();validateBillboard(o.billboard);}}
@@ -347,6 +348,9 @@ export function floraWeldKey(f){
  return JSON.stringify([nodes.branches,nodes.organs,f.detail]);
 }
 export function floraNeedsWeld(f){
+ // Sparse deadwood is authored as joined branch sweeps. Reuse those curves
+ // at lower sampling density instead of voxelizing away thin broken tips.
+ if(f.woodConstruction==='swept'&&f.branches.every(b=>b.anchor||b.profile==='flora-basic-branch')&&!f.organs.some(floraBodyOrgan))return false;
  // One continuous limb has no intersections to weld. Keep its dense smooth
  // sweep at every detail level, regardless of texture or how many pieces it uses.
  if(neutralPaths(f).chains.length===1&&!f.branches.some(b=>!b.anchor&&b.profile!=='flora-basic-branch')&&!f.organs.some(floraBodyOrgan))return false;

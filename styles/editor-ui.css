@@ -158,3 +158,5 @@ body.flora-mode .viewport-topbar .placement-options,body.material-mode .viewport
 .texture-browse-header{display:flex;align-items:center;gap:8px;margin:0 0 8px}.texture-back{padding:6px;font-size:11px;white-space:nowrap}.texture-heading{font-size:12px;overflow-wrap:anywhere}.texture-palette>p{margin:5px 0 10px}
 @media(max-width:760px){.texture-category-grid,.texture-presets{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:420px){.texture-category-grid,.texture-presets{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.flora-tree-filters{display:grid;grid-template-columns:1fr;gap:6px;margin:8px 0}.flora-tree-filters[hidden]{display:none}.flora-tree-filters select{width:100%;min-width:0;box-sizing:border-box;background:#101e25;color:#e6efec;border:1px solid #344d57;border-radius:5px;padding:8px}

@@ -13,19 +13,22 @@ try{
  page.on('pageerror',e=>errors.push(e.message));
  await page.goto('http://127.0.0.1:'+server.address().port+'/health');
  await page.evaluate(async()=>{
-  const T=await import('/vendor/three.module.js'),{makePart}=await import('/src/core/model.js'),{buildPart,disposePart}=await import('/src/core/geometry.js'),{instantiateFloraTreePreset}=await import('/src/flora/flora-tree-presets.js');
+  const T=await import('/vendor/three.module.js'),{makePart}=await import('/src/core/model.js'),{buildPart,disposePart}=await import('/src/core/geometry.js'),{instantiateFloraTreePreset,FLORA_TREE_PRESETS}=await import('/src/flora/flora-tree-presets.js'),{updateBillboardFacing}=await import('/src/flora/flora-billboards.js'),{floraAsset}=await import('/src/flora/flora-palette.js'),{defaultFlora,addFloraAsset}=await import('/src/flora/flora.js');
   document.body.innerHTML='<div id="labels"></div>';document.body.style='margin:0;background:#d7dedb;font:18px sans-serif';
   const labels=document.querySelector('#labels');labels.style='position:absolute;left:24px;top:20px;right:24px;display:flex;justify-content:space-between;z-index:2';
   const renderer=new T.WebGLRenderer({antialias:true});renderer.setSize(1440,900);renderer.setPixelRatio(1);renderer.outputColorSpace=T.SRGBColorSpace;renderer.setScissorTest(true);document.body.append(renderer.domElement);
   window.reviewPlant=(id)=>{
    labels.innerHTML='<span>'+id+' · full detail</span><span>same construction · distant detail</span>';
-   const roots=[false,true].map(lowDetail=>buildPart(makePart('flora',instantiateFloraTreePreset('biome-'+id)),{collision:false,lowDetail}));
+   const preset=FLORA_TREE_PRESETS.find(p=>p.id===id||p.id==='biome-'+id);
+   const plant=()=>{if(preset)return instantiateFloraTreePreset(preset.id);if(!floraAsset(id))throw Error('Unknown plant or surface part: '+id);const flora=defaultFlora();addFloraAsset(flora,flora.branches[0].id,id,0);return {flora};};
+   const roots=[false,true].map(lowDetail=>buildPart(makePart('flora',plant()),{collision:false,lowDetail}));
    const box=new T.Box3().setFromObject(roots[0]),center=box.getCenter(new T.Vector3()),size=box.getSize(new T.Vector3()),extent=Math.max(size.y,size.x,size.z,.5);
    for(const [i,root] of roots.entries()){
     const scene=new T.Scene();scene.background=new T.Color('#d7dedb');scene.add(root);
     scene.add(new T.HemisphereLight('#f2f7ff','#757e60',2.2));const sun=new T.DirectionalLight('#fff0d8',2.8);sun.position.set(-4,7,5);scene.add(sun);
-    const floor=new T.Mesh(new T.PlaneGeometry(extent*5,extent*5),new T.MeshLambertMaterial({color:'#777e69',side:T.DoubleSide}));floor.rotation.x=-Math.PI/2;floor.position.set(center.x,box.min.y-.015,center.z);scene.add(floor);
+    const floor=new T.Mesh(new T.PlaneGeometry(extent*5,extent*5),new T.MeshLambertMaterial({color:'#777e69',side:T.DoubleSide}));floor.rotation.x=-Math.PI/2;floor.position.set(center.x,0,center.z);scene.add(floor);
     const camera=new T.PerspectiveCamera(34,720/900,.01,extent*20);camera.position.copy(center).add(new T.Vector3(extent*1.35,extent*.56,extent*2.35));camera.lookAt(center);
+    camera.updateMatrixWorld(true);root.updateMatrixWorld(true);root.traverse(m=>{if(m.userData.floraBillboard)updateBillboardFacing(m,camera);});
     renderer.setViewport(i*720,0,720,900);renderer.setScissor(i*720,0,720,900);renderer.render(scene,camera);
     disposePart(root);floor.geometry.dispose();floor.material.dispose();
    }

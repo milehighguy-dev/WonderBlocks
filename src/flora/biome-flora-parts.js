@@ -30,8 +30,31 @@ function ellipsoid(rings,sides,{x=1,y=1,z=1,center=.5,ribs=0,notch=false}={}){
  return {positions,uv,indices};
 }
 function ribbon(steps,width=.16,curve=.4){const positions=[],uv=[],indices=[];for(let i=0;i<=steps;i++){const t=i/steps,w=width*Math.sin(Math.PI*(t*.96+.02))**.65;for(const side of [-1,0,1]){positions.push(side*w,t,curve*t*t+Math.abs(side)*w*.18);uv.push((side+1)/2,t);}if(i){const a=(i-1)*3;for(let side=0;side<2;side++){const j=a+side;indices.push(j,j+1,j+4,j,j+4,j+3);}}}return {positions,uv,indices};}
+// Palmate and feather palms have different construction, not different scales
+// of one stock whorl. Both LODs sample these same frond rules more sparsely.
+function palmFrond(low,fan){
+ const positions=[],uv=[],indices=[];
+ const triangle=(a,b,c)=>{const i=positions.length/3;positions.push(...a,...b,...c);uv.push(.47,0,.1,.8,.9,1);indices.push(i,i+1,i+2);};
+ const center=t=>[0,t,.36*t*t],petiole=fan?.42:.08;
+ triangle([-.012,0,0],[.012,0,0],center(fan?.5:1));
+ const count=fan?(low?7:13):(low?7:15);
+ if(fan){
+  for(let i=0;i<count;i++){
+   const a=-1.12+i/count*2.24,b=-1.12+(i+1)/count*2.24;
+   const point=(angle,r)=>[Math.sin(angle)*r,petiole+Math.cos(angle)*r,.12+.12*r*r];
+   triangle(center(petiole),point(a,.48),point(b,.48));
+   triangle(point(a,.48),point((a+b)/2,.98),point(b,.48));
+  }
+ }else for(let i=0;i<count;i++){
+  const t=.14+i/(count-1)*.8,p=center(t),w=.25*Math.sin(t*Math.PI)**.7;
+  for(const side of [-1,1])triangle(p,[side*w,t+.04,.36*t*t+.06],[side*w*.85,t+.19,.36*t*t+.015]);
+ }
+ return {positions,uv,indices};
+}
 const modeled=(id,name,color,build,category='Leaves')=>{const mesh=build(false);return {id,name,sourceName:'New biome flora - '+name,category,paletteCategory:category==='Leaves'?'Leaves':'Flora',texture:true,textureMap:()=>solid(color,id),alphaMap:()=>null,iconUrl:new URL('../../assets/procedural-flora/'+id+'.png',import.meta.url).href,triangles:mesh.indices.length/3,meshes:[mesh],lowDetailMeshes:[build(true)]};};
 export const BIOME_MODELED_PARTS=[
+ modeled('biome-fan-frond','Palmate Fan Frond','#608246',low=>palmFrond(low,true)),
+ modeled('biome-palm-frond','Feather Palm Frond','#648548',low=>palmFrond(low,false)),
  modeled('biome-ribbon-leaf','Ribbon Leaf','#628c42',low=>ribbon(low?4:9,.11,.45)),
  modeled('biome-banana-leaf','Banana Blade','#488c3a',low=>ribbon(low?5:12,.32,.5)),
  modeled('biome-yucca-leaf','Yucca Blade','#7c9153',low=>ribbon(low?3:7,.055,.6)),

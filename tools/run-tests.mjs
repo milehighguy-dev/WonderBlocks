@@ -48,6 +48,7 @@ try{
  }
  if(['all','integration','release'].includes(mode)){
   await node(['tests/integration/browser.mjs'],360000);
+  await node(['tests/integration/archipelago-trees.mjs'],120000);
   await node(['tests/integration/collision-helpers.mjs'],120000);
   await node(['tests/integration/navigation-merge.mjs'],120000);
   await node(['tests/integration/export-readiness.mjs'],120000);

@@ -14,11 +14,11 @@ import * as T from '../vendor/three.module.js';
 
 test('biome plants and their reusable parts have unique selectable identities',()=>{
  assert.equal(new Set(FLORA_ASSETS.map(a=>a.id)).size,FLORA_ASSETS.length);
- assert.equal(BIOME_PRESETS.length,97);
+ assert.equal(BIOME_PRESETS.length,121);
  for(const family of new Set(BIOME_PRESETS.filter(p=>p.family).map(p=>p.family)))assert.equal(BIOME_PRESETS.filter(p=>p.family===family).length,3,family);
  const habitats=new Set(BIOME_PRESETS.flatMap(p=>p.biomes));
  for(const habitat of ['woodland','foothill','tundra','alpine','prairie','rainforest','swamp','marsh','riparian','desert','oasis','tropical-coast','marine','volcanic-margin','thermal-margin'])assert.ok(habitats.has(habitat),habitat);
- for(const p of BIOME_PRESETS){assert.equal(p.paletteCategory,'Biomes');validateFlora(instantiateFloraTreePreset(p.id).flora);}
+ for(const p of BIOME_PRESETS){assert.equal(p.paletteCategory,p.family?'Tree presets':'Biomes');validateFlora(instantiateFloraTreePreset(p.id).flora);}
  for(const id of ['biome-vined-mangrove','biome-vined-fig']){
   const f=instantiateFloraTreePreset(id).flora;
   assert.ok(f.branches.some(b=>b.name==='Climbing trunk vine'));

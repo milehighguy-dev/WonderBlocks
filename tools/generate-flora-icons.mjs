@@ -29,13 +29,14 @@ const temp=process.argv.includes('--temp');
 const biomes=process.argv.includes('--biomes');
 const requested=process.argv.find(arg=>arg.startsWith('--part='))?.slice(7);
 const requestedTree=process.argv.find(arg=>arg.startsWith('--tree='))?.slice(7);
-if(requested&&requestedTree)throw Error('Choose either --part or --tree.');
-const specimens=requestedTree?[]:requested?FLORA_ASSETS.filter(p=>p.id===requested):biomes?BIOME_MODELED_PARTS:temp?FLORA_ASSETS.filter(p=>p.paletteCategory==='temp'):branches?BARK_BRANCH_PARTS:leaves?MODELED_LEAF_PARTS:wetland?FLORA_ASSETS.filter(p=>p.id.startsWith('coral-')||p.id==='willow-hanging-spray'):PROCEDURAL_FLORA;
+const requestedTrees=process.argv.find(arg=>arg.startsWith('--trees='))?.slice(8).split(',');
+if([requested,requestedTree,requestedTrees].filter(Boolean).length>1)throw Error('Choose --part, --tree or --trees.');
+const specimens=requestedTree||requestedTrees?[]:requested?FLORA_ASSETS.filter(p=>p.id===requested):biomes?BIOME_MODELED_PARTS:temp?FLORA_ASSETS.filter(p=>p.paletteCategory==='temp'):branches?BARK_BRANCH_PARTS:leaves?MODELED_LEAF_PARTS:wetland?FLORA_ASSETS.filter(p=>p.id.startsWith('coral-')||p.id==='willow-hanging-spray'):PROCEDURAL_FLORA;
 if(requested&&!specimens.length)throw Error('Unknown flora part: '+requested);
 const entries=specimens.filter(part=>!part.floraPreset).map(part=>({part,output:part.id.startsWith('temp-base-')?new URL('../assets/temp-bases/',import.meta.url):wetland?new URL('../assets/reef-flora/',import.meta.url):output}));
 // Whole plants use the same material-aware baking path as the wetland presets.
 // --part also accepts a tree ID so every selectable asset has one safe entry.
-const treeIds=[...specimens.filter(part=>part.floraPreset).map(part=>part.id),...(requestedTree?[requestedTree]:[]),...(wetland?['weeping-willow','red-mangrove']:[]),...(biomes?BIOME_PRESETS.map(p=>p.id):[])];
+const treeIds=[...specimens.filter(part=>part.floraPreset).map(part=>part.id),...(requestedTree?[requestedTree]:[]),...(requestedTrees||[]),...(wetland?['weeping-willow','red-mangrove']:[]),...(biomes?BIOME_PRESETS.map(p=>p.id):[])];
 for(const id of new Set(treeIds)){
  if(!FLORA_ASSETS.some(part=>part.id===id&&part.floraPreset))throw Error('Unknown flora tree preset: '+id);
  const group=buildPart(makePart('flora',instantiateFloraTreePreset(id)),{collision:false}),center=new T.Box3().setFromObject(group).getCenter(new T.Vector3()),camera=new T.PerspectiveCamera(35,1,.01,1000);camera.position.copy(center).add(new T.Vector3(...eye).multiplyScalar(30));camera.lookAt(center);camera.updateMatrixWorld(true);group.updateMatrixWorld(true);

@@ -100,6 +100,52 @@ function pandanus(){
  for(let i=0;i<22;i++)organ(f,'biome-ribbon-leaf',{branch:'trunk',at:1,scale:[1.4,2.2,1.4],rotation:radialRotation(i*2.39996,.8+(i%3)*.15)});
  return f;
 }
+function palm(kind){
+ const fan=kind==='fan',date=kind==='date',under=kind==='understory',h=fan?7:date?8.5:under?4.2:11,r=date?.33:under?.12:.2,f=origin(h,r);
+ const lean=date?.025:fan?.055:under?.08:.17;
+ f.branches[0].points=[[0,0,0],[h*lean*.12,h*.28,0],[h*lean*.5,h*.64,-h*.015],[h*lean,h,-h*.025]];
+ f.branches[0].radii=[r,r*.84,r*.72,r*.62];
+ f.branches[0].name=date?'Date palm stout trunk':fan?'Fan palm trunk':under?'Understory palm stem':'Leaning coconut trunk';
+ const count=fan?10:date?18:under?10:12;
+ for(let i=0;i<count;i++){
+  const yaw=i*2.399963,upper=i%3===0,length=fan?1.85:date?3.4:under?1.7:3.8,tilt=fan?.45+i/(count-1)*1.6:upper?.65:1.32+(i%3)*.22;
+  organ(f,fan?'biome-fan-frond':'biome-palm-frond',{branch:'trunk',at:fan?.94+.06*i/(count-1):1,scale:[length*(date?.9:1),length*(.82+.18*Math.sin(i*1.7)**2),length],rotation:radialRotation(yaw,tilt,.15*Math.sin(i))});
+ }
+ return f;
+}
+function blackMangrove(){
+ const f=broadleaf({h:7.5,r:.26,spread:3.1,branches:7,shape:'mangrove',leafAsset:'yavin-fine-leaves'});
+ f.colors.bark='#817c6b';
+ for(let i=0;i<10;i++){
+  const a=i*2.399963,reach=1.2+(i%4)*.55,x=Math.cos(a)*reach,z=Math.sin(a)*reach;
+  limb(f,'trunk',0,[[0,0,0],[x*.55,-.25,z*.55],[x,-.16,z],[x+.03,.24+(i%3)*.07,z]],[.035,.03,.025,.015],'Breathing root pneumatophore '+(i+1));
+ }
+ return f;
+}
+function coastalTree(){
+ const f=broadleaf({h:6.5,r:.32,spread:3.7,branches:7,leafAsset:'yavin-leaves'});
+ f.branches[0].points=[[0,0,0],[.5,1.7,0],[1.4,3.6,.15],[2.8,5.7,.3]];
+ for(const b of f.branches.slice(1))for(let j=1;j<b.points.length;j++){const t=j/(b.points.length-1);b.points[j][0]+=1.7*t;b.points[j][1]*=.7;}
+ return f;
+}
+function treelineConifer(){
+ const f=conifer({h:4.8,r:.22,spread:1.7,tiers:4});
+ f.branches[0].points=[[0,0,0],[-.15,1.5,.05],[.42,3.1,.08],[.8,4.8,.1]];
+ const p=floraCurve(f,'trunk').getPoint(.64),b=limb(f,'trunk',.64,[p.toArray(),[-.8,3.5,.3],[-1.1,4.2,.4]],[.11,.07,.025],'Forked treeline leader');
+ leaf(f,b.id,.8,1.1,'endor-redwood-needles',3511);return f;
+}
+function deadwood(kind){
+ const fallen=kind==='fallen',f=origin(fallen?0:kind==='broken'?5:9,.4);
+ f.woodConstruction='swept';
+ f.colors.bark='#8b8275';f.finishes={bark:{preset:'bf2-dagobah-weathered-bark',scale:.8}};
+ if(fallen){f.branches=[{id:'trunk',name:'Fallen trunk',parent:null,at:0,profile:'flora-basic-branch',nativeShape:true,points:[[0,.32,0],[2.1,.4,.25],[4.8,.3,.05],[7,.22,-.3]],radii:[.4,.32,.24,.12]}];}
+ else{const b=f.branches[0];b.name=kind==='broken'?'Broken main trunk':'Standing weathered snag';b.radii[b.radii.length-1]=kind==='broken'?.23:.07;}
+ for(let i=0;i<(kind==='broken'?3:5);i++){
+  const at=.35+i*.1,p=floraCurve(f,'trunk').getPoint(at),a=i*2.399963,reach=kind==='broken'?.65:1.25;
+  limb(f,'trunk',at,[p.toArray(),[p.x+Math.cos(a)*reach*.6,p.y+(fallen?.45:.3),p.z+Math.sin(a)*reach*.6],[p.x+Math.cos(a)*reach,p.y+(fallen?.8:.6),p.z+Math.sin(a)*reach]],[.1,.065,.025],'Broken branch stub '+(i+1));
+ }
+ return f;
+}
 function withVines(f){
  const supports=f.branches.filter(b=>!b.anchor&&b.parent).sort((a,b)=>floraCurve(f,b.id).getPoint(.65).y-floraCurve(f,a.id).getPoint(.65).y).slice(0,3);
  if(!supports.length)return f;
@@ -133,7 +179,7 @@ add('meadow-flowers','Meadow Wildflowers','prairie,woodland-edge','patch',{asset
 add('broom','Meadow Broom Shrub','prairie,woodland-edge','scrub',{h:1.1,spread:.75,asset:'biome-sprite-broadleaf-scrub',stems:5});
 add('kapok','Rainforest Kapok','rainforest','clone',{preset:'kapok-mature',scale:.85});
 add('fig','Spreading Tropical Fig','rainforest','broadleaf',{h:18,r:.7,spread:6,branches:9,leafAsset:'yavin-leaves',trunks:3});
-add('understory-palm','Understory Palm','rainforest,swamp','clone',{preset:'palm-tree',scale:.5});
+add('understory-palm','Understory Palm','rainforest,swamp','palm',{kind:'understory'});
 add('banana','Broadleaf Banana','rainforest','blades',{h:2.3,width:2.2,count:7,asset:'biome-banana-leaf',stem:1.2});
 add('giant-fern','Giant Rainforest Fern','rainforest,swamp','blades',{h:1.6,width:1.6,count:9,asset:'flora-fern-frond'});
 add('vined-fig','Tropical Fig with Lianas','rainforest','vined-fig');
@@ -157,13 +203,21 @@ add('yucca','Desert Yucca','desert','blades',{h:1.25,width:.8,count:16,asset:'bi
 add('barrel-cactus','Ribbed Barrel Cactus','desert','cactus',{kind:'barrel'});
 add('prickly-pear','Prickly Pear Cactus','desert,coastal-dune','cactus',{kind:'pear'});
 add('column-cactus','Columnar Desert Cactus','desert','cactus',{kind:'column'});
-add('date-palm','Oasis Date Palm','oasis','clone',{preset:'palm-tree',scale:1.05});
+add('date-palm','Oasis Date Palm','oasis','palm',{kind:'date'});
 add('tamarisk','Oasis Tamarisk','oasis,riparian-desert','scrub',{h:2.7,spread:1.8,asset:'yavin-fine-leaves',stems:6});
 add('sea-oats','Coastal Sea Oats','coastal-dune','patch',{asset:'biome-sprite-sea-oats',height:1.3,count:4,radius:.4});
 add('dune-grass','Dune Bunchgrass','coastal-dune','patch',{asset:'biome-sprite-fescue',height:.85,count:6,radius:.45});
 add('beach-creeper','Creeping Beach Groundcover','coastal-dune,tropical-coast','patch',{asset:'biome-sprite-cold-leaves',height:.22,count:12,radius:.7});
 add('sea-grape','Coastal Sea Grape','tropical-coast','broadleaf',{h:3.5,r:.14,spread:2.1,branches:6,leafAsset:'yavin-leaves'});
-add('coconut-palm','Island Coconut Palm','tropical-coast','clone',{preset:'palm-tree',scale:1.3});
+add('coconut-palm','Island Coconut Palm','tropical-coast','palm',{kind:'coconut'});
+add('black-mangrove','Black Mangrove','swamp,tropical-coast','black-mangrove',{},'Landward swamp margins, with upright breathing roots rather than red-mangrove prop roots.');
+add('fan-palm','Coastal Fan Palm','tropical-coast,rainforest','palm',{kind:'fan'});
+add('coastal-wind-tree','Wind-shaped Coastal Tree','tropical-coast,woodland-edge','coastal-tree');
+add('treeline-conifer','Stunted Treeline Conifer','foothill,alpine','treeline-conifer',{},'Sheltered treeline pockets; leave the main tundra and permanent snow clear.');
+add('woodland-sapling','Young Woodland Tree','woodland,woodland-edge','broadleaf',{h:3.4,r:.08,spread:1.1,branches:4,leafAsset:'yavin-fine-leaves'});
+add('standing-snag','Standing Dead Snag','woodland,rainforest,foothill,swamp','deadwood',{kind:'snag'});
+add('broken-tree','Broken Trunk','woodland,rainforest,swamp','deadwood',{kind:'broken'});
+add('fallen-tree','Fallen Tree','woodland,rainforest,foothill,swamp','deadwood',{kind:'fallen'});
 add('eelgrass','Sheltered Eelgrass','marine','blades',{h:.55,width:.3,count:9,asset:'biome-ribbon-leaf'});
 add('ribbon-seagrass','Ribbon Seagrass','marine','blades',{h:.95,width:.45,count:7,asset:'biome-ribbon-leaf'});
 add('pioneer-fern','Pioneer Fern','volcanic-margin,thermal-margin','blades',{h:.45,width:.65,count:5,asset:'flora-fern-frond'});
@@ -176,6 +230,11 @@ function create(spec){
  else if(spec.form==='mangrove')f=mangrove();
  else if(spec.form==='vined-mangrove')f=withVines(mangrove());
  else if(spec.form==='pandanus')f=pandanus();
+ else if(spec.form==='palm')f=palm(p.kind);
+ else if(spec.form==='black-mangrove')f=blackMangrove();
+ else if(spec.form==='coastal-tree')f=coastalTree();
+ else if(spec.form==='treeline-conifer')f=treelineConifer();
+ else if(spec.form==='deadwood')f=deadwood(p.kind);
  else if(spec.form==='glasswort'){f=origin(.35,.025,true);for(let i=0;i<7;i++){const root=floraCurve(f,'trunk').getPoint(.3+i*.08),a=i*2.4;limb(f,'trunk',.3+i*.08,[root.toArray(),[Math.cos(a)*.16,.3+i*.03,Math.sin(a)*.16],[Math.cos(a)*.2,.42+i*.025,Math.sin(a)*.2]],[.018,.017,.015],'Fleshy glasswort shoot');}}
  else if(spec.form==='horsetail'){f=origin(.7,.018,true);for(let row=0;row<4;row++)for(let i=0;i<4;i++){const at=.25+row*.17,p=floraCurve(f,'trunk').getPoint(at),a=i*tau/4;limb(f,'trunk',at,[p.toArray(),[Math.cos(a)*.15,p.y+.07,Math.sin(a)*.15]],[.015,.015],'Horsetail whorl');}}
  else throw Error(spec.form);
@@ -190,6 +249,15 @@ function create(spec){
 }
 const basePresets=[];for(const spec of specs){try{basePresets.push(create(spec));}catch(error){throw new Error(spec.id+': '+error.message,{cause:error});}}
 const presets=biomeCrownVariants(basePresets);
+for(const p of presets){try{
+ const f=p.floraPreset;syncFloraSharedJoints(f);
+ // Trunk bending also tilts attached roots. Restore their soil contacts in
+ // world space, while retaining the arch and the editable parent connection.
+ for(const b of f.branches.filter(b=>/prop root|forked root|cypress root|pandanus stilt root/i.test(b.name))){
+  const frame=floraAttachmentFrame(f,b),tip=V(b.points.at(-1)).applyMatrix4(frame);tip.y=-.18;b.points[b.points.length-1]=tip.applyMatrix4(frame.clone().invert()).toArray();
+ }
+ validateFlora(f);
+}catch(error){throw new Error(p.id+': '+error.message,{cause:error});}}
 fs.writeFileSync(new URL('../src/flora/data/biome-presets-data.js',import.meta.url),'// Generated by tools/generate-biome-presets.mjs through the normal plant editor API.\nexport const BIOME_PRESETS='+JSON.stringify(presets,null,1)+';\n');
 fs.writeFileSync(new URL('../assets/biome-flora/plant-index.json',import.meta.url),JSON.stringify(presets.map(({floraPreset,...p})=>({...p,branches:floraPreset.branches.length,organs:floraPreset.organs.length})),null,2));
 console.log('Generated '+presets.length+' editable biome plants.');

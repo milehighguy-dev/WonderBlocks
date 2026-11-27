@@ -2,6 +2,18 @@
 
 **Audience:** Contributors and coding agents. Historical research and asset notes, not a user guide; details may no longer match the current app.
 
+## Yavin textured twig planes
+
+The stock `YAV/msh/yav_prop_leaftree3.msh` uses `yav_prop_leaftree_branch.tga` on fine branches. `branch24`, `branch25` and `branch26` each contain one two-triangle card; `branch5` and `branch6` each contain four triangles in paired cards. Their material flags are `[24, 0, 0, 0]`: double-sided transparent cutouts. This is separate from the camera-facing `leafpatch` foliage. The texture is **128 × 128**, with 13,578 fully transparent pixels and 2,806 opaque pixels; the working copy retains the original pixels and resolution.
+
+**Flora parts → Branches** now includes **Yavin Branch Plane** (two triangles) and **Yavin Crossed Branch Planes** (four triangles). They attach as fixed surface details and follow the supporting wood. Their mounting point is the visible stem at the lower-right texture corner. Spread and length controls reshape the cards without moving that mounting point or changing UVs. The single card comes from native `branch26`, normalized to a two-metre stem edge; the crossed form builds two rooted copies at right angles. These are twig decorations with no movement collision or structural sockets. Keep solid wood for trunks and large boughs. They are already minimal and keep the same two/four triangles in the distant mesh. Native exports use ordinary fixed alpha-tested mesh geometry, without leafpatch ODFs for these parts.
+
+The original **Yavin Temple Broadleaf** and **Yavin Slender Grove Tree** presets now include these fine twig planes beneath their camera-facing crowns. Their modeled wood and solid collision stay the same. The local SWBF Trees and Yavin Rainwell examples are refreshed from those presets. Existing user projects retain their saved geometry unless the user places or applies an updated preset.
+
+The two Yavin specimens add five fixed twig groups, totaling **16 visible triangles**. Camera-facing leaf counts stay unchanged, and comparison exports retain byte-identical physical wood collision helpers. Standalone twig exports use `-nocollision`, even when collision export is enabled.
+
+`tools/extract-yavin-branches.py` reproduces the extraction from the local Mod Tools authoring files without changing them. `src/flora/data/yavin-branch-source.js` records source hashes, original vertices/UVs/triangles, the normalization basis and native texture pixels. The PNG is `assets/swbf-foliage/yavin-branch.png`.
+
 Inspected the local SWBF2 Mod Tools authoring meshes and their object definitions in Blender. The original wood meshes remain available in a separate reference scene. The Wonderblocks example recreates wood with editable native Flora branch profiles; it is a shape reconstruction rather than a verbatim import of the original wood geometry.
 
 The living trees attach `ClassLabel = "leafpatch"` objects to `hp_branch...` hardpoints. These ODFs provide the particle count, spread radius, height, size range, card aspect and darkness range. The placeholder `hoth_prop_grass.msh` in the leafpatch ODF is not a modeled canopy. Their native 256 × 256 cutout textures contain a 2 × 2 atlas of leaf or vine shapes. Wonderblocks chooses a stable randomized tile for each card rather than displaying the entire atlas on every particle.

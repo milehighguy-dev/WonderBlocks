@@ -12,7 +12,7 @@ import {swbfTreesDemo} from '../examples/generators/swbf-trees-demo.js';
 
 test('saved plants have their own palette group and no distant tree is offered',()=>{
  assert.equal(FLORA_TREE_PRESETS.filter(p=>!p.planet).length,6);assert.equal(floraAsset('yavin-tree-billboard'),undefined);
- for(const preset of FLORA_TREE_PRESETS){assert.equal(floraPaletteCategory(preset),preset.id.startsWith('biome-')?'Biomes':'Tree presets');assert.equal(floraPlacementCategory(preset),'Whole plants');assert.ok(FLORA_ASSETS.includes(preset));assert.ok(fs.existsSync(new URL(floraIconUrl(preset))));}
+ for(const preset of FLORA_TREE_PRESETS){assert.equal(floraPaletteCategory(preset),preset.id.startsWith('biome-')&&!preset.family?'Biomes':'Tree presets');assert.equal(floraPlacementCategory(preset),'Whole plants');assert.ok(FLORA_ASSETS.includes(preset));assert.ok(fs.existsSync(new URL(floraIconUrl(preset))));}
  for(const preset of FLORA_TREE_PRESETS){assert.equal(preset.floraPreset.detail,'swbf2',preset.name);assert.equal(instantiateFloraTreePreset(preset.id).flora.detail,'swbf2',preset.name);}
  assert.equal(swbfTreesDemo().parts.length,6);
 });
